@@ -3,26 +3,26 @@
     "name": "Li Auto Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 17.59,
-    "dayLow": 17.5,
-    "dayHigh": 17.79,
+    "price": 17.06,
+    "dayLow": 16.62,
+    "dayHigh": 17.07,
     "wk52Low": 15.71,
     "wk52High": 32.02,
-    "pe": 15.8,
-    "fwdPe": 23.1,
+    "pe": 15.4,
+    "fwdPe": 22.5,
     "eps": 1.11,
     "fwdEps": 0.76,
-    "mktCap": "17.8B",
-    "avgVol": "4.0M",
+    "mktCap": "17.3B",
+    "avgVol": "3.9M",
     "div": 0,
     "divYield": "0%",
     "beta": 0.6,
     "shortInt": "5.7%",
     "shortRatio": 5.3,
     "targets": {
-      "low": 14.13,
-      "avg": 23.64,
-      "high": 37.15
+      "low": 14.05,
+      "avg": 23.5,
+      "high": 36.93
     },
     "analystRatings": {
       "buy": 16,
@@ -56,38 +56,38 @@
       }
     ],
     "earningsDate": "Mar 12, 2026",
-    "daysToEarnings": 10,
+    "daysToEarnings": 8,
     "lastYearEarnings": {
       "q": "2024-12",
       "eps": 3.79,
-      "revenue": "17.8B",
+      "revenue": "17.3B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
-      30.73,
-      27.46,
-      25.52,
-      23.23,
-      23.48,
-      28.82,
-      28.34,
-      27.76,
-      27.47,
-      27.66,
-      25.24,
-      24.19,
-      23.35,
-      24.48,
-      24.36,
-      22.51,
-      20.85,
-      19.77,
-      18.39,
-      17.08,
-      17.25,
-      16.19,
-      16.63,
-      18.46
+      29.02,
+      26.4,
+      23.07,
+      23.12,
+      25.04,
+      28.91,
+      29.52,
+      26.01,
+      25.94,
+      31.8,
+      24.79,
+      24.06,
+      23.65,
+      25.75,
+      24.8,
+      21.92,
+      19.99,
+      18.02,
+      17.8,
+      17.0,
+      16.66,
+      16.71,
+      18.97,
+      18.28
     ],
     "risk90d": {
       "best": 19.32,
@@ -97,38 +97,38 @@
       {
         "ticker": "AMZN",
         "name": "Amazon.com, Inc.",
-        "price": 210.0,
-        "pe": 29.3,
+        "price": 208.73,
+        "pe": 29.1,
         "rating": "Buy",
         "target": 280.47,
-        "chg": -13.6
+        "chg": -10.4
       },
       {
         "ticker": "TSLA",
         "name": "Tesla, Inc.",
-        "price": 402.51,
-        "pe": 369.3,
+        "price": 392.43,
+        "pe": 360.0,
         "rating": "Hold",
-        "target": 421.73,
-        "chg": -6.7
+        "target": 420.9,
+        "chg": -3.3
       },
       {
         "ticker": "HD",
         "name": "Home Depot, Inc. (The)",
-        "price": 380.72,
-        "pe": 26.7,
+        "price": 366.92,
+        "pe": 25.8,
         "rating": "Buy",
-        "target": 408.52,
-        "chg": 1.4
+        "target": 410.27,
+        "chg": -5.2
       },
       {
         "ticker": "NKE",
         "name": "Nike, Inc.",
-        "price": 62.18,
-        "pe": 36.4,
+        "price": 59.39,
+        "pe": 34.7,
         "rating": "Buy",
         "target": 76.15,
-        "chg": -0.1
+        "chg": -6.9
       }
     ],
     "description": "Li Auto Inc. operates in the energy vehicle market in the People's Republic of China. It designs, develops, manufactures, and sells premium smart electric vehicles. The company's product line comprises multi-purpose vehicles and sport utility vehicles. It offers sales and after sales management, and technology development and corporate management services, as well as manufacturing equipment. The company offers its products through online and offline channels. The company was formerly known as Le",
@@ -140,6 +140,7 @@
     "peerMismatch": "Review LI vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
+        13,
         14,
         15,
         16,
@@ -147,30 +148,29 @@
         18,
         19,
         20,
-        21,
-        22
+        21
       ],
       "calls": [
-        3.87,
-        2.99,
-        2.12,
-        1.24,
-        0.77,
+        4.25,
+        3.37,
+        2.49,
+        1.61,
+        0.72,
+        0.78,
         0.9,
         1.02,
-        1.14,
-        1.26
+        1.13
       ],
       "puts": [
-        1.16,
-        1.04,
-        0.92,
-        0.79,
-        1.08,
-        1.96,
-        2.84,
-        3.71,
-        4.59
+        1.15,
+        1.03,
+        0.91,
+        0.8,
+        0.68,
+        1.5,
+        2.38,
+        3.26,
+        4.15
       ],
       "expiry": "Mar 25, 2026 (est.)"
     },
@@ -233,9 +233,9 @@
       ]
     },
     "momentum": {
-      "day5": -4.6,
-      "day30": 1.9,
-      "day90": -4.6,
+      "day5": -7.5,
+      "day30": 3.1,
+      "day90": -4.9,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -246,9 +246,9 @@
       "signal": "Declining"
     },
     "impliedVolatility": {
-      "iv": 52.1,
-      "expectedMovePct": 8.6,
-      "expectedMoveDollar": 1.52,
+      "iv": 55.9,
+      "expectedMovePct": 8.3,
+      "expectedMoveDollar": 1.41,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -260,32 +260,315 @@
       "floatShares": "1.1B",
       "sharesOutstanding": "835.4M",
       "exDivDate": "N/A",
-      "earningsEstRevision": -31.5
+      "earningsEstRevision": -31.7
+    }
+  },
+  "CCL": {
+    "name": "Carnival Corporation & plc",
+    "sector": "Consumer Cyclical",
+    "industry": "Travel Services",
+    "price": 28.53,
+    "dayLow": 27.11,
+    "dayHigh": 28.83,
+    "wk52Low": 15.07,
+    "wk52High": 34.03,
+    "pe": 14.1,
+    "fwdPe": 10.1,
+    "eps": 2.02,
+    "fwdEps": 2.83,
+    "mktCap": "39.4B",
+    "avgVol": "20.6M",
+    "div": 0.15,
+    "divYield": "51.0%",
+    "beta": 2.46,
+    "shortInt": "3.6%",
+    "shortRatio": 1.9,
+    "targets": {
+      "low": 33.0,
+      "avg": 38.0,
+      "high": 46.0
+    },
+    "analystRatings": {
+      "buy": 13,
+      "hold": 6,
+      "sell": 2
+    },
+    "surprises": [
+      {
+        "q": "2025-02",
+        "est": 0.02,
+        "actual": 0.13,
+        "pct": 485.1
+      },
+      {
+        "q": "2025-05",
+        "est": 0.24,
+        "actual": 0.35,
+        "pct": 45.3
+      },
+      {
+        "q": "2025-08",
+        "est": 1.32,
+        "actual": 1.43,
+        "pct": 8.5
+      },
+      {
+        "q": "2025-11",
+        "est": 0.25,
+        "actual": 0.34,
+        "pct": 38.6
+      }
+    ],
+    "earningsDate": "Mar 19, 2026",
+    "daysToEarnings": 15,
+    "lastYearEarnings": {
+      "q": "2025-02",
+      "eps": 0.13,
+      "revenue": "39.4B",
+      "reaction": "+/- TBD"
+    },
+    "prices52w": [
+      20.55,
+      20.84,
+      16.42,
+      17.91,
+      19.48,
+      22.15,
+      24.17,
+      23.66,
+      29.82,
+      29.41,
+      28.24,
+      31.16,
+      31.42,
+      30.38,
+      28.44,
+      29.26,
+      26.61,
+      26.44,
+      25.75,
+      30.98,
+      31.98,
+      28.42,
+      33.83,
+      31.99
+    ],
+    "risk90d": {
+      "best": 33.87,
+      "worst": 25.15
+    },
+    "peers": [
+      {
+        "ticker": "AMZN",
+        "name": "Amazon.com, Inc.",
+        "price": 208.73,
+        "pe": 29.1,
+        "rating": "Buy",
+        "target": 280.47,
+        "chg": -10.4
+      },
+      {
+        "ticker": "TSLA",
+        "name": "Tesla, Inc.",
+        "price": 392.43,
+        "pe": 360.0,
+        "rating": "Hold",
+        "target": 420.9,
+        "chg": -3.3
+      },
+      {
+        "ticker": "HD",
+        "name": "Home Depot, Inc. (The)",
+        "price": 366.92,
+        "pe": 25.8,
+        "rating": "Buy",
+        "target": 410.27,
+        "chg": -5.2
+      },
+      {
+        "ticker": "NKE",
+        "name": "Nike, Inc.",
+        "price": 59.39,
+        "pe": 34.7,
+        "rating": "Buy",
+        "target": 76.15,
+        "chg": -6.9
+      }
+    ],
+    "description": "Carnival Corporation & plc, a cruise company, provides leisure travel services in North America, Australia, Europe, and internationally. The company operates through four segments: North America Cruise Operations, Europe Cruise Operations, Cruise Support, and Tour and Other. It operates port destinations and islands, as well as owns and operates hotels, lodges, glass-domed railcars, and motorcoaches. The company offers its services under the AIDA Cruises, Carnival Cruise Line, Costa Cruises, Cun",
+    "sentiment": {
+      "value": "Undervalued",
+      "quality": "Mixed",
+      "financials": "Weak"
+    },
+    "peerMismatch": "Review CCL vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
+    "options": {
+      "strikes": [
+        19.0,
+        21.5,
+        24.0,
+        26.5,
+        29.0,
+        31.5,
+        34.0,
+        36.5,
+        39.0
+      ],
+      "calls": [
+        9.66,
+        7.37,
+        5.2,
+        3.04,
+        1.35,
+        1.69,
+        2.03,
+        2.37,
+        2.7
+      ],
+      "puts": [
+        2.58,
+        2.24,
+        1.9,
+        1.56,
+        1.69,
+        3.85,
+        6.02,
+        8.18,
+        10.6
+      ],
+      "expiry": "Apr 01, 2026 (est.)"
+    },
+    "news": [],
+    "insiderActivity": {
+      "buys": 0,
+      "sells": 3,
+      "buyValue": "0",
+      "sellValue": "14.8M",
+      "netSignal": "Bearish",
+      "recent": [
+        {
+          "name": "BERNSTEIN DAVID",
+          "type": "Sell",
+          "shares": 361790,
+          "value": 12016891
+        },
+        {
+          "name": "BAND SIR JONATHON",
+          "type": "Sell",
+          "shares": 12500,
+          "value": 371912
+        },
+        {
+          "name": "BERNSTEIN DAVID",
+          "type": "Sell",
+          "shares": 105010,
+          "value": 2398533
+        }
+      ]
+    },
+    "analystActions": {
+      "upgrades": 0,
+      "downgrades": 2,
+      "netSignal": "Bearish",
+      "recent": [
+        {
+          "firm": "UBS",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Jun 25"
+        },
+        {
+          "firm": "Stifel",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Jun 25"
+        },
+        {
+          "firm": "Citigroup",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Mar 12"
+        },
+        {
+          "firm": "UBS",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Mar 07"
+        },
+        {
+          "firm": "Morgan Stanley",
+          "action": "main",
+          "toGrade": "Equal-Weight",
+          "fromGrade": "",
+          "date": "Mar 01"
+        },
+        {
+          "firm": "Charles Stanley",
+          "action": "down",
+          "toGrade": "Hold",
+          "fromGrade": "Accumulate",
+          "date": "Feb 08"
+        }
+      ]
+    },
+    "momentum": {
+      "day5": -10.0,
+      "day30": -11.7,
+      "day90": 10.5,
+      "trend": "Bearish"
+    },
+    "growthMetrics": {
+      "revenueGrowth": 6.6,
+      "earningsGrowth": 35.8,
+      "qtrRevenueGrowth": null,
+      "qtrEarningsGrowth": null,
+      "signal": "Growing"
+    },
+    "impliedVolatility": {
+      "iv": 68.8,
+      "expectedMovePct": 13.9,
+      "expectedMoveDollar": 3.98,
+      "signal": "High IV"
+    },
+    "fundamentalsExtra": {
+      "profitMargin": 10.4,
+      "grossMargin": 55.5,
+      "operatingMargin": 9.7,
+      "debtToEquity": 227.9,
+      "currentRatio": 0.32,
+      "floatShares": "1.3B",
+      "sharesOutstanding": "1.2B",
+      "exDivDate": "1770940800",
+      "earningsEstRevision": 40.1
     }
   },
   "KEY": {
     "name": "KeyCorp",
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "price": 20.74,
-    "dayLow": 20.48,
-    "dayHigh": 21.57,
+    "price": 20.47,
+    "dayLow": 20.05,
+    "dayHigh": 20.71,
     "wk52Low": 12.73,
     "wk52High": 23.35,
-    "pe": 13.6,
-    "fwdPe": 9.8,
+    "pe": 13.5,
+    "fwdPe": 9.6,
     "eps": 1.52,
     "fwdEps": 2.12,
-    "mktCap": "22.9B",
+    "mktCap": "22.3B",
     "avgVol": "16.4M",
     "div": 0.82,
-    "divYield": "395.0%",
-    "beta": 1.07,
+    "divYield": "392.0%",
+    "beta": 1.09,
     "shortInt": "2.5%",
     "shortRatio": 1.3,
     "targets": {
       "low": 19.0,
-      "avg": 24.45,
+      "avg": 24.55,
       "high": 43.0
     },
     "analystRatings": {
@@ -320,79 +603,79 @@
       }
     ],
     "earningsDate": "Apr 16, 2026",
-    "daysToEarnings": 45,
+    "daysToEarnings": 43,
     "lastYearEarnings": {
       "q": "2025-03",
       "eps": 0.33,
-      "revenue": "22.9B",
+      "revenue": "22.3B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
-      16.52,
-      15.14,
-      15.26,
-      13.26,
-      14.22,
-      16.06,
-      15.32,
-      15.31,
-      16.85,
-      17.94,
-      17.27,
-      17.65,
-      18.94,
-      18.85,
-      18.68,
-      16.77,
-      17.4,
-      17.43,
-      18.18,
-      20.66,
+      15.01,
+      15.6,
+      13.01,
+      13.78,
+      14.96,
+      15.11,
+      15.98,
+      15.81,
+      18.06,
+      18.1,
+      17.23,
+      18.57,
+      18.53,
+      18.87,
+      18.42,
+      17.62,
+      17.88,
+      17.62,
+      19.05,
       20.98,
-      21.17,
-      21.52,
-      21.7
+      21.19,
+      21.1,
+      23.21,
+      22.2
     ],
     "risk90d": {
       "best": 23.35,
-      "worst": 18.11
+      "worst": 18.74
     },
     "peers": [
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 300.3,
+        "price": 300.26,
         "pe": 15.0,
         "rating": "Buy",
         "target": 344.35,
-        "chg": -0.2
+        "chg": -5.4
       },
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 49.83,
+        "price": 49.97,
         "pe": 13.1,
         "rating": "Buy",
         "target": 62.52,
-        "chg": -3.8
+        "chg": -9.8
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 859.57,
-        "pe": 16.7,
+        "price": 862.58,
+        "pe": 16.8,
         "rating": "Hold",
         "target": 959.2,
-        "chg": -8.2
+        "chg": -5.1
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 166.51,
+        "price": 165.95,
         "pe": 16.3,
         "rating": "Buy",
         "target": 195.52,
-        "chg": -8.2
+        "chg": -7.8
       }
     ],
     "description": "KeyCorp operates as the holding company for KeyBank National Association that provides various retail and commercial banking products and services in the United States. It operates in two segments, Consumer Bank and Commercial Bank. The company offers various deposits and investment products; personal finance and financial wellness, lending, student loan refinancing, mortgage and home equity, credit card, treasury, and business advisory; commercial leasing, investment management, consumer financ",
@@ -404,37 +687,37 @@
     "peerMismatch": "Review KEY vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        11.0,
-        13.5,
-        16.0,
-        18.5,
-        21.0,
-        23.5,
-        26.0,
-        28.5,
-        31.0
+        10.0,
+        12.5,
+        15.0,
+        17.5,
+        20.0,
+        22.5,
+        25.0,
+        27.5,
+        30.0
       ],
       "calls": [
-        9.87,
-        7.37,
-        5.16,
-        3.14,
-        1.38,
-        1.87,
-        2.35,
-        2.83,
-        3.31
+        10.6,
+        8.1,
+        5.73,
+        3.7,
+        1.68,
+        1.68,
+        2.15,
+        2.63,
+        3.1
       ],
       "puts": [
-        3.21,
-        2.73,
-        2.25,
-        1.77,
-        1.54,
-        3.56,
-        5.58,
-        7.89,
-        10.39
+        3.28,
+        2.81,
+        2.33,
+        1.86,
+        1.38,
+        2.94,
+        4.97,
+        7.16,
+        9.66
       ],
       "expiry": "Apr 29, 2026 (est.)"
     },
@@ -497,9 +780,9 @@
       ]
     },
     "momentum": {
-      "day5": -1.3,
-      "day30": -4.1,
-      "day90": 14.0,
+      "day5": -4.7,
+      "day30": -7.0,
+      "day90": 11.2,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -510,9 +793,9 @@
       "signal": "Strong"
     },
     "impliedVolatility": {
-      "iv": 39.2,
-      "expectedMovePct": 13.8,
-      "expectedMoveDollar": 2.85,
+      "iv": 42.0,
+      "expectedMovePct": 14.4,
+      "expectedMoveDollar": 2.95,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -531,25 +814,25 @@
     "name": "Huntington Bancshares Incorporated",
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "price": 16.8,
+    "price": 16.75,
     "dayLow": 16.5,
-    "dayHigh": 17.35,
+    "dayHigh": 16.98,
     "wk52Low": 11.92,
     "wk52High": 19.46,
     "pe": 12.1,
-    "fwdPe": 8.8,
+    "fwdPe": 8.7,
     "eps": 1.39,
     "fwdEps": 1.92,
-    "mktCap": "34.1B",
-    "avgVol": "32.2M",
+    "mktCap": "34.0B",
+    "avgVol": "32.1M",
     "div": 0.62,
-    "divYield": "369.0%",
-    "beta": 0.96,
+    "divYield": "365.0%",
+    "beta": 0.97,
     "shortInt": "4.0%",
     "shortRatio": 1.6,
     "targets": {
       "low": 17.0,
-      "avg": 20.6,
+      "avg": 20.69,
       "high": 23.0
     },
     "analystRatings": {
@@ -584,79 +867,79 @@
       }
     ],
     "earningsDate": "Apr 23, 2026",
-    "daysToEarnings": 52,
+    "daysToEarnings": 50,
     "lastYearEarnings": {
       "q": "2025-03",
       "eps": 0.34,
-      "revenue": "34.1B",
+      "revenue": "34.0B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
-      15.85,
-      14.2,
-      14.39,
-      12.54,
-      14.01,
+      14.57,
+      14.46,
+      12.26,
+      13.3,
+      14.67,
+      14.9,
+      15.78,
+      15.41,
+      17.23,
+      16.42,
+      15.81,
+      17.06,
+      17.32,
+      17.41,
+      17.06,
+      15.93,
+      15.55,
       15.74,
-      15.2,
-      15.09,
-      16.31,
-      17.08,
-      15.76,
-      16.28,
-      17.5,
-      17.46,
-      17.27,
-      15.36,
-      15.31,
-      15.59,
-      16.16,
-      17.66,
-      17.48,
-      18.02,
-      17.48,
-      17.26
+      16.75,
+      17.54,
+      18.24,
+      17.35,
+      19.27,
+      18.01
     ],
     "risk90d": {
       "best": 19.46,
-      "worst": 16.02
+      "worst": 16.42
     },
     "peers": [
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 300.3,
+        "price": 300.26,
         "pe": 15.0,
         "rating": "Buy",
         "target": 344.35,
-        "chg": -0.2
+        "chg": -5.4
       },
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 49.83,
+        "price": 49.97,
         "pe": 13.1,
         "rating": "Buy",
         "target": 62.52,
-        "chg": -3.8
+        "chg": -9.8
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 859.57,
-        "pe": 16.7,
+        "price": 862.58,
+        "pe": 16.8,
         "rating": "Hold",
         "target": 959.2,
-        "chg": -8.2
+        "chg": -5.1
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 166.51,
+        "price": 165.95,
         "pe": 16.3,
         "rating": "Buy",
         "target": 195.52,
-        "chg": -8.2
+        "chg": -7.8
       }
     ],
     "description": "Huntington Bancshares Incorporated operates as the bank holding company for The Huntington National Bank that provides commercial, consumer, and mortgage banking services. It offers financial products and services to consumer and business customers, including deposits, lending, payments, mortgage banking, dealer financing, investment management, trust, brokerage, insurance, and other financial products and services. The company also provides 24-Hour Grace, Asterisk-Free Checking, Money Scout, $5",
@@ -679,26 +962,26 @@
         21
       ],
       "calls": [
-        4.17,
-        3.37,
-        2.58,
+        4.12,
+        3.32,
+        2.52,
+        1.72,
+        1.17,
+        1.37,
+        1.57,
         1.78,
-        1.18,
-        1.39,
-        1.59,
-        1.8,
-        2.0
+        1.98
       ],
       "puts": [
-        1.92,
-        1.71,
-        1.51,
-        1.31,
-        1.3,
-        2.1,
-        2.89,
-        3.69,
-        4.49
+        1.88,
+        1.67,
+        1.47,
+        1.27,
+        1.32,
+        2.12,
+        2.92,
+        3.72,
+        4.52
       ],
       "expiry": "May 06, 2026 (est.)"
     },
@@ -780,9 +1063,9 @@
       ]
     },
     "momentum": {
-      "day5": -1.6,
-      "day30": -2.8,
-      "day90": 4.2,
+      "day5": -3.1,
+      "day30": -6.3,
+      "day90": 2.2,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -793,9 +1076,9 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 34.5,
-      "expectedMovePct": 13.0,
-      "expectedMoveDollar": 2.19,
+      "iv": 39.0,
+      "expectedMovePct": 14.4,
+      "expectedMoveDollar": 2.42,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -814,12 +1097,12 @@
     "name": "LendingClub Corporation",
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "price": 14.91,
-    "dayLow": 14.71,
-    "dayHigh": 16.5,
+    "price": 14.86,
+    "dayLow": 14.26,
+    "dayHigh": 15.09,
     "wk52Low": 7.9,
     "wk52High": 21.67,
-    "pe": 12.9,
+    "pe": 12.8,
     "fwdPe": 6.4,
     "eps": 1.16,
     "fwdEps": 2.33,
@@ -827,7 +1110,7 @@
     "avgVol": "2.1M",
     "div": 0,
     "divYield": "0%",
-    "beta": 2.1,
+    "beta": 1.99,
     "shortInt": "3.5%",
     "shortRatio": 1.5,
     "targets": {
@@ -867,7 +1150,7 @@
       }
     ],
     "earningsDate": "Apr 28, 2026",
-    "daysToEarnings": 57,
+    "daysToEarnings": 55,
     "lastYearEarnings": {
       "q": "2025-03",
       "eps": 0.1,
@@ -875,71 +1158,71 @@
       "reaction": "+/- TBD"
     },
     "prices52w": [
-      12.79,
-      10.87,
-      10.41,
-      9.2,
-      10.96,
-      10.64,
-      10.03,
-      10.46,
-      11.97,
-      12.7,
-      15.59,
-      15.5,
-      17.18,
-      16.68,
-      16.54,
-      15.39,
-      17.39,
-      17.24,
-      18.1,
-      19.9,
-      19.12,
-      20.7,
-      16.91,
-      15.59
+      11.19,
+      11.08,
+      8.69,
+      9.5,
+      10.33,
+      9.86,
+      10.6,
+      11.01,
+      12.57,
+      13.04,
+      14.99,
+      16.31,
+      16.6,
+      17.62,
+      14.76,
+      18.43,
+      18.15,
+      16.3,
+      19.43,
+      19.65,
+      19.98,
+      21.05,
+      16.94,
+      16.26
     ],
     "risk90d": {
       "best": 21.67,
-      "worst": 14.65
+      "worst": 14.26
     },
     "peers": [
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 300.3,
+        "price": 300.26,
         "pe": 15.0,
         "rating": "Buy",
         "target": 344.35,
-        "chg": -0.2
+        "chg": -5.4
       },
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 49.83,
+        "price": 49.97,
         "pe": 13.1,
         "rating": "Buy",
         "target": 62.52,
-        "chg": -3.8
+        "chg": -9.8
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 859.57,
-        "pe": 16.7,
+        "price": 862.58,
+        "pe": 16.8,
         "rating": "Hold",
         "target": 959.2,
-        "chg": -8.2
+        "chg": -5.1
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 166.51,
+        "price": 165.95,
         "pe": 16.3,
         "rating": "Buy",
         "target": 195.52,
-        "chg": -8.2
+        "chg": -7.8
       }
     ],
     "description": "LendingClub Corporation, operates as a bank holding company, that provides range of financial products and services in the United States. It offers deposit products, including savings accounts, checking accounts, and certificates of deposit; patient and education finance loans; and commercial loans, including small business loans. The company also provides consumer loans, such as Unsecured and unsecured, fixed-rate, and fixed-term consumer loans; and secured auto refinance loans. In addition, it",
@@ -962,35 +1245,35 @@
         19
       ],
       "calls": [
-        4.13,
-        3.35,
-        2.56,
-        1.77,
-        1.07,
-        1.28,
-        1.49,
+        4.09,
+        3.3,
+        2.51,
         1.71,
-        1.92
+        1.06,
+        1.27,
+        1.48,
+        1.69,
+        1.9
       ],
       "puts": [
-        1.88,
-        1.67,
-        1.46,
-        1.24,
-        1.12,
-        1.91,
-        2.7,
-        3.49,
-        4.28
+        1.84,
+        1.63,
+        1.42,
+        1.21,
+        1.14,
+        1.94,
+        2.73,
+        3.52,
+        4.31
       ],
       "expiry": "May 11, 2026 (est.)"
     },
     "news": [],
     "insiderActivity": {
       "buys": 0,
-      "sells": 6,
+      "sells": 1,
       "buyValue": "0",
-      "sellValue": "498.6K",
+      "sellValue": "82.5K",
       "netSignal": "Bearish",
       "recent": [
         {
@@ -998,30 +1281,6 @@
           "type": "Sell",
           "shares": 5333,
           "value": 82502.0
-        },
-        {
-          "name": "ARMSTRONG ANNIE B",
-          "type": "Sell",
-          "shares": 6666,
-          "value": 135853.0
-        },
-        {
-          "name": "ARMSTRONG ANNIE B",
-          "type": "Sell",
-          "shares": 1333,
-          "value": 26681.0
-        },
-        {
-          "name": "ARMSTRONG ANNIE B",
-          "type": "Sell",
-          "shares": 5333,
-          "value": 100435.0
-        },
-        {
-          "name": "ARMSTRONG ANNIE B",
-          "type": "Sell",
-          "shares": 5332,
-          "value": 106640.0
         }
       ]
     },
@@ -1075,10 +1334,10 @@
       ]
     },
     "momentum": {
-      "day5": 1.1,
-      "day30": -9.3,
-      "day90": -15.4,
-      "trend": "Mixed"
+      "day5": -7.7,
+      "day30": -11.9,
+      "day90": -17.1,
+      "trend": "Bearish"
     },
     "growthMetrics": {
       "revenueGrowth": 12.2,
@@ -1088,9 +1347,9 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 64.1,
-      "expectedMovePct": 25.3,
-      "expectedMoveDollar": 3.77,
+      "iv": 65.6,
+      "expectedMovePct": 25.5,
+      "expectedMoveDollar": 3.79,
       "signal": "High IV"
     },
     "fundamentalsExtra": {
@@ -1099,7 +1358,7 @@
       "operatingMargin": 14.1,
       "debtToEquity": 1.1,
       "currentRatio": 2.71,
-      "floatShares": "111.6M",
+      "floatShares": "111.3M",
       "sharesOutstanding": "115.2M",
       "exDivDate": "N/A",
       "earningsEstRevision": 101.2
@@ -1109,20 +1368,20 @@
     "name": "Regions Financial Corporation",
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "price": 27.83,
-    "dayLow": 27.61,
-    "dayHigh": 28.99,
+    "price": 27.74,
+    "dayLow": 27.1,
+    "dayHigh": 28.04,
     "wk52Low": 17.74,
     "wk52High": 31.53,
     "pe": 12.1,
     "fwdPe": 9.7,
     "eps": 2.3,
     "fwdEps": 2.85,
-    "mktCap": "24.4B",
-    "avgVol": "13.3M",
+    "mktCap": "24.3B",
+    "avgVol": "13.4M",
     "div": 1.05,
-    "divYield": "375.0%",
-    "beta": 1.03,
+    "divYield": "374.0%",
+    "beta": 1.04,
     "shortInt": "7.7%",
     "shortRatio": 3.6,
     "targets": {
@@ -1162,79 +1421,79 @@
       }
     ],
     "earningsDate": "Apr 17, 2026",
-    "daysToEarnings": 46,
+    "daysToEarnings": 44,
     "lastYearEarnings": {
       "q": "2025-03",
       "eps": 0.54,
-      "revenue": "24.4B",
+      "revenue": "24.3B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
-      22.72,
-      20.76,
-      20.75,
-      18.37,
-      19.64,
-      21.88,
-      20.77,
-      21.08,
-      22.88,
-      24.2,
-      24.39,
-      25.09,
-      26.84,
-      26.88,
-      26.35,
-      23.33,
-      23.95,
-      24.7,
-      25.19,
-      27.6,
-      27.56,
-      27.77,
-      28.5,
-      29.74
+      20.95,
+      20.83,
+      17.9,
+      18.53,
+      20.19,
+      20.38,
+      21.15,
+      21.55,
+      24.07,
+      25.25,
+      24.19,
+      25.98,
+      26.24,
+      26.62,
+      25.87,
+      24.08,
+      24.36,
+      24.42,
+      25.76,
+      27.4,
+      28.25,
+      27.22,
+      30.64,
+      29.77
     ],
     "risk90d": {
-      "best": 31.53,
-      "worst": 24.88
+      "best": 31.23,
+      "worst": 25.84
     },
     "peers": [
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 300.3,
+        "price": 300.26,
         "pe": 15.0,
         "rating": "Buy",
         "target": 344.35,
-        "chg": -0.2
+        "chg": -5.4
       },
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 49.83,
+        "price": 49.97,
         "pe": 13.1,
         "rating": "Buy",
         "target": 62.52,
-        "chg": -3.8
+        "chg": -9.8
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 859.57,
-        "pe": 16.7,
+        "price": 862.58,
+        "pe": 16.8,
         "rating": "Hold",
         "target": 959.2,
-        "chg": -8.2
+        "chg": -5.1
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 166.51,
+        "price": 165.95,
         "pe": 16.3,
         "rating": "Buy",
         "target": 195.52,
-        "chg": -8.2
+        "chg": -7.8
       }
     ],
     "description": "Regions Financial Corporation, a financial holding company, provides various banking and related products and services to individual and corporate customers. It operates through three segments: Corporate Bank, Consumer Bank, and Wealth Management. The Corporate Bank segment offers commercial banking services, such as commercial and industrial, commercial real estate, and investor real estate lending; equipment lease financing; deposit products; capital markets activities, such as securities unde",
@@ -1257,26 +1516,26 @@
         38.0
       ],
       "calls": [
-        10.01,
-        7.71,
-        5.7,
-        3.68,
-        1.84,
-        2.32,
-        2.81,
-        3.3,
-        3.78
+        9.92,
+        7.62,
+        5.6,
+        3.58,
+        1.82,
+        2.3,
+        2.78,
+        3.25,
+        3.73
       ],
       "puts": [
-        3.72,
-        3.23,
-        2.75,
-        2.26,
-        1.94,
-        3.96,
-        5.97,
-        7.98,
-        10.35
+        3.63,
+        3.15,
+        2.68,
+        2.2,
+        1.98,
+        4.0,
+        6.02,
+        8.04,
+        10.44
       ],
       "expiry": "Apr 30, 2026 (est.)"
     },
@@ -1364,9 +1623,9 @@
       ]
     },
     "momentum": {
-      "day5": -3.1,
-      "day30": -2.2,
-      "day90": 10.5,
+      "day5": -3.4,
+      "day30": -3.8,
+      "day90": 10.6,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -1377,9 +1636,9 @@
       "signal": "Strong"
     },
     "impliedVolatility": {
-      "iv": 33.9,
-      "expectedMovePct": 12.0,
-      "expectedMoveDollar": 3.35,
+      "iv": 38.5,
+      "expectedMovePct": 13.4,
+      "expectedMoveDollar": 3.71,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -1394,30 +1653,294 @@
       "earningsEstRevision": 24.1
     }
   },
+  "NCLH": {
+    "name": "Norwegian Cruise Line Holdings Ltd.",
+    "sector": "Consumer Cyclical",
+    "industry": "Travel Services",
+    "price": 21.27,
+    "dayLow": 20.52,
+    "dayHigh": 21.72,
+    "wk52Low": 14.21,
+    "wk52High": 27.18,
+    "pe": 15.3,
+    "fwdPe": 7.7,
+    "eps": 1.39,
+    "fwdEps": 2.75,
+    "mktCap": "9.7B",
+    "avgVol": "20.2M",
+    "div": 0,
+    "divYield": "0%",
+    "beta": 2.04,
+    "shortInt": "9.9%",
+    "shortRatio": 1.6,
+    "targets": {
+      "low": 19.0,
+      "avg": 26.69,
+      "high": 40.0
+    },
+    "analystRatings": {
+      "buy": 12,
+      "hold": 6,
+      "sell": 2
+    },
+    "surprises": [
+      {
+        "q": "2025-03",
+        "est": 0.09,
+        "actual": 0.07,
+        "pct": -22.9
+      },
+      {
+        "q": "2025-06",
+        "est": 0.52,
+        "actual": 0.51,
+        "pct": -1.1
+      },
+      {
+        "q": "2025-09",
+        "est": 1.16,
+        "actual": 1.2,
+        "pct": 3.3
+      },
+      {
+        "q": "2025-12",
+        "est": 0.27,
+        "actual": 0.28,
+        "pct": 5.5
+      }
+    ],
+    "earningsDate": "Apr 30, 2026",
+    "daysToEarnings": 57,
+    "lastYearEarnings": {
+      "q": "2025-03",
+      "eps": 0.07,
+      "revenue": "9.7B",
+      "reaction": "+/- TBD"
+    },
+    "prices52w": [
+      20.06,
+      20.4,
+      15.69,
+      16.38,
+      17.37,
+      17.32,
+      19.56,
+      18.86,
+      21.98,
+      23.59,
+      24.0,
+      25.05,
+      25.66,
+      25.23,
+      24.32,
+      23.47,
+      19.07,
+      18.2,
+      18.92,
+      23.04,
+      24.53,
+      20.93,
+      23.32,
+      24.31
+    ],
+    "risk90d": {
+      "best": 25.13,
+      "worst": 18.51
+    },
+    "peers": [
+      {
+        "ticker": "AMZN",
+        "name": "Amazon.com, Inc.",
+        "price": 208.73,
+        "pe": 29.1,
+        "rating": "Buy",
+        "target": 280.47,
+        "chg": -10.4
+      },
+      {
+        "ticker": "TSLA",
+        "name": "Tesla, Inc.",
+        "price": 392.43,
+        "pe": 360.0,
+        "rating": "Hold",
+        "target": 420.9,
+        "chg": -3.3
+      },
+      {
+        "ticker": "HD",
+        "name": "Home Depot, Inc. (The)",
+        "price": 366.92,
+        "pe": 25.8,
+        "rating": "Buy",
+        "target": 410.27,
+        "chg": -5.2
+      },
+      {
+        "ticker": "NKE",
+        "name": "Nike, Inc.",
+        "price": 59.39,
+        "pe": 34.7,
+        "rating": "Buy",
+        "target": 76.15,
+        "chg": -6.9
+      }
+    ],
+    "description": "Norwegian Cruise Line Holdings Ltd., together with its subsidiaries, operates as a cruise company in North America, Europe, the Asia-Pacific, and internationally. It operates the Norwegian Cruise Line, Oceania Cruises, and Regent Seven Seas Cruises brands. The company's brands provide accommodations, multiple dining venues, bars and lounges, spa, casino, and retail shopping areas and entertainment choices, as well as shore excursions at each port, air transportation, and hotel packages. It offer",
+    "sentiment": {
+      "value": "Fair Value",
+      "quality": "Low",
+      "financials": "Weak"
+    },
+    "peerMismatch": "Review NCLH vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
+    "options": {
+      "strikes": [
+        11.0,
+        13.5,
+        16.0,
+        18.5,
+        21.0,
+        23.5,
+        26.0,
+        28.5,
+        31.0
+      ],
+      "calls": [
+        10.42,
+        7.92,
+        5.66,
+        3.68,
+        1.71,
+        1.97,
+        2.5,
+        3.03,
+        3.56
+      ],
+      "puts": [
+        3.68,
+        3.15,
+        2.62,
+        2.09,
+        1.56,
+        3.26,
+        5.23,
+        7.38,
+        9.88
+      ],
+      "expiry": "May 13, 2026 (est.)"
+    },
+    "news": [],
+    "insiderActivity": {
+      "buys": 0,
+      "sells": 0,
+      "buyValue": "0",
+      "sellValue": "0",
+      "netSignal": "Neutral",
+      "recent": []
+    },
+    "analystActions": {
+      "upgrades": 9,
+      "downgrades": 0,
+      "netSignal": "Bullish",
+      "recent": [
+        {
+          "firm": "JP Morgan",
+          "action": "init",
+          "toGrade": "Overweight",
+          "fromGrade": "",
+          "date": "Feb 27"
+        },
+        {
+          "firm": "Goldman Sachs",
+          "action": "init",
+          "toGrade": "Neutral",
+          "fromGrade": "",
+          "date": "Feb 27"
+        },
+        {
+          "firm": "Stifel",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Feb 13"
+        },
+        {
+          "firm": "Nomura",
+          "action": "up",
+          "toGrade": "Buy",
+          "fromGrade": "Neutral",
+          "date": "Feb 12"
+        },
+        {
+          "firm": "Stifel",
+          "action": "init",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Jan 28"
+        },
+        {
+          "firm": "Nomura",
+          "action": "init",
+          "toGrade": "Neutral",
+          "fromGrade": "",
+          "date": "Jan 23"
+        }
+      ]
+    },
+    "momentum": {
+      "day5": -10.7,
+      "day30": -10.0,
+      "day90": 14.5,
+      "trend": "Bearish"
+    },
+    "growthMetrics": {
+      "revenueGrowth": 6.4,
+      "earningsGrowth": null,
+      "qtrRevenueGrowth": null,
+      "qtrEarningsGrowth": null,
+      "signal": "Growing"
+    },
+    "impliedVolatility": {
+      "iv": 74.6,
+      "expectedMovePct": 29.5,
+      "expectedMoveDollar": 6.27,
+      "signal": "High IV"
+    },
+    "fundamentalsExtra": {
+      "profitMargin": 4.3,
+      "grossMargin": 42.6,
+      "operatingMargin": 8.3,
+      "debtToEquity": 712.9,
+      "currentRatio": 0.21,
+      "floatShares": "453.2M",
+      "sharesOutstanding": "455.3M",
+      "exDivDate": "N/A",
+      "earningsEstRevision": 98.2
+    }
+  },
   "XPEV": {
     "name": "XPeng Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 17.56,
-    "dayLow": 17.34,
-    "dayHigh": 17.62,
-    "wk52Low": 16.13,
+    "price": 15.87,
+    "dayLow": 15.38,
+    "dayHigh": 15.96,
+    "wk52Low": 15.38,
     "wk52High": 28.23,
     "pe": -1,
-    "fwdPe": 41.3,
-    "eps": -0.65,
-    "fwdEps": 0.42,
-    "mktCap": "17.1B",
-    "avgVol": "7.1M",
+    "fwdPe": 79.2,
+    "eps": -0.66,
+    "fwdEps": 0.2,
+    "mktCap": "15.4B",
+    "avgVol": "6.7M",
     "div": 0,
     "divYield": "0%",
     "beta": 1.2,
     "shortInt": "5.1%",
     "shortRatio": 5.9,
     "targets": {
-      "low": 17.12,
-      "avg": 26.93,
-      "high": 36.21
+      "low": 17.02,
+      "avg": 26.76,
+      "high": 35.99
     },
     "analystRatings": {
       "buy": 16,
@@ -1451,79 +1974,79 @@
       }
     ],
     "earningsDate": "Mar 17, 2026",
-    "daysToEarnings": 15,
+    "daysToEarnings": 13,
     "lastYearEarnings": {
       "q": "2024-12",
       "eps": -1.47,
-      "revenue": "17.1B",
+      "revenue": "15.4B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
-      21.49,
-      23.73,
-      19.7,
+      23.6,
+      21.8,
+      19.43,
+      18.22,
+      19.76,
       20.0,
-      20.08,
-      20.67,
-      19.31,
-      18.18,
-      18.13,
-      17.4,
-      18.05,
-      19.7,
-      21.02,
-      20.87,
-      22.79,
-      21.2,
-      23.49,
-      25.01,
-      21.83,
-      18.99,
-      20.43,
-      20.65,
-      17.98,
-      17.94
+      19.5,
+      18.31,
+      18.85,
+      18.31,
+      20.2,
+      23.75,
+      19.83,
+      21.66,
+      23.07,
+      21.62,
+      22.42,
+      20.36,
+      20.0,
+      19.86,
+      20.02,
+      19.25,
+      17.72,
+      17.62
     ],
     "risk90d": {
       "best": 21.99,
-      "worst": 16.16
+      "worst": 15.38
     },
     "peers": [
       {
         "ticker": "AMZN",
         "name": "Amazon.com, Inc.",
-        "price": 210.0,
-        "pe": 29.3,
+        "price": 208.73,
+        "pe": 29.1,
         "rating": "Buy",
         "target": 280.47,
-        "chg": -13.6
+        "chg": -10.4
       },
       {
         "ticker": "TSLA",
         "name": "Tesla, Inc.",
-        "price": 402.51,
-        "pe": 369.3,
+        "price": 392.43,
+        "pe": 360.0,
         "rating": "Hold",
-        "target": 421.73,
-        "chg": -6.7
+        "target": 420.9,
+        "chg": -3.3
       },
       {
         "ticker": "HD",
         "name": "Home Depot, Inc. (The)",
-        "price": 380.72,
-        "pe": 26.7,
+        "price": 366.92,
+        "pe": 25.8,
         "rating": "Buy",
-        "target": 408.52,
-        "chg": 1.4
+        "target": 410.27,
+        "chg": -5.2
       },
       {
         "ticker": "NKE",
         "name": "Nike, Inc.",
-        "price": 62.18,
-        "pe": 36.4,
+        "price": 59.39,
+        "pe": 34.7,
         "rating": "Buy",
         "target": 76.15,
-        "chg": -0.1
+        "chg": -6.9
       }
     ],
     "description": "XPeng Inc. designs, develops, manufactures, and markets smart electric vehicles (EVs) in the People's Republic of China. The company offers P7 and P7i, a four-door sports sedan; G9, a smart EV and a mid- to large-sized sport utility vehicle (SUV); G6, a smart EV and a coupe SUV; X9, Smart EV and a large seven-seater multi-purpose vehicle (MPV); MONA M03, an all-electric hatchback coupe; and P7+, smart EV of XPeng series. It also provides XOS Tianji, smart in-car operating system; Powertrain; and",
@@ -1535,37 +2058,37 @@
     "peerMismatch": "Review XPEV vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
+        12,
+        13,
         14,
         15,
         16,
         17,
         18,
         19,
-        20,
-        21,
-        22
+        20
       ],
       "calls": [
-        3.87,
-        3.01,
-        2.14,
-        1.28,
-        0.85,
-        0.99,
-        1.12,
-        1.26,
-        1.39
+        4.06,
+        3.19,
+        2.32,
+        1.45,
+        0.71,
+        0.84,
+        0.97,
+        1.1,
+        1.23
       ],
       "puts": [
-        1.27,
-        1.14,
-        1.0,
-        0.87,
-        1.17,
-        2.04,
-        2.9,
-        3.77,
-        4.63
+        1.2,
+        1.07,
+        0.93,
+        0.8,
+        0.8,
+        1.67,
+        2.54,
+        3.41,
+        4.28
       ],
       "expiry": "Mar 30, 2026 (est.)"
     },
@@ -1628,10 +2151,10 @@
       ]
     },
     "momentum": {
-      "day5": 0.0,
-      "day30": -5.5,
-      "day90": -16.9,
-      "trend": "Mixed"
+      "day5": -12.7,
+      "day30": -3.8,
+      "day90": -25.7,
+      "trend": "Bearish"
     },
     "growthMetrics": {
       "revenueGrowth": 101.8,
@@ -1641,10 +2164,10 @@
       "signal": "Strong"
     },
     "impliedVolatility": {
-      "iv": 58.0,
-      "expectedMovePct": 11.8,
-      "expectedMoveDollar": 2.06,
-      "signal": "Moderate IV"
+      "iv": 69.5,
+      "expectedMovePct": 13.1,
+      "expectedMoveDollar": 2.08,
+      "signal": "High IV"
     },
     "fundamentalsExtra": {
       "profitMargin": -4.0,
@@ -1655,27 +2178,27 @@
       "floatShares": "1.4B",
       "sharesOutstanding": "779.6M",
       "exDivDate": "N/A",
-      "earningsEstRevision": -165.4
+      "earningsEstRevision": -130.3
     }
   },
   "SOFI": {
     "name": "SoFi Technologies, Inc.",
     "sector": "Financial Services",
     "industry": "Credit Services",
-    "price": 17.76,
-    "dayLow": 17.31,
-    "dayHigh": 18.21,
+    "price": 18.61,
+    "dayLow": 17.69,
+    "dayHigh": 19.04,
     "wk52Low": 8.6,
     "wk52High": 32.73,
-    "pe": 45.5,
-    "fwdPe": 22.5,
+    "pe": 47.7,
+    "fwdPe": 23.6,
     "eps": 0.39,
     "fwdEps": 0.79,
-    "mktCap": "22.6B",
-    "avgVol": "56.9M",
+    "mktCap": "23.7B",
+    "avgVol": "57.3M",
     "div": 0,
     "divYield": "0%",
-    "beta": 2.18,
+    "beta": 2.26,
     "shortInt": "9.8%",
     "shortRatio": 2.1,
     "targets": {
@@ -1715,79 +2238,79 @@
       }
     ],
     "earningsDate": "Apr 28, 2026",
-    "daysToEarnings": 57,
+    "daysToEarnings": 55,
     "lastYearEarnings": {
       "q": "2025-03",
       "eps": 0.06,
-      "revenue": "22.6B",
+      "revenue": "23.7B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
-      14.47,
-      12.09,
-      11.85,
-      10.71,
-      12.88,
-      13.92,
-      13.3,
-      14.09,
-      17.18,
-      21.2,
-      21.23,
-      23.77,
-      25.54,
-      26.55,
-      27.98,
-      26.54,
-      29.68,
-      27.82,
-      29.72,
-      27.28,
-      27.46,
-      26.13,
-      22.81,
-      19.61
+      12.59,
+      12.87,
+      9.57,
+      10.98,
+      12.7,
+      13.09,
+      14.24,
+      15.2,
+      18.57,
+      21.81,
+      22.1,
+      25.02,
+      25.6,
+      29.51,
+      25.24,
+      29.01,
+      28.21,
+      25.19,
+      27.78,
+      27.24,
+      27.4,
+      25.85,
+      20.86,
+      19.02
     ],
     "risk90d": {
-      "best": 30.42,
-      "worst": 17.31
+      "best": 29.86,
+      "worst": 16.8
     },
     "peers": [
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 300.3,
+        "price": 300.26,
         "pe": 15.0,
         "rating": "Buy",
         "target": 344.35,
-        "chg": -0.2
+        "chg": -5.4
       },
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 49.83,
+        "price": 49.97,
         "pe": 13.1,
         "rating": "Buy",
         "target": 62.52,
-        "chg": -3.8
+        "chg": -9.8
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 859.57,
-        "pe": 16.7,
+        "price": 862.58,
+        "pe": 16.8,
         "rating": "Hold",
         "target": 959.2,
-        "chg": -8.2
+        "chg": -5.1
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 166.51,
+        "price": 165.95,
         "pe": 16.3,
         "rating": "Buy",
         "target": 195.52,
-        "chg": -8.2
+        "chg": -7.8
       }
     ],
     "description": "SoFi Technologies, Inc. provides various financial services in the United States, Latin America, Canada, and Hong Kong. The company operates through three segments: Lending, Technology Platform, and Financial Services. It offers lending and financial services and products that allows its members to borrow, save, spend, invest, and protect money; and personal loans, student loans, home loans, and related services. The company also operates Galileo, a technology platform that offers services to fi",
@@ -1799,7 +2322,6 @@
     "peerMismatch": "Review SOFI vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        14,
         15,
         16,
         17,
@@ -1807,40 +2329,47 @@
         19,
         20,
         21,
-        22
+        22,
+        23
       ],
       "calls": [
-        4.22,
-        3.43,
-        2.64,
-        1.85,
-        1.3,
-        1.52,
-        1.73,
-        1.94,
-        2.15
+        4.15,
+        3.36,
+        2.57,
+        1.78,
+        1.38,
+        1.58,
+        1.79,
+        2.0,
+        2.21
       ],
       "puts": [
         2.05,
         1.84,
         1.63,
-        1.41,
-        1.44,
-        2.23,
-        3.02,
-        3.81,
-        4.6
+        1.42,
+        1.6,
+        2.39,
+        3.19,
+        3.98,
+        4.77
       ],
       "expiry": "May 11, 2026 (est.)"
     },
     "news": [],
     "insiderActivity": {
-      "buys": 2,
-      "sells": 5,
-      "buyValue": "204.9K",
-      "sellValue": "5.0M",
+      "buys": 3,
+      "sells": 4,
+      "buyValue": "1.2M",
+      "sellValue": "2.6M",
       "netSignal": "Bearish",
       "recent": [
+        {
+          "name": "NOTO ANTHONY J.",
+          "type": "Buy",
+          "shares": 56000,
+          "value": 1001515.0
+        },
         {
           "name": "KEOUGH KELLI ALLEN",
           "type": "Sell",
@@ -1864,12 +2393,6 @@
           "type": "Buy",
           "shares": 5000,
           "value": 99650.0
-        },
-        {
-          "name": "KEOUGH KELLI ALLEN",
-          "type": "Sell",
-          "shares": 9468,
-          "value": 243797.0
         }
       ]
     },
@@ -1923,9 +2446,9 @@
       ]
     },
     "momentum": {
-      "day5": -2.5,
-      "day30": -27.1,
-      "day90": -37.7,
+      "day5": -3.5,
+      "day30": -15.7,
+      "day90": -35.9,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -1936,9 +2459,9 @@
       "signal": "Strong"
     },
     "impliedVolatility": {
-      "iv": 71.9,
-      "expectedMovePct": 28.4,
-      "expectedMoveDollar": 5.04,
+      "iv": 79.5,
+      "expectedMovePct": 30.9,
+      "expectedMoveDollar": 5.74,
       "signal": "High IV"
     },
     "fundamentalsExtra": {
@@ -1953,24 +2476,301 @@
       "earningsEstRevision": 102.5
     }
   },
+  "F": {
+    "name": "Ford Motor Company",
+    "sector": "Consumer Cyclical",
+    "industry": "Auto Manufacturers",
+    "price": 12.7,
+    "dayLow": 12.68,
+    "dayHigh": 13.18,
+    "wk52Low": 8.44,
+    "wk52High": 14.8,
+    "pe": -1,
+    "fwdPe": 7.0,
+    "eps": -2.06,
+    "fwdEps": 1.82,
+    "mktCap": "50.7B",
+    "avgVol": "61.6M",
+    "div": 0.6,
+    "divYield": "448.0%",
+    "beta": 1.67,
+    "shortInt": "4.8%",
+    "shortRatio": 2.4,
+    "targets": {
+      "low": 11.0,
+      "avg": 13.99,
+      "high": 18.0
+    },
+    "analystRatings": {
+      "buy": 5,
+      "hold": 9,
+      "sell": 3
+    },
+    "surprises": [
+      {
+        "q": "2025-03",
+        "est": 0.02,
+        "actual": 0.14,
+        "pct": 557.0
+      },
+      {
+        "q": "2025-06",
+        "est": 0.33,
+        "actual": 0.37,
+        "pct": 11.1
+      },
+      {
+        "q": "2025-09",
+        "est": 0.36,
+        "actual": 0.45,
+        "pct": 25.4
+      },
+      {
+        "q": "2025-12",
+        "est": 0.19,
+        "actual": 0.13,
+        "pct": -32.9
+      }
+    ],
+    "earningsDate": "Apr 28, 2026",
+    "daysToEarnings": 55,
+    "lastYearEarnings": {
+      "q": "2025-03",
+      "eps": 0.14,
+      "revenue": "50.7B",
+      "reaction": "+/- TBD"
+    },
+    "prices52w": [
+      9.42,
+      9.51,
+      9.11,
+      9.16,
+      9.78,
+      10.0,
+      9.9,
+      10.22,
+      11.4,
+      10.77,
+      10.92,
+      11.48,
+      11.48,
+      11.36,
+      12.39,
+      13.54,
+      12.92,
+      12.69,
+      12.89,
+      13.33,
+      14.05,
+      13.41,
+      13.65,
+      14.01
+    ],
+    "risk90d": {
+      "best": 14.8,
+      "worst": 12.68
+    },
+    "peers": [
+      {
+        "ticker": "AMZN",
+        "name": "Amazon.com, Inc.",
+        "price": 208.73,
+        "pe": 29.1,
+        "rating": "Buy",
+        "target": 280.47,
+        "chg": -10.4
+      },
+      {
+        "ticker": "TSLA",
+        "name": "Tesla, Inc.",
+        "price": 392.43,
+        "pe": 360.0,
+        "rating": "Hold",
+        "target": 420.9,
+        "chg": -3.3
+      },
+      {
+        "ticker": "HD",
+        "name": "Home Depot, Inc. (The)",
+        "price": 366.92,
+        "pe": 25.8,
+        "rating": "Buy",
+        "target": 410.27,
+        "chg": -5.2
+      },
+      {
+        "ticker": "NKE",
+        "name": "Nike, Inc.",
+        "price": 59.39,
+        "pe": 34.7,
+        "rating": "Buy",
+        "target": 76.15,
+        "chg": -6.9
+      }
+    ],
+    "description": "Ford Motor Company develops, delivers, and services Ford trucks, sport utility vehicles, commercial vans and cars, and Lincoln luxury vehicles in the United States, Canada, the United Kingdom, Mexico, and internationally. It operates through Ford Blue, Ford Model e, Ford Pro, and Ford Credit segments. The company sells Ford and Lincoln internal combustion engine and hybrid vehicles, electric vehicles, service parts, accessories, and digital services for retail customers; develops EV and digital ",
+    "sentiment": {
+      "value": "Speculative",
+      "quality": "Low",
+      "financials": "Adequate"
+    },
+    "peerMismatch": "Review F vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
+    "options": {
+      "strikes": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "calls": [
+        3.81,
+        3.02,
+        2.23,
+        1.44,
+        0.95,
+        1.15,
+        1.36,
+        1.57,
+        1.78
+      ],
+      "puts": [
+        1.66,
+        1.45,
+        1.24,
+        1.03,
+        1.12,
+        1.91,
+        2.7,
+        3.49,
+        4.39
+      ],
+      "expiry": "May 11, 2026 (est.)"
+    },
+    "news": [],
+    "insiderActivity": {
+      "buys": 2,
+      "sells": 0,
+      "buyValue": "2.0M",
+      "sellValue": "0",
+      "netSignal": "Bullish",
+      "recent": [
+        {
+          "name": "FORD WILLIAM CLAY JR",
+          "type": "Buy",
+          "shares": 140000,
+          "value": 1934450.0
+        },
+        {
+          "name": "THORNTON JOHN L",
+          "type": "Buy",
+          "shares": 7520,
+          "value": 99189.0
+        }
+      ]
+    },
+    "analystActions": {
+      "upgrades": 3,
+      "downgrades": 0,
+      "netSignal": "Bullish",
+      "recent": [
+        {
+          "firm": "Credit Suisse",
+          "action": "main",
+          "toGrade": "Neutral",
+          "fromGrade": "",
+          "date": "Jun 29"
+        },
+        {
+          "firm": "Stifel",
+          "action": "init",
+          "toGrade": "Hold",
+          "fromGrade": "",
+          "date": "Jun 28"
+        },
+        {
+          "firm": "UBS",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "May 23"
+        },
+        {
+          "firm": "Jefferies",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Apr 25"
+        },
+        {
+          "firm": "Guggenheim",
+          "action": "main",
+          "toGrade": "Neutral",
+          "fromGrade": "",
+          "date": "Apr 10"
+        },
+        {
+          "firm": "Oxen Group",
+          "action": "init",
+          "toGrade": "Hold",
+          "fromGrade": "",
+          "date": "Feb 17"
+        }
+      ]
+    },
+    "momentum": {
+      "day5": -12.0,
+      "day30": -7.0,
+      "day90": -2.5,
+      "trend": "Bearish"
+    },
+    "growthMetrics": {
+      "revenueGrowth": -4.8,
+      "earningsGrowth": null,
+      "qtrRevenueGrowth": null,
+      "qtrEarningsGrowth": null,
+      "signal": "Declining"
+    },
+    "impliedVolatility": {
+      "iv": 52.0,
+      "expectedMovePct": 20.2,
+      "expectedMoveDollar": 2.56,
+      "signal": "Moderate IV"
+    },
+    "fundamentalsExtra": {
+      "profitMargin": -4.4,
+      "grossMargin": 5.8,
+      "operatingMargin": -6.7,
+      "debtToEquity": 460.6,
+      "currentRatio": 1.07,
+      "floatShares": "3.9B",
+      "sharesOutstanding": "3.9B",
+      "exDivDate": "1770940800",
+      "earningsEstRevision": -188.5
+    }
+  },
   "HPE": {
     "name": "Hewlett Packard Enterprise Company",
     "sector": "Technology",
     "industry": "Communication Equipment",
-    "price": 21.47,
-    "dayLow": 20.96,
-    "dayHigh": 21.8,
+    "price": 21.64,
+    "dayLow": 20.86,
+    "dayHigh": 21.84,
     "wk52Low": 11.96,
     "wk52High": 26.44,
     "pe": -1,
     "fwdPe": 7.9,
     "eps": -0.04,
     "fwdEps": 2.73,
-    "mktCap": "28.7B",
+    "mktCap": "28.9B",
     "avgVol": "20.2M",
     "div": 0.57,
-    "divYield": "265.0%",
-    "beta": 1.32,
+    "divYield": "258.0%",
+    "beta": 1.31,
     "shortInt": "7.7%",
     "shortRatio": 5.2,
     "targets": {
@@ -2010,38 +2810,38 @@
       }
     ],
     "earningsDate": "Mar 09, 2026",
-    "daysToEarnings": 7,
+    "daysToEarnings": 5,
     "lastYearEarnings": {
       "q": "2025-01",
       "eps": 0.49,
-      "revenue": "28.7B",
+      "revenue": "28.9B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
-      19.29,
-      15.21,
-      15.5,
-      13.88,
-      15.94,
-      17.42,
-      16.96,
-      17.33,
-      18.2,
-      20.49,
-      19.59,
-      20.92,
-      22.32,
-      24.45,
-      23.86,
-      22.82,
-      24.27,
-      22.69,
-      21.74,
-      23.73,
-      24.17,
-      21.44,
-      21.52,
-      22.69
+      15.4,
+      15.63,
+      12.55,
+      14.86,
+      16.55,
+      17.1,
+      17.78,
+      17.63,
+      21.1,
+      20.87,
+      20.58,
+      22.2,
+      23.26,
+      24.71,
+      24.28,
+      23.36,
+      23.31,
+      20.4,
+      23.19,
+      24.28,
+      22.17,
+      21.05,
+      23.61,
+      21.37
     ],
     "risk90d": {
       "best": 25.26,
@@ -2051,38 +2851,38 @@
       {
         "ticker": "AAPL",
         "name": "Apple Inc.",
-        "price": 264.18,
+        "price": 263.75,
         "pe": 33.4,
         "rating": "Buy",
-        "target": 293.07,
-        "chg": 3.1
+        "target": 293.29,
+        "chg": -4.5
       },
       {
         "ticker": "MSFT",
         "name": "Microsoft Corporation",
-        "price": 392.74,
-        "pe": 24.6,
+        "price": 403.93,
+        "pe": 25.3,
         "rating": "Buy",
         "target": 596.0,
-        "chg": -18.3
+        "chg": -2.3
       },
       {
         "ticker": "GOOGL",
         "name": "Alphabet Inc.",
-        "price": 311.76,
-        "pe": 28.8,
+        "price": 303.58,
+        "pe": 28.1,
         "rating": "Buy",
         "target": 376.86,
-        "chg": -7.2
+        "chg": -8.8
       },
       {
         "ticker": "META",
         "name": "Meta Platforms, Inc.",
-        "price": 648.18,
-        "pe": 27.6,
+        "price": 655.08,
+        "pe": 27.9,
         "rating": "Buy",
         "target": 863.2,
-        "chg": -3.1
+        "chg": -2.1
       }
     ],
     "description": "Hewlett Packard Enterprise Company, together with its subsidiaries, develops intelligent solutions in the United States, the Americas, Europe, the Middle East, Africa, the Asia Pacific, Japan, and internationally. It operates in five segments: Server, Hybrid Cloud, Networking, Financial Services, and Corporate Investments and Other. The company offers general-purpose servers, workload-optimized servers, and integrated systems, including HPE ProLiant Rack and Tower servers; HPE Synergy; HPE Scale",
@@ -2094,37 +2894,37 @@
     "peerMismatch": "Review HPE vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        11.0,
-        13.5,
-        16.0,
-        18.5,
-        21.0,
-        23.5,
-        26.0,
-        28.5,
-        31.0
+        12.0,
+        14.5,
+        17.0,
+        19.5,
+        22.0,
+        24.5,
+        27.0,
+        29.5,
+        32.0
       ],
       "calls": [
-        10.55,
-        8.05,
-        5.66,
-        3.45,
-        1.24,
-        1.06,
-        1.35,
-        1.63,
+        9.72,
+        7.22,
+        4.92,
+        2.7,
+        0.83,
+        1.1,
+        1.38,
+        1.65,
         1.92
       ],
       "puts": [
-        2.03,
-        1.74,
-        1.45,
-        1.17,
-        0.88,
-        2.62,
-        4.83,
-        7.11,
-        9.61
+        1.85,
+        1.57,
+        1.3,
+        1.02,
+        1.11,
+        3.34,
+        5.56,
+        7.94,
+        10.44
       ],
       "expiry": "Mar 22, 2026 (est.)"
     },
@@ -2200,9 +3000,9 @@
       ]
     },
     "momentum": {
-      "day5": 7.3,
-      "day30": -2.5,
-      "day90": 0.3,
+      "day5": 4.9,
+      "day30": -1.7,
+      "day90": -0.8,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -2213,9 +3013,9 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 61.9,
-      "expectedMovePct": 8.6,
-      "expectedMoveDollar": 1.84,
+      "iv": 65.6,
+      "expectedMovePct": 7.7,
+      "expectedMoveDollar": 1.66,
       "signal": "High IV"
     },
     "fundamentalsExtra": {
@@ -2228,277 +3028,6 @@
       "sharesOutstanding": "1.3B",
       "exDivDate": "1766102400",
       "earningsEstRevision": -6924.9
-    }
-  },
-  "FCEL": {
-    "name": "FuelCell Energy, Inc.",
-    "sector": "Industrials",
-    "industry": "Electrical Equipment & Parts",
-    "price": 8.14,
-    "dayLow": 7.97,
-    "dayHigh": 8.82,
-    "wk52Low": 3.58,
-    "wk52High": 11.99,
-    "pe": -1,
-    "fwdPe": -3.3,
-    "eps": -7.42,
-    "fwdEps": -2.43,
-    "mktCap": "388.6M",
-    "avgVol": "2.3M",
-    "div": 0,
-    "divYield": "0%",
-    "beta": 1.34,
-    "shortInt": "7.2%",
-    "shortRatio": 1.4,
-    "targets": {
-      "low": 7.0,
-      "avg": 8.71,
-      "high": 12.0
-    },
-    "analystRatings": {
-      "buy": 0,
-      "hold": 2,
-      "sell": 3
-    },
-    "surprises": [
-      {
-        "q": "2025-01",
-        "est": -1.35,
-        "actual": -1.44,
-        "pct": -6.2
-      },
-      {
-        "q": "2025-04",
-        "est": -1.38,
-        "actual": -1.75,
-        "pct": -26.4
-      },
-      {
-        "q": "2025-07",
-        "est": -1.63,
-        "actual": -1.02,
-        "pct": 37.5
-      },
-      {
-        "q": "2025-10",
-        "est": -1.03,
-        "actual": -0.93,
-        "pct": 9.7
-      }
-    ],
-    "earningsDate": "Mar 09, 2026",
-    "daysToEarnings": 7,
-    "lastYearEarnings": {
-      "q": "2025-01",
-      "eps": -1.44,
-      "revenue": "388.6M",
-      "reaction": "+/- TBD"
-    },
-    "prices52w": [
-      5.77,
-      6.18,
-      4.7,
-      4.1,
-      3.82,
-      4.12,
-      5.11,
-      6.03,
-      5.51,
-      5.37,
-      4.72,
-      4.18,
-      4.2,
-      6.87,
-      7.9,
-      8.48,
-      8.95,
-      7.04,
-      6.71,
-      8.76,
-      8.17,
-      8.04,
-      8.19,
-      7.22
-    ],
-    "risk90d": {
-      "best": 10.9,
-      "worst": 6.18
-    },
-    "peers": [
-      {
-        "ticker": "CAT",
-        "name": "Caterpillar, Inc.",
-        "price": 742.83,
-        "pe": 39.5,
-        "rating": "Buy",
-        "target": 725.52,
-        "chg": 15.5
-      },
-      {
-        "ticker": "BA",
-        "name": "Boeing Company (The)",
-        "price": 227.53,
-        "pe": 91.7,
-        "rating": "Buy",
-        "target": 271.62,
-        "chg": -5.8
-      },
-      {
-        "ticker": "HON",
-        "name": "Honeywell International Inc.",
-        "price": 243.59,
-        "pe": 32.1,
-        "rating": "Buy",
-        "target": 247.72,
-        "chg": 13.0
-      },
-      {
-        "ticker": "UPS",
-        "name": "United Parcel Service, Inc.",
-        "price": 115.96,
-        "pe": 17.7,
-        "rating": "Buy",
-        "target": 113.18,
-        "chg": 13.4
-      }
-    ],
-    "description": "FuelCell Energy, Inc., together with its subsidiaries, engages in the design, development, production, construction, operation, and servicing of high temperature fuel cells for clean electric power generation. The company engages in the provision of carbonate fuel cell technology; and commercialization of solid oxide electrolysis technology for distributed hydrogen. It also offers carbonate fuel cell products in various configurations and applications of its platform, including on-site power, gr",
-    "sentiment": {
-      "value": "Speculative",
-      "quality": "Low",
-      "financials": "Strong"
-    },
-    "peerMismatch": "Review FCEL vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
-    "options": {
-      "strikes": [
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12
-      ],
-      "calls": [
-        4.17,
-        3.17,
-        2.21,
-        1.32,
-        0.44,
-        0.41,
-        0.53,
-        0.64,
-        0.76
-      ],
-      "puts": [
-        0.79,
-        0.67,
-        0.56,
-        0.44,
-        0.33,
-        1.07,
-        1.96,
-        2.89,
-        3.89
-      ],
-      "expiry": "Mar 22, 2026 (est.)"
-    },
-    "news": [],
-    "insiderActivity": {
-      "buys": 0,
-      "sells": 1,
-      "buyValue": "0",
-      "sellValue": "73.4K",
-      "netSignal": "Bearish",
-      "recent": [
-        {
-          "name": "BINGHAM BETSY B",
-          "type": "Sell",
-          "shares": 8608,
-          "value": 73371.0
-        }
-      ]
-    },
-    "analystActions": {
-      "upgrades": 7,
-      "downgrades": 1,
-      "netSignal": "Bullish",
-      "recent": [
-        {
-          "firm": "Cowen & Co.",
-          "action": "down",
-          "toGrade": "Market Perform",
-          "fromGrade": "Outperform",
-          "date": "Mar 12"
-        },
-        {
-          "firm": "Stifel",
-          "action": "main",
-          "toGrade": "Buy",
-          "fromGrade": "",
-          "date": "Mar 12"
-        },
-        {
-          "firm": "FBR Capital",
-          "action": "init",
-          "toGrade": "Market Perform",
-          "fromGrade": "",
-          "date": "Feb 19"
-        },
-        {
-          "firm": "Cowen & Co.",
-          "action": "init",
-          "toGrade": "Outperform",
-          "fromGrade": "",
-          "date": "Feb 03"
-        },
-        {
-          "firm": "Stifel",
-          "action": "main",
-          "toGrade": "Buy",
-          "fromGrade": "",
-          "date": "Dec 18"
-        },
-        {
-          "firm": "Sidoti & Co.",
-          "action": "init",
-          "toGrade": "Neutral",
-          "fromGrade": "",
-          "date": "Apr 24"
-        }
-      ]
-    },
-    "momentum": {
-      "day5": 5.9,
-      "day30": -9.5,
-      "day90": 30.9,
-      "trend": "Mixed"
-    },
-    "growthMetrics": {
-      "revenueGrowth": 11.5,
-      "earningsGrowth": null,
-      "qtrRevenueGrowth": null,
-      "qtrEarningsGrowth": null,
-      "signal": "Growing"
-    },
-    "impliedVolatility": {
-      "iv": 96.1,
-      "expectedMovePct": 13.3,
-      "expectedMoveDollar": 1.08,
-      "signal": "High IV"
-    },
-    "fundamentalsExtra": {
-      "profitMargin": -118.8,
-      "grossMargin": -16.7,
-      "operatingMargin": -49.6,
-      "debtToEquity": 18.1,
-      "currentRatio": 6.63,
-      "floatShares": "47.6M",
-      "sharesOutstanding": "47.7M",
-      "exDivDate": "N/A",
-      "earningsEstRevision": -67.2
     }
   }
 }
