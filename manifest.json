@@ -1,0 +1,24 @@
+{
+  "name": "Earnings Play Analyzer",
+  "short_name": "EarningsPlay",
+  "description": "Options income screener with live earnings data, catalyst intelligence, and trade analysis",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#050608",
+  "theme_color": "#f0b429",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
