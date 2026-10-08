@@ -2,7 +2,7 @@
   "name": "Earnings Play Analyzer",
   "short_name": "EarningsPlay",
   "description": "Options income screener with live earnings data, catalyst intelligence, and trade analysis",
-  "start_url": "/index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#050608",
   "theme_color": "#f0b429",

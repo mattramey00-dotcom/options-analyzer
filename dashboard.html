@@ -654,9 +654,19 @@ let DB = {};
 let liveMode = false;
 
 // Try to load live data from stock_data.json on startup
+function dataUrl() {
+  // Build a fully-qualified absolute URL by hand instead of letting the
+  // browser resolve a relative one. Some iOS Safari / standalone-PWA
+  // contexts have a documented WebKit bug where relative-URL resolution
+  // inside fetch() throws "TypeError: The string did not match the
+  // expected pattern." — this sidesteps it entirely.
+  const dir = location.pathname.replace(/[^/]*$/, '');
+  return location.origin + dir + 'stock_data.json?_=' + Date.now();
+}
+
 async function loadLiveData() {
   try {
-    const resp = await fetch('./stock_data.json?_=' + Date.now());
+    const resp = await fetch(dataUrl());
     if (resp.ok) {
       const data = await resp.json();
       // Merge live data into DB (live data takes priority)
@@ -680,7 +690,7 @@ async function loadLiveData() {
   } catch (e) {
     console.log('No stock_data.json found — using demo data. Run fetch_stock.py to get live data.');
     document.querySelector('.header-status .status-text').innerHTML = `
-      <div><span class="live" style="color:#e2b93b">⚠ OFFLINE</span> ${(e && e.message) ? e.message : 'Could not reach server'}</div>
+      <div><span class="live" style="color:#e2b93b">⚠ OFFLINE</span> ${(e && e.name) ? e.name + ': ' : ''}${(e && e.message) ? e.message : 'Could not reach server'}</div>
       <div style="margin-top:4px">Showing demo data — pull to refresh</div>
     `;
   }
