@@ -719,9 +719,18 @@ async function loadLiveData() {
       // Build scan results panel
       buildScanPanel(data);
       console.log('✓ Live data loaded:', Object.keys(data));
+    } else {
+      document.querySelector('.header-status .status-text').innerHTML = `
+        <div><span class="live" style="color:#e2b93b">⚠ OFFLINE</span> HTTP ${resp.status} loading stock_data.json</div>
+        <div style="margin-top:4px">Showing demo data — pull to refresh</div>
+      `;
     }
   } catch (e) {
     console.log('No stock_data.json found — using demo data. Run fetch_stock.py to get live data.');
+    document.querySelector('.header-status .status-text').innerHTML = `
+      <div><span class="live" style="color:#e2b93b">⚠ OFFLINE</span> ${(e && e.message) ? e.message : 'Could not reach server'}</div>
+      <div style="margin-top:4px">Showing demo data — pull to refresh</div>
+    `;
   }
 }
 
