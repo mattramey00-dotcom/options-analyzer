@@ -692,6 +692,7 @@ async function loadLiveData() {
     document.querySelector('.header-status .status-text').innerHTML = `
       <div><span class="live" style="color:#e2b93b">⚠ OFFLINE</span> ${(e && e.name) ? e.name + ': ' : ''}${(e && e.message) ? e.message : 'Could not reach server'}</div>
       <div style="margin-top:4px">Showing demo data — pull to refresh</div>
+      <div style="margin-top:6px;font-size:9px;text-align:left;word-break:break-all;white-space:pre-wrap;opacity:0.7;max-height:120px;overflow:auto">URL tried: ${(() => { try { return dataUrl(); } catch (e2) { return '[dataUrl() itself threw: ' + e2.name + ': ' + e2.message + ']'; } })()}\n${(e && e.stack) ? String(e.stack).slice(0, 500) : '(no stack available)'}</div>
     `;
   }
 }
