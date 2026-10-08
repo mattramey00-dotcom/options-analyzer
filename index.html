@@ -709,7 +709,7 @@ function dataUrl() {
   // inside fetch() throws "TypeError: The string did not match the
   // expected pattern." — this sidesteps it entirely.
   const dir = location.pathname.replace(/[^/]*$/, '');
-  return location.origin + dir + 'stock_data.json?_=' + Date.now();
+  return location.origin + dir + 'stock_data.json?v=' + Date.now();
 }
 
 async function loadLiveData() {
