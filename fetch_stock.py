@@ -662,9 +662,27 @@ def main():
         sys.exit(1)
 
     # Save JSON
+    # NaN/Infinity are not valid JSON (RFC 8259) — Python's json module
+    # happily writes them as bare `NaN`/`Infinity` tokens anyway, which
+    # a browser's strict JSON.parse() then rejects outright (seen in the
+    # wild as Safari throwing "SyntaxError: The string did not match the
+    # expected pattern" on stock_data.json, while direct navigation and
+    # Python's own json.loads() both silently accepted the same file).
+    # Sanitize them to null before writing, and keep allow_nan=False as
+    # a hard guard so any future NaN that slips past this is a loud
+    # failure here instead of a silent bad file on the live site.
+    def sanitize_json(obj):
+        if isinstance(obj, float):
+            return None if (obj != obj or obj in (float('inf'), float('-inf'))) else obj
+        if isinstance(obj, dict):
+            return {k: sanitize_json(v) for k, v in obj.items()}
+        if isinstance(obj, list):
+            return [sanitize_json(v) for v in obj]
+        return obj
+
     output_path = os.path.join(args.output, 'stock_data.json')
     with open(output_path, 'w') as f:
-        json.dump(all_data, f, indent=2, default=str)
+        json.dump(sanitize_json(all_data), f, indent=2, default=str, allow_nan=False)
 
     print(f"\n{'='*50}")
     print(f"  ✓ SUCCESS — Saved to: {os.path.abspath(output_path)}")

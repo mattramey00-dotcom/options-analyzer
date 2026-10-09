@@ -683,8 +683,24 @@ def main():
         clean_data = {k: v for k, v in data.items() if not k.startswith('_')}
         existing[ticker] = clean_data
     
+    # NaN/Infinity are not valid JSON (RFC 8259) — Python's json module
+    # writes them as bare `NaN`/`Infinity` tokens anyway, which a
+    # browser's strict JSON.parse() rejects outright (this previously
+    # broke the live site silently: Python's own json.loads() and direct
+    # navigation both accept such a file fine, only the page's own
+    # fetch().then(r => r.json()) call threw). Sanitize to null before
+    # writing, and keep allow_nan=False as a hard guard.
+    def sanitize_json(obj):
+        if isinstance(obj, float):
+            return None if (obj != obj or obj in (float('inf'), float('-inf'))) else obj
+        if isinstance(obj, dict):
+            return {k: sanitize_json(v) for k, v in obj.items()}
+        if isinstance(obj, list):
+            return [sanitize_json(v) for v in obj]
+        return obj
+
     with open(output_path, 'w') as f:
-        json.dump(existing, f, indent=2, default=str)
+        json.dump(sanitize_json(existing), f, indent=2, default=str, allow_nan=False)
     
     print(f"{'='*60}")
     print(f"  ✓ Saved {len(qualified)} plays to: {os.path.abspath(output_path)}")

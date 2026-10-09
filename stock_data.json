@@ -104,7 +104,7 @@
         "pe": 347.2,
         "rating": "Buy",
         "target": 396.57,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "HD",
@@ -113,7 +113,7 @@
         "pe": 20.7,
         "rating": "Buy",
         "target": 378.34,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "NKE",
@@ -122,7 +122,7 @@
         "pe": 16.7,
         "rating": "Hold",
         "target": 38.15,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "Carnival Corporation Ltd., a cruise company, provides leisure travel services. The company operates through four segments: North America Cruise Operations, Europe Cruise Operations, Cruise Support, and Tour and Other. It operates port destinations and islands, as well as owns and operates hotels, lodges, glass-domed railcars, and motorcoaches. The company offers its services under the AIDA Cruises, Carnival Cruise Line, Costa Cruises, Cunard, Holland America Line, P&O Cruises (Australia), P&O Cr",
@@ -227,9 +227,9 @@
       ]
     },
     "momentum": {
-      "day5": NaN,
-      "day30": NaN,
-      "day90": NaN,
+      "day5": null,
+      "day30": null,
+      "day90": null,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -368,7 +368,7 @@
         "pe": 27.2,
         "rating": "Buy",
         "target": 794.96,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "DIS",
@@ -386,7 +386,7 @@
         "pe": 22.5,
         "rating": "Buy",
         "target": 92.62,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "AT&T Inc. provides telecommunications and technology services worldwide. It operates through two segments, Communications and Latin America. The Communications segment offers wireless voice and data communications services; and sells handsets, wireless data cards, wireless computing devices, carrying cases/protective covers, and wireless chargers through its own company-owned stores, agents, and third-party retail stores. It also provides AT&T Dedicated Internet, fiber ethernet and broadband, fi",
@@ -491,9 +491,9 @@
       ]
     },
     "momentum": {
-      "day5": NaN,
-      "day30": NaN,
-      "day90": NaN,
+      "day5": null,
+      "day30": null,
+      "day90": null,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -641,7 +641,7 @@
         "pe": 13.6,
         "rating": "Hold",
         "target": 1079.5,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "MS",
@@ -650,7 +650,7 @@
         "pe": 15.1,
         "rating": "Buy",
         "target": 224.48,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "Huntington Bancshares Incorporated operates as the bank holding company for The Huntington National Bank that provides commercial, consumer, and mortgage banking services. It offers financial products and services to consumer and business customers, including deposits, lending, payments, mortgage banking, dealer financing, investment management, trust, brokerage, insurance, and other financial products and services. The company also provides 24-Hour Grace, Asterisk-Free Checking, Money Scout, $5",
@@ -887,7 +887,7 @@
         "pe": 22.9,
         "rating": "Buy",
         "target": 215.74,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "PLD",
@@ -896,7 +896,7 @@
         "pe": 28.7,
         "rating": "Buy",
         "target": 158.23,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "CCI",
@@ -905,7 +905,7 @@
         "pe": 28.0,
         "rating": "Buy",
         "target": 94.45,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "EQIX",
@@ -914,7 +914,7 @@
         "pe": 65.1,
         "rating": "Buy",
         "target": 1234.19,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "ARMOUR Residential REIT, Inc. invests in residential mortgage-backed securities (MBS) in the United States. Its securities portfolio primarily consists of the United States Government-sponsored entity's (GSE) and the Government National Mortgage Administration's issued or guaranteed securities backed by fixed rate, hybrid adjustable rate, and adjustable-rate home loans; and unsecured notes and bonds issued by the GSE and the United States treasuries, as well as money market instruments. The comp",
@@ -1032,9 +1032,9 @@
       ]
     },
     "momentum": {
-      "day5": NaN,
-      "day30": NaN,
-      "day90": NaN,
+      "day5": null,
+      "day30": null,
+      "day90": null,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -1164,7 +1164,7 @@
         "pe": 22.9,
         "rating": "Buy",
         "target": 215.74,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "PLD",
@@ -1173,7 +1173,7 @@
         "pe": 28.7,
         "rating": "Buy",
         "target": 158.23,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "CCI",
@@ -1182,7 +1182,7 @@
         "pe": 28.0,
         "rating": "Buy",
         "target": 94.45,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "EQIX",
@@ -1191,7 +1191,7 @@
         "pe": 65.1,
         "rating": "Buy",
         "target": 1234.19,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "VICI Properties Inc. is an S&P 500 experiential real estate investment trust that owns one of the largest portfolios of market-leading gaming, hospitality, wellness, entertainment and leisure destinations, including Caesars Palace Las Vegas, MGM Grand and the Venetian Resort Las Vegas, three of the most iconic entertainment facilities on the Las Vegas Strip. VICI Properties owns 103 experiential assets across a geographically diverse portfolio consisting of 63 gaming properties and 40 other expe",
@@ -1428,7 +1428,7 @@
         "pe": 22.9,
         "rating": "Buy",
         "target": 215.74,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "PLD",
@@ -1437,7 +1437,7 @@
         "pe": 28.7,
         "rating": "Buy",
         "target": 158.23,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "CCI",
@@ -1446,7 +1446,7 @@
         "pe": 28.0,
         "rating": "Buy",
         "target": 94.45,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "EQIX",
@@ -1455,7 +1455,7 @@
         "pe": 65.1,
         "rating": "Buy",
         "target": 1234.19,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "Starwood Property Trust, Inc. operates as a real estate investment trust (REIT) in the United States and internationally. It operates through four segments: Commercial and Residential Lending; Infrastructure Lending; Property; and Investing and Servicing. The Commercial and Residential Lending segment originates, acquires, finances, and manages commercial first mortgages, non-agency residential mortgages, subordinated mortgages, mezzanine loans, preferred equity, commercial mortgage-backed secur",
@@ -1708,7 +1708,7 @@
         "pe": 347.2,
         "rating": "Buy",
         "target": 396.57,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "HD",
@@ -1717,7 +1717,7 @@
         "pe": 20.7,
         "rating": "Buy",
         "target": 378.34,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "NKE",
@@ -1726,7 +1726,7 @@
         "pe": 16.7,
         "rating": "Hold",
         "target": 38.15,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "Ford Motor Company develops, delivers, and services Ford trucks, sport utility vehicles, commercial vans and cars, and Lincoln luxury vehicles in the United States, Canada, the United Kingdom, Mexico, and internationally. It operates through Ford Blue, Ford Model e, Ford Pro, and Ford Credit segments. The company sells Ford and Lincoln internal combustion engine and hybrid vehicles, electric vehicles, service parts, accessories, and digital services for retail customers; develops EV and digital ",
@@ -1838,9 +1838,9 @@
       ]
     },
     "momentum": {
-      "day5": NaN,
-      "day30": NaN,
-      "day90": NaN,
+      "day5": null,
+      "day30": null,
+      "day90": null,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -1970,7 +1970,7 @@
         "pe": 22.9,
         "rating": "Buy",
         "target": 215.74,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "PLD",
@@ -1979,7 +1979,7 @@
         "pe": 28.7,
         "rating": "Buy",
         "target": 158.23,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "CCI",
@@ -1988,7 +1988,7 @@
         "pe": 28.0,
         "rating": "Buy",
         "target": 94.45,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "EQIX",
@@ -1997,7 +1997,7 @@
         "pe": 65.1,
         "rating": "Buy",
         "target": 1234.19,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "AGNC Investment Corp. provides private capital to housing market in the United States. It invests in residential mortgage pass-through securities and collateralized mortgage obligations for which the principal and interest payments are guaranteed by the United States government-sponsored enterprise or by the United States government agency. The company qualifies as a real estate investment trust for federal income tax purposes. It generally would not be subject to federal or state corporate inco",
@@ -2133,9 +2133,9 @@
       ]
     },
     "momentum": {
-      "day5": NaN,
-      "day30": NaN,
-      "day90": NaN,
+      "day5": null,
+      "day30": null,
+      "day90": null,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -2265,7 +2265,7 @@
         "pe": 14.2,
         "rating": "Buy",
         "target": 372.81,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "BAC",
@@ -2283,7 +2283,7 @@
         "pe": 13.6,
         "rating": "Hold",
         "target": 1079.5,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "MS",
@@ -2569,7 +2569,7 @@
         "pe": 17.5,
         "rating": "Buy",
         "target": 115.23,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "American Airlines Group Inc., through its subsidiaries, operates as a network air carrier in the United States, Latin America, Atlantic, and Pacific. The company provides scheduled air transportation services for passengers and cargo through its hubs in Charlotte, Chicago, Dallas/Fort Worth, Los Angeles, Miami, New York, Philadelphia, Phoenix, and Washington, D.C., as well as through partner gateways in London, Doha, Madrid, Seattle/Tacoma, Sydney, and Tokyo. It also operates a mainline fleet of",
@@ -2837,7 +2837,7 @@
         "pe": 20.4,
         "rating": "Buy",
         "target": 331.53,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "TSLA",
@@ -2846,7 +2846,7 @@
         "pe": 347.2,
         "rating": "Buy",
         "target": 396.57,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "HD",
@@ -2855,7 +2855,7 @@
         "pe": 20.7,
         "rating": "Buy",
         "target": 378.34,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "NKE",
@@ -2864,7 +2864,7 @@
         "pe": 16.7,
         "rating": "Hold",
         "target": 38.15,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "DraftKings Inc. operates as a digital sports entertainment and gaming company in the United States and internationally. The company offers online and retail sports betting, daily fantasy sports, digital lottery couriers, prediction markets, and other products, as well as retails sportsbooks. It also provides iGaming, or online casino products, which includes blackjack, roulette, baccarat and slot machines. In addition, the company engages in the design and development of sports betting and casin",
@@ -3101,7 +3101,7 @@
         "pe": 14.2,
         "rating": "Buy",
         "target": 372.81,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "BAC",
@@ -3119,7 +3119,7 @@
         "pe": 13.6,
         "rating": "Hold",
         "target": 1079.5,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "MS",
@@ -3387,7 +3387,7 @@
         "pe": 28.7,
         "rating": "Buy",
         "target": 158.23,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "CCI",
@@ -3396,7 +3396,7 @@
         "pe": 28.0,
         "rating": "Buy",
         "target": 94.45,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "EQIX",
@@ -3405,7 +3405,7 @@
         "pe": 65.1,
         "rating": "Buy",
         "target": 1234.19,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "Annaly Capital Management, Inc., a diversified capital manager, engages in the residential mortgage finance business. The company invests in agency mortgage-backed securities collateralized by residential mortgages; non-agency residential whole loans and securitized products within the residential and commercial markets; mortgage servicing rights; agency commercial mortgage-backed securities; to-be-announced forward contracts; residential mortgage-backed securities; residential mortgage loans; a",
@@ -3673,7 +3673,7 @@
         "pe": 14.2,
         "rating": "Buy",
         "target": 372.81,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "BAC",
@@ -3830,9 +3830,9 @@
       ]
     },
     "momentum": {
-      "day5": NaN,
-      "day30": NaN,
-      "day90": NaN,
+      "day5": null,
+      "day30": null,
+      "day90": null,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -3971,7 +3971,7 @@
         "pe": 12.4,
         "rating": "Buy",
         "target": 67.33,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "GS",
@@ -3989,7 +3989,7 @@
         "pe": 15.1,
         "rating": "Buy",
         "target": 224.48,
-        "chg": NaN
+        "chg": null
       }
     ],
     "description": "Regions Financial Corporation, a financial holding company, provides various banking and related products and services to individual and corporate customers. It operates through three segments: Corporate Bank, Consumer Bank, and Wealth Management. The Corporate Bank segment offers commercial banking services, such as commercial and industrial, commercial real estate, and investor real estate lending; equipment lease financing; deposit products; capital markets activities, such as securities unde",
@@ -4107,9 +4107,9 @@
       ]
     },
     "momentum": {
-      "day5": NaN,
-      "day30": NaN,
-      "day90": NaN,
+      "day5": null,
+      "day30": null,
+      "day90": null,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -4239,7 +4239,7 @@
         "pe": 20.4,
         "rating": "Buy",
         "target": 331.53,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "TSLA",
@@ -4248,7 +4248,7 @@
         "pe": 347.2,
         "rating": "Buy",
         "target": 396.57,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "HD",
@@ -4257,7 +4257,7 @@
         "pe": 20.7,
         "rating": "Buy",
         "target": 378.34,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "NKE",
@@ -4503,7 +4503,7 @@
         "pe": 20.4,
         "rating": "Buy",
         "target": 331.53,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "TSLA",
@@ -4512,7 +4512,7 @@
         "pe": 347.2,
         "rating": "Buy",
         "target": 396.57,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "HD",
@@ -4521,7 +4521,7 @@
         "pe": 20.7,
         "rating": "Buy",
         "target": 378.34,
-        "chg": NaN
+        "chg": null
       },
       {
         "ticker": "NKE",
