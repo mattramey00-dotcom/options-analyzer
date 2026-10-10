@@ -458,6 +458,8 @@ body::after{
 .mode-hint{font-size:11px;color:var(--text3);margin-left:6px}
 .scan-score-sub{display:block;margin-top:6px;font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.4px}
 .scan-card-squeeze-note{margin-top:8px;font-size:10px;line-height:1.5;color:var(--amber);font-weight:600}
+.hide-filtered-toggle{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;user-select:none;white-space:nowrap}
+.hide-filtered-toggle input{accent-color:var(--amber);cursor:pointer;margin:0}
 </style>
 </head>
 <body>
@@ -498,6 +500,9 @@ body::after{
     <div class="scan-header">
       <h3>📡 <span id="scanTitle">Today's Earnings Plays</span> <span class="scan-count" id="scanCount">0</span></h3>
       <span class="scan-meta" id="scanMeta">Loading...</span>
+      <label class="hide-filtered-toggle" id="hideFilteredWrap" title="Hide the scanner's filtered-out names from the Earnings board — they always stay visible in Squeeze mode">
+        <input type="checkbox" id="hideFilteredToggle" checked onchange="toggleHideFiltered(this.checked)"> Hide filtered-out
+      </label>
     </div>
     <div class="scan-grid" id="scanGrid"></div>
   </div>
@@ -689,6 +694,17 @@ let liveMode = false;
 let APP_MODE = 'earnings';
 let currentTicker = null;
 
+// Hide filtered-out (scanner-excluded) cards on the Earnings board.
+// Default ON — the board shows qualifiers only; the rejects are one
+// toggle away and always render in Squeeze mode regardless of this
+// setting. Persisted under ep-hide-filtered, same pattern as ep-theme.
+let HIDE_FILTERED = localStorage.getItem('ep-hide-filtered') !== '0';
+function toggleHideFiltered(on) {
+  HIDE_FILTERED = !!on;
+  localStorage.setItem('ep-hide-filtered', HIDE_FILTERED ? '1' : '0');
+  if (Object.keys(DB).length) buildScanPanel(DB);
+}
+
 // Try to load live data from stock_data.json on startup
 function dataUrl() {
   // Build a fully-qualified absolute URL by hand instead of letting the
@@ -757,14 +773,32 @@ function buildScanPanel(data) {
     return;
   }
   
-  countEl.textContent = tickers.length;
+  // Earnings mode + hide-filtered ON: the board shows qualifiers
+  // only. Squeeze mode ignores the toggle — filtered names are its
+  // candidates and always render there.
+  const hideFiltered = HIDE_FILTERED && APP_MODE === 'earnings';
+  const visible = hideFiltered ? tickers.filter(t => !data[t].excluded) : tickers;
+  const hiddenCount = tickers.length - visible.length;
+
+  countEl.textContent = visible.length;
+
+  if (visible.length === 0) {
+    metaEl.textContent = hiddenCount > 0
+      ? `0 plays · ${hiddenCount} filtered hidden — untick "Hide filtered-out" to see them`
+      : 'No tickers to show';
+    grid.innerHTML = '';
+    panel.classList.add('visible');
+    return;
+  }
   
   // Find soonest and latest earnings
-  const soonest = data[tickers[0]].daysToEarnings;
-  const latest = data[tickers[tickers.length - 1]].daysToEarnings;
-  metaEl.textContent = `Earnings in ${soonest}-${latest} days — click any to analyze`;
+  const soonest = data[visible[0]].daysToEarnings;
+  const latest = data[visible[visible.length - 1]].daysToEarnings;
+  metaEl.textContent = hiddenCount > 0
+    ? `${visible.length} plays · ${hiddenCount} filtered hidden — earnings in ${soonest}-${latest} days — click any to analyze`
+    : `Earnings in ${soonest}-${latest} days — click any to analyze`;
   
-  grid.innerHTML = tickers.map(t => buildScanCard(t, data[t])).join('');
+  grid.innerHTML = visible.map(t => buildScanCard(t, data[t])).join('');
   panel.classList.add('visible');
 }
 
@@ -888,6 +922,8 @@ function setMode(mode) {
     ? 'Crowded shorts + a dated catalyst — the fuel-gauge board (NOT a covered-call board)'
     : 'Premium-selling earnings plays — the covered-call board';
   document.getElementById('scanTitle').textContent = APP_MODE === 'squeeze' ? "Today's Squeeze Candidates" : "Today's Earnings Plays";
+  // The hide-filtered toggle is an Earnings-board control only.
+  document.getElementById('hideFilteredWrap').style.display = APP_MODE === 'squeeze' ? 'none' : '';
   if (Object.keys(DB).length) buildScanPanel(DB);
   if (currentTicker && DB[currentTicker]) {
     const s = DB[currentTicker];
@@ -1109,6 +1145,8 @@ loadLiveData();
 // Also build scan panel from demo data on load (will be overwritten if live data loads)
 document.addEventListener('DOMContentLoaded', () => {
   updateToggleButton(document.documentElement.getAttribute('data-theme') || 'dark');
+  const hfToggle = document.getElementById('hideFilteredToggle');
+  if (hfToggle) hfToggle.checked = HIDE_FILTERED;
   if (!liveMode) {
     buildScanPanel(DB);
     updateQuickButtons(Object.keys(DB));
