@@ -33,6 +33,13 @@ import time
 from datetime import datetime, timedelta, date
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+# Unified scoring + shared helpers — the SINGLE source of truth for the
+# composite score (see scoring.py). The dashboard only renders the score
+# computed here / in fetch_stock.py; it never recomputes its own.
+from scoring import (compute_score, compute_squeeze_score, compute_div_yield,
+                     compute_earnings_move, detect_guidance, covered_call_flags,
+                     hard_filter_failures)
+
 # ========== EARNINGS CALENDAR SCRAPER ==========
 
 def get_earnings_calendar(from_date, to_date):
@@ -220,22 +227,70 @@ def get_earnings_via_yfinance_screener(days_ahead=14):
 
 # ========== CRITERIA FILTER ==========
 
+def _excluded_record(ticker_sym, info, earnings_info, price, pe, short_pct, reasons):
+    """Minimal dashboard record for a hard-filter failure.
+
+    Fail loudly: the ticker stays in stock_data.json with
+    excluded:true + the reasons, instead of silently vanishing
+    (the old behavior, which made 'scanner found nothing' and
+    'scanner dropped it' indistinguishable).
+    """
+    # Squeeze score even here: an earnings-mode reject (e.g. short
+    # interest above the earnings cap) is a PRIME squeeze candidate,
+    # so the excluded record must stay scorable in Squeeze mode.
+    # Computed from what the exclusion path actually knows — fuel,
+    # burn, catalyst, liquidity; trend and realized move stay n/a.
+    squeeze = None
+    try:
+        squeeze = compute_squeeze_score({
+            'shortPct': short_pct,
+            'shortRatio': info.get('shortRatio') if info else None,
+            'daysToEarnings': earnings_info.get('days_until'),
+            'siTrend': None,        # feed carries current SI only
+            'realizedMovePct': None,  # not measured on the exclusion path
+            'avgVol': info.get('averageVolume') if info else None,
+        })
+    except Exception:
+        squeeze = None
+    return {
+        'name': (info.get('longName') or info.get('shortName', ticker_sym)) if info else ticker_sym,
+        'sector': info.get('sector', 'Unknown') if info else 'Unknown',
+        'industry': info.get('industry', 'Unknown') if info else 'Unknown',
+        'price': round(price, 2) if price else 0,
+        'pe': round(pe, 1) if pe and pe > 0 else -1,
+        'shortInt': f"{round(short_pct, 1)}%" if short_pct is not None else 'n/a',
+        'shortRatio': round(info.get('shortRatio') or 0, 1) if info else 0,
+        'earningsDate': earnings_info.get('earnings_date', 'TBD'),
+        'daysToEarnings': earnings_info.get('days_until', 0),
+        'excluded': True,
+        'excludedReasons': reasons,
+        'score': None,
+        'squeezeScore': squeeze,
+    }
+
+
 def evaluate_stock(ticker_sym, earnings_info, criteria):
     """
     Pull full data for a stock and evaluate against earnings play criteria.
-    Returns (score, data_dict) or None if it fails hard criteria.
+
+    Returns one of:
+      (score, data_dict)   — passed the hard filters, fully scored
+      (None, excluded_dict) — failed hard filters; dict carries
+                              excluded:true + excludedReasons so the
+                              ticker stays visible in the dashboard
+      None                 — data fetch failed entirely (no price)
     """
     try:
         ticker = yf.Ticker(ticker_sym)
         info = ticker.info
-        
+
         if not info:
             return None
-            
+
         price = info.get('currentPrice') or info.get('regularMarketPrice') or info.get('previousClose')
         if not price:
             return None
-        
+
         pe = info.get('trailingPE') or -1
         fwd_pe = info.get('forwardPE') or -1
         eps = info.get('trailingEps') or 0
@@ -246,122 +301,79 @@ def evaluate_stock(ticker_sym, earnings_info, criteria):
         beta = info.get('beta') or 1.0
         mkt_cap = info.get('marketCap') or 0
         avg_vol = info.get('averageVolume') or 0
-        
-        # ===== HARD FILTERS =====
-        # Price range
-        if price < criteria['price_min'] or price > criteria['price_max']:
-            return None
-        
-        # Must have positive earnings for PE check (unless we allow negative)
-        if criteria['require_profitable'] and (pe <= 0 or eps <= 0):
-            return None
-        
-        # PE too high
-        if pe > 0 and pe > criteria['max_pe']:
-            return None
-            
-        # Short interest too high
-        if short_pct > criteria['max_short']:
-            return None
-        
-        # Too close to 52-week high (priced in)
         pct_from_high = ((wk52_high - price) / wk52_high) * 100
-        if pct_from_high < criteria['min_pct_from_high']:
-            return None
-        
-        # Need sufficient volume for options liquidity
-        if avg_vol < 500000:
-            return None
-        
-        # ===== SCORING =====
-        score = 50
-        
-        # Price sweet spot ($15-$20 = best)
-        if 15 <= price <= 20:
-            score += 15
-        elif 12 <= price <= 25:
-            score += 10
-        elif 10 <= price <= 30:
-            score += 5
-        
-        # PE score
-        if 0 < pe <= 15:
-            score += 15  # Deep value
-        elif 0 < pe <= 25:
-            score += 10
-        elif 0 < pe <= 40:
-            score += 5
-        
-        # Not at highs
-        if pct_from_high > 30:
-            score += 10
-        elif pct_from_high > 20:
-            score += 7
-        elif pct_from_high > 10:
-            score += 3
-        
-        # Low short interest
-        if short_pct < 3:
-            score += 8
-        elif short_pct < 5:
-            score += 5
-        elif short_pct < 8:
-            score += 2
-        
-        # Days to earnings (7+ is ideal)
-        days_to = earnings_info.get('days_until', 30)
-        if days_to >= 14:
-            score += 8
-        elif days_to >= 7:
-            score += 5
-        elif days_to >= 3:
-            score += 2
-        
-        # Dividend bonus (income play)
-        div_yield = info.get('dividendYield') or 0
-        if div_yield > 0.03:
-            score += 5
-        elif div_yield > 0.01:
-            score += 2
-        
-        # Analyst sentiment
+
+        # ===== HARD FILTERS — fail loudly, never silently =====
+        failures = hard_filter_failures(
+            {'price': price, 'pe': pe, 'eps': eps, 'shortPct': short_pct,
+             'pctFromHigh': pct_from_high, 'avgVol': avg_vol},
+            criteria)
+        if failures:
+            return (None, _excluded_record(ticker_sym, info, earnings_info,
+                                           price, pe, short_pct, failures))
+
         rec = info.get('recommendationKey', 'hold')
-        if rec in ['strong_buy', 'buy']:
-            score += 8
-        elif rec == 'hold':
-            score += 3
-        
-        # Profitability quality
         profit_margin = info.get('profitMargins') or 0
-        if profit_margin > 0.15:
-            score += 6
-        elif profit_margin > 0.05:
-            score += 3
-        
-        # Cap the score
-        score = min(100, max(0, score))
-        
+        days_to = earnings_info.get('days_until', 30)
+
         # ===== BUILD FULL DATA FOR DASHBOARD =====
         # Instead of importing fetch_stock, build the data inline
         full_data = build_stock_data(ticker_sym, ticker, info, earnings_info, price, pe, fwd_pe, eps, fwd_eps,
                                       wk52_low, wk52_high, short_pct, beta, mkt_cap, avg_vol,
-                                      pct_from_high, profit_margin, rec, div_yield, score)
-        if full_data:
-            full_data['_scan_score'] = score
-            full_data['_scan_reasons'] = build_reasons(price, pe, fwd_pe, pct_from_high, short_pct, days_to, rec, profit_margin, div_yield)
-            return (score, full_data)
-        
-        return None
-        
+                                      pct_from_high, profit_margin, rec)
+        if not full_data:
+            return None
+
+        # ===== UNIFIED SCORE (single source of truth — scoring.py) =====
+        iv_block = full_data.get('impliedVolatility') or {}
+        move_block = full_data.get('earningsMove') or {}
+        facts = {
+            'price': price,
+            'pe': pe,
+            'wk52High': wk52_high,
+            'shortRatio': full_data.get('shortRatio'),
+            'shortPct': round(short_pct, 1),
+            'daysToEarnings': days_to,
+            'surprises': full_data.get('surprises'),
+            'impliedMovePct': iv_block.get('expectedMovePct'),
+            'realizedMovePct': move_block.get('avgAbsMovePct'),
+            'ivPct': iv_block.get('iv'),
+            'sentiment': full_data.get('sentiment'),
+            'momentum': full_data.get('momentum'),
+            'revenueGrowth': (full_data.get('growthMetrics') or {}).get('revenueGrowth'),
+            'insiderSignal': None,   # scanner pass doesn't pull insider flow
+            'analystSignal': None,   # (refetch_full.py fills the full record)
+        }
+        score_obj = compute_score(facts)
+        full_data['score'] = score_obj
+        full_data['_scan_score'] = score_obj['total']
+        full_data['_scan_reasons'] = build_reasons(score_obj)
+
+        # ===== SQUEEZE SCORE (second, independent score) =====
+        squeeze_obj = compute_squeeze_score({
+            'shortPct': round(short_pct, 1),
+            'shortRatio': full_data.get('shortRatio'),
+            'daysToEarnings': days_to,
+            'siTrend': None,   # feed carries current SI only — honest n/a
+            'realizedMovePct': move_block.get('avgAbsMovePct'),
+            'avgVol': avg_vol,
+        })
+        full_data['squeezeScore'] = squeeze_obj
+        full_data['_scan_squeeze_score'] = squeeze_obj['total']
+        return (score_obj['total'], full_data)
+
     except Exception as e:
         return None
 
 
 def build_stock_data(ticker_sym, ticker, info, earnings_info, price, pe, fwd_pe, eps, fwd_eps,
                      wk52_low, wk52_high, short_pct, beta, mkt_cap, avg_vol,
-                     pct_from_high, profit_margin, rec, div_yield, score):
+                     pct_from_high, profit_margin, rec):
     """Build a complete stock data dict for the dashboard."""
     try:
+        # Shared dividend-yield helper (the old inline *100 of yfinance's
+        # inconsistent field is how RF ended up showing a 405% yield).
+        div_yield = compute_div_yield(info, price)
         stock_data = {
             'name': info.get('longName') or info.get('shortName', ticker_sym),
             'sector': info.get('sector', 'Unknown'),
@@ -378,7 +390,9 @@ def build_stock_data(ticker_sym, ticker, info, earnings_info, price, pe, fwd_pe,
             'mktCap': format_number(mkt_cap),
             'avgVol': format_number(avg_vol),
             'div': round(info.get('dividendRate') or 0, 2),
-            'divYield': f"{round(div_yield * 100, 1)}%",
+            'divYield': div_yield['divYield'],
+            'divYieldPct': div_yield['divYieldPct'],
+            'divYieldSuspect': div_yield['divYieldSuspect'],
             'beta': round(beta, 2),
             'shortInt': f"{round(short_pct, 1)}%",
             'shortRatio': round(info.get('shortRatio') or 0, 1),
@@ -457,7 +471,102 @@ def build_stock_data(ticker_sym, ticker, info, earnings_info, price, pe, fwd_pe,
         current_ratio = info.get('currentRatio') or 1
         financials = 'Strong' if current_ratio > 1.5 and debt_equity < 100 else ('Adequate' if current_ratio > 1 else 'Weak')
         stock_data['sentiment'] = {'value': value, 'quality': quality, 'financials': financials}
-        
+
+        # Momentum — None (not 0) when history is short, so missing data
+        # renders "n/a" and stays out of the score instead of faking "Mixed".
+        try:
+            hist_6m = ticker.history(period="6mo")
+            if hist_6m is not None and not hist_6m.empty:
+                closes = hist_6m['Close'].dropna()  # trailing partial-session row is NaN
+                current = closes.iloc[-1]
+
+                def _pc(n):
+                    if len(closes) > n:
+                        ref = closes.iloc[-n]
+                        if ref and current == current and ref == ref:
+                            return round(((current / ref) - 1) * 100, 1)
+                    return None
+
+                d5, d30, d90 = _pc(5), _pc(21), _pc(63)
+                if d5 is None or d30 is None:
+                    trend = 'No Data'
+                elif d30 > 0 and d5 > 0:
+                    trend = 'Bullish'
+                elif d30 < 0 and d5 < 0:
+                    trend = 'Bearish'
+                else:
+                    trend = 'Mixed'
+                stock_data['momentum'] = {'day5': d5, 'day30': d30, 'day90': d90, 'trend': trend}
+            else:
+                stock_data['momentum'] = {'day5': None, 'day30': None, 'day90': None, 'trend': 'No Data'}
+        except:
+            stock_data['momentum'] = {'day5': None, 'day30': None, 'day90': None, 'trend': 'No Data'}
+
+        # Revenue growth
+        rev_growth = info.get('revenueGrowth')
+        stock_data['growthMetrics'] = {
+            'revenueGrowth': round(rev_growth * 100, 1) if rev_growth else None,
+            'earningsGrowth': round(info.get('earningsGrowth') * 100, 1) if info.get('earningsGrowth') else None,
+            'qtrRevenueGrowth': round(info.get('quarterlyRevenueGrowth') * 100, 1) if info.get('quarterlyRevenueGrowth') else None,
+            'qtrEarningsGrowth': round(info.get('quarterlyEarningsGrowth') * 100, 1) if info.get('quarterlyEarningsGrowth') else None,
+            'signal': 'Strong' if (rev_growth and rev_growth > 0.15) else (
+                'Growing' if (rev_growth and rev_growth > 0) else (
+                    'Declining' if (rev_growth and rev_growth < 0) else 'Unknown')),
+        }
+
+        # Implied volatility & expected move (info first, ATM chain fallback)
+        iv_val = info.get('impliedVolatility') or None
+        if iv_val is None:
+            try:
+                opts = ticker.options
+                if opts:
+                    chain = ticker.option_chain(opts[0])
+                    if chain and not chain.calls.empty:
+                        nearest = (chain.calls['strike'] - price).abs().idxmin()
+                        iv_val = chain.calls.loc[nearest, 'impliedVolatility']
+            except:
+                pass
+        if iv_val and iv_val > 0:
+            days_to_earn = stock_data['daysToEarnings'] or 30
+            stock_data['impliedVolatility'] = {
+                'iv': round(iv_val * 100, 1),
+                'expectedMovePct': round(iv_val * (days_to_earn / 365) ** 0.5 * 100, 1),
+                'expectedMoveDollar': round(price * iv_val * (days_to_earn / 365) ** 0.5, 2),
+                'signal': 'High IV' if iv_val > 0.6 else ('Moderate IV' if iv_val > 0.3 else 'Low IV'),
+            }
+        else:
+            stock_data['impliedVolatility'] = {'iv': None, 'expectedMovePct': None, 'expectedMoveDollar': None, 'signal': 'Unknown'}
+
+        # Realized earnings move (avg |move| over last 4–8 prints) vs implied
+        realized = compute_earnings_move(ticker)
+        implied_pct = stock_data['impliedVolatility'].get('expectedMovePct')
+        stock_data['earningsMove'] = {
+            'avgAbsMovePct': realized['avgAbsMovePct'] if realized else None,
+            'count': realized['count'] if realized else 0,
+            'moves': realized['moves'] if realized else [],
+            'impliedMovePct': implied_pct,
+            'edgeRatio': round(implied_pct / realized['avgAbsMovePct'], 2) if (realized and implied_pct) else None,
+        }
+
+        # Guidance flag — 'unknown' unless a reliable source says otherwise
+        stock_data['guidance'] = detect_guidance(ticker)
+
+        # Covered-call dividend flags (ex-div / early assignment)
+        stock_data['dividendFlags'] = covered_call_flags(info, stock_data['daysToEarnings'])
+
+        # Extra fundamentals (same shape as fetch_stock.py)
+        stock_data['fundamentalsExtra'] = {
+            'profitMargin': round((info.get('profitMargins') or 0) * 100, 1),
+            'grossMargin': round((info.get('grossMargins') or 0) * 100, 1),
+            'operatingMargin': round((info.get('operatingMargins') or 0) * 100, 1),
+            'debtToEquity': round(info.get('debtToEquity') or 0, 1),
+            'currentRatio': round(info.get('currentRatio') or 0, 2),
+            'floatShares': format_number(info.get('floatShares') or 0),
+            'sharesOutstanding': format_number(info.get('sharesOutstanding') or 0),
+            'exDivDate': str(info.get('exDividendDate', 'N/A')),
+            'earningsEstRevision': 0,
+        }
+
         stock_data['description'] = (info.get('longBusinessSummary') or 'No description available.')[:500]
         stock_data['peerMismatch'] = f"Review {ticker_sym} vs sector peers on Finviz and Fidelity research."
         
@@ -511,40 +620,23 @@ def format_number(n):
     return str(round(n))
 
 
-def build_reasons(price, pe, fwd_pe, pct_from_high, short_pct, days_to, rec, margin, div_yield):
-    """Build a list of reasons this stock qualifies."""
+def build_reasons(score_obj):
+    """Terminal-display reasons, rendered from the unified score breakdown
+    so what the CLI shows is exactly what the dashboard shows."""
+    if not score_obj:
+        return []
     reasons = []
-    
-    if 15 <= price <= 20:
-        reasons.append(f"✓ Price ${price:.2f} in $15-$20 sweet spot")
-    else:
-        reasons.append(f"~ Price ${price:.2f} (outside ideal but within range)")
-    
-    if pe > 0 and pe < 16:
-        reasons.append(f"✓ P/E {pe:.1f} below S&P 500 average of 16")
-    elif pe > 0 and pe < 50:
-        reasons.append(f"✓ P/E {pe:.1f} under 50 threshold")
-    
-    if pct_from_high > 20:
-        reasons.append(f"✓ {pct_from_high:.0f}% below 52wk high — not priced in")
-    
-    if short_pct < 5:
-        reasons.append(f"✓ Short interest {short_pct:.1f}% — clean")
-    elif short_pct < 10:
-        reasons.append(f"~ Short interest {short_pct:.1f}% — acceptable")
-    
-    if days_to >= 7:
-        reasons.append(f"✓ {days_to} days to earnings — good entry window")
-    
-    if rec in ['strong_buy', 'buy']:
-        reasons.append(f"✓ Analyst consensus: {rec.replace('_', ' ').title()}")
-    
-    if margin > 0.1:
-        reasons.append(f"✓ Profit margin {margin*100:.1f}% — healthy")
-    
-    if div_yield > 0.02:
-        reasons.append(f"✓ Dividend yield {div_yield*100:.1f}% — income bonus")
-    
+    for c in score_obj.get('components', []):
+        if not c['available']:
+            reasons.append(f"· {c['label']}: n/a — excluded from score")
+        elif c['points'] >= c['max'] * 0.6:
+            reasons.append(f"✓ {c['detail']} (+{c['points']:g}/{c['max']:g})")
+        elif c['points'] > 0:
+            reasons.append(f"~ {c['detail']} (+{c['points']:g}/{c['max']:g})")
+        else:
+            reasons.append(f"✗ {c['detail']} (+0/{c['max']:g})")
+    if score_obj.get('partial'):
+        reasons.append(f"⚠ {score_obj.get('partialNote', 'Partial data')}")
     return reasons
 
 
@@ -598,25 +690,37 @@ def main():
         print("\n  ✗ No earnings found in the scan window. Try --days 30")
         sys.exit(0)
     
-    # Step 2: Quick pre-filter on price before deep analysis
+    # Step 2: Quick pre-filter on price before deep analysis.
+    # Out-of-range names are NOT silently skipped anymore — they get a
+    # minimal excluded record with the reason, same as hard-filter fails.
     print(f"\n  🔍 Quick price-filtering {len(earnings_list)} candidates...")
     pre_filtered = []
+    excluded = []
     for e in earnings_list:
         try:
             t = yf.Ticker(e['ticker'])
             info = t.info
             price = info.get('currentPrice') or info.get('regularMarketPrice') or info.get('previousClose', 0)
-            if args.price_min <= price <= args.price_max:
+            if price and args.price_min <= price <= args.price_max:
                 pre_filtered.append(e)
                 print(f"    ✓ {e['ticker']:6s} ${price:>8.2f}  — earnings {e['earnings_date']} ({e['days_until']}d)")
-            # else: silently skip
+            elif price:
+                reason = (f"Price ${price:.2f} below the ${args.price_min:.0f} minimum"
+                          if price < args.price_min else
+                          f"Price ${price:.2f} above the ${args.price_max:.0f} maximum")
+                excluded.append((e['ticker'], _excluded_record(
+                    e['ticker'], info, e, price,
+                    info.get('trailingPE') or -1,
+                    (info.get('shortPercentOfFloat') or 0) * 100,
+                    [reason])))
+                print(f"    ✗ {e['ticker']:6s} ${price:>8.2f}  — filtered: {reason}")
         except:
             continue
         time.sleep(0.2)
-    
+
     print(f"\n  📋 {len(pre_filtered)} stocks in ${args.price_min}-${args.price_max} range with upcoming earnings")
-    
-    if not pre_filtered:
+
+    if not pre_filtered and not excluded:
         print("\n  ✗ No stocks match price criteria. Try widening --price-min / --price-max")
         sys.exit(0)
     
@@ -626,49 +730,68 @@ def main():
     
     qualified = []
     for i, e in enumerate(pre_filtered):
-        pct = int(((i + 1) / len(pre_filtered)) * 100)
+        pct = int(((i + 1) / len(pre_filtered)) * 100) if pre_filtered else 100
         print(f"    [{pct:3d}%] Analyzing {e['ticker']}...")
-        
+
         result = evaluate_stock(e['ticker'], e, criteria)
         if result:
             score, data = result
-            qualified.append((score, e['ticker'], data))
+            if score is not None:
+                qualified.append((score, e['ticker'], data))
+            else:
+                # Hard-filter failure — kept, with reasons (fail loudly)
+                excluded.append((e['ticker'], data))
+                print(f"          → filtered out: {'; '.join(data.get('excludedReasons', []))}")
         else:
-            print(f"          → filtered out (didn't pass criteria)")
-        
+            print(f"          → data fetch failed (no price available)")
+
         time.sleep(0.3)
-    
-    # Sort by score descending
-    qualified.sort(key=lambda x: x[0], reverse=True)
-    
-    # Trim to top N
+
+    # Sort by score descending (None totals — nothing measurable — last)
+    qualified.sort(key=lambda x: (x[0] is not None, x[0] or 0), reverse=True)
+
+    # Trim display/save set to top N (excluded records are never trimmed)
     qualified = qualified[:args.top]
-    
+
     # Step 4: Display results
     print(f"\n{'='*60}")
     print(f"  🏆 TOP {len(qualified)} EARNINGS PLAYS")
     print(f"{'='*60}\n")
-    
+
     if not qualified:
         print("  No stocks passed all criteria filters.")
         print("  Try relaxing some parameters:")
         print("    --price-min 5 --price-max 40")
         print("    --max-pe 80")
         print("    --max-short 15")
-        sys.exit(0)
-    
-    for rank, (score, ticker, data) in enumerate(qualified, 1):
-        reasons = data.get('_scan_reasons', [])
-        print(f"  #{rank}  {ticker:6s}  ${data['price']:<8.2f}  Score: {score}/100")
-        print(f"       Earnings: {data['earningsDate']} ({data['daysToEarnings']}d away)")
-        print(f"       P/E: {data['pe'] if data['pe'] > 0 else 'N/A':>6}  |  Short: {data['shortInt']:>5}  |  52wk: ${data['wk52Low']}-${data['wk52High']}")
-        for r in reasons:
-            print(f"       {r}")
+    else:
+        for rank, (score, ticker, data) in enumerate(qualified, 1):
+            reasons = data.get('_scan_reasons', [])
+            partial_tag = ' (partial data)' if (data.get('score') or {}).get('partial') else ''
+            print(f"  #{rank}  {ticker:6s}  ${data['price']:<8.2f}  Score: {score}/100{partial_tag}")
+            print(f"       Earnings: {data['earningsDate']} ({data['daysToEarnings']}d away)")
+            print(f"       P/E: {data['pe'] if data['pe'] > 0 else 'N/A':>6}  |  Short: {data['shortInt']:>5}  |  52wk: ${data['wk52Low']}-${data['wk52High']}")
+            sq = data.get('squeezeScore') or {}
+            if sq.get('total') is not None:
+                sq_line = f"       Squeeze: {sq['total']}/100 {sq.get('grade', '')}{' (partial data)' if sq.get('partial') else ''}{' ⚡ fast cover' if sq.get('fastCover') else ''}"
+                print(sq_line)
+                if sq.get('capNote'):
+                    print(f"       ⚠ {sq['capNote']}")
+            for r in reasons:
+                print(f"       {r}")
+            print()
+
+    if excluded:
+        print(f"  ✗ FILTERED OUT of Earnings mode — kept in stock_data.json with reasons ({len(excluded)}):")
+        for ticker, rec in excluded:
+            sq = rec.get('squeezeScore') or {}
+            sq_txt = (f"  |  Squeeze: {sq['total']}/100 {sq.get('grade', '')}" if sq.get('total') is not None else "")
+            print(f"     {ticker:6s} ${rec.get('price', 0):<8.2f}  {'; '.join(rec.get('excludedReasons', []))}{sq_txt}")
         print()
-    
+
     # Step 5: Save to stock_data.json
     output_path = os.path.join(args.output, 'stock_data.json')
-    
+
     # Merge with existing data
     existing = {}
     if os.path.exists(output_path):
@@ -677,11 +800,16 @@ def main():
                 existing = json.load(f)
         except:
             existing = {}
-    
+
     for score, ticker, data in qualified:
         # Clean internal scan fields before saving
         clean_data = {k: v for k, v in data.items() if not k.startswith('_')}
         existing[ticker] = clean_data
+
+    # Excluded records are saved too (excluded:true + reasons) so a
+    # filtered name stays visible in the dashboard instead of vanishing.
+    for ticker, rec in excluded:
+        existing[ticker] = rec
     
     # NaN/Infinity are not valid JSON (RFC 8259) — Python's json module
     # writes them as bare `NaN`/`Infinity` tokens anyway, which a
@@ -703,7 +831,7 @@ def main():
         json.dump(sanitize_json(existing), f, indent=2, default=str, allow_nan=False)
     
     print(f"{'='*60}")
-    print(f"  ✓ Saved {len(qualified)} plays to: {os.path.abspath(output_path)}")
+    print(f"  ✓ Saved {len(qualified)} plays + {len(excluded)} excluded (with reasons) to: {os.path.abspath(output_path)}")
     print(f"  ✓ Total tickers in file: {len(existing)}")
     print(f"{'='*60}")
     print(f"\n  NEXT: Open your dashboard and these stocks are ready to analyze!")
