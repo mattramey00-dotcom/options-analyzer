@@ -27,6 +27,12 @@ import os
 import argparse
 from datetime import datetime, timedelta, date
 
+# Unified scoring + shared data helpers — the SINGLE source of truth
+# for the composite score (see scoring.py). The dashboard only renders
+# the score computed here; it never recomputes its own.
+from scoring import (compute_score, compute_squeeze_score, compute_div_yield,
+                     compute_earnings_move, detect_guidance, covered_call_flags)
+
 def fetch_stock_data(ticker_symbol):
     """Fetch comprehensive data for a single ticker."""
     print(f"\n{'='*50}")
@@ -52,7 +58,12 @@ def fetch_stock_data(ticker_symbol):
             return None
 
     price = info.get('currentPrice') or info.get('regularMarketPrice') or info.get('previousClose', 0)
-    
+
+    # Dividend yield via the shared helper: yfinance's raw dividendYield
+    # field is inconsistent (fraction vs percent) and the old inline
+    # `* 100` produced absurd values (RF showed 405.0%).
+    div_yield = compute_div_yield(info, price)
+
     stock_data = {
         'name': info.get('longName') or info.get('shortName', ticker_symbol.upper()),
         'sector': info.get('sector', 'Unknown'),
@@ -69,7 +80,9 @@ def fetch_stock_data(ticker_symbol):
         'mktCap': format_large_number(info.get('marketCap', 0)),
         'avgVol': format_large_number(info.get('averageVolume', 0)),
         'div': round(info.get('dividendRate') or 0, 2),
-        'divYield': f"{round((info.get('dividendYield') or 0) * 100, 1)}%",
+        'divYield': div_yield['divYield'],
+        'divYieldPct': div_yield['divYieldPct'],
+        'divYieldSuspect': div_yield['divYieldSuspect'],
         'beta': round(info.get('beta') or 1.0, 2),
         'shortInt': f"{round((info.get('shortPercentOfFloat') or 0) * 100, 1)}%",
         'shortRatio': round(info.get('shortRatio') or 0, 1),
@@ -473,26 +486,37 @@ def fetch_stock_data(ticker_symbol):
     try:
         hist_6m = ticker.history(period="6mo")
         if hist_6m is not None and not hist_6m.empty:
-            closes = hist_6m['Close']
+            # dropna: yfinance appends a NaN row for the current partial
+            # session — without this the latest "close" is NaN and every
+            # momentum value silently becomes None.
+            closes = hist_6m['Close'].dropna()
             current = closes.iloc[-1]
             
             def pct_change(n_days):
+                # None (not 0) when there isn't enough history — a missing
+                # value must render as "n/a" and stay out of the score.
+                # Returning 0 here is what used to let null momentum be
+                # scored and displayed as if it were measured ("Mixed").
                 if len(closes) > n_days:
-                    return round(((current / closes.iloc[-n_days]) - 1) * 100, 1)
-                return 0
-            
-            stock_data['momentum'] = {
-                'day5': pct_change(5),
-                'day30': pct_change(21),  # ~21 trading days
-                'day90': pct_change(63),  # ~63 trading days
-                'trend': 'Bullish' if pct_change(21) > 0 and pct_change(5) > 0 else (
-                    'Bearish' if pct_change(21) < 0 and pct_change(5) < 0 else 'Mixed'
-                ),
-            }
+                    ref = closes.iloc[-n_days]
+                    if ref and current == current and ref == ref:
+                        return round(((current / ref) - 1) * 100, 1)
+                return None
+
+            d5, d30, d90 = pct_change(5), pct_change(21), pct_change(63)
+            if d5 is None or d30 is None:
+                trend = 'No Data'
+            elif d30 > 0 and d5 > 0:
+                trend = 'Bullish'
+            elif d30 < 0 and d5 < 0:
+                trend = 'Bearish'
+            else:
+                trend = 'Mixed'
+            stock_data['momentum'] = {'day5': d5, 'day30': d30, 'day90': d90, 'trend': trend}
         else:
-            stock_data['momentum'] = {'day5': 0, 'day30': 0, 'day90': 0, 'trend': 'No Data'}
+            stock_data['momentum'] = {'day5': None, 'day30': None, 'day90': None, 'trend': 'No Data'}
     except:
-        stock_data['momentum'] = {'day5': 0, 'day30': 0, 'day90': 0, 'trend': 'No Data'}
+        stock_data['momentum'] = {'day5': None, 'day30': None, 'day90': None, 'trend': 'No Data'}
 
     # === NEW: REVENUE GROWTH ===
     print("  [*] Getting revenue growth...")
@@ -564,6 +588,64 @@ def fetch_stock_data(ticker_symbol):
         'exDivDate': str(info.get('exDividendDate', 'N/A')),
         'earningsEstRevision': round(((info.get('forwardEps') or 0) / (info.get('trailingEps') or 1) - 1) * 100, 1) if info.get('trailingEps') and info.get('trailingEps') != 0 else 0,
     }
+
+    # === NEW: REALIZED EARNINGS MOVE vs IMPLIED ===
+    print("  [*] Computing realized earnings-day moves...")
+    realized = compute_earnings_move(ticker)
+    iv_block = stock_data.get('impliedVolatility') or {}
+    implied_pct = iv_block.get('expectedMovePct')
+    stock_data['earningsMove'] = {
+        'avgAbsMovePct': realized['avgAbsMovePct'] if realized else None,
+        'count': realized['count'] if realized else 0,
+        'moves': realized['moves'] if realized else [],
+        'impliedMovePct': implied_pct,
+        'edgeRatio': round(implied_pct / realized['avgAbsMovePct'], 2) if (realized and implied_pct) else None,
+    }
+
+    # === NEW: GUIDANCE FLAG ===
+    # No reliable free structured source exists — 'unknown', never guessed.
+    stock_data['guidance'] = detect_guidance(ticker)
+
+    # === NEW: COVERED-CALL DIVIDEND FLAGS (ex-div / early assignment) ===
+    stock_data['dividendFlags'] = covered_call_flags(info, stock_data['daysToEarnings'])
+
+    # === UNIFIED SCORE (single source of truth — scoring.py) ===
+    print("  [*] Computing unified score...")
+    iv_pct = iv_block.get('iv')
+    facts = {
+        'price': stock_data['price'],
+        'pe': stock_data['pe'],
+        'wk52High': stock_data['wk52High'],
+        'shortRatio': stock_data['shortRatio'],
+        'shortPct': round((info.get('shortPercentOfFloat') or 0) * 100, 1),
+        'daysToEarnings': stock_data['daysToEarnings'],
+        'surprises': stock_data['surprises'],
+        'impliedMovePct': implied_pct,
+        'realizedMovePct': stock_data['earningsMove']['avgAbsMovePct'],
+        'ivPct': iv_pct,
+        'sentiment': stock_data['sentiment'],
+        'momentum': stock_data['momentum'],
+        'revenueGrowth': stock_data['growthMetrics'].get('revenueGrowth'),
+        'insiderSignal': stock_data['insiderActivity'].get('netSignal'),
+        'analystSignal': stock_data['analystActions'].get('netSignal'),
+    }
+    stock_data['score'] = compute_score(facts)
+
+    # === SQUEEZE SCORE (second, independent score — scoring.py) ===
+    # Same record, opposite lens: crowded shorts + a dated catalyst.
+    # siTrend is None on purpose: yfinance reports only the CURRENT
+    # short interest, so there is no prior report to compare against
+    # — the trend component stays honestly unmeasured (n/a) rather
+    # than being guessed.
+    print("  [*] Computing squeeze score...")
+    stock_data['squeezeScore'] = compute_squeeze_score({
+        'shortPct': facts['shortPct'],
+        'shortRatio': stock_data['shortRatio'],
+        'daysToEarnings': stock_data['daysToEarnings'],
+        'siTrend': None,
+        'realizedMovePct': stock_data['earningsMove']['avgAbsMovePct'],
+        'avgVol': info.get('averageVolume'),
+    })
 
     print(f"\n  ✓ {ticker_symbol.upper()} — ${stock_data['price']} — Done!")
     return stock_data

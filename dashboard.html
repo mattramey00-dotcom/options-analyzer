@@ -436,6 +436,28 @@ body::after{
 [data-theme="light"] .verdict-bar{box-shadow:var(--shadow)}
 [data-theme="light"] .scan-panel{box-shadow:var(--shadow)}
 [data-theme="light"] .ticker-bar{box-shadow:var(--shadow)}
+
+/* ===== UNIFIED SCORE / EXCLUDED (Finney pass) ===== */
+.scan-card-excluded{opacity:.78;border-style:dashed}
+.scan-excluded-reason{margin-top:8px;font-size:10px;line-height:1.5;color:var(--red)}
+.score-breakdown{margin:-8px 0 28px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px}
+.sb-title{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:10px;font-weight:700}
+.sb-row{display:flex;gap:12px;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:11px}
+.sb-row:last-of-type{border-bottom:none}
+.sb-label{font-weight:700;color:var(--text);min-width:200px}
+.sb-detail{color:var(--text2);flex:1}
+.sb-pts{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--text);white-space:nowrap}
+.sb-na{opacity:.55}
+.sb-note{margin-top:8px;font-size:10px;color:var(--amber);line-height:1.5}
+
+/* ===== MODE TOGGLE / SQUEEZE MODE ===== */
+.mode-toggle{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.mode-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;padding:9px 18px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;transition:all .15s;letter-spacing:.3px}
+.mode-btn:hover{border-color:var(--amber);color:var(--text)}
+.mode-btn.active{background:var(--amber);color:var(--bg);border-color:var(--amber)}
+.mode-hint{font-size:11px;color:var(--text3);margin-left:6px}
+.scan-score-sub{display:block;margin-top:6px;font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.4px}
+.scan-card-squeeze-note{margin-top:8px;font-size:10px;line-height:1.5;color:var(--amber);font-weight:600}
 </style>
 </head>
 <body>
@@ -464,10 +486,17 @@ body::after{
     </div>
   </header>
 
+  <!-- MODE TOGGLE — two independent scores per ticker (scoring.py) -->
+  <div class="mode-toggle" id="modeToggle">
+    <button class="mode-btn active" id="modeBtnEarnings" onclick="setMode('earnings')">🎯 Earnings Play</button>
+    <button class="mode-btn" id="modeBtnSqueeze" onclick="setMode('squeeze')">🧨 Squeeze Play</button>
+    <span class="mode-hint" id="modeHint">Premium-selling earnings plays — the covered-call board</span>
+  </div>
+
   <!-- SCAN RESULTS PANEL -->
   <div class="scan-panel" id="scanPanel">
     <div class="scan-header">
-      <h3>📡 Today's Earnings Plays <span class="scan-count" id="scanCount">0</span></h3>
+      <h3>📡 <span id="scanTitle">Today's Earnings Plays</span> <span class="scan-count" id="scanCount">0</span></h3>
       <span class="scan-meta" id="scanMeta">Loading...</span>
     </div>
     <div class="scan-grid" id="scanGrid"></div>
@@ -493,7 +522,7 @@ body::after{
 
     <!-- CRITERIA CHECKLIST -->
     <div class="checklist">
-      <div class="section-label">Earnings Play Criteria Checklist</div>
+      <div class="section-label" id="checklistLabel">Earnings Play Criteria Checklist</div>
       <div class="check-grid" id="checkGrid"></div>
     </div>
 
@@ -568,7 +597,7 @@ body::after{
 
         <!-- SENTIMENT GAUGE -->
         <div class="card">
-          <div class="card-header">Composite Sentiment Score</div>
+          <div class="card-header" id="gaugeHeader">Composite Sentiment Score</div>
           <div class="gauge-container" id="gaugeContainer"></div>
         </div>
 
@@ -588,7 +617,7 @@ body::after{
 
         <!-- RISK/REWARD -->
         <div class="card">
-          <div class="card-header">Risk / Reward (100 Lot Covered Call)</div>
+          <div class="card-header" id="rrHeader">Risk / Reward (100 Lot Covered Call)</div>
           <div class="rr-box" id="rrBox"></div>
           <div style="padding:0 20px 16px;font-size:10px;color:var(--text3);line-height:1.6" id="rrNarrative"></div>
         </div>
@@ -653,6 +682,13 @@ function isDarkMode() {
 let DB = {};
 let liveMode = false;
 
+// =============== APP MODE ===============
+// 'earnings' (default) | 'squeeze' — every ticker carries TWO
+// independent Python-computed scores (s.score / s.squeezeScore);
+// the toggle only changes which one each surface leads with.
+let APP_MODE = 'earnings';
+let currentTicker = null;
+
 // Try to load live data from stock_data.json on startup
 function dataUrl() {
   // Build a fully-qualified absolute URL by hand instead of letting the
@@ -703,10 +739,13 @@ function buildScanPanel(data) {
   const countEl = document.getElementById('scanCount');
   const metaEl = document.getElementById('scanMeta');
   
-  // Sort tickers by daysToEarnings (soonest first), filter to those with earnings data
+  // Sort tickers by daysToEarnings (soonest first), filter to those with earnings data.
+  // In Squeeze mode the board leads with the squeeze score instead.
   const tickers = Object.keys(data)
-    .filter(t => data[t].daysToEarnings > 0 && data[t].daysToEarnings <= 60)
-    .sort((a, b) => (data[a].daysToEarnings || 999) - (data[b].daysToEarnings || 999));
+    .filter(t => data[t].excluded || (data[t].daysToEarnings > 0 && data[t].daysToEarnings <= 60))
+    .sort((a, b) => APP_MODE === 'squeeze'
+      ? ((getSqueeze(data[b]) ?? -1) - (getSqueeze(data[a]) ?? -1)) || ((data[a].daysToEarnings || 999) - (data[b].daysToEarnings || 999))
+      : (data[a].daysToEarnings || 999) - (data[b].daysToEarnings || 999));
   
   if (tickers.length === 0) {
     // Show all tickers if none have earnings dates
@@ -730,18 +769,75 @@ function buildScanPanel(data) {
 }
 
 function buildScanCard(ticker, s) {
-  // Calculate score inline for display
-  let score = computeQuickScore(s);
-  const grade = score >= 75 ? 'a' : (score >= 50 ? 'b' : 'c');
-  const gradeLabel = score >= 75 ? 'STRONG' : (score >= 50 ? 'OKAY' : 'WEAK');
-  
   const pe = s.pe > 0 ? s.pe.toFixed(1) : 'N/A';
   const earnDays = s.daysToEarnings || '?';
-  
+
+  // Score badge for one mode's stored Python score object. The grade
+  // label comes from the score object itself (earnings: STRONG /
+  // OKAY / WEAK; squeeze: PRIMED / LOADED / THIN) — rendered, never
+  // recomputed.
+  const badgeFor = (obj, total) => {
+    if (total === null || total === undefined) return `<span class="scan-score scan-score-c">NO SCORE</span>`;
+    const lbl = (obj && obj.grade) || (total >= 75 ? 'STRONG' : (total >= 50 ? 'OKAY' : 'WEAK'));
+    const cls = (lbl === 'STRONG' || lbl === 'PRIMED') ? 'a' : (lbl === 'OKAY' || lbl === 'LOADED') ? 'b' : 'c';
+    return `<span class="scan-score scan-score-${cls}">${total} — ${lbl}${obj && obj.partial ? ' • partial data' : ''}</span>`;
+  };
+  // The other mode's score, as a small secondary line.
+  const subBadge = (label, obj, total) => (total === null || total === undefined)
+    ? `<span class="scan-score-sub">${label}: n/a</span>`
+    : `<span class="scan-score-sub">${label}: ${total}${obj && obj.grade ? ' ' + obj.grade : ''}${obj && obj.fastCover ? ' • ⚡ fast cover' : ''}</span>`;
+
+  const eTotal = getScore(s), eObj = getScoreObj(s);
+  const qTotal = getSqueeze(s), qObj = getSqueezeObj(s);
+
+  // Hard-filtered by the scanner: stays visible, with the reason(s) —
+  // a filtered name must never just vanish from the board.
+  if (s.excluded) {
+    const reasons = (s.excludedReasons || []).join('; ');
+    if (APP_MODE === 'squeeze') {
+      // In Squeeze mode an earnings reject is a CANDIDATE, not a
+      // reject — prime candidates are names the earnings filter
+      // threw out for being too crowded. Clickable into the
+      // squeeze surfaces.
+      return `<div class="scan-card" onclick="loadExample('${ticker}')">
+        <div class="scan-card-top">
+          <span class="scan-ticker">${ticker}</span>
+          ${badgeFor(qObj, qTotal)}
+        </div>
+        <div class="scan-card-name">${s.name || ticker}</div>
+        <div class="scan-card-stats">
+          <span>$<strong>${s.price?.toFixed(2) || '?'}</strong></span>
+          <span>Short <strong>${s.shortInt || '?'}</strong></span>
+          <span>DTC <strong>${s.shortRatio ? s.shortRatio + 'd' : 'n/a'}</strong></span>
+          <span>Earnings <strong>${earnDays}d</strong></span>
+        </div>
+        <div class="scan-card-squeeze-note">🧨 Filtered out of Earnings mode — squeeze candidate</div>
+        <div class="scan-excluded-reason">✗ Earnings filter: ${reasons}</div>
+        ${subBadge('Earnings', null, null)}
+      </div>`;
+    }
+    return `<div class="scan-card scan-card-excluded">
+      <div class="scan-card-top">
+        <span class="scan-ticker">${ticker}</span>
+        <span class="scan-score scan-score-c">✗ FILTERED OUT</span>
+      </div>
+      <div class="scan-card-name">${s.name || ticker}</div>
+      <div class="scan-card-stats">
+        <span>$<strong>${s.price?.toFixed(2) || '?'}</strong></span>
+        <span>P/E <strong>${pe}</strong></span>
+        <span>Short <strong>${s.shortInt || '?'}</strong></span>
+        <span>Earnings <strong>${earnDays}d</strong></span>
+      </div>
+      <div class="scan-excluded-reason">✗ ${reasons}</div>
+      ${subBadge('Squeeze', qObj, qTotal)}
+    </div>`;
+  }
+
+  // The active mode's score leads; the other mode rides along small.
   return `<div class="scan-card" onclick="loadExample('${ticker}')">
     <div class="scan-card-top">
       <span class="scan-ticker">${ticker}</span>
-      <span class="scan-score scan-score-${grade}">${score} — ${gradeLabel}</span>
+      ${APP_MODE === 'squeeze' ? badgeFor(qObj, qTotal) : badgeFor(eObj, eTotal)}
     </div>
     <div class="scan-card-name">${s.name || ticker}</div>
     <div class="scan-card-stats">
@@ -750,46 +846,64 @@ function buildScanCard(ticker, s) {
       <span>Short <strong>${s.shortInt || '?'}</strong></span>
       <span>Earnings <strong>${earnDays}d</strong></span>
     </div>
+    ${APP_MODE === 'squeeze' ? subBadge('Earnings', eObj, eTotal) : subBadge('Squeeze', qObj, qTotal)}
   </div>`;
 }
 
-function computeQuickScore(s) {
-  let sc = 50;
-  const p = s.price || 0;
-  if (p >= 15 && p <= 20) sc += 12;
-  else if (p >= 10 && p <= 25) sc += 8;
-  else if (p >= 8 && p <= 30) sc += 4;
-  else sc -= 8;
-  
-  const pe = s.pe || -1;
-  if (pe > 0 && pe < 16) sc += 12;
-  else if (pe > 0 && pe < 30) sc += 8;
-  else if (pe > 0 && pe < 50) sc += 4;
-  else if (pe > 50) sc -= 8;
-  
-  const high = s.wk52High || 1;
-  const pctHigh = ((high - p) / high) * 100;
-  if (pctHigh > 20) sc += 8;
-  else if (pctHigh > 10) sc += 4;
-  else if (pctHigh < 5) sc -= 6;
-  
-  const shortPct = parseFloat(s.shortInt) || 0;
-  if (shortPct < 3) sc += 5;
-  else if (shortPct < 6) sc += 3;
-  else if (shortPct > 10) sc -= 5;
-  
-  const d = s.daysToEarnings || 0;
-  if (d >= 14) sc += 8;
-  else if (d >= 7) sc += 5;
-  else if (d < 3) sc -= 4;
-  
-  const sent = s.sentiment || {};
-  if (sent.value === 'Undervalued') sc += 5;
-  if (sent.quality === 'High Quality') sc += 4;
-  if (sent.financials === 'Strong') sc += 4;
-  
-  return Math.min(100, Math.max(0, sc));
+// ===== UNIFIED SCORE — single source of truth =====
+// The composite score is computed ONCE in Python (scoring.py, used by
+// fetch_stock.py and scan_earnings.py) and shipped in stock_data.json
+// as s.score, with a per-component breakdown whose maxima sum to 100.
+// This page only RENDERS that score. It used to recompute it in two
+// different JS functions (computeScore / computeQuickScore) that
+// disagreed with each other and with the scanner — that is how the
+// same stock showed 79 on its card and 74 in the analysis. Both names
+// now read the one stored score, so the grid, verdict, gauge and
+// strategy always agree.
+function getScore(s) {
+  if (s && s.score && typeof s.score.total === 'number') return s.score.total;
+  return null; // no stored score (e.g. demo data) — surfaces render "n/a"
 }
+function getScoreObj(s) {
+  return (s && s.score) ? s.score : null;
+}
+// Squeeze score accessors — the second, independent score, computed
+// by scoring.py's compute_squeeze_score and shipped as s.squeezeScore.
+function getSqueeze(s) {
+  if (s && s.squeezeScore && typeof s.squeezeScore.total === 'number') return s.squeezeScore.total;
+  return null;
+}
+function getSqueezeObj(s) {
+  return (s && s.squeezeScore) ? s.squeezeScore : null;
+}
+function activeScore(s) { return APP_MODE === 'squeeze' ? getSqueeze(s) : getScore(s); }
+function activeScoreObj(s) { return APP_MODE === 'squeeze' ? getSqueezeObj(s) : getScoreObj(s); }
+
+// --- MODE TOGGLE ---
+function setMode(mode) {
+  APP_MODE = mode === 'squeeze' ? 'squeeze' : 'earnings';
+  document.getElementById('modeBtnEarnings').classList.toggle('active', APP_MODE === 'earnings');
+  document.getElementById('modeBtnSqueeze').classList.toggle('active', APP_MODE === 'squeeze');
+  document.getElementById('modeHint').textContent = APP_MODE === 'squeeze'
+    ? 'Crowded shorts + a dated catalyst — the fuel-gauge board (NOT a covered-call board)'
+    : 'Premium-selling earnings plays — the covered-call board';
+  document.getElementById('scanTitle').textContent = APP_MODE === 'squeeze' ? "Today's Squeeze Candidates" : "Today's Earnings Plays";
+  if (Object.keys(DB).length) buildScanPanel(DB);
+  if (currentTicker && DB[currentTicker]) {
+    const s = DB[currentTicker];
+    if (s.excluded && APP_MODE === 'earnings') {
+      // Earnings mode keeps its hard gate — an excluded record is a
+      // squeeze-only surface. Hide the stale squeeze analysis.
+      document.getElementById('resultsArea').classList.remove('visible');
+    } else {
+      renderResults(currentTicker, s);
+      document.getElementById('resultsArea').classList.add('visible');
+    }
+  }
+}
+// Backwards-compatible names — the same single score everywhere.
+function computeScore(s) { return getScore(s); }
+function computeQuickScore(s) { return getScore(s); }
 
 function updateQuickButtons(tickers) {
   const bar = document.querySelector('.ticker-bar');
@@ -1024,6 +1138,13 @@ async function analyzeStock() {
     return;
   }
 
+  if (stock.excluded && !(APP_MODE === 'squeeze' && stock.squeezeScore)) {
+    alert(`"${ticker}" was filtered out by the scanner:\n\n• ${(stock.excludedReasons || []).join('\n• ')}\n\nIt stays in stock_data.json (excluded: true) so the reason is visible instead of the ticker silently disappearing.\n\nTip: switch to Squeeze Play mode — earnings-mode rejects are prime squeeze candidates there.`);
+    return;
+  }
+  // In Squeeze mode an earnings-excluded record IS analyzable:
+  // renderResults routes it to the squeeze surfaces only.
+
   currentStock = stock;
   document.getElementById('resultsArea').classList.remove('visible');
   const loader = document.getElementById('loadingState');
@@ -1064,8 +1185,18 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 // =============== RENDER ===============
 function renderResults(ticker, s) {
+  currentTicker = ticker;
   renderVerdict(ticker, s);
   renderChecklist(ticker, s);
+  renderStrategy(ticker, s);
+  if (s.excluded) {
+    // Minimal scanner record (earnings hard-filter exclusion): only
+    // the verdict, checklist and strategy surfaces have the fields
+    // they need. Everything else gets an explicit note instead of
+    // crashing on fields a filtered record never carried.
+    renderExcludedNote(ticker, s);
+    return;
+  }
   renderResearchLinks(ticker, s);
   renderCatalysts(ticker, s);
   renderStats(ticker, s);
@@ -1076,7 +1207,23 @@ function renderResults(ticker, s) {
   renderGauge(s);
   renderOptionsChain(s, 'calls');
   renderRiskReward(ticker, s);
-  renderStrategy(ticker, s);
+}
+
+function renderExcludedNote(ticker, s) {
+  const note = `<div style="padding:16px;color:var(--text3);font-size:12px;line-height:1.7">Minimal scanner record — ${ticker} was filtered out of Earnings mode (${(s.excludedReasons || []).join('; ')}), so the full fundamental / options panels were never built for it. The verdict, checklist and strategy above run on the fields this record does carry. Run <strong>fetch_stock.py ${ticker}</strong> for a full record.</div>`;
+  document.getElementById('researchBar').classList.remove('visible');
+  document.getElementById('catalystRow').style.display = 'none';
+  document.getElementById('statsGrid').innerHTML = note;
+  document.getElementById('chartRange').textContent = '';
+  const cv = document.getElementById('priceChart');
+  if (cv && cv.getContext) { const ctx = cv.getContext('2d'); if (ctx) ctx.clearRect(0, 0, cv.width, cv.height); }
+  document.getElementById('refinitivReport').innerHTML = '';
+  document.getElementById('peersTable').innerHTML = '';
+  document.getElementById('surpriseGrid').innerHTML = '';
+  document.getElementById('gaugeContainer').innerHTML = '';
+  document.getElementById('chainStrikes').innerHTML = '';
+  document.getElementById('rrBox').innerHTML = '';
+  document.getElementById('rrNarrative').innerHTML = '';
 }
 
 // --- RESEARCH LINKS ---
@@ -1188,6 +1335,7 @@ function renderCatalysts(ticker, s) {
   const growth = s.growthMetrics || {};
   const iv = s.impliedVolatility || {};
   const fe = s.fundamentalsExtra || {};
+  const fmtMom = v => (v === null || v === undefined) ? 'n/a' : (v > 0 ? '+' : '') + v + '%';
 
   const momColor = mom.day5 > 0 ? 'var(--green)' : (mom.day5 < 0 ? 'var(--red)' : 'var(--text)');
   const momTrendCls = mom.trend === 'Bullish' ? 'signal-bullish' : (mom.trend === 'Bearish' ? 'signal-bearish' : 'signal-neutral');
@@ -1200,10 +1348,10 @@ function renderCatalysts(ticker, s) {
   const ivSignalCls = iv.signal === 'High IV' ? 'signal-bearish' : (iv.signal === 'Low IV' ? 'signal-bullish' : 'signal-neutral');
 
   statsEl.innerHTML = `
-    <div class="mini-stat">
+        <div class="mini-stat">
       <div class="ms-label">Price Momentum</div>
-      <div class="ms-val" style="color:${momColor}">${mom.day5 > 0 ? '+' : ''}${mom.day5 || 0}%</div>
-      <div class="ms-sub">5d: ${mom.day5||0}% • 30d: ${mom.day30||0}% • 90d: ${mom.day90||0}%</div>
+      <div class="ms-val" style="color:${momColor}">${(mom.day5 === null || mom.day5 === undefined) ? 'n/a' : (mom.day5 > 0 ? '+' : '') + mom.day5 + '%'}</div>
+      <div class="ms-sub">5d: ${fmtMom(mom.day5)} • 30d: ${fmtMom(mom.day30)} • 90d: ${fmtMom(mom.day90)}</div>
       <div style="margin-top:6px"><span class="catalyst-signal ${momTrendCls}">${mom.trend || 'N/A'}</span></div>
     </div>
     <div class="mini-stat">
@@ -1212,10 +1360,11 @@ function renderCatalysts(ticker, s) {
       <div class="ms-sub">Qtr Rev: ${growth.qtrRevenueGrowth !== null ? growth.qtrRevenueGrowth + '%' : 'N/A'} • Earn: ${growth.earningsGrowth !== null ? growth.earningsGrowth + '%' : 'N/A'}</div>
       <div style="margin-top:6px"><span class="catalyst-signal ${revSignalCls}">${growth.signal || 'N/A'}</span></div>
     </div>
-    <div class="mini-stat">
+        <div class="mini-stat">
       <div class="ms-label">Implied Volatility</div>
       <div class="ms-val">${ivDisplay}</div>
       <div class="ms-sub">Expected Move: ${iv.expectedMovePct ? '±' + iv.expectedMovePct + '% ($' + iv.expectedMoveDollar + ')' : 'N/A'}</div>
+      <div class="ms-sub">Realized Earnings Move: ${(s.earningsMove && s.earningsMove.avgAbsMovePct != null) ? '±' + s.earningsMove.avgAbsMovePct + '% avg (last ' + s.earningsMove.count + ' prints)' : 'n/a'}</div>
       <div style="margin-top:6px"><span class="catalyst-signal ${ivSignalCls}">${iv.signal || 'N/A'}</span></div>
     </div>
     <div class="mini-stat">
@@ -1235,76 +1384,86 @@ function formatNum(n) {
 
 // --- VERDICT ---
 function renderVerdict(ticker, s) {
-  const score = computeScore(s);
-  const grade = score >= 75 ? 'A' : score >= 50 ? 'B' : 'C';
-  const gradeLabel = score >= 75 ? 'Strong Candidate' : score >= 50 ? 'Conditional Play' : 'Does Not Meet Criteria';
+  const squeezeMode = APP_MODE === 'squeeze';
+  const score = squeezeMode ? getSqueeze(s) : getScore(s);
+  const so = squeezeMode ? getSqueezeObj(s) : getScoreObj(s);
   const el = document.getElementById('verdictBar');
-  el.innerHTML = `
+
+  // Clear any previous score-breakdown block
+  const oldBreakdown = document.getElementById('scoreBreakdown');
+  if (oldBreakdown) oldBreakdown.remove();
+
+  let scoreHTML, breakdownHTML = '';
+  if (score === null) {
+    scoreHTML = `
+    <div class="verdict-score">
+      <div class="verdict-num grade-C">—</div>
+      <div>
+        <div class="verdict-label">${ticker} — ${s.name}</div>
+        <div class="verdict-sub">No ${squeezeMode ? 'squeeze ' : ''}score — this record carries no Python-computed ${squeezeMode ? 'squeezeScore' : 'score'} (demo data?). Run fetch_stock.py to generate one. • ${s.sector} • Earnings: ${s.earningsDate} (${s.daysToEarnings}d away)</div>
+      </div>
+    </div>`;
+  } else {
+    let grade, sub;
+    if (squeezeMode) {
+      grade = so.grade === 'PRIMED' ? 'A' : so.grade === 'LOADED' ? 'B' : 'C';
+      const gradeLabel = so.eligible === false ? 'Not Squeeze-Eligible — No Dated Catalyst ≤ ~30d'
+        : so.grade === 'PRIMED' ? 'Primed — Fuel + Catalyst In Place'
+        : so.grade === 'LOADED' ? 'Loaded — Partial Squeeze Setup' : 'Thin — Not A Squeeze Setup';
+      sub = `${gradeLabel}${so.partial ? ' • ⚠ partial data' : ''} • SI ${s.shortInt} of float • ${s.shortRatio ? s.shortRatio + 'd to cover' : 'days to cover n/a'}${so.fastCover ? ' • ⚡ fast cover' : ''} • Catalyst (earnings): ${s.earningsDate} (${s.daysToEarnings}d away)`;
+    } else {
+      grade = score >= 75 ? 'A' : score >= 50 ? 'B' : 'C';
+      const gradeLabel = score >= 75 ? 'Strong Candidate' : score >= 50 ? 'Conditional Play' : 'Does Not Meet Criteria';
+      sub = `${gradeLabel}${so.partial ? ' • ⚠ partial data' : ''} • ${s.sector} • Earnings: ${s.earningsDate} (${s.daysToEarnings}d away)`;
+    }
+    scoreHTML = `
     <div class="verdict-score">
       <div class="verdict-num grade-${grade}">${score}</div>
       <div>
         <div class="verdict-label">${ticker} — ${s.name}</div>
-        <div class="verdict-sub">${gradeLabel} • ${s.sector} • Earnings: ${s.earningsDate} (${s.daysToEarnings}d away)</div>
+        <div class="verdict-sub">${sub}</div>
       </div>
-    </div>
+    </div>`;
+    if (so && so.components) {
+      const rows = so.components.map(c => c.available
+        ? `<div class="sb-row"><span class="sb-label">${c.label}</span><span class="sb-detail">${c.detail}</span><span class="sb-pts">${c.points} / ${c.max}</span></div>`
+        : `<div class="sb-row sb-na"><span class="sb-label">${c.label}</span><span class="sb-detail">${c.detail}</span><span class="sb-pts">n/a</span></div>`).join('');
+      breakdownHTML = `<div class="score-breakdown">
+        <div class="sb-title">How this ${squeezeMode ? 'squeeze ' : ''}score is built — one formula (scoring.py), component maxima sum to 100</div>
+        ${rows}
+        ${so.capNote ? `<div class="sb-note">⚠ ${so.capNote}</div>` : ''}
+        ${so.partial ? `<div class="sb-note">⚠ ${so.partialNote}</div>` : ''}
+      </div>`;
+    }
+  }
+
+  el.innerHTML = `
+    ${scoreHTML}
     <div style="text-align:right">
       <div style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800">$${s.price.toFixed(2)}</div>
-      <div style="font-size:11px;color:var(--text3)">${s.dayLow.toFixed(2)} - ${s.dayHigh.toFixed(2)} today</div>
+      <div style="font-size:11px;color:var(--text3)">${typeof s.dayLow === 'number' ? s.dayLow.toFixed(2) : '—'} - ${typeof s.dayHigh === 'number' ? s.dayHigh.toFixed(2) : '—'} today</div>
     </div>
   `;
+  if (breakdownHTML) {
+    const wrap = document.createElement('div');
+    wrap.id = 'scoreBreakdown';
+    wrap.innerHTML = breakdownHTML;
+    el.insertAdjacentElement('afterend', wrap);
+  }
 }
 
-function computeScore(s) {
-  let score = 50;
-  // Price range
-  if (s.price >= 12 && s.price <= 25) score += 12; else if (s.price < 12 || s.price > 40) score -= 15; else score += 5;
-  // PE
-  if (s.pe > 0 && s.pe < 50) score += 12; else if (s.pe < 0 || s.pe > 100) score -= 12; else score -= 5;
-  // Not at highs
-  const pctFromHigh = ((s.wk52High - s.price) / s.wk52High) * 100;
-  if (pctFromHigh > 20) score += 8; else if (pctFromHigh < 5) score -= 10;
-  // Short interest
-  const si = parseFloat(s.shortInt);
-  if (si < 10) score += 5; else score -= 5;
-  // Days to earnings
-  if (s.daysToEarnings >= 7) score += 5; else score -= 8;
-  // Earnings surprises
-  const beats = s.surprises.filter(x => x.pct > 0).length;
-  score += (beats - 2) * 4;
-  // Sentiment
-  if (s.sentiment.value === 'Undervalued') score += 6;
-  if (s.sentiment.value === 'Overvalued') score -= 8;
-  if (s.sentiment.quality.includes('High')) score += 4;
-  if (s.sentiment.financials === 'Strong' || s.sentiment.financials === 'Improving') score += 4;
-  if (s.sentiment.financials === 'Weak') score -= 6;
-
-  // NEW: Momentum bonus
-  if (s.momentum) {
-    if (s.momentum.trend === 'Bullish') score += 4;
-    else if (s.momentum.trend === 'Bearish') score -= 4;
-  }
-  // NEW: Revenue growth bonus
-  if (s.growthMetrics && s.growthMetrics.revenueGrowth !== null) {
-    if (s.growthMetrics.revenueGrowth > 15) score += 5;
-    else if (s.growthMetrics.revenueGrowth > 0) score += 2;
-    else if (s.growthMetrics.revenueGrowth < -5) score -= 5;
-  }
-  // NEW: Insider activity bonus
-  if (s.insiderActivity) {
-    if (s.insiderActivity.netSignal === 'Bullish') score += 3;
-    else if (s.insiderActivity.netSignal === 'Bearish') score -= 3;
-  }
-  // NEW: Analyst actions bonus
-  if (s.analystActions) {
-    if (s.analystActions.netSignal === 'Bullish') score += 3;
-    else if (s.analystActions.netSignal === 'Bearish') score -= 3;
-  }
-
-  return Math.max(0, Math.min(100, score));
-}
+// computeScore() / computeQuickScore() are defined once, with the
+// unified-score accessors next to buildScanCard above. They return the
+// Python-computed s.score.total — there is no second scoring formula
+// in this page anymore (the old base-50 JS scorer that disagreed with
+// the scanner and the grid lived here).
 
 // --- CHECKLIST ---
 function renderChecklist(ticker, s) {
+  document.getElementById('checklistLabel').textContent = APP_MODE === 'squeeze'
+    ? 'Squeeze Play Checklist — Fuel, Burn, Catalyst'
+    : 'Earnings Play Criteria Checklist';
+  if (APP_MODE === 'squeeze') { renderSqueezeChecklist(ticker, s); return; }
   const pctFromHigh = ((s.wk52High - s.price) / s.wk52High * 100).toFixed(1);
   const pctFromLow = ((s.price - s.wk52Low) / s.wk52Low * 100).toFixed(1);
   const si = parseFloat(s.shortInt);
@@ -1335,10 +1494,13 @@ function renderChecklist(ticker, s) {
       text: notAtHighs ? `Range: $${s.wk52Low} - $${s.wk52High}. Not at highs — upside may not be priced in.` : `Near 52-week highs. Good news may already be reflected in price. Caution.`
     },
     {
-      status: shortOk ? 'pass' : 'warn',
-      icon: shortOk ? '✓' : '⚠',
-      title: `Short Interest: ${s.shortInt} — Target: < 10%`,
-      text: shortOk ? `Short ratio: ${s.shortRatio} days to cover. Healthy — no squeeze risk distorting price.` : `Elevated short interest. Could cause volatility spikes. Short squeeze or continued selling.`
+      // Days to cover is the gate that matters (how fast shorts can exit);
+      // SI % of float is context. The AAL lesson: 13.9% SI but 1.5 days to
+      // cover = fast-cover fuel, not slow borrow stress.
+      status: !s.shortRatio ? 'neutral' : (s.shortRatio <= 3 ? 'pass' : (s.shortRatio <= 5 ? 'warn' : 'fail')),
+      icon: !s.shortRatio ? '→' : (s.shortRatio <= 3 ? '✓' : (s.shortRatio <= 5 ? '⚠' : '✗')),
+      title: s.shortRatio ? `Short Borrow: ${s.shortRatio} days to cover — Target: ≤ 3 days (SI ${s.shortInt} of float)` : `Short Borrow: n/a — days to cover unavailable (SI ${s.shortInt})`,
+      text: !s.shortRatio ? 'Days-to-cover was not in the data feed for this ticker, so the borrow gate could not be measured.' : (s.shortRatio <= 3 ? `Shorts can cover in ~${s.shortRatio} day(s) of average volume — the exit is not crowded. Note: high SI% with low days-to-cover means any squeeze pop fades fast; it is fuel, not borrow stress.` : (s.shortRatio <= 5 ? `${s.shortRatio} days to cover — a moderately crowded exit. Covering takes days, so short-driven moves can extend.` : `${s.shortRatio} days to cover — a crowded exit. Shorts need over a week of average volume to unwind; squeeze and borrow-stress risk are real.`))
     },
     {
       status: daysOk ? 'pass' : 'fail',
@@ -1366,16 +1528,27 @@ function renderChecklist(ticker, s) {
     },
   ];
 
-  // Add momentum check if available
+  // Add momentum check if available — missing values are "n/a", never
+  // dressed up as a measured "Mixed" (the old null-handling bug).
   if (s.momentum) {
     const m = s.momentum;
-    const momOk = m.trend === 'Bullish';
-    checks.push({
-      status: momOk ? 'pass' : (m.trend === 'Bearish' ? 'fail' : 'warn'),
-      icon: momOk ? '✓' : (m.trend === 'Bearish' ? '✗' : '⚠'),
-      title: `Momentum: ${m.trend} — 5d: ${m.day5>0?'+':''}${m.day5}% | 30d: ${m.day30>0?'+':''}${m.day30}% | 90d: ${m.day90>0?'+':''}${m.day90}%`,
-      text: momOk ? 'Positive momentum heading into earnings. Price trend supports entry.' : (m.trend === 'Bearish' ? 'Negative momentum — falling into earnings. Higher risk of continuation.' : 'Mixed signals — short and medium term trends disagree.')
-    });
+    if (m.day5 === null || m.day5 === undefined || m.day30 === null || m.day30 === undefined || m.trend === 'No Data') {
+      checks.push({
+        status: 'neutral',
+        icon: '→',
+        title: 'Momentum: n/a — insufficient price history',
+        text: 'Momentum could not be measured for this ticker, so it was excluded from the score rather than scored as if it were neutral.'
+      });
+    } else {
+      const momOk = m.trend === 'Bullish';
+      const fmtM = v => (v === null || v === undefined) ? 'n/a' : (v > 0 ? '+' : '') + v + '%';
+      checks.push({
+        status: momOk ? 'pass' : (m.trend === 'Bearish' ? 'fail' : 'warn'),
+        icon: momOk ? '✓' : (m.trend === 'Bearish' ? '✗' : '⚠'),
+        title: `Momentum: ${m.trend} — 5d: ${fmtM(m.day5)} | 30d: ${fmtM(m.day30)} | 90d: ${fmtM(m.day90)}`,
+        text: momOk ? 'Positive momentum heading into earnings. Price trend supports entry.' : (m.trend === 'Bearish' ? 'Negative momentum — falling into earnings. Higher risk of continuation.' : 'Mixed signals — short and medium term trends disagree.')
+      });
+    }
   }
 
   // Add revenue growth check if available
@@ -1390,15 +1563,53 @@ function renderChecklist(ticker, s) {
     });
   }
 
-  // Add IV check if available  
-  if (s.impliedVolatility && s.impliedVolatility.iv !== null) {
+  // Add IV check if available — judged against the stock's REALIZED
+  // earnings moves: a premium seller wants implied ≥ realized.
+  if (s.impliedVolatility && s.impliedVolatility.iv !== null && s.impliedVolatility.iv !== undefined) {
     const ivData = s.impliedVolatility;
+    const em = s.earningsMove || {};
+    const hasRealized = em.avgAbsMovePct !== null && em.avgAbsMovePct !== undefined;
+    const rich = hasRealized && ivData.expectedMovePct >= em.avgAbsMovePct;
     checks.push({
-      status: ivData.signal === 'High IV' ? 'warn' : 'pass',
-      icon: ivData.signal === 'High IV' ? '⚠' : '✓',
-      title: `Implied Volatility: ${ivData.iv}% — Expected Move ±${ivData.expectedMovePct}% ($${ivData.expectedMoveDollar})`,
-      text: ivData.signal === 'High IV' ? 'High IV means expensive premiums (good for sellers) but larger expected moves (more risk). Size positions conservatively.' : 'Moderate IV. Premiums reflect reasonable expectations — balanced risk/reward for covered calls.'
+      status: !hasRealized ? 'neutral' : (rich ? 'pass' : 'warn'),
+      icon: !hasRealized ? '→' : (rich ? '✓' : '⚠'),
+      title: `Implied Volatility: ${ivData.iv}% — Expected Move ±${ivData.expectedMovePct}% ($${ivData.expectedMoveDollar})` + (hasRealized ? ` vs Realized Avg ±${em.avgAbsMovePct}% (last ${em.count} prints)` : ' — realized move history n/a'),
+      text: !hasRealized ? 'The options market expects this move, but realized earnings-move history was unavailable, so the premium edge could not be verified — the score gave only partial credit for IV level.' : (rich ? `The market is pricing a bigger move (±${ivData.expectedMovePct}%) than this stock has actually averaged on earnings (±${em.avgAbsMovePct}%). For a premium seller that gap is the edge — you are paid for more movement than history delivers.` : `Caution: the implied move (±${ivData.expectedMovePct}%) is SMALLER than what this stock has actually done on earnings (±${em.avgAbsMovePct}% average). The premium may be underpriced for the risk — this print has historically moved more than the options market is charging for.`)
     });
+  }
+
+  // Guidance flag — the guide moves the stock more than the EPS line,
+  // and the free data feed doesn't carry it. Shown honestly.
+  if (s.guidance) {
+    const g = s.guidance;
+    const gMap = {
+      raised: ['pass', '✓', 'Guidance was raised on the last print — management is leaning forward.'],
+      held: ['neutral', '→', 'Guidance was held on the last print — no new signal from management.'],
+      cut: ['fail', '✗', 'Guidance was CUT on the last print — the guide, not the EPS line, is what the stock trades on. Extra caution.'],
+      unknown: ['neutral', '→', 'Guidance direction is not in the free data feed — read the earnings press release before entering. A guidance cut can sink an EPS "beat".']
+    };
+    const gm = gMap[g.flag] || gMap.unknown;
+    checks.push({ status: gm[0], icon: gm[1], title: `Guidance (last print): ${g.flag}`, text: gm[2] });
+  }
+
+  // Ex-dividend / early-assignment flag for the covered call
+  if (s.dividendFlags && s.dividendFlags.paysDividend) {
+    const df = s.dividendFlags;
+    if (df.exDivInWindow) {
+      checks.push({
+        status: 'warn',
+        icon: '⚠',
+        title: `Ex-Dividend Inside Holding Window: ${df.exDivDate}`,
+        text: df.note
+      });
+    } else if (df.exDivDate) {
+      checks.push({
+        status: 'neutral',
+        icon: '→',
+        title: `Dividend Payer — Next Ex-Date: ${df.exDivDate}`,
+        text: 'The ex-dividend date falls outside the covered-call holding window (through ~2 weeks after earnings), so dividend-driven early-assignment risk is low for this trade.'
+      });
+    }
   }
 
   // Add insider activity check if available
@@ -1412,6 +1623,82 @@ function renderChecklist(ticker, s) {
       text: insOk ? 'Net insider buying signals management confidence heading into earnings.' : (ins.netSignal === 'Bearish' ? 'Net insider selling — executives reducing exposure. May signal caution.' : 'Balanced insider activity — no strong directional signal.')
     });
   }
+
+  document.getElementById('checkGrid').innerHTML = checks.map(c => `
+    <div class="check-item ${c.status}">
+      <div class="check-icon">${c.icon}</div>
+      <div class="check-text"><strong>${c.title}</strong><span>${c.text}</span></div>
+    </div>
+  `).join('');
+}
+
+// --- SQUEEZE CHECKLIST ---
+// Fuel (SI%), burn (days to cover), catalyst (dated print ≤ ~30d),
+// SI trend, realized move. Statuses mirror scoring.py's
+// compute_squeeze_score bands; the detail text is the component's
+// own, so this list can never disagree with the score breakdown.
+function renderSqueezeChecklist(ticker, s) {
+  const checks = [];
+  const sqo = getSqueezeObj(s);
+  const comp = key => (sqo && sqo.components) ? sqo.components.find(c => c.key === key) : null;
+  const siPct = parseFloat(s.shortInt);
+  const dtc = (typeof s.shortRatio === 'number' && s.shortRatio > 0) ? s.shortRatio : null;
+
+  if (s.excluded) {
+    checks.push({
+      status: 'warn',
+      icon: '🧨',
+      title: 'Filtered OUT of Earnings mode — a squeeze candidate here',
+      text: `Earnings filter: ${(s.excludedReasons || []).join('; ')}. Those rejects are exactly where squeeze candidates come from — the crowding that fails the earnings screen is the fuel for this one.`
+    });
+  }
+
+  // Fuel load — short interest % of float
+  const fuel = comp('fuel');
+  checks.push({
+    status: isNaN(siPct) ? 'neutral' : (siPct >= 10 ? 'pass' : (siPct >= 5 ? 'warn' : 'fail')),
+    icon: isNaN(siPct) ? '→' : (siPct >= 10 ? '✓' : (siPct >= 5 ? '⚠' : '✗')),
+    title: `Fuel Load: Short Interest ${isNaN(siPct) ? 'n/a' : siPct + '% of float'} — crowded shorts are the fuel`,
+    text: fuel ? fuel.detail : 'Short interest was not in the data feed for this ticker, so the fuel load could not be measured.'
+  });
+
+  // Burn time — days to cover, with the fast-cover flag under 1.5
+  const burn = comp('burn');
+  checks.push({
+    status: dtc === null ? 'neutral' : (dtc < 1.5 ? 'warn' : 'pass'),
+    icon: dtc === null ? '→' : (dtc < 1.5 ? '⚠' : '✓'),
+    title: dtc === null ? 'Burn Time: days to cover n/a' : `Burn Time: ${dtc} days to cover${dtc < 1.5 ? ' — ⚡ FAST COVER' : ''}`,
+    text: dtc === null ? 'Days-to-cover was not in the data feed, so burn time could not be measured.' : (burn ? burn.detail : '')
+  });
+
+  // Catalyst — a dated earnings event within ~30 days is REQUIRED
+  const days = (typeof s.daysToEarnings === 'number') ? s.daysToEarnings : null;
+  checks.push({
+    status: days === null ? 'neutral' : (days <= 30 ? 'pass' : 'fail'),
+    icon: days === null ? '→' : (days <= 30 ? '✓' : '✗'),
+    title: `Catalyst: ${s.earningsDate || 'no date in feed'}${days === null ? '' : ` — ${days} days out`} (required ≤ ~30d)`,
+    text: days === null ? 'No dated earnings event in the feed — with nothing to ignite the fuel there is no squeeze setup, and the score is capped.' : (days <= 30 ? `The ${s.earningsDate} print is the ignition source — a scheduled event shorts cannot simply wait out.` : `The next print is ~${days} days out — outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock; the score is capped until a catalyst comes into range.`)
+  });
+
+  // SI trend — yfinance carries current SI only, so this is honestly
+  // n/a unless a record arrives carrying a prior-report comparison.
+  const trend = comp('trend');
+  checks.push({
+    status: (!trend || !trend.available) ? 'neutral' : (trend.points >= 7 ? 'pass' : (trend.points >= 4 ? 'warn' : 'fail')),
+    icon: (!trend || !trend.available) ? '→' : (trend.points >= 7 ? '✓' : (trend.points >= 4 ? '⚠' : '✗')),
+    title: (!trend || !trend.available) ? 'SI Trend: n/a — prior report not in feed' : `SI Trend: ${trend.detail}`,
+    text: (!trend || !trend.available) ? 'The feed reports only the current short interest, so whether the crowd is still growing cannot be measured here. Check the prior FINRA report (MarketBeat / Nasdaq short interest) before sizing — rising SI into the print is fresh fuel; falling SI means the trade is already unwinding.' : trend.detail
+  });
+
+  // Realized earnings move — does this name actually jump on prints?
+  const em = s.earningsMove || {};
+  const mv = (em.avgAbsMovePct !== null && em.avgAbsMovePct !== undefined) ? em.avgAbsMovePct : null;
+  checks.push({
+    status: mv === null ? 'neutral' : (mv >= 5 ? 'pass' : (mv >= 3 ? 'warn' : 'fail')),
+    icon: mv === null ? '→' : (mv >= 5 ? '✓' : (mv >= 3 ? '⚠' : '✗')),
+    title: `Realized Earnings Move: ${mv === null ? 'n/a' : `±${mv}% average over the last ${em.count} prints`}`,
+    text: mv === null ? 'No measured earnings-day move history in this record — a squeeze needs a stock that actually jumps on its catalyst.' : (mv >= 5 ? 'A proven mover: this name reliably produces a spike around its prints, which is what the squeeze is positioned for.' : 'Modest historical earnings moves — even a well-formed setup may produce a smaller pop in this name.')
+  });
 
   document.getElementById('checkGrid').innerHTML = checks.map(c => `
     <div class="check-item ${c.status}">
@@ -1584,12 +1871,24 @@ function renderSurprises(s) {
 
 // --- GAUGE ---
 function renderGauge(s) {
-  const score = computeScore(s);
+  if (APP_MODE === 'squeeze') { renderSqueezeGauge(s); return; }
+  document.getElementById('gaugeHeader').textContent = 'Composite Sentiment Score';
+  const score = getScore(s);
+  const so = getScoreObj(s);
+  const el = document.getElementById('gaugeContainer');
+  if (score === null) {
+    el.innerHTML = `<div style="padding:16px;color:var(--text3);font-size:12px;line-height:1.7">No composite score for this record — scores are computed by the Python fetcher (scoring.py). Run <strong>fetch_stock.py</strong> to generate one.</div>`;
+    return;
+  }
   const color = score >= 75 ? 'var(--green)' : score >= 50 ? 'var(--amber)' : 'var(--red)';
   const circumference = 2 * Math.PI * 45;
   const offset = circumference - (score / 100) * circumference;
+  const em = s.earningsMove || {};
+  const moveRow = (em.avgAbsMovePct != null || em.impliedMovePct != null)
+    ? `<div class="gd-item"><span class="gd-label">Implied vs Realized</span><span>${em.impliedMovePct != null ? '±' + em.impliedMovePct + '%' : 'n/a'} vs ${em.avgAbsMovePct != null ? '±' + em.avgAbsMovePct + '%' : 'n/a'}</span></div>` : '';
+  const guideRow = s.guidance ? `<div class="gd-item"><span class="gd-label">Guidance</span><span>${s.guidance.flag}</span></div>` : '';
 
-  document.getElementById('gaugeContainer').innerHTML = `
+  el.innerHTML = `
     <div class="gauge">
       <svg width="120" height="120" viewBox="0 0 120 120">
         <circle class="gauge-bg" cx="60" cy="60" r="45"/>
@@ -1608,8 +1907,52 @@ function renderGauge(s) {
       <div class="gd-item"><span class="gd-label">Quality</span><span>${s.sentiment.quality}</span></div>
       <div class="gd-item"><span class="gd-label">Financials</span><span>${s.sentiment.financials}</span></div>
       <div class="gd-item"><span class="gd-label">Beats (4Q)</span><span>${s.surprises.filter(x=>x.pct>0).length}/4</span></div>
-      <div class="gd-item"><span class="gd-label">Short Int.</span><span>${s.shortInt}</span></div>
+      <div class="gd-item"><span class="gd-label">Short Borrow</span><span>${s.shortRatio ? s.shortRatio + 'd to cover' : 'n/a'} (SI ${s.shortInt})</span></div>
       <div class="gd-item"><span class="gd-label">To Earnings</span><span>${s.daysToEarnings}d</span></div>
+      ${moveRow}
+      ${guideRow}
+      ${so && so.partial ? `<div class="gd-item"><span class="gd-label">Data</span><span style="color:var(--amber)">⚠ partial — see score breakdown</span></div>` : ''}
+    </div>
+  `;
+}
+
+// --- SQUEEZE GAUGE ---
+function renderSqueezeGauge(s) {
+  document.getElementById('gaugeHeader').textContent = 'Squeeze Score';
+  const score = getSqueeze(s);
+  const so = getSqueezeObj(s);
+  const el = document.getElementById('gaugeContainer');
+  if (score === null) {
+    el.innerHTML = `<div style="padding:16px;color:var(--text3);font-size:12px;line-height:1.7">No squeeze score for this record — scores are computed by the Python fetcher (scoring.py). Run <strong>fetch_stock.py</strong> to generate one.</div>`;
+    return;
+  }
+  const color = so.grade === 'PRIMED' ? 'var(--green)' : so.grade === 'LOADED' ? 'var(--amber)' : 'var(--red)';
+  const circumference = 2 * Math.PI * 45;
+  const offset = circumference - (score / 100) * circumference;
+  const em = s.earningsMove || {};
+
+  el.innerHTML = `
+    <div class="gauge">
+      <svg width="120" height="120" viewBox="0 0 120 120">
+        <circle class="gauge-bg" cx="60" cy="60" r="45"/>
+        <circle class="gauge-fill" cx="60" cy="60" r="45"
+          stroke="${color}"
+          stroke-dasharray="${circumference}"
+          stroke-dashoffset="${offset}"/>
+      </svg>
+      <div class="gauge-center">
+        <div class="gauge-score" style="color:${color}">${score}</div>
+        <div class="gauge-label">/ 100 squeeze</div>
+      </div>
+    </div>
+    <div class="gauge-details">
+      <div class="gd-item"><span class="gd-label">Grade</span><span>${so.grade || ''}</span></div>
+      <div class="gd-item"><span class="gd-label">Fuel (SI)</span><span>${s.shortInt} of float</span></div>
+      <div class="gd-item"><span class="gd-label">Burn (DTC)</span><span>${s.shortRatio ? s.shortRatio + 'd to cover' : 'n/a'}${so.fastCover ? ' ⚡ fast cover' : ''}</span></div>
+      <div class="gd-item"><span class="gd-label">Catalyst</span><span>${s.earningsDate} (${s.daysToEarnings}d)</span></div>
+      <div class="gd-item"><span class="gd-label">Realized Move</span><span>${em.avgAbsMovePct != null ? '±' + em.avgAbsMovePct + '%' : 'n/a'}</span></div>
+      <div class="gd-item"><span class="gd-label">Eligible</span><span>${so.eligible === false ? '✗ no catalyst ≤ ~30d — capped' : '✓ catalyst in window'}</span></div>
+      ${so.partial ? `<div class="gd-item"><span class="gd-label">Data</span><span style="color:var(--amber)">⚠ partial — see score breakdown</span></div>` : ''}
     </div>
   `;
 }
@@ -1663,6 +2006,8 @@ function renderOptionsChain(s, view) {
 
 // --- RISK/REWARD ---
 function renderRiskReward(ticker, s) {
+  if (APP_MODE === 'squeeze') { renderSqueezeRisk(ticker, s); return; }
+  document.getElementById('rrHeader').textContent = 'Risk / Reward (100 Lot Covered Call)';
   // Covered call strategy: buy 100 shares, sell 1 ATM call
   const shares100 = s.price * 100;
   const atmIdx = s.options.strikes.reduce((best, strike, i) =>
@@ -1671,17 +2016,20 @@ function renderRiskReward(ticker, s) {
   const callPremium = s.options.calls[atmIdx];
   const premiumCollected = callPremium * 100;
 
-  // Use 90d worst case
-  const maxLoss = ((s.price - s.risk90d.worst) * 100) - premiumCollected;
+  // SCENARIO loss: the stock falls to its 90-day low. A plausible bad
+  // case — NOT the maximum loss. (The old card mislabeled this "Max Loss".)
+  const scenarioLoss = ((s.price - s.risk90d.worst) * 100) - premiumCollected;
+  // TRUE max loss: the stock goes to zero; only the premium offsets it.
+  const trueMaxLoss = shares100 - premiumCollected;
   const maxGain = ((atmStrike - s.price) * 100) + premiumCollected;
   const breakeven = s.price - callPremium;
   const roiPct = (premiumCollected / shares100 * 100).toFixed(1);
 
   document.getElementById('rrBox').innerHTML = `
     <div class="rr-card loss-card">
-      <div class="rr-title">Max Loss (90d Worst)</div>
-      <div class="rr-amount">-$${Math.abs(maxLoss).toFixed(0)}</div>
-      <div class="rr-detail">If stock hits $${s.risk90d.worst} by expiry</div>
+      <div class="rr-title">Scenario Loss — Falls to 90d Low</div>
+      <div class="rr-amount">-$${Math.abs(scenarioLoss).toFixed(0)}</div>
+      <div class="rr-detail">If stock falls to $${s.risk90d.worst} (its 90-day low) by expiry. A bad case — not the worst case (see below).</div>
     </div>
     <div class="rr-card gain-card">
       <div class="rr-title">Max Gain (Capped)</div>
@@ -1696,13 +2044,64 @@ function renderRiskReward(ticker, s) {
     • Sell 1 × $${atmStrike} Call @ $${callPremium.toFixed(2)} = <strong style="color:var(--green)">$${premiumCollected.toFixed(0)}</strong> premium collected<br>
     • Breakeven: <strong style="color:var(--text)">$${breakeven.toFixed(2)}</strong><br>
     • Premium ROI: <strong style="color:var(--amber)">${roiPct}%</strong> on capital<br>
-    • Risk/Reward Ratio: <strong style="color:var(--text)">${(maxGain / Math.abs(maxLoss)).toFixed(2)}</strong>
+    • Risk/Reward (gain vs scenario loss): <strong style="color:var(--text)">${(maxGain / Math.abs(scenarioLoss)).toFixed(2)}</strong><br>
+    • <strong style="color:var(--red)">True max loss: -$${trueMaxLoss.toFixed(0)}</strong> — if ${ticker} goes to $0 the shares are worthless and only the $${premiumCollected.toFixed(0)} premium offsets the loss. The 90-day-low figure above is a scenario, not a floor.<br>
+    • <strong style="color:var(--text)">Print plan:</strong> HOLD THROUGH the ${s.earningsDate} print — the premium in this math exists because of the earnings move; closing before the print forfeits that edge. If owning through the print is not acceptable, close the whole position before earnings instead.
+  `;
+}
+
+// --- SQUEEZE RISK/REWARD (married put) ---
+function renderSqueezeRisk(ticker, s) {
+  document.getElementById('rrHeader').textContent = 'Risk / Reward (Married Put — Squeeze)';
+  const so = getSqueezeObj(s);
+  // Married put: long 100 shares + Buy to Open 1 protective put.
+  // Worst case per share = entry − strike + premium paid: the put
+  // floors the exit at the strike, and the premium is spent either
+  // way. Strike/premium come from the placeholder ATM grid — real
+  // premiums live in Fidelity (link above the chain).
+  const atmIdx = s.options.strikes.reduce((best, strike, i) =>
+    Math.abs(strike - s.price) < Math.abs(s.options.strikes[best] - s.price) ? i : best, 0);
+  const putStrike = s.options.strikes[atmIdx];
+  const putPremium = s.options.puts[atmIdx];
+  const entry = s.price;
+  const shares100 = entry * 100;
+  const premiumPaid = putPremium * 100;
+  const worstPerShare = (entry - putStrike) + putPremium;
+  const worstTotal = worstPerShare * 100;
+  const breakeven = entry + putPremium;
+
+  document.getElementById('rrBox').innerHTML = `
+    <div class="rr-card loss-card">
+      <div class="rr-title">Married Put — True Worst Case</div>
+      <div class="rr-amount">-$${worstTotal.toFixed(0)}</div>
+      <div class="rr-detail">Stock at/below the $${putStrike.toFixed(1)} strike at expiry: shares exit at the strike via the put. (entry − strike + premium) × 100 — this is the floor, not a scenario.</div>
+    </div>
+    <div class="rr-card gain-card">
+      <div class="rr-title">Upside — Uncapped</div>
+      <div class="rr-amount">No cap</div>
+      <div class="rr-detail">Nothing is sold against the shares. Every dollar of a squeeze move above $${breakeven.toFixed(2)} is profit — the whole point of the structure.</div>
+    </div>
+  `;
+
+  document.getElementById('rrNarrative').innerHTML = `
+    <strong style="color:var(--amber)">Married Put on 100 shares:</strong><br>
+    • Buy 100 × ${ticker} @ $${entry.toFixed(2)} = <strong style="color:var(--text)">$${shares100.toFixed(0)}</strong><br>
+    • Buy to Open 1 × $${putStrike.toFixed(1)} Put @ $${putPremium.toFixed(2)} (est.) = <strong style="color:var(--text)">$${premiumPaid.toFixed(0)}</strong> premium paid<br>
+    • Worst case: <strong style="color:var(--red)">-$${worstTotal.toFixed(0)}</strong> = (entry $${entry.toFixed(2)} − strike $${putStrike.toFixed(1)} + premium $${putPremium.toFixed(2)}) × 100 shares<br>
+    • Breakeven at expiry: <strong style="color:var(--text)">$${breakeven.toFixed(2)}</strong> — above that, the position profits dollar-for-dollar with no cap<br>
+    • <strong style="color:var(--text)">Exit discipline:</strong> take the pop when offered — ${so && so.fastCover ? 'days to cover here is under 1.5, so ' : ''}low days-to-cover squeezes resolve in 1–2 sessions. A squeeze you don't sell into is usually a round trip back to entry.<br>
+    • Premiums above are placeholder-chain estimates — confirm the real put premium in Fidelity before entering; the worst case moves dollar-for-dollar with it.
   `;
 }
 
 // --- STRATEGY ---
 function renderStrategy(ticker, s) {
-  const score = computeScore(s);
+  if (APP_MODE === 'squeeze') { renderSqueezeStrategy(ticker, s); return; }
+  const score = getScore(s);
+  if (score === null) {
+    document.getElementById('strategyNotes').innerHTML = `<span style="color:var(--amber);font-weight:700">⚠ NO SCORE AVAILABLE</span><br><br>This record carries no Python-computed score (demo data, or fetched before scoring was unified in scoring.py). Run <strong>fetch_stock.py ${ticker}</strong> and refresh — no recommendation is shown without the one shared score.`;
+    return;
+  }
   const el = document.getElementById('strategyNotes');
   const priceOk = s.price >= 10 && s.price <= 25;
   const peOk = s.pe > 0 && s.pe < 50;
@@ -1725,7 +2124,63 @@ function renderStrategy(ticker, s) {
     <strong>Better alternatives:</strong> Scan for peers in the same sector that better fit the $15-$20, sub-50 PE, not-at-highs criteria.`;
   }
 
+  // Print plan — explicit, every time: the default is to hold through
+  // the print (that is what the premium pays for); the alternative is a
+  // full close before earnings, never an accidental unhedged hold.
+  strat += `<br><br><strong>Print plan:</strong> HOLD THROUGH the ${s.earningsDate} earnings print and exit after the IV crush — the premium only compensates you if you are there for the move. If that risk is not acceptable on this name, close the ENTIRE position before the print instead.`;
+  if (s.dividendFlags && s.dividendFlags.exDivInWindow) {
+    strat += `<br><br><strong style="color:var(--amber)">⚠ Dividend flag:</strong> ${s.dividendFlags.note}`;
+  }
+  if (s.guidance && s.guidance.flag === 'cut') {
+    strat += `<br><br><strong style="color:var(--red)">⚠ Guidance flag:</strong> guidance was cut on the last print — weigh that more than the EPS surprise history.`;
+  }
+
   el.innerHTML = strat;
+}
+
+// --- SQUEEZE STRATEGY ---
+// Long-side squeeze structures ONLY: married put (shares + bought
+// protective put) or a bull call spread. NEVER a covered call —
+// selling a call caps the stock at the strike and sells away
+// exactly the explosive upside this play exists to capture.
+function renderSqueezeStrategy(ticker, s) {
+  const el = document.getElementById('strategyNotes');
+  const score = getSqueeze(s);
+  const so = getSqueezeObj(s);
+  if (score === null) {
+    el.innerHTML = `<span style="color:var(--amber);font-weight:700">⚠ NO SQUEEZE SCORE AVAILABLE</span><br><br>This record carries no Python-computed squeezeScore (demo data, or fetched before Squeeze Mode was added to scoring.py). Run <strong>fetch_stock.py ${ticker}</strong> and refresh — no squeeze recommendation is shown without the shared squeeze score.`;
+    return;
+  }
+
+  let head;
+  if (so.eligible === false) {
+    head = `<span style="color:var(--red);font-weight:700">✗ NOT SQUEEZE-ELIGIBLE</span><br><br>${so.capNote || 'No dated catalyst within ~30 days.'}<br><br>A crowded short interest number by itself is not a trade — without a scheduled event to force the covering, shorts can outwait you. Revisit when an earnings date is inside the window.`;
+  } else if (score >= 65) {
+    head = `<span style="color:var(--green);font-weight:700">🧨 PRIMED — FUEL + CATALYST IN PLACE</span><br><br>${ticker} pairs a crowded short base with a dated catalyst on ${s.earningsDate} (${s.daysToEarnings}d out). This is the setup the squeeze play exists for.`;
+  } else if (score >= 45) {
+    head = `<span style="color:var(--amber);font-weight:700">⚠ LOADED — PARTIAL SETUP</span><br><br>${ticker} has some of the ingredients (see the component breakdown above the checklist) but not the full stack. Size accordingly, or wait for the missing piece — usually fuel or a nearer catalyst.`;
+  } else {
+    head = `<span style="color:var(--red);font-weight:700">✗ THIN — NOT A SQUEEZE SETUP</span><br><br>${ticker} does not have the fuel/catalyst combination a squeeze needs (see the breakdown). Crowded or not, there is nothing here to force covering into the ${s.earningsDate} print.`;
+  }
+
+  // Married-put worst case from the placeholder ATM put, when the
+  // record carries a chain: (entry − strike + premium paid) × 100.
+  let mathLine = '';
+  if (s.options && s.options.strikes && s.options.strikes.length) {
+    const atmIdx = s.options.strikes.reduce((best, strike, i) =>
+      Math.abs(strike - s.price) < Math.abs(s.options.strikes[best] - s.price) ? i : best, 0);
+    const K = s.options.strikes[atmIdx];
+    const P = s.options.puts[atmIdx];
+    const worst = ((s.price - K) + P) * 100;
+    mathLine = `<br><br><strong>Worst case (married put):</strong> entry $${s.price.toFixed(2)} − strike $${K.toFixed(1)} + premium $${P.toFixed(2)} = <strong style="color:var(--red)">−$${worst.toFixed(0)}</strong> per 100 shares if the stock sits at/below the strike at expiry. Breakeven $${(s.price + P).toFixed(2)}. (Premium is the placeholder-chain estimate — confirm the real quote in Fidelity.)`;
+  }
+
+  el.innerHTML = `${head}<br><br>
+  <strong>Structure — married put:</strong> Buy 100 shares + <strong>Buy to Open</strong> 1 protective put at/near the money, expiring AFTER the ${s.earningsDate} print. The put floors the downside if the squeeze never fires; the shares keep all of the upside if it does.<br><br>
+  <strong>Alternative — bull call spread:</strong> Buy the at-the-money call, sell a higher-strike call, same post-print expiry. Defined cost and defined risk, with real (if capped) participation in the pop — for when you don't want to own the shares.<br><br>
+  <strong style="color:var(--red)">Never a covered call here:</strong> selling a call caps the stock at the strike — it sells away exactly the explosive upside this play exists to capture. Covered calls belong to Earnings mode.<br>
+  ${mathLine}<br><br>
+  <strong>Exit discipline:</strong> Take the pop when offered — ${so.fastCover ? 'days to cover on this name is under 1.5, so ' : ''}low days-to-cover squeezes resolve in 1–2 sessions. Decide the exit before entry: into strength on the catalyst, not after the crowd has left.`;
 }
 
 </script>

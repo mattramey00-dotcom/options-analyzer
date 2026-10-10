@@ -18,11 +18,18 @@ try:
     with open(json_path, 'r') as f:
         data = json.load(f)
     
-    tickers = list(data.keys())
+    # Skip hard-filter exclusions: they carry excluded:true + reasons from
+    # the scanner, and re-fetching them here would silently resurrect a
+    # name the scanner deliberately filtered out. A later scan run can
+    # qualify (and overwrite) them if the facts change.
+    tickers = [t for t, rec in data.items() if not (isinstance(rec, dict) and rec.get('excluded'))]
+    skipped = [t for t in data.keys() if t not in tickers]
+    if skipped:
+        print(f"  Leaving {len(skipped)} excluded ticker(s) untouched: {', '.join(skipped)}")
     if not tickers:
         print("  No tickers in stock_data.json.")
         sys.exit(0)
-    
+
     print(f"  Re-fetching {len(tickers)} tickers with full catalyst data: {', '.join(tickers)}")
     
     # Call fetch_stock.py with all tickers

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ep-v3';
+const CACHE_NAME = 'ep-v5';
 // Relative to this script's own URL (i.e. the service worker's scope),
 // NOT the site root — this is a GitHub Pages *project* site served
 // under /options-analyzer/, so root-absolute paths like '/index.html'
