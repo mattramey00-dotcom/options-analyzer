@@ -3,16 +3,16 @@
     "name": "Carnival Corporation Ltd.",
     "sector": "Consumer Cyclical",
     "industry": "Travel Services",
-    "price": 26.45,
-    "dayLow": 25.76,
-    "dayHigh": 26.55,
+    "price": 27.06,
+    "dayLow": 26.05,
+    "dayHigh": 27.8,
     "wk52Low": 21.45,
     "wk52High": 34.03,
-    "pe": 11.7,
-    "fwdPe": 10.3,
+    "pe": 11.9,
+    "fwdPe": 10.5,
     "eps": 2.27,
     "fwdEps": 2.57,
-    "mktCap": "35.6B",
+    "mktCap": "36.4B",
     "avgVol": "21.3M",
     "div": 0.45,
     "divYield": "1.7%",
@@ -58,11 +58,11 @@
       }
     ],
     "earningsDate": "Dec 18, 2026",
-    "daysToEarnings": 58,
+    "daysToEarnings": 57,
     "lastYearEarnings": {
       "q": "2025-11",
       "eps": 0.34,
-      "revenue": "35.6B",
+      "revenue": "36.4B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -71,25 +71,25 @@
       26.14,
       25.46,
       30.63,
-      30.43,
+      31.62,
       28.1,
       33.45,
       31.63,
       25.5,
-      23.85,
-      25.35,
+      23.92,
+      27.66,
       26.86,
       26.08,
       25.84,
-      27.27,
-      30.71,
-      27.76,
+      29.03,
+      28.92,
+      26.69,
       26.19,
       28.99,
-      25.73,
-      23.51,
-      21.84,
-      25.76
+      24.76,
+      22.75,
+      22.25,
+      26.35
     ],
     "risk90d": {
       "best": 30.06,
@@ -99,7 +99,7 @@
       {
         "ticker": "AMZN",
         "name": "Amazon.com, Inc.",
-        "price": 262.45,
+        "price": 262.63,
         "pe": 21.1,
         "rating": "Buy",
         "target": 331.72,
@@ -108,8 +108,8 @@
       {
         "ticker": "TSLA",
         "name": "Tesla, Inc.",
-        "price": 368.06,
-        "pe": 340.8,
+        "price": 373.71,
+        "pe": 346.0,
         "rating": "Buy",
         "target": 397.83,
         "chg": null
@@ -117,8 +117,8 @@
       {
         "ticker": "HD",
         "name": "Home Depot, Inc. (The)",
-        "price": 309.88,
-        "pe": 21.7,
+        "price": 315.11,
+        "pe": 22.1,
         "rating": "Buy",
         "target": 379.75,
         "chg": null
@@ -126,8 +126,8 @@
       {
         "ticker": "NKE",
         "name": "Nike, Inc.",
-        "price": 37.21,
-        "pe": 17.9,
+        "price": 37.88,
+        "pe": 18.2,
         "rating": "Hold",
         "target": 36.51,
         "chg": null
@@ -142,37 +142,37 @@
     "peerMismatch": "Review CCL vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        16.0,
-        18.5,
-        21.0,
-        23.5,
-        26.0,
-        28.5,
-        31.0,
-        33.5,
-        36.0
+        17.0,
+        19.5,
+        22.0,
+        24.5,
+        27.0,
+        29.5,
+        32.0,
+        34.5,
+        37.0
       ],
       "calls": [
-        10.64,
-        8.14,
-        6.17,
-        4.2,
-        2.23,
-        2.32,
-        2.85,
-        3.38,
-        3.92
+        10.25,
+        7.87,
+        5.9,
+        3.93,
+        1.96,
+        2.43,
+        2.96,
+        3.48,
+        4.01
       ],
       "puts": [
-        4.11,
-        3.57,
-        3.04,
-        2.51,
-        1.98,
-        3.49,
-        5.46,
-        7.43,
-        9.74
+        4.04,
+        3.51,
+        2.98,
+        2.45,
+        1.92,
+        3.83,
+        5.8,
+        7.77,
+        10.13
       ],
       "expiry": "Dec 31, 2026 (est.)"
     },
@@ -248,9 +248,9 @@
       ]
     },
     "momentum": {
-      "day5": -2.2,
+      "day5": -1.0,
       "day30": 18.6,
-      "day90": -0.5,
+      "day90": 1.9,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -261,9 +261,9 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 47.5,
-      "expectedMovePct": 18.9,
-      "expectedMoveDollar": 5.0,
+      "iv": 52.1,
+      "expectedMovePct": 20.6,
+      "expectedMoveDollar": 5.58,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -286,8 +286,8 @@
         1.5,
         6.2
       ],
-      "impliedMovePct": 18.9,
-      "edgeRatio": 4.3
+      "impliedMovePct": 20.6,
+      "edgeRatio": 4.68
     },
     "guidance": {
       "flag": "unknown",
@@ -310,7 +310,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 6,
-          "detail": "$26.45 \u2014 in the $10\u201330 outer band",
+          "detail": "$27.06 \u2014 in the $10\u201330 outer band",
           "available": true
         },
         {
@@ -318,7 +318,7 @@
           "label": "P/E valuation",
           "max": 12,
           "points": 12,
-          "detail": "P/E 11.7 (threshold < 50, S&P avg ~16)",
+          "detail": "P/E 11.9 (threshold < 50, S&P avg ~16)",
           "available": true
         },
         {
@@ -326,7 +326,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 8,
-          "detail": "22.3% below the 52-week high ($34.03)",
+          "detail": "20.5% below the 52-week high ($34.03)",
           "available": true
         },
         {
@@ -342,7 +342,7 @@
           "label": "Days to earnings",
           "max": 8,
           "points": 8,
-          "detail": "58 days to earnings (target \u2265 7 for entry)",
+          "detail": "57 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -358,7 +358,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b118.9% vs realized avg \u00b14.4% (ratio 4.30\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b120.6% vs realized avg \u00b14.4% (ratio 4.68\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -374,7 +374,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 4,
-          "detail": "5d -2.2% \u2022 30d +18.6% \u2022 90d -0.5%",
+          "detail": "5d -1.0% \u2022 30d +18.6% \u2022 90d +1.9%",
           "available": true
         },
         {
@@ -415,7 +415,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~58 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~57 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -447,7 +447,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 21,295,710 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 21,308,242 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -464,20 +464,20 @@
     "name": "AT&T Inc.",
     "sector": "Communication Services",
     "industry": "Telecom Services",
-    "price": 23.2,
-    "dayLow": 23.07,
-    "dayHigh": 23.42,
+    "price": 23.42,
+    "dayLow": 23.38,
+    "dayHigh": 23.68,
     "wk52Low": 19.89,
     "wk52High": 29.44,
     "pe": 7.7,
-    "fwdPe": 9.0,
+    "fwdPe": 9.1,
     "eps": 3.03,
     "fwdEps": 2.57,
-    "mktCap": "159.0B",
-    "avgVol": "48.3M",
+    "mktCap": "160.5B",
+    "avgVol": "47.5M",
     "div": 1.11,
-    "divYield": "4.8%",
-    "divYieldPct": 4.8,
+    "divYield": "4.7%",
+    "divYieldPct": 4.7,
     "divYieldSuspect": false,
     "beta": 0.44,
     "shortInt": "1.8%",
@@ -523,7 +523,7 @@
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": 0.54,
-      "revenue": "159.0B",
+      "revenue": "160.5B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -532,36 +532,36 @@
       24.75,
       24.13,
       23.05,
-      23.44,
+      22.9,
       22.78,
       26.2,
       27.02,
       27.66,
-      27.34,
-      27.36,
+      28.1,
+      25.82,
       25.56,
       24.55,
       24.65,
-      22.2,
-      21.48,
-      20.08,
+      23.01,
+      22.17,
+      20.89,
       23.86,
       23.52,
-      25.01,
-      25.39,
-      25.12,
-      24.03
+      25.72,
+      25.77,
+      25.1,
+      22.18
     ],
     "risk90d": {
       "best": 26.63,
-      "worst": 21.3
+      "worst": 21.46
     },
     "peers": [
       {
         "ticker": "GOOGL",
         "name": "Alphabet Inc.",
-        "price": 344.18,
-        "pe": 17.3,
+        "price": 340.27,
+        "pe": 17.1,
         "rating": "Buy",
         "target": 430.05,
         "chg": null
@@ -569,17 +569,17 @@
       {
         "ticker": "META",
         "name": "Meta Platforms, Inc.",
-        "price": 705.44,
-        "pe": 26.6,
+        "price": 694.25,
+        "pe": 26.2,
         "rating": "Buy",
-        "target": 819.0,
+        "target": 817.87,
         "chg": null
       },
       {
         "ticker": "DIS",
         "name": "Walt Disney Company (The)",
-        "price": 109.59,
-        "pe": 22.6,
+        "price": 111.67,
+        "pe": 23.0,
         "rating": "Buy",
         "target": 126.65,
         "chg": null
@@ -587,10 +587,10 @@
       {
         "ticker": "NFLX",
         "name": "Netflix, Inc.",
-        "price": 69.85,
-        "pe": 22.0,
+        "price": 68.69,
+        "pe": 21.6,
         "rating": "Buy",
-        "target": 91.13,
+        "target": 90.9,
         "chg": null
       }
     ],
@@ -614,28 +614,28 @@
         33.0
       ],
       "calls": [
-        10.27,
-        7.77,
-        5.44,
-        3.17,
-        0.91,
-        0.94,
-        1.18,
-        1.41,
-        1.65
+        10.49,
+        7.99,
+        5.64,
+        3.38,
+        1.11,
+        0.93,
+        1.16,
+        1.4,
+        1.63
       ],
       "puts": [
-        1.69,
-        1.45,
-        1.22,
-        0.98,
-        0.75,
-        2.81,
-        5.08,
-        7.37,
-        9.87
+        1.71,
+        1.48,
+        1.24,
+        1.01,
+        0.77,
+        2.62,
+        4.88,
+        7.15,
+        9.65
       ],
-      "expiry": "Nov 03, 2026 (est.)"
+      "expiry": "Nov 04, 2026 (est.)"
     },
     "news": [],
     "insiderActivity": {
@@ -696,9 +696,9 @@
       ]
     },
     "momentum": {
-      "day5": 4.2,
-      "day30": -6.7,
-      "day90": 6.5,
+      "day5": 1.5,
+      "day30": -7.8,
+      "day90": 1.8,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -709,10 +709,10 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 52.7,
-      "expectedMovePct": 15.1,
-      "expectedMoveDollar": 3.51,
-      "signal": "Moderate IV"
+      "iv": 61.7,
+      "expectedMovePct": 17.7,
+      "expectedMoveDollar": 4.14,
+      "signal": "High IV"
     },
     "fundamentalsExtra": {
       "profitMargin": 16.9,
@@ -734,8 +734,8 @@
         1.6,
         6.1
       ],
-      "impliedMovePct": 15.1,
-      "edgeRatio": 5.81
+      "impliedMovePct": 17.7,
+      "edgeRatio": 6.81
     },
     "guidance": {
       "flag": "unknown",
@@ -758,7 +758,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 9,
-          "detail": "$23.20 \u2014 in the $12\u201325 workable band",
+          "detail": "$23.42 \u2014 in the $12\u201325 workable band",
           "available": true
         },
         {
@@ -774,7 +774,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 8,
-          "detail": "21.2% below the 52-week high ($29.44)",
+          "detail": "20.4% below the 52-week high ($29.44)",
           "available": true
         },
         {
@@ -806,7 +806,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b115.1% vs realized avg \u00b12.6% (ratio 5.81\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b117.7% vs realized avg \u00b12.6% (ratio 6.81\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -822,7 +822,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 1,
-          "detail": "5d +4.2% \u2022 30d -6.7% \u2022 90d +6.5%",
+          "detail": "5d +1.5% \u2022 30d -7.8% \u2022 90d +1.8%",
           "available": true
         },
         {
@@ -895,7 +895,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 48,327,276 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 47,452,576 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -910,20 +910,20 @@
     "name": "Huntington Bancshares Incorporated",
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "price": 15.23,
+    "price": 15.54,
     "dayLow": 15.2,
-    "dayHigh": 15.36,
+    "dayHigh": 15.64,
     "wk52Low": 14.82,
     "wk52High": 19.46,
-    "pe": 11.7,
-    "fwdPe": 8.6,
+    "pe": 12.0,
+    "fwdPe": 8.8,
     "eps": 1.3,
-    "fwdEps": 1.76,
-    "mktCap": "30.8B",
-    "avgVol": "26.9M",
+    "fwdEps": 1.77,
+    "mktCap": "31.4B",
+    "avgVol": "27.0M",
     "div": 0.62,
-    "divYield": "4.1%",
-    "divYieldPct": 4.1,
+    "divYield": "4.0%",
+    "divYieldPct": 4.0,
     "divYieldSuspect": false,
     "beta": 0.97,
     "shortInt": "2.7%",
@@ -965,11 +965,11 @@
       }
     ],
     "earningsDate": "Oct 22, 2026",
-    "daysToEarnings": 1,
+    "daysToEarnings": 0,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": 0.4,
-      "revenue": "30.8B",
+      "revenue": "31.4B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -978,25 +978,25 @@
       15.29,
       16.27,
       17.19,
-      16.98,
+      17.72,
       16.85,
       18.72,
       17.5,
       15.84,
-      14.81,
-      15.5,
+      14.8,
+      16.07,
       16.09,
       15.82,
       15.62,
-      16.21,
-      16.69,
+      17.19,
+      17.62,
       17.69,
       17.19,
       17.38,
-      16.86,
-      16.86,
-      15.88,
-      15.33
+      16.75,
+      16.69,
+      15.64,
+      15.32
     ],
     "risk90d": {
       "best": 18.2,
@@ -1006,8 +1006,8 @@
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 333.53,
-        "pe": 14.0,
+        "price": 335.26,
+        "pe": 14.1,
         "rating": "Buy",
         "target": 372.57,
         "chg": null
@@ -1015,28 +1015,28 @@
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 50.39,
-        "pe": 12.0,
+        "price": 50.64,
+        "pe": 12.1,
         "rating": "Buy",
-        "target": 63.45,
+        "target": 63.14,
         "chg": null
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 875.78,
-        "pe": 12.6,
+        "price": 884.81,
+        "pe": 12.7,
         "rating": "Hold",
-        "target": 1037.9,
+        "target": 1038.18,
         "chg": null
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 178.47,
-        "pe": 14.2,
+        "price": 180.4,
+        "pe": 14.3,
         "rating": "Buy",
-        "target": 213.59,
+        "target": 213.36,
         "chg": null
       }
     ],
@@ -1049,7 +1049,6 @@
     "peerMismatch": "Review HBAN vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        11,
         12,
         13,
         14,
@@ -1057,29 +1056,30 @@
         16,
         17,
         18,
-        19
+        19,
+        20
       ],
       "calls": [
-        4.31,
-        3.41,
-        2.51,
-        1.6,
-        0.7,
-        0.57,
-        0.67,
-        0.76,
-        0.86
+        3.69,
+        2.79,
+        1.88,
+        0.98,
+        0.53,
+        0.62,
+        0.72,
+        0.81,
+        0.91
       ],
       "puts": [
-        0.91,
-        0.81,
-        0.71,
-        0.61,
-        0.52,
-        1.19,
-        2.09,
-        2.99,
-        3.9
+        0.82,
+        0.73,
+        0.63,
+        0.54,
+        0.9,
+        1.81,
+        2.72,
+        3.62,
+        4.53
       ],
       "expiry": "Nov 04, 2026 (est.)"
     },
@@ -1142,9 +1142,9 @@
       ]
     },
     "momentum": {
-      "day5": -0.8,
-      "day30": -3.8,
-      "day90": -15.1,
+      "day5": -0.1,
+      "day30": -5.0,
+      "day90": -15.8,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -1155,10 +1155,10 @@
       "signal": "Strong"
     },
     "impliedVolatility": {
-      "iv": 40.8,
-      "expectedMovePct": 2.1,
-      "expectedMoveDollar": 0.33,
-      "signal": "Moderate IV"
+      "iv": 30.0,
+      "expectedMovePct": 8.6,
+      "expectedMoveDollar": 1.34,
+      "signal": "Low IV"
     },
     "fundamentalsExtra": {
       "profitMargin": 26.1,
@@ -1169,7 +1169,7 @@
       "floatShares": "2.0B",
       "sharesOutstanding": "2.0B",
       "exDivDate": "1789603200",
-      "earningsEstRevision": 35.7
+      "earningsEstRevision": 36.1
     },
     "earningsMove": {
       "avgAbsMovePct": 2.3,
@@ -1180,8 +1180,8 @@
         5.7,
         1.6
       ],
-      "impliedMovePct": 2.1,
-      "edgeRatio": 0.91
+      "impliedMovePct": 8.6,
+      "edgeRatio": 3.74
     },
     "guidance": {
       "flag": "unknown",
@@ -1194,8 +1194,8 @@
       "note": ""
     },
     "score": {
-      "total": 70,
-      "grade": "OKAY",
+      "total": 78,
+      "grade": "STRONG",
       "partial": false,
       "partialNote": "",
       "components": [
@@ -1204,7 +1204,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 12,
-          "detail": "$15.23 \u2014 in the $15\u201320 sweet spot",
+          "detail": "$15.54 \u2014 in the $15\u201320 sweet spot",
           "available": true
         },
         {
@@ -1212,7 +1212,7 @@
           "label": "P/E valuation",
           "max": 12,
           "points": 12,
-          "detail": "P/E 11.7 (threshold < 50, S&P avg ~16)",
+          "detail": "P/E 12.0 (threshold < 50, S&P avg ~16)",
           "available": true
         },
         {
@@ -1220,7 +1220,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 8,
-          "detail": "21.7% below the 52-week high ($19.46)",
+          "detail": "20.1% below the 52-week high ($19.46)",
           "available": true
         },
         {
@@ -1236,7 +1236,7 @@
           "label": "Days to earnings",
           "max": 8,
           "points": 0,
-          "detail": "1 days to earnings (target \u2265 7 for entry)",
+          "detail": "0 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -1251,8 +1251,8 @@
           "key": "premium",
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
-          "points": 5,
-          "detail": "Implied move \u00b12.1% vs realized avg \u00b12.3% (ratio 0.91\u00d7) \u2014 premium underpays vs the stock's actual earnings moves",
+          "points": 12,
+          "detail": "Implied move \u00b18.6% vs realized avg \u00b12.3% (ratio 3.74\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -1268,7 +1268,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 0,
-          "detail": "5d -0.8% \u2022 30d -3.8% \u2022 90d -15.1%",
+          "detail": "5d -0.1% \u2022 30d -5.0% \u2022 90d -15.8%",
           "available": true
         },
         {
@@ -1309,7 +1309,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 11,
-          "detail": "Earnings in 1 days \u2014 imminent \u2014 the event is now; entry from here is a chase",
+          "detail": "Earnings in 0 days \u2014 imminent \u2014 the event is now; entry from here is a chase",
           "available": true
         },
         {
@@ -1341,7 +1341,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 26,937,484 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 26,979,037 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -1433,20 +1433,20 @@
     "name": "VICI Properties Inc.",
     "sector": "Real Estate",
     "industry": "REIT - Diversified",
-    "price": 23.1,
-    "dayLow": 22.93,
-    "dayHigh": 23.42,
+    "price": 23.37,
+    "dayLow": 23.21,
+    "dayHigh": 23.54,
     "wk52Low": 22.43,
     "wk52High": 31.69,
-    "pe": 9.0,
-    "fwdPe": 7.7,
+    "pe": 9.1,
+    "fwdPe": 7.8,
     "eps": 2.57,
     "fwdEps": 2.99,
-    "mktCap": "25.4B",
-    "avgVol": "9.9M",
+    "mktCap": "25.7B",
+    "avgVol": "10.0M",
     "div": 1.84,
-    "divYield": "8.0%",
-    "divYieldPct": 8.0,
+    "divYield": "7.9%",
+    "divYieldPct": 7.9,
     "divYieldSuspect": false,
     "beta": 0.67,
     "shortInt": "3.0%",
@@ -1488,11 +1488,11 @@
       }
     ],
     "earningsDate": "Oct 28, 2026",
-    "daysToEarnings": 7,
+    "daysToEarnings": 6,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": 0.71,
-      "revenue": "25.4B",
+      "revenue": "25.7B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -1501,25 +1501,25 @@
       26.93,
       25.91,
       26.3,
-      26.73,
+      26.36,
       27.1,
       27.31,
       28.57,
       28.17,
-      25.89,
-      26.69,
+      25.68,
+      27.13,
       27.43,
       27.83,
       27.5,
-      26.89,
-      25.79,
-      26.68,
+      27.52,
+      26.7,
+      25.52,
       26.23,
       26.24,
-      26.01,
-      24.94,
-      23.72,
-      22.65
+      25.38,
+      24.36,
+      23.51,
+      22.88
     ],
     "risk90d": {
       "best": 27.13,
@@ -1529,7 +1529,7 @@
       {
         "ticker": "AMT",
         "name": "American Tower Corporation (REI",
-        "price": 183.03,
+        "price": 183.56,
         "pe": 25.2,
         "rating": "Buy",
         "target": 215.74,
@@ -1538,16 +1538,16 @@
       {
         "ticker": "PLD",
         "name": "Prologis, Inc.",
-        "price": 124.09,
-        "pe": 27.3,
+        "price": 127.47,
+        "pe": 28.3,
         "rating": "Buy",
-        "target": 154.62,
+        "target": 152.54,
         "chg": null
       },
       {
         "ticker": "CCI",
         "name": "Crown Castle Inc.",
-        "price": 81.06,
+        "price": 81.14,
         "pe": 33.0,
         "rating": "Buy",
         "target": 94.3,
@@ -1556,8 +1556,8 @@
       {
         "ticker": "EQIX",
         "name": "Equinix, Inc.",
-        "price": 975.71,
-        "pe": 62.8,
+        "price": 987.44,
+        "pe": 63.5,
         "rating": "Buy",
         "target": 1232.9,
         "chg": null
@@ -1583,26 +1583,26 @@
         33.0
       ],
       "calls": [
-        10.19,
-        7.69,
-        5.4,
-        3.19,
-        0.98,
-        1.16,
-        1.45,
-        1.74,
-        2.03
+        10.46,
+        7.96,
+        5.64,
+        3.42,
+        1.2,
+        1.11,
+        1.4,
+        1.68,
+        1.96
       ],
       "puts": [
-        2.05,
+        2.04,
         1.76,
-        1.47,
-        1.19,
-        0.9,
-        3.01,
-        5.22,
-        7.49,
-        9.99
+        1.48,
+        1.2,
+        0.92,
+        2.77,
+        4.99,
+        7.22,
+        9.72
       ],
       "expiry": "Nov 10, 2026 (est.)"
     },
@@ -1665,9 +1665,9 @@
       ]
     },
     "momentum": {
-      "day5": 2.5,
-      "day30": -0.5,
-      "day90": -9.5,
+      "day5": 0.8,
+      "day30": -4.0,
+      "day90": -11.4,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -1678,9 +1678,9 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 26.4,
-      "expectedMovePct": 3.7,
-      "expectedMoveDollar": 0.84,
+      "iv": 29.6,
+      "expectedMovePct": 3.8,
+      "expectedMoveDollar": 0.89,
       "signal": "Low IV"
     },
     "fundamentalsExtra": {
@@ -1703,8 +1703,8 @@
         1.3,
         3.3
       ],
-      "impliedMovePct": 3.7,
-      "edgeRatio": 2.31
+      "impliedMovePct": 3.8,
+      "edgeRatio": 2.37
     },
     "guidance": {
       "flag": "unknown",
@@ -1717,8 +1717,8 @@
       "note": ""
     },
     "score": {
-      "total": 77,
-      "grade": "STRONG",
+      "total": 74,
+      "grade": "OKAY",
       "partial": false,
       "partialNote": "",
       "components": [
@@ -1727,7 +1727,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 9,
-          "detail": "$23.10 \u2014 in the $12\u201325 workable band",
+          "detail": "$23.37 \u2014 in the $12\u201325 workable band",
           "available": true
         },
         {
@@ -1735,7 +1735,7 @@
           "label": "P/E valuation",
           "max": 12,
           "points": 12,
-          "detail": "P/E 9.0 (threshold < 50, S&P avg ~16)",
+          "detail": "P/E 9.1 (threshold < 50, S&P avg ~16)",
           "available": true
         },
         {
@@ -1743,7 +1743,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 8,
-          "detail": "27.1% below the 52-week high ($31.69)",
+          "detail": "26.3% below the 52-week high ($31.69)",
           "available": true
         },
         {
@@ -1758,8 +1758,8 @@
           "key": "timing",
           "label": "Days to earnings",
           "max": 8,
-          "points": 6,
-          "detail": "7 days to earnings (target \u2265 7 for entry)",
+          "points": 3,
+          "detail": "6 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -1775,7 +1775,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b13.7% vs realized avg \u00b11.6% (ratio 2.31\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b13.8% vs realized avg \u00b11.6% (ratio 2.37\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -1791,7 +1791,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 1,
-          "detail": "5d +2.5% \u2022 30d -0.5% \u2022 90d -9.5%",
+          "detail": "5d +0.8% \u2022 30d -4.0% \u2022 90d -11.4%",
           "available": true
         },
         {
@@ -1832,7 +1832,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -1864,7 +1864,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 9,892,926 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 9,953,326 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -1879,20 +1879,20 @@
     "name": "Starwood Property Trust, Inc.",
     "sector": "Real Estate",
     "industry": "REIT - Mortgage",
-    "price": 11.98,
-    "dayLow": 11.84,
-    "dayHigh": 12.63,
+    "price": 12.19,
+    "dayLow": 11.99,
+    "dayHigh": 12.29,
     "wk52Low": 11.84,
     "wk52High": 18.8,
-    "pe": 20.0,
-    "fwdPe": 6.3,
+    "pe": 20.3,
+    "fwdPe": 6.4,
     "eps": 0.6,
     "fwdEps": 1.89,
-    "mktCap": "4.5B",
-    "avgVol": "4.9M",
+    "mktCap": "4.6B",
+    "avgVol": "5.0M",
     "div": 1.92,
-    "divYield": "16.0%",
-    "divYieldPct": 16.0,
+    "divYield": "15.8%",
+    "divYieldPct": 15.8,
     "divYieldSuspect": false,
     "beta": 1.05,
     "shortInt": "6.7%",
@@ -1934,11 +1934,11 @@
       }
     ],
     "earningsDate": "Nov 06, 2026",
-    "daysToEarnings": 16,
+    "daysToEarnings": 15,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": 0.4,
-      "revenue": "4.5B",
+      "revenue": "4.6B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -1947,35 +1947,35 @@
       15.89,
       16.23,
       16.41,
-      16.82,
+      16.65,
       16.6,
       16.55,
       16.49,
       16.39,
-      15.6,
-      16.17,
+      15.56,
+      16.61,
       17.1,
       16.67,
       16.24,
-      16.01,
-      15.68,
-      15.93,
+      15.97,
+      15.8,
+      16.08,
       15.97,
       15.9,
-      15.83,
-      15.54,
-      14.44,
-      13.05
+      15.28,
+      15.1,
+      13.88,
+      12.71
     ],
     "risk90d": {
-      "best": 16.41,
-      "worst": 12.27
+      "best": 16.31,
+      "worst": 11.84
     },
     "peers": [
       {
         "ticker": "AMT",
         "name": "American Tower Corporation (REI",
-        "price": 183.03,
+        "price": 183.56,
         "pe": 25.2,
         "rating": "Buy",
         "target": 215.74,
@@ -1984,16 +1984,16 @@
       {
         "ticker": "PLD",
         "name": "Prologis, Inc.",
-        "price": 124.09,
-        "pe": 27.3,
+        "price": 127.47,
+        "pe": 28.3,
         "rating": "Buy",
-        "target": 154.62,
+        "target": 152.54,
         "chg": null
       },
       {
         "ticker": "CCI",
         "name": "Crown Castle Inc.",
-        "price": 81.06,
+        "price": 81.14,
         "pe": 33.0,
         "rating": "Buy",
         "target": 94.3,
@@ -2002,8 +2002,8 @@
       {
         "ticker": "EQIX",
         "name": "Equinix, Inc.",
-        "price": 975.71,
-        "pe": 62.8,
+        "price": 987.44,
+        "pe": 63.5,
         "rating": "Buy",
         "target": 1232.9,
         "chg": null
@@ -2029,26 +2029,26 @@
         16
       ],
       "calls": [
-        4.03,
-        3.12,
-        2.26,
-        1.39,
-        0.55,
-        0.69,
-        0.83,
-        0.97,
-        1.1
+        4.24,
+        3.31,
+        2.44,
+        1.58,
+        0.71,
+        0.66,
+        0.79,
+        0.93,
+        1.07
       ],
       "puts": [
-        1.1,
-        0.96,
-        0.82,
-        0.68,
-        0.57,
-        1.43,
-        2.29,
-        3.15,
-        4.07
+        1.12,
+        0.98,
+        0.85,
+        0.71,
+        0.58,
+        1.25,
+        2.11,
+        2.98,
+        3.86
       ],
       "expiry": "Nov 19, 2026 (est.)"
     },
@@ -2118,9 +2118,9 @@
       ]
     },
     "momentum": {
-      "day5": -0.5,
-      "day30": -13.7,
-      "day90": -22.3,
+      "day5": -4.0,
+      "day30": -17.4,
+      "day90": -24.8,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -2131,9 +2131,9 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 36.0,
-      "expectedMovePct": 7.5,
-      "expectedMoveDollar": 0.9,
+      "iv": 35.5,
+      "expectedMovePct": 7.2,
+      "expectedMoveDollar": 0.88,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -2156,8 +2156,8 @@
         1.7,
         3.7
       ],
-      "impliedMovePct": 7.5,
-      "edgeRatio": 3.57
+      "impliedMovePct": 7.2,
+      "edgeRatio": 3.43
     },
     "guidance": {
       "flag": "unknown",
@@ -2170,7 +2170,7 @@
       "note": ""
     },
     "score": {
-      "total": 64,
+      "total": 66,
       "grade": "OKAY",
       "partial": false,
       "partialNote": "",
@@ -2179,8 +2179,8 @@
           "key": "price",
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
-          "points": 6,
-          "detail": "$11.98 \u2014 in the $10\u201330 outer band",
+          "points": 9,
+          "detail": "$12.19 \u2014 in the $12\u201325 workable band",
           "available": true
         },
         {
@@ -2188,7 +2188,7 @@
           "label": "P/E valuation",
           "max": 12,
           "points": 9,
-          "detail": "P/E 20.0 (threshold < 50, S&P avg ~16)",
+          "detail": "P/E 20.3 (threshold < 50, S&P avg ~16)",
           "available": true
         },
         {
@@ -2196,7 +2196,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 10,
-          "detail": "36.3% below the 52-week high ($18.80)",
+          "detail": "35.2% below the 52-week high ($18.80)",
           "available": true
         },
         {
@@ -2212,7 +2212,7 @@
           "label": "Days to earnings",
           "max": 8,
           "points": 8,
-          "detail": "16 days to earnings (target \u2265 7 for entry)",
+          "detail": "15 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -2228,7 +2228,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b17.5% vs realized avg \u00b12.1% (ratio 3.57\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b17.2% vs realized avg \u00b12.1% (ratio 3.43\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -2244,7 +2244,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 0,
-          "detail": "5d -0.5% \u2022 30d -13.7% \u2022 90d -22.3%",
+          "detail": "5d -4.0% \u2022 30d -17.4% \u2022 90d -24.8%",
           "available": true
         },
         {
@@ -2285,7 +2285,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 16 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -2317,7 +2317,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 4,863,295 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 4,965,435 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -2332,17 +2332,17 @@
     "name": "Ford Motor Company",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 12.18,
-    "dayLow": 12.13,
-    "dayHigh": 12.43,
+    "price": 12.15,
+    "dayLow": 11.81,
+    "dayHigh": 12.25,
     "wk52Low": 11.11,
     "wk52High": 17.78,
     "pe": -1,
-    "fwdPe": 6.3,
+    "fwdPe": 6.2,
     "eps": -1.88,
-    "fwdEps": 1.92,
-    "mktCap": "48.6B",
-    "avgVol": "46.9M",
+    "fwdEps": 1.96,
+    "mktCap": "48.4B",
+    "avgVol": "46.7M",
     "div": 0.6,
     "divYield": "4.9%",
     "divYieldPct": 4.9,
@@ -2387,11 +2387,11 @@
       }
     ],
     "earningsDate": "Oct 28, 2026",
-    "daysToEarnings": 7,
+    "daysToEarnings": 6,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": 0.45,
-      "revenue": "48.6B",
+      "revenue": "48.4B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -2400,25 +2400,25 @@
       12.4,
       12.59,
       13.02,
-      12.89,
+      13.72,
       13.11,
       13.34,
       13.69,
       11.87,
-      11.25,
-      11.33,
+      11.11,
+      11.85,
       12.09,
       12.04,
       14.77,
-      14.74,
-      13.91,
-      13.22,
+      14.68,
+      13.98,
+      13.85,
       14.22,
       13.83,
-      14.41,
-      14.62,
-      13.21,
-      12.1
+      13.88,
+      13.97,
+      12.71,
+      12.17
     ],
     "risk90d": {
       "best": 16.12,
@@ -2428,7 +2428,7 @@
       {
         "ticker": "AMZN",
         "name": "Amazon.com, Inc.",
-        "price": 262.45,
+        "price": 262.63,
         "pe": 21.1,
         "rating": "Buy",
         "target": 331.72,
@@ -2437,8 +2437,8 @@
       {
         "ticker": "TSLA",
         "name": "Tesla, Inc.",
-        "price": 368.06,
-        "pe": 340.8,
+        "price": 373.71,
+        "pe": 346.0,
         "rating": "Buy",
         "target": 397.83,
         "chg": null
@@ -2446,8 +2446,8 @@
       {
         "ticker": "HD",
         "name": "Home Depot, Inc. (The)",
-        "price": 309.88,
-        "pe": 21.7,
+        "price": 315.11,
+        "pe": 22.1,
         "rating": "Buy",
         "target": 379.75,
         "chg": null
@@ -2455,8 +2455,8 @@
       {
         "ticker": "NKE",
         "name": "Nike, Inc.",
-        "price": 37.21,
-        "pe": 17.9,
+        "price": 37.88,
+        "pe": 18.2,
         "rating": "Hold",
         "target": 36.51,
         "chg": null
@@ -2482,26 +2482,26 @@
         16
       ],
       "calls": [
-        4.23,
-        3.28,
-        2.4,
-        1.51,
-        0.63,
-        0.56,
-        0.68,
-        0.79,
-        0.91
+        4.2,
+        3.25,
+        2.36,
+        1.48,
+        0.59,
+        0.55,
+        0.66,
+        0.78,
+        0.89
       ],
       "puts": [
-        0.95,
-        0.83,
-        0.72,
-        0.6,
-        0.49,
-        1.19,
-        2.08,
-        2.96,
-        3.87
+        0.92,
+        0.81,
+        0.7,
+        0.58,
+        0.47,
+        1.21,
+        2.1,
+        2.98,
+        3.9
       ],
       "expiry": "Nov 10, 2026 (est.)"
     },
@@ -2571,9 +2571,9 @@
       ]
     },
     "momentum": {
-      "day5": 3.6,
-      "day30": -5.9,
-      "day90": -12.0,
+      "day5": 0.7,
+      "day30": -7.5,
+      "day90": -14.6,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -2584,9 +2584,9 @@
       "signal": "Declining"
     },
     "impliedVolatility": {
-      "iv": 39.1,
-      "expectedMovePct": 5.4,
-      "expectedMoveDollar": 0.66,
+      "iv": 37.5,
+      "expectedMovePct": 4.8,
+      "expectedMoveDollar": 0.58,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -2598,7 +2598,7 @@
       "floatShares": "3.9B",
       "sharesOutstanding": "3.9B",
       "exDivDate": "1786406400",
-      "earningsEstRevision": -202.1
+      "earningsEstRevision": -204.1
     },
     "earningsMove": {
       "avgAbsMovePct": 2.3,
@@ -2609,8 +2609,8 @@
         4.2,
         2.7
       ],
-      "impliedMovePct": 5.4,
-      "edgeRatio": 2.35
+      "impliedMovePct": 4.8,
+      "edgeRatio": 2.09
     },
     "guidance": {
       "flag": "unknown",
@@ -2623,7 +2623,7 @@
       "note": ""
     },
     "score": {
-      "total": 62,
+      "total": 58,
       "grade": "OKAY",
       "partial": false,
       "partialNote": "",
@@ -2633,7 +2633,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 9,
-          "detail": "$12.18 \u2014 in the $12\u201325 workable band",
+          "detail": "$12.15 \u2014 in the $12\u201325 workable band",
           "available": true
         },
         {
@@ -2649,7 +2649,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 10,
-          "detail": "31.5% below the 52-week high ($17.78)",
+          "detail": "31.7% below the 52-week high ($17.78)",
           "available": true
         },
         {
@@ -2664,8 +2664,8 @@
           "key": "timing",
           "label": "Days to earnings",
           "max": 8,
-          "points": 6,
-          "detail": "7 days to earnings (target \u2265 7 for entry)",
+          "points": 3,
+          "detail": "6 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -2681,7 +2681,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b15.4% vs realized avg \u00b12.3% (ratio 2.35\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b14.8% vs realized avg \u00b12.3% (ratio 2.09\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -2697,7 +2697,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 1,
-          "detail": "5d +3.6% \u2022 30d -5.9% \u2022 90d -12.0%",
+          "detail": "5d +0.7% \u2022 30d -7.5% \u2022 90d -14.6%",
           "available": true
         },
         {
@@ -2738,7 +2738,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -2770,7 +2770,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 46,859,292 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 46,726,562 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -2862,17 +2862,17 @@
     "name": "Rocket Companies, Inc.",
     "sector": "Financial Services",
     "industry": "Mortgage Finance",
-    "price": 10.71,
-    "dayLow": 10.6,
-    "dayHigh": 10.86,
+    "price": 11.25,
+    "dayLow": 10.71,
+    "dayHigh": 11.47,
     "wk52Low": 10.18,
     "wk52High": 24.36,
     "pe": -1,
-    "fwdPe": 13.6,
-    "eps": 0,
-    "fwdEps": 0.79,
-    "mktCap": "30.3B",
-    "avgVol": "31.7M",
+    "fwdPe": 14.4,
+    "eps": -0.03,
+    "fwdEps": 0.78,
+    "mktCap": "31.9B",
+    "avgVol": "31.5M",
     "div": 0,
     "divYield": "0%",
     "divYieldPct": 0.0,
@@ -2917,11 +2917,11 @@
       }
     ],
     "earningsDate": "Nov 05, 2026",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": 0.07,
-      "revenue": "30.3B",
+      "revenue": "31.9B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -2930,25 +2930,25 @@
       17.44,
       19.03,
       19.08,
-      19.88,
+      23.29,
       21.07,
       18.88,
       17.98,
       14.95,
-      13.65,
-      14.96,
+      13.67,
+      14.85,
       15.6,
       15.69,
       13.79,
-      12.65,
-      14.42,
-      15.77,
+      13.07,
+      15.0,
+      14.39,
       13.05,
       13.72,
-      13.93,
-      14.06,
-      12.29,
-      11.7
+      13.77,
+      13.18,
+      12.17,
+      11.48
     ],
     "risk90d": {
       "best": 15.18,
@@ -2958,8 +2958,8 @@
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 333.53,
-        "pe": 14.0,
+        "price": 335.26,
+        "pe": 14.1,
         "rating": "Buy",
         "target": 372.57,
         "chg": null
@@ -2967,28 +2967,28 @@
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 50.39,
-        "pe": 12.0,
+        "price": 50.64,
+        "pe": 12.1,
         "rating": "Buy",
-        "target": 63.45,
+        "target": 63.14,
         "chg": null
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 875.78,
-        "pe": 12.6,
+        "price": 884.81,
+        "pe": 12.7,
         "rating": "Hold",
-        "target": 1037.9,
+        "target": 1038.18,
         "chg": null
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 178.47,
-        "pe": 14.2,
+        "price": 180.4,
+        "pe": 14.3,
         "rating": "Buy",
-        "target": 213.59,
+        "target": 213.36,
         "chg": null
       }
     ],
@@ -3012,26 +3012,26 @@
         15
       ],
       "calls": [
-        3.76,
-        2.83,
-        1.96,
-        1.1,
-        0.52,
-        0.66,
-        0.79,
-        0.93,
-        1.06
+        4.3,
+        3.32,
+        2.45,
+        1.58,
+        0.72,
+        0.6,
+        0.73,
+        0.86,
+        1.0
       ],
       "puts": [
-        0.98,
-        0.85,
-        0.71,
-        0.58,
-        0.73,
-        1.6,
-        2.46,
-        3.34,
-        4.34
+        1.06,
+        0.93,
+        0.8,
+        0.66,
+        0.53,
+        1.15,
+        2.02,
+        2.88,
+        3.8
       ],
       "expiry": "Nov 18, 2026 (est.)"
     },
@@ -3107,9 +3107,9 @@
       ]
     },
     "momentum": {
-      "day5": -0.8,
-      "day30": -12.3,
-      "day90": -21.0,
+      "day5": -1.1,
+      "day30": -13.3,
+      "day90": -20.3,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -3120,9 +3120,9 @@
       "signal": "Strong"
     },
     "impliedVolatility": {
-      "iv": 73.4,
-      "expectedMovePct": 14.9,
-      "expectedMoveDollar": 1.59,
+      "iv": 72.7,
+      "expectedMovePct": 14.2,
+      "expectedMoveDollar": 1.6,
       "signal": "High IV"
     },
     "fundamentalsExtra": {
@@ -3134,7 +3134,7 @@
       "floatShares": "1.9B",
       "sharesOutstanding": "1.9B",
       "exDivDate": "1742428800",
-      "earningsEstRevision": 0
+      "earningsEstRevision": -2696.1
     },
     "earningsMove": {
       "avgAbsMovePct": 3.2,
@@ -3145,8 +3145,8 @@
         7.0,
         2.3
       ],
-      "impliedMovePct": 14.9,
-      "edgeRatio": 4.66
+      "impliedMovePct": 14.2,
+      "edgeRatio": 4.44
     },
     "guidance": {
       "flag": "unknown",
@@ -3169,7 +3169,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 6,
-          "detail": "$10.71 \u2014 in the $10\u201330 outer band",
+          "detail": "$11.25 \u2014 in the $10\u201330 outer band",
           "available": true
         },
         {
@@ -3185,7 +3185,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 10,
-          "detail": "56.0% below the 52-week high ($24.36)",
+          "detail": "53.8% below the 52-week high ($24.36)",
           "available": true
         },
         {
@@ -3201,7 +3201,7 @@
           "label": "Days to earnings",
           "max": 8,
           "points": 8,
-          "detail": "15 days to earnings (target \u2265 7 for entry)",
+          "detail": "14 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -3217,7 +3217,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b114.9% vs realized avg \u00b13.2% (ratio 4.66\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b114.2% vs realized avg \u00b13.2% (ratio 4.44\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -3233,7 +3233,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 0,
-          "detail": "5d -0.8% \u2022 30d -12.3% \u2022 90d -21.0%",
+          "detail": "5d -1.1% \u2022 30d -13.3% \u2022 90d -20.3%",
           "available": true
         },
         {
@@ -3274,7 +3274,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -3306,7 +3306,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 31,681,246 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 31,541,021 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -3400,16 +3400,16 @@
     "name": "DraftKings Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Gambling",
-    "price": 19.77,
-    "dayLow": 18.8,
-    "dayHigh": 19.88,
+    "price": 20.48,
+    "dayLow": 19.61,
+    "dayHigh": 20.56,
     "wk52Low": 18.35,
     "wk52High": 36.98,
     "pe": -1,
-    "fwdPe": 11.6,
+    "fwdPe": 12.0,
     "eps": -0.35,
     "fwdEps": 1.71,
-    "mktCap": "9.8B",
+    "mktCap": "10.2B",
     "avgVol": "13.1M",
     "div": 0,
     "divYield": "0%",
@@ -3420,7 +3420,7 @@
     "shortRatio": 2.9,
     "targets": {
       "low": 20.0,
-      "avg": 34.2,
+      "avg": 34.23,
       "high": 76.0
     },
     "analystRatings": {
@@ -3455,11 +3455,11 @@
       }
     ],
     "earningsDate": "Nov 05, 2026",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": -0.26,
-      "revenue": "9.8B",
+      "revenue": "10.2B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -3468,25 +3468,25 @@
       29.99,
       34.0,
       34.21,
-      35.66,
+      35.17,
       29.97,
       26.62,
       22.31,
       25.15,
-      23.67,
-      23.16,
+      20.72,
+      22.23,
       23.18,
       25.52,
       25.12,
-      24.93,
-      26.39,
-      25.89,
+      29.0,
+      25.7,
+      26.48,
       23.01,
       24.03,
-      26.17,
-      24.01,
-      21.75,
-      18.59
+      25.26,
+      24.74,
+      22.02,
+      19.58
     ],
     "risk90d": {
       "best": 26.63,
@@ -3496,7 +3496,7 @@
       {
         "ticker": "AMZN",
         "name": "Amazon.com, Inc.",
-        "price": 262.45,
+        "price": 262.63,
         "pe": 21.1,
         "rating": "Buy",
         "target": 331.72,
@@ -3505,8 +3505,8 @@
       {
         "ticker": "TSLA",
         "name": "Tesla, Inc.",
-        "price": 368.06,
-        "pe": 340.8,
+        "price": 373.71,
+        "pe": 346.0,
         "rating": "Buy",
         "target": 397.83,
         "chg": null
@@ -3514,8 +3514,8 @@
       {
         "ticker": "HD",
         "name": "Home Depot, Inc. (The)",
-        "price": 309.88,
-        "pe": 21.7,
+        "price": 315.11,
+        "pe": 22.1,
         "rating": "Buy",
         "target": 379.75,
         "chg": null
@@ -3523,8 +3523,8 @@
       {
         "ticker": "NKE",
         "name": "Nike, Inc.",
-        "price": 37.21,
-        "pe": 17.9,
+        "price": 37.88,
+        "pe": 18.2,
         "rating": "Hold",
         "target": 36.51,
         "chg": null
@@ -3539,37 +3539,37 @@
     "peerMismatch": "Review DKNG vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
+        10.0,
+        12.5,
+        15.0,
+        17.5,
+        20.0,
+        22.5,
+        25.0,
+        27.5,
+        30.0
       ],
       "calls": [
-        4.15,
-        3.29,
-        2.42,
-        1.56,
-        0.92,
-        1.06,
-        1.19,
-        1.33,
-        1.46
+        10.57,
+        8.07,
+        5.66,
+        3.49,
+        1.32,
+        1.18,
+        1.51,
+        1.84,
+        2.17
       ],
       "puts": [
-        1.4,
-        1.27,
-        1.13,
-        1.0,
-        1.09,
-        1.96,
-        2.82,
-        3.68,
-        4.55
+        2.3,
+        1.97,
+        1.64,
+        1.3,
+        0.97,
+        2.66,
+        4.83,
+        7.11,
+        9.61
       ],
       "expiry": "Nov 18, 2026 (est.)"
     },
@@ -3639,10 +3639,10 @@
       ]
     },
     "momentum": {
-      "day5": -3.9,
-      "day30": -13.1,
-      "day90": -20.8,
-      "trend": "Bearish"
+      "day5": 0.3,
+      "day30": -10.0,
+      "day90": -13.4,
+      "trend": "Mixed"
     },
     "growthMetrics": {
       "revenueGrowth": -4.6,
@@ -3653,7 +3653,7 @@
     },
     "impliedVolatility": {
       "iv": 66.0,
-      "expectedMovePct": 13.4,
+      "expectedMovePct": 12.9,
       "expectedMoveDollar": 2.65,
       "signal": "High IV"
     },
@@ -3666,7 +3666,7 @@
       "floatShares": "424.2M",
       "sharesOutstanding": "496.5M",
       "exDivDate": "N/A",
-      "earningsEstRevision": -588.4
+      "earningsEstRevision": -588.5
     },
     "earningsMove": {
       "avgAbsMovePct": 6.4,
@@ -3677,8 +3677,8 @@
         5.9,
         0.1
       ],
-      "impliedMovePct": 13.4,
-      "edgeRatio": 2.09
+      "impliedMovePct": 12.9,
+      "edgeRatio": 2.02
     },
     "guidance": {
       "flag": "unknown",
@@ -3691,7 +3691,7 @@
       "note": ""
     },
     "score": {
-      "total": 58,
+      "total": 56,
       "grade": "OKAY",
       "partial": false,
       "partialNote": "",
@@ -3700,8 +3700,8 @@
           "key": "price",
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
-          "points": 12,
-          "detail": "$19.77 \u2014 in the $15\u201320 sweet spot",
+          "points": 9,
+          "detail": "$20.48 \u2014 in the $12\u201325 workable band",
           "available": true
         },
         {
@@ -3717,7 +3717,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 10,
-          "detail": "46.5% below the 52-week high ($36.98)",
+          "detail": "44.6% below the 52-week high ($36.98)",
           "available": true
         },
         {
@@ -3733,7 +3733,7 @@
           "label": "Days to earnings",
           "max": 8,
           "points": 8,
-          "detail": "15 days to earnings (target \u2265 7 for entry)",
+          "detail": "14 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -3749,7 +3749,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b113.4% vs realized avg \u00b16.4% (ratio 2.09\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b112.9% vs realized avg \u00b16.4% (ratio 2.02\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -3764,8 +3764,8 @@
           "key": "momentum",
           "label": "Price momentum",
           "max": 6,
-          "points": 0,
-          "detail": "5d -3.9% \u2022 30d -13.1% \u2022 90d -20.8%",
+          "points": 1,
+          "detail": "5d +0.3% \u2022 30d -10.0% \u2022 90d -13.4%",
           "available": true
         },
         {
@@ -3806,7 +3806,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -3838,7 +3838,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 13,094,725 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 13,108,946 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -3853,20 +3853,20 @@
     "name": "KeyCorp",
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "price": 19.92,
-    "dayLow": 19.83,
-    "dayHigh": 20.0,
+    "price": 20.81,
+    "dayLow": 20.04,
+    "dayHigh": 20.82,
     "wk52Low": 16.91,
     "wk52High": 24.07,
-    "pe": 11.6,
-    "fwdPe": 9.3,
+    "pe": 12.1,
+    "fwdPe": 9.6,
     "eps": 1.72,
-    "fwdEps": 2.15,
-    "mktCap": "21.3B",
-    "avgVol": "12.8M",
+    "fwdEps": 2.16,
+    "mktCap": "22.2B",
+    "avgVol": "12.9M",
     "div": 0.82,
-    "divYield": "4.1%",
-    "divYieldPct": 4.1,
+    "divYield": "3.9%",
+    "divYieldPct": 3.9,
     "divYieldSuspect": false,
     "beta": 1.09,
     "shortInt": "4.0%",
@@ -3912,7 +3912,7 @@
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": 0.41,
-      "revenue": "21.3B",
+      "revenue": "22.2B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -3921,36 +3921,36 @@
       17.12,
       18.7,
       20.38,
-      20.38,
+      20.58,
       20.49,
       22.54,
       21.56,
       19.48,
-      19.04,
-      20.08,
+      19.08,
+      21.05,
       21.21,
       21.19,
       21.15,
-      21.55,
-      22.38,
-      22.8,
+      22.48,
+      23.04,
+      23.08,
       22.44,
       22.51,
-      21.66,
-      22.18,
-      20.81,
-      20.08
+      21.7,
+      21.84,
+      20.61,
+      19.97
     ],
     "risk90d": {
-      "best": 23.5,
+      "best": 23.24,
       "worst": 19.45
     },
     "peers": [
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 333.53,
-        "pe": 14.0,
+        "price": 335.26,
+        "pe": 14.1,
         "rating": "Buy",
         "target": 372.57,
         "chg": null
@@ -3958,28 +3958,28 @@
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 50.39,
-        "pe": 12.0,
+        "price": 50.64,
+        "pe": 12.1,
         "rating": "Buy",
-        "target": 63.45,
+        "target": 63.14,
         "chg": null
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 875.78,
-        "pe": 12.6,
+        "price": 884.81,
+        "pe": 12.7,
         "rating": "Hold",
-        "target": 1037.9,
+        "target": 1038.18,
         "chg": null
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 178.47,
-        "pe": 14.2,
+        "price": 180.4,
+        "pe": 14.3,
         "rating": "Buy",
-        "target": 213.59,
+        "target": 213.36,
         "chg": null
       }
     ],
@@ -3992,39 +3992,39 @@
     "peerMismatch": "Review KEY vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24
+        11.0,
+        13.5,
+        16.0,
+        18.5,
+        21.0,
+        23.5,
+        26.0,
+        28.5,
+        31.0
       ],
       "calls": [
-        4.18,
-        3.27,
-        2.36,
-        1.46,
-        0.63,
-        0.73,
-        0.82,
-        0.91,
-        1.01
+        9.88,
+        7.38,
+        5.01,
+        2.74,
+        0.67,
+        0.9,
+        1.14,
+        1.38,
+        1.61
       ],
       "puts": [
-        0.99,
-        0.9,
-        0.8,
-        0.71,
-        0.7,
-        1.6,
-        2.51,
-        3.41,
-        4.32
+        1.57,
+        1.34,
+        1.1,
+        0.87,
+        0.82,
+        3.09,
+        5.35,
+        7.76,
+        10.26
       ],
-      "expiry": "Nov 03, 2026 (est.)"
+      "expiry": "Nov 04, 2026 (est.)"
     },
     "news": [],
     "insiderActivity": {
@@ -4098,10 +4098,10 @@
       ]
     },
     "momentum": {
-      "day5": -0.5,
-      "day30": -3.9,
-      "day90": -12.1,
-      "trend": "Bearish"
+      "day5": 0.1,
+      "day30": -4.6,
+      "day90": -13.0,
+      "trend": "Mixed"
     },
     "growthMetrics": {
       "revenueGrowth": 10.1,
@@ -4111,9 +4111,9 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 33.5,
-      "expectedMovePct": 9.6,
-      "expectedMoveDollar": 1.91,
+      "iv": 34.7,
+      "expectedMovePct": 9.9,
+      "expectedMoveDollar": 2.07,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -4125,7 +4125,7 @@
       "floatShares": "1.1B",
       "sharesOutstanding": "1.1B",
       "exDivDate": "1788220800",
-      "earningsEstRevision": 25.1
+      "earningsEstRevision": 25.7
     },
     "earningsMove": {
       "avgAbsMovePct": 2.1,
@@ -4136,8 +4136,8 @@
         4.8,
         0.4
       ],
-      "impliedMovePct": 9.6,
-      "edgeRatio": 4.57
+      "impliedMovePct": 9.9,
+      "edgeRatio": 4.71
     },
     "guidance": {
       "flag": "unknown",
@@ -4150,7 +4150,7 @@
       "note": ""
     },
     "score": {
-      "total": 74,
+      "total": 70,
       "grade": "OKAY",
       "partial": false,
       "partialNote": "",
@@ -4159,8 +4159,8 @@
           "key": "price",
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
-          "points": 12,
-          "detail": "$19.92 \u2014 in the $15\u201320 sweet spot",
+          "points": 9,
+          "detail": "$20.81 \u2014 in the $12\u201325 workable band",
           "available": true
         },
         {
@@ -4168,15 +4168,15 @@
           "label": "P/E valuation",
           "max": 12,
           "points": 12,
-          "detail": "P/E 11.6 (threshold < 50, S&P avg ~16)",
+          "detail": "P/E 12.1 (threshold < 50, S&P avg ~16)",
           "available": true
         },
         {
           "key": "position",
           "label": "52-week position",
           "max": 10,
-          "points": 6,
-          "detail": "17.2% below the 52-week high ($24.07)",
+          "points": 4,
+          "detail": "13.5% below the 52-week high ($24.07)",
           "available": true
         },
         {
@@ -4208,7 +4208,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b19.6% vs realized avg \u00b12.1% (ratio 4.57\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b19.9% vs realized avg \u00b12.1% (ratio 4.71\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -4223,8 +4223,8 @@
           "key": "momentum",
           "label": "Price momentum",
           "max": 6,
-          "points": 0,
-          "detail": "5d -0.5% \u2022 30d -3.9% \u2022 90d -12.1%",
+          "points": 1,
+          "detail": "5d +0.1% \u2022 30d -4.6% \u2022 90d -13.0%",
           "available": true
         },
         {
@@ -4297,7 +4297,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 12,787,251 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 12,876,970 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -4312,20 +4312,20 @@
     "name": "Annaly Capital Management, Inc.",
     "sector": "Real Estate",
     "industry": "REIT - Mortgage",
-    "price": 17.72,
-    "dayLow": 17.7,
-    "dayHigh": 18.1,
+    "price": 18.29,
+    "dayLow": 17.75,
+    "dayHigh": 18.34,
     "wk52Low": 17.7,
     "wk52High": 24.52,
-    "pe": 4.3,
-    "fwdPe": 5.7,
+    "pe": 4.5,
+    "fwdPe": 5.9,
     "eps": 4.08,
     "fwdEps": 3.11,
-    "mktCap": "13.4B",
-    "avgVol": "9.6M",
+    "mktCap": "13.8B",
+    "avgVol": "9.7M",
     "div": 3.0,
-    "divYield": "16.9%",
-    "divYieldPct": 16.9,
+    "divYield": "16.4%",
+    "divYieldPct": 16.4,
     "divYieldSuspect": false,
     "beta": 1.28,
     "shortInt": "3.2%",
@@ -4341,12 +4341,6 @@
       "sell": 1
     },
     "surprises": [
-      {
-        "q": "2025-09",
-        "est": 0.72,
-        "actual": 0.73,
-        "pct": 1.3
-      },
       {
         "q": "2025-12",
         "est": 0.73,
@@ -4364,14 +4358,20 @@
         "est": 0.75,
         "actual": 0.79,
         "pct": 5.2
+      },
+      {
+        "q": "2026-09",
+        "est": 0.77,
+        "actual": 0.8,
+        "pct": 3.5
       }
     ],
     "earningsDate": "Oct 20, 2026",
     "daysToEarnings": 0,
     "lastYearEarnings": {
-      "q": "2025-09",
-      "eps": 0.73,
-      "revenue": "13.4B",
+      "q": "2025-12",
+      "eps": 0.74,
+      "revenue": "13.8B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -4380,35 +4380,35 @@
       19.22,
       19.98,
       19.84,
-      20.64,
+      21.0,
       21.52,
       20.59,
       20.75,
       20.2,
-      18.74,
-      19.91,
+      18.72,
+      20.63,
       21.2,
       21.07,
       19.99,
-      19.77,
-      20.7,
-      21.73,
+      20.5,
+      21.39,
+      22.02,
       21.62,
       22.19,
-      22.31,
-      21.97,
-      20.27,
-      18.5
+      22.19,
+      21.09,
+      19.85,
+      18.3
     ],
     "risk90d": {
       "best": 23.03,
-      "worst": 17.76
+      "worst": 17.7
     },
     "peers": [
       {
         "ticker": "AMT",
         "name": "American Tower Corporation (REI",
-        "price": 183.03,
+        "price": 183.56,
         "pe": 25.2,
         "rating": "Buy",
         "target": 215.74,
@@ -4417,16 +4417,16 @@
       {
         "ticker": "PLD",
         "name": "Prologis, Inc.",
-        "price": 124.09,
-        "pe": 27.3,
+        "price": 127.47,
+        "pe": 28.3,
         "rating": "Buy",
-        "target": 154.62,
+        "target": 152.54,
         "chg": null
       },
       {
         "ticker": "CCI",
         "name": "Crown Castle Inc.",
-        "price": 81.06,
+        "price": 81.14,
         "pe": 33.0,
         "rating": "Buy",
         "target": 94.3,
@@ -4435,8 +4435,8 @@
       {
         "ticker": "EQIX",
         "name": "Equinix, Inc.",
-        "price": 975.71,
-        "pe": 62.8,
+        "price": 987.44,
+        "pe": 63.5,
         "rating": "Buy",
         "target": 1232.9,
         "chg": null
@@ -4462,28 +4462,28 @@
         22
       ],
       "calls": [
-        3.93,
-        3.02,
-        2.11,
-        1.21,
-        0.58,
-        0.68,
-        0.77,
-        0.86,
-        0.96
+        4.46,
+        3.55,
+        2.65,
+        1.74,
+        0.84,
+        0.64,
+        0.73,
+        0.83,
+        0.92
       ],
       "puts": [
-        0.9,
-        0.81,
-        0.72,
-        0.62,
-        0.81,
-        1.71,
-        2.62,
-        3.53,
-        4.43
+        0.98,
+        0.88,
+        0.79,
+        0.69,
+        0.6,
+        1.22,
+        2.12,
+        3.03,
+        3.93
       ],
-      "expiry": "Nov 03, 2026 (est.)"
+      "expiry": "Nov 04, 2026 (est.)"
     },
     "news": [],
     "insiderActivity": {
@@ -4575,9 +4575,9 @@
       ]
     },
     "momentum": {
-      "day5": -0.3,
-      "day30": -10.1,
-      "day90": -16.4,
+      "day5": -2.4,
+      "day30": -13.7,
+      "day90": -17.9,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -4588,9 +4588,9 @@
       "signal": "Strong"
     },
     "impliedVolatility": {
-      "iv": 51.6,
-      "expectedMovePct": 14.8,
-      "expectedMoveDollar": 2.62,
+      "iv": 42.6,
+      "expectedMovePct": 12.2,
+      "expectedMoveDollar": 2.23,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -4605,16 +4605,16 @@
       "earningsEstRevision": -23.7
     },
     "earningsMove": {
-      "avgAbsMovePct": 1.7,
+      "avgAbsMovePct": 3.3,
       "count": 4,
       "moves": [
-        1.4,
         0.6,
         0.6,
-        4.1
+        4.1,
+        8.0
       ],
-      "impliedMovePct": 14.8,
-      "edgeRatio": 8.71
+      "impliedMovePct": 12.2,
+      "edgeRatio": 3.7
     },
     "guidance": {
       "flag": "unknown",
@@ -4637,7 +4637,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 12,
-          "detail": "$17.72 \u2014 in the $15\u201320 sweet spot",
+          "detail": "$18.29 \u2014 in the $15\u201320 sweet spot",
           "available": true
         },
         {
@@ -4645,7 +4645,7 @@
           "label": "P/E valuation",
           "max": 12,
           "points": 12,
-          "detail": "P/E 4.3 (threshold < 50, S&P avg ~16)",
+          "detail": "P/E 4.5 (threshold < 50, S&P avg ~16)",
           "available": true
         },
         {
@@ -4653,7 +4653,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 8,
-          "detail": "27.7% below the 52-week high ($24.52)",
+          "detail": "25.4% below the 52-week high ($24.52)",
           "available": true
         },
         {
@@ -4685,7 +4685,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b114.8% vs realized avg \u00b11.7% (ratio 8.71\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b112.2% vs realized avg \u00b13.3% (ratio 3.70\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -4701,7 +4701,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 0,
-          "detail": "5d -0.3% \u2022 30d -10.1% \u2022 90d -16.4%",
+          "detail": "5d -2.4% \u2022 30d -13.7% \u2022 90d -17.9%",
           "available": true
         },
         {
@@ -4724,7 +4724,7 @@
       "version": 2
     },
     "squeezeScore": {
-      "total": 36,
+      "total": 38,
       "grade": "THIN",
       "partial": true,
       "partialNote": "Partial data \u2014 not measured: Short interest trend (vs prior report). Score rescaled over the 90 measurable points.",
@@ -4765,8 +4765,8 @@
           "key": "movement",
           "label": "Realized earnings movement",
           "max": 10,
-          "points": 0,
-          "detail": "Averages \u00b11.7% on its earnings prints \u2014 modest historical moves \u2014 even a good setup may pop less here",
+          "points": 2,
+          "detail": "Averages \u00b13.3% on its earnings prints \u2014 modest historical moves \u2014 even a good setup may pop less here",
           "available": true
         },
         {
@@ -4774,7 +4774,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 9,643,900 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 9,702,865 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -4789,17 +4789,17 @@
     "name": "Nu Holdings Ltd.",
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "price": 14.51,
-    "dayLow": 14.36,
-    "dayHigh": 14.92,
+    "price": 15.09,
+    "dayLow": 14.6,
+    "dayHigh": 15.41,
     "wk52Low": 11.2,
     "wk52High": 18.98,
-    "pe": 19.9,
-    "fwdPe": 12.9,
+    "pe": 20.7,
+    "fwdPe": 13.4,
     "eps": 0.73,
     "fwdEps": 1.13,
-    "mktCap": "70.1B",
-    "avgVol": "77.8M",
+    "mktCap": "72.9B",
+    "avgVol": "75.9M",
     "div": 0,
     "divYield": "0%",
     "divYieldPct": 0.0,
@@ -4809,7 +4809,7 @@
     "shortRatio": 1.8,
     "targets": {
       "low": 12.0,
-      "avg": 18.77,
+      "avg": 18.88,
       "high": 23.0
     },
     "analystRatings": {
@@ -4844,11 +4844,11 @@
       }
     ],
     "earningsDate": "Nov 12, 2026",
-    "daysToEarnings": 22,
+    "daysToEarnings": 21,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": 0.16,
-      "revenue": "70.1B",
+      "revenue": "72.9B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -4857,25 +4857,25 @@
       15.89,
       16.7,
       16.34,
-      17.02,
+      17.46,
       18.04,
       17.4,
       17.53,
       14.58,
-      13.94,
-      14.15,
+      13.6,
+      14.96,
       14.51,
       13.8,
       12.73,
-      11.97,
-      12.71,
-      13.61,
+      12.19,
+      13.17,
+      13.76,
       14.09,
       13.84,
-      14.58,
-      15.37,
-      13.65,
-      13.43
+      14.3,
+      14.62,
+      13.59,
+      16.12
     ],
     "risk90d": {
       "best": 16.22,
@@ -4885,8 +4885,8 @@
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 333.53,
-        "pe": 14.0,
+        "price": 335.26,
+        "pe": 14.1,
         "rating": "Buy",
         "target": 372.57,
         "chg": null
@@ -4894,28 +4894,28 @@
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 50.39,
-        "pe": 12.0,
+        "price": 50.64,
+        "pe": 12.1,
         "rating": "Buy",
-        "target": 63.45,
+        "target": 63.14,
         "chg": null
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 875.78,
-        "pe": 12.6,
+        "price": 884.81,
+        "pe": 12.7,
         "rating": "Hold",
-        "target": 1037.9,
+        "target": 1038.18,
         "chg": null
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 178.47,
-        "pe": 14.2,
+        "price": 180.4,
+        "pe": 14.3,
         "rating": "Buy",
-        "target": 213.59,
+        "target": 213.36,
         "chg": null
       }
     ],
@@ -4939,26 +4939,26 @@
         19
       ],
       "calls": [
-        3.71,
-        2.86,
-        2.01,
-        1.16,
-        0.8,
-        0.95,
-        1.1,
-        1.26,
-        1.41
+        4.23,
+        3.38,
+        2.53,
+        1.68,
+        0.82,
+        0.88,
+        1.03,
+        1.18,
+        1.33
       ],
       "puts": [
-        1.26,
-        1.11,
-        0.96,
-        0.81,
-        1.15,
-        1.99,
-        2.84,
-        3.69,
-        4.56
+        1.36,
+        1.21,
+        1.06,
+        0.91,
+        0.76,
+        1.52,
+        2.37,
+        3.23,
+        4.08
       ],
       "expiry": "Nov 25, 2026 (est.)"
     },
@@ -5052,9 +5052,9 @@
       ]
     },
     "momentum": {
-      "day5": -9.1,
-      "day30": 6.7,
-      "day90": 1.2,
+      "day5": -6.9,
+      "day30": 3.2,
+      "day90": 0.0,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -5065,10 +5065,10 @@
       "signal": "Strong"
     },
     "impliedVolatility": {
-      "iv": 63.7,
-      "expectedMovePct": 15.6,
-      "expectedMoveDollar": 2.27,
-      "signal": "High IV"
+      "iv": 57.4,
+      "expectedMovePct": 13.8,
+      "expectedMoveDollar": 2.08,
+      "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
       "profitMargin": 42.7,
@@ -5090,8 +5090,8 @@
         6.9,
         2.0
       ],
-      "impliedMovePct": 15.6,
-      "edgeRatio": 4.33
+      "impliedMovePct": 13.8,
+      "edgeRatio": 3.83
     },
     "guidance": {
       "flag": "unknown",
@@ -5104,7 +5104,7 @@
       "note": ""
     },
     "score": {
-      "total": 78,
+      "total": 80,
       "grade": "STRONG",
       "partial": false,
       "partialNote": "",
@@ -5113,8 +5113,8 @@
           "key": "price",
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
-          "points": 9,
-          "detail": "$14.51 \u2014 in the $12\u201325 workable band",
+          "points": 12,
+          "detail": "$15.09 \u2014 in the $15\u201320 sweet spot",
           "available": true
         },
         {
@@ -5122,7 +5122,7 @@
           "label": "P/E valuation",
           "max": 12,
           "points": 9,
-          "detail": "P/E 19.9 (threshold < 50, S&P avg ~16)",
+          "detail": "P/E 20.7 (threshold < 50, S&P avg ~16)",
           "available": true
         },
         {
@@ -5130,7 +5130,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 8,
-          "detail": "23.6% below the 52-week high ($18.98)",
+          "detail": "20.5% below the 52-week high ($18.98)",
           "available": true
         },
         {
@@ -5146,7 +5146,7 @@
           "label": "Days to earnings",
           "max": 8,
           "points": 8,
-          "detail": "22 days to earnings (target \u2265 7 for entry)",
+          "detail": "21 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -5162,7 +5162,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b115.6% vs realized avg \u00b13.6% (ratio 4.33\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b113.8% vs realized avg \u00b13.6% (ratio 3.83\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -5178,7 +5178,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 4,
-          "detail": "5d -9.1% \u2022 30d +6.7% \u2022 90d +1.2%",
+          "detail": "5d -6.9% \u2022 30d +3.2% \u2022 90d +0.0%",
           "available": true
         },
         {
@@ -5201,7 +5201,7 @@
       "version": 2
     },
     "squeezeScore": {
-      "total": 40,
+      "total": 43,
       "grade": "THIN",
       "partial": true,
       "partialNote": "Partial data \u2014 not measured: Short interest trend (vs prior report). Score rescaled over the 90 measurable points.",
@@ -5218,8 +5218,8 @@
           "key": "catalyst",
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
-          "points": 12,
-          "detail": "Earnings in 22 days \u2014 inside the window, at the far edge",
+          "points": 15,
+          "detail": "Earnings in 21 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -5251,7 +5251,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 77,815,892 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 75,949,965 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -5266,27 +5266,27 @@
     "name": "Regions Financial Corporation",
     "sector": "Financial Services",
     "industry": "Banks - Regional",
-    "price": 27.2,
-    "dayLow": 27.15,
-    "dayHigh": 27.68,
+    "price": 27.85,
+    "dayLow": 27.2,
+    "dayHigh": 27.95,
     "wk52Low": 23.59,
     "wk52High": 32.47,
-    "pe": 11.1,
-    "fwdPe": 9.6,
+    "pe": 11.4,
+    "fwdPe": 9.8,
     "eps": 2.45,
-    "fwdEps": 2.84,
-    "mktCap": "23.2B",
-    "avgVol": "9.2M",
+    "fwdEps": 2.85,
+    "mktCap": "23.7B",
+    "avgVol": "9.1M",
     "div": 1.2,
-    "divYield": "4.4%",
-    "divYieldPct": 4.4,
+    "divYield": "4.3%",
+    "divYieldPct": 4.3,
     "divYieldSuspect": false,
     "beta": 1.06,
     "shortInt": "9.9%",
     "shortRatio": 7.2,
     "targets": {
       "low": 27.0,
-      "avg": 31.38,
+      "avg": 31.33,
       "high": 36.0
     },
     "analystRatings": {
@@ -5325,7 +5325,7 @@
     "lastYearEarnings": {
       "q": "2025-12",
       "eps": 0.57,
-      "revenue": "23.2B",
+      "revenue": "23.7B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -5334,25 +5334,25 @@
       23.94,
       25.52,
       26.86,
-      26.77,
+      27.7,
       26.69,
       30.04,
       29.2,
       26.52,
-      24.87,
-      25.96,
+      24.67,
+      26.97,
       27.22,
       27.09,
       27.29,
-      28.25,
-      28.33,
-      29.98,
+      28.98,
+      29.76,
+      30.71,
       30.55,
       31.11,
-      30.1,
-      30.42,
-      28.5,
-      27.1
+      30.03,
+      30.13,
+      27.62,
+      27.03
     ],
     "risk90d": {
       "best": 31.97,
@@ -5362,8 +5362,8 @@
       {
         "ticker": "JPM",
         "name": "JP Morgan Chase & Co.",
-        "price": 333.53,
-        "pe": 14.0,
+        "price": 335.26,
+        "pe": 14.1,
         "rating": "Buy",
         "target": 372.57,
         "chg": null
@@ -5371,28 +5371,28 @@
       {
         "ticker": "BAC",
         "name": "Bank of America Corporation",
-        "price": 50.39,
-        "pe": 12.0,
+        "price": 50.64,
+        "pe": 12.1,
         "rating": "Buy",
-        "target": 63.45,
+        "target": 63.14,
         "chg": null
       },
       {
         "ticker": "GS",
         "name": "Goldman Sachs Group, Inc. (The)",
-        "price": 875.78,
-        "pe": 12.6,
+        "price": 884.81,
+        "pe": 12.7,
         "rating": "Hold",
-        "target": 1037.9,
+        "target": 1038.18,
         "chg": null
       },
       {
         "ticker": "MS",
         "name": "Morgan Stanley",
-        "price": 178.47,
-        "pe": 14.2,
+        "price": 180.4,
+        "pe": 14.3,
         "rating": "Buy",
-        "target": 213.59,
+        "target": 213.36,
         "chg": null
       }
     ],
@@ -5405,39 +5405,39 @@
     "peerMismatch": "Review RF vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        17.0,
-        19.5,
-        22.0,
-        24.5,
-        27.0,
-        29.5,
-        32.0,
-        34.5,
-        37.0
+        18.0,
+        20.5,
+        23.0,
+        25.5,
+        28.0,
+        30.5,
+        33.0,
+        35.5,
+        38.0
       ],
       "calls": [
-        10.29,
-        7.83,
-        5.56,
-        3.3,
-        1.03,
-        1.07,
-        1.3,
-        1.54,
-        1.77
+        9.94,
+        7.53,
+        5.27,
+        3.0,
+        0.89,
+        1.12,
+        1.36,
+        1.59,
+        1.83
       ],
       "puts": [
-        1.81,
-        1.58,
-        1.34,
-        1.11,
-        0.87,
-        2.94,
-        5.2,
-        7.47,
-        9.89
+        1.8,
+        1.56,
+        1.33,
+        1.09,
+        1.01,
+        3.27,
+        5.54,
+        7.8,
+        10.24
       ],
-      "expiry": "Nov 03, 2026 (est.)"
+      "expiry": "Nov 04, 2026 (est.)"
     },
     "news": [],
     "insiderActivity": {
@@ -5511,9 +5511,9 @@
       ]
     },
     "momentum": {
-      "day5": 0.3,
-      "day30": -3.7,
-      "day90": -10.0,
+      "day5": 0.7,
+      "day30": -4.7,
+      "day90": -11.0,
       "trend": "Mixed"
     },
     "growthMetrics": {
@@ -5524,9 +5524,9 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 29.6,
-      "expectedMovePct": 8.5,
-      "expectedMoveDollar": 2.31,
+      "iv": 30.0,
+      "expectedMovePct": 8.6,
+      "expectedMoveDollar": 2.39,
       "signal": "Low IV"
     },
     "fundamentalsExtra": {
@@ -5538,7 +5538,7 @@
       "floatShares": "846.0M",
       "sharesOutstanding": "851.9M",
       "exDivDate": "1796083200",
-      "earningsEstRevision": 16.0
+      "earningsEstRevision": 16.1
     },
     "earningsMove": {
       "avgAbsMovePct": 1.9,
@@ -5549,8 +5549,8 @@
         1.8,
         0.3
       ],
-      "impliedMovePct": 8.5,
-      "edgeRatio": 4.47
+      "impliedMovePct": 8.6,
+      "edgeRatio": 4.53
     },
     "guidance": {
       "flag": "unknown",
@@ -5563,7 +5563,7 @@
       "note": ""
     },
     "score": {
-      "total": 60,
+      "total": 58,
       "grade": "OKAY",
       "partial": false,
       "partialNote": "",
@@ -5573,7 +5573,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 6,
-          "detail": "$27.20 \u2014 in the $10\u201330 outer band",
+          "detail": "$27.85 \u2014 in the $10\u201330 outer band",
           "available": true
         },
         {
@@ -5581,15 +5581,15 @@
           "label": "P/E valuation",
           "max": 12,
           "points": 12,
-          "detail": "P/E 11.1 (threshold < 50, S&P avg ~16)",
+          "detail": "P/E 11.4 (threshold < 50, S&P avg ~16)",
           "available": true
         },
         {
           "key": "position",
           "label": "52-week position",
           "max": 10,
-          "points": 6,
-          "detail": "16.2% below the 52-week high ($32.47)",
+          "points": 4,
+          "detail": "14.2% below the 52-week high ($32.47)",
           "available": true
         },
         {
@@ -5621,7 +5621,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b18.5% vs realized avg \u00b11.9% (ratio 4.47\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b18.6% vs realized avg \u00b11.9% (ratio 4.53\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -5637,7 +5637,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 1,
-          "detail": "5d +0.3% \u2022 30d -3.7% \u2022 90d -10.0%",
+          "detail": "5d +0.7% \u2022 30d -4.7% \u2022 90d -11.0%",
           "available": true
         },
         {
@@ -5710,7 +5710,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 9,155,959 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 9,104,292 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -5725,16 +5725,16 @@
     "name": "Li Auto Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 11.29,
-    "dayLow": 11.24,
-    "dayHigh": 11.4,
+    "price": 11.93,
+    "dayLow": 11.59,
+    "dayHigh": 12.06,
     "wk52Low": 10.66,
-    "wk52High": 22.57,
+    "wk52High": 22.53,
     "pe": -1,
-    "fwdPe": 20.3,
+    "fwdPe": 21.5,
     "eps": -0.65,
     "fwdEps": 0.56,
-    "mktCap": "11.0B",
+    "mktCap": "11.7B",
     "avgVol": "3.0M",
     "div": 0,
     "divYield": "0%",
@@ -5745,8 +5745,8 @@
     "shortRatio": 9.5,
     "targets": {
       "low": 9.07,
-      "avg": 15.21,
-      "high": 20.7
+      "avg": 15.22,
+      "high": 20.71
     },
     "analystRatings": {
       "buy": 13,
@@ -5780,11 +5780,11 @@
       }
     ],
     "earningsDate": "Nov 25, 2026",
-    "daysToEarnings": 35,
+    "daysToEarnings": 34,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": -0.36,
-      "revenue": "11.0B",
+      "revenue": "11.7B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -5793,25 +5793,25 @@
       18.02,
       17.8,
       17.0,
-      17.25,
+      16.66,
       16.71,
       18.97,
       18.28,
       17.16,
-      16.7,
-      18.47,
+      17.46,
+      19.21,
       18.13,
       18.0,
       15.89,
-      14.2,
-      13.21,
-      12.02,
+      14.3,
+      12.04,
+      12.1,
       12.12,
       12.95,
-      13.05,
-      12.37,
-      12.14,
-      10.69
+      12.23,
+      11.81,
+      11.5,
+      11.54
     ],
     "risk90d": {
       "best": 14.04,
@@ -5821,7 +5821,7 @@
       {
         "ticker": "AMZN",
         "name": "Amazon.com, Inc.",
-        "price": 262.45,
+        "price": 262.63,
         "pe": 21.1,
         "rating": "Buy",
         "target": 331.72,
@@ -5830,8 +5830,8 @@
       {
         "ticker": "TSLA",
         "name": "Tesla, Inc.",
-        "price": 368.06,
-        "pe": 340.8,
+        "price": 373.71,
+        "pe": 346.0,
         "rating": "Buy",
         "target": 397.83,
         "chg": null
@@ -5839,8 +5839,8 @@
       {
         "ticker": "HD",
         "name": "Home Depot, Inc. (The)",
-        "price": 309.88,
-        "pe": 21.7,
+        "price": 315.11,
+        "pe": 22.1,
         "rating": "Buy",
         "target": 379.75,
         "chg": null
@@ -5848,8 +5848,8 @@
       {
         "ticker": "NKE",
         "name": "Nike, Inc.",
-        "price": 37.21,
-        "pe": 17.9,
+        "price": 37.88,
+        "pe": 18.2,
         "rating": "Hold",
         "target": 36.51,
         "chg": null
@@ -5864,7 +5864,6 @@
     "peerMismatch": "Review LI vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        7,
         8,
         9,
         10,
@@ -5872,29 +5871,30 @@
         12,
         13,
         14,
-        15
+        15,
+        16
       ],
       "calls": [
-        4.36,
-        3.37,
-        2.55,
-        1.72,
-        0.9,
-        0.79,
-        0.96,
-        1.14,
-        1.31
+        4.0,
+        3.11,
+        2.29,
+        1.46,
+        0.7,
+        0.88,
+        1.05,
+        1.23,
+        1.4
       ],
       "puts": [
-        1.42,
-        1.24,
-        1.06,
-        0.89,
-        0.71,
-        1.25,
-        2.07,
-        2.9,
-        3.78
+        1.38,
+        1.2,
+        1.03,
+        0.85,
+        0.75,
+        1.58,
+        2.4,
+        3.23,
+        4.14
       ],
       "expiry": "Dec 08, 2026 (est.)"
     },
@@ -5957,9 +5957,9 @@
       ]
     },
     "momentum": {
-      "day5": -0.5,
-      "day30": -6.6,
-      "day90": -7.1,
+      "day5": -3.9,
+      "day30": -2.0,
+      "day90": -6.8,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -5970,9 +5970,9 @@
       "signal": "Declining"
     },
     "impliedVolatility": {
-      "iv": 50.4,
-      "expectedMovePct": 15.6,
-      "expectedMoveDollar": 1.76,
+      "iv": 57.4,
+      "expectedMovePct": 17.5,
+      "expectedMoveDollar": 2.09,
       "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
@@ -5995,8 +5995,8 @@
         4.7,
         2.9
       ],
-      "impliedMovePct": 15.6,
-      "edgeRatio": 7.09
+      "impliedMovePct": 17.5,
+      "edgeRatio": 7.95
     },
     "guidance": {
       "flag": "unknown",
@@ -6019,7 +6019,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 6,
-          "detail": "$11.29 \u2014 in the $10\u201330 outer band",
+          "detail": "$11.93 \u2014 in the $10\u201330 outer band",
           "available": true
         },
         {
@@ -6035,7 +6035,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 10,
-          "detail": "50.0% below the 52-week high ($22.57)",
+          "detail": "47.0% below the 52-week high ($22.53)",
           "available": true
         },
         {
@@ -6051,7 +6051,7 @@
           "label": "Days to earnings",
           "max": 8,
           "points": 8,
-          "detail": "35 days to earnings (target \u2265 7 for entry)",
+          "detail": "34 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -6067,7 +6067,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b115.6% vs realized avg \u00b12.2% (ratio 7.09\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b117.5% vs realized avg \u00b12.2% (ratio 7.95\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -6083,7 +6083,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 0,
-          "detail": "5d -0.5% \u2022 30d -6.6% \u2022 90d -7.1%",
+          "detail": "5d -3.9% \u2022 30d -2.0% \u2022 90d -6.8%",
           "available": true
         },
         {
@@ -6124,7 +6124,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~35 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~34 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -6156,7 +6156,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 3,016,584 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 2,975,398 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -6173,16 +6173,16 @@
     "name": "XPeng Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 9.21,
-    "dayLow": 9.19,
-    "dayHigh": 9.38,
+    "price": 9.91,
+    "dayLow": 9.53,
+    "dayHigh": 9.99,
     "wk52Low": 9.18,
     "wk52High": 28.23,
     "pe": -1,
-    "fwdPe": 49.9,
+    "fwdPe": 53.7,
     "eps": -0.47,
     "fwdEps": 0.18,
-    "mktCap": "8.8B",
+    "mktCap": "9.5B",
     "avgVol": "7.0M",
     "div": 0,
     "divYield": "0%",
@@ -6193,8 +6193,8 @@
     "shortRatio": 7.0,
     "targets": {
       "low": 11.57,
-      "avg": 18.49,
-      "high": 25.37
+      "avg": 18.5,
+      "high": 25.38
     },
     "analystRatings": {
       "buy": 15,
@@ -6228,11 +6228,11 @@
       }
     ],
     "earningsDate": "Nov 16, 2026",
-    "daysToEarnings": 26,
+    "daysToEarnings": 25,
     "lastYearEarnings": {
       "q": "2025-09",
       "eps": -0.16,
-      "revenue": "8.8B",
+      "revenue": "9.5B",
       "reaction": "+/- TBD"
     },
     "prices52w": [
@@ -6241,35 +6241,35 @@
       20.36,
       20.0,
       19.86,
-      20.43,
+      20.02,
       19.25,
       17.72,
       17.62,
       17.32,
-      17.55,
-      17.7,
+      16.93,
+      17.42,
       16.66,
       15.62,
       15.59,
-      15.95,
-      13.21,
-      13.08,
+      14.49,
+      12.09,
+      13.03,
       12.33,
       12.13,
-      12.19,
-      10.95,
-      10.62,
-      9.25
+      11.53,
+      10.54,
+      10.12,
+      9.9
     ],
     "risk90d": {
-      "best": 13.62,
+      "best": 13.34,
       "worst": 9.18
     },
     "peers": [
       {
         "ticker": "AMZN",
         "name": "Amazon.com, Inc.",
-        "price": 262.45,
+        "price": 262.63,
         "pe": 21.1,
         "rating": "Buy",
         "target": 331.72,
@@ -6278,8 +6278,8 @@
       {
         "ticker": "TSLA",
         "name": "Tesla, Inc.",
-        "price": 368.06,
-        "pe": 340.8,
+        "price": 373.71,
+        "pe": 346.0,
         "rating": "Buy",
         "target": 397.83,
         "chg": null
@@ -6287,8 +6287,8 @@
       {
         "ticker": "HD",
         "name": "Home Depot, Inc. (The)",
-        "price": 309.88,
-        "pe": 21.7,
+        "price": 315.11,
+        "pe": 22.1,
         "rating": "Buy",
         "target": 379.75,
         "chg": null
@@ -6296,8 +6296,8 @@
       {
         "ticker": "NKE",
         "name": "Nike, Inc.",
-        "price": 37.21,
-        "pe": 17.9,
+        "price": 37.88,
+        "pe": 18.2,
         "rating": "Hold",
         "target": 36.51,
         "chg": null
@@ -6312,7 +6312,6 @@
     "peerMismatch": "Review XPEV vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
     "options": {
       "strikes": [
-        5,
         6,
         7,
         8,
@@ -6320,29 +6319,30 @@
         10,
         11,
         12,
-        13
+        13,
+        14
       ],
       "calls": [
-        4.26,
-        3.26,
-        2.35,
-        1.51,
-        0.66,
-        0.61,
-        0.77,
-        0.93,
-        1.09
+        3.96,
+        2.97,
+        2.13,
+        1.29,
+        0.53,
+        0.69,
+        0.85,
+        1.0,
+        1.16
       ],
       "puts": [
-        1.16,
-        1.0,
-        0.84,
-        0.68,
-        0.52,
-        1.15,
-        1.99,
-        2.84,
-        3.84
+        1.13,
+        0.97,
+        0.82,
+        0.66,
+        0.59,
+        1.44,
+        2.28,
+        3.14,
+        4.14
       ],
       "expiry": "Nov 29, 2026 (est.)"
     },
@@ -6405,9 +6405,9 @@
       ]
     },
     "momentum": {
-      "day5": -4.5,
-      "day30": -13.1,
-      "day90": -30.8,
+      "day5": -5.5,
+      "day30": -12.0,
+      "day90": -28.3,
       "trend": "Bearish"
     },
     "growthMetrics": {
@@ -6418,10 +6418,10 @@
       "signal": "Growing"
     },
     "impliedVolatility": {
-      "iv": 82.8,
-      "expectedMovePct": 22.1,
-      "expectedMoveDollar": 2.04,
-      "signal": "High IV"
+      "iv": 53.1,
+      "expectedMovePct": 13.9,
+      "expectedMoveDollar": 1.38,
+      "signal": "Moderate IV"
     },
     "fundamentalsExtra": {
       "profitMargin": -4.1,
@@ -6443,8 +6443,8 @@
         4.7,
         6.3
       ],
-      "impliedMovePct": 22.1,
-      "edgeRatio": 5.14
+      "impliedMovePct": 13.9,
+      "edgeRatio": 3.23
     },
     "guidance": {
       "flag": "unknown",
@@ -6467,7 +6467,7 @@
           "label": "Price band ($15\u201320 sweet spot)",
           "max": 12,
           "points": 3,
-          "detail": "$9.21 \u2014 outside the preferred band \u2014 100-lot capital is heavy or premium thin",
+          "detail": "$9.91 \u2014 outside the preferred band \u2014 100-lot capital is heavy or premium thin",
           "available": true
         },
         {
@@ -6483,7 +6483,7 @@
           "label": "52-week position",
           "max": 10,
           "points": 10,
-          "detail": "67.4% below the 52-week high ($28.23)",
+          "detail": "64.9% below the 52-week high ($28.23)",
           "available": true
         },
         {
@@ -6499,7 +6499,7 @@
           "label": "Days to earnings",
           "max": 8,
           "points": 8,
-          "detail": "26 days to earnings (target \u2265 7 for entry)",
+          "detail": "25 days to earnings (target \u2265 7 for entry)",
           "available": true
         },
         {
@@ -6515,7 +6515,7 @@
           "label": "Premium edge (implied vs realized move)",
           "max": 12,
           "points": 12,
-          "detail": "Implied move \u00b122.1% vs realized avg \u00b14.3% (ratio 5.14\u00d7) \u2014 premium overpays vs history",
+          "detail": "Implied move \u00b113.9% vs realized avg \u00b14.3% (ratio 3.23\u00d7) \u2014 premium overpays vs history",
           "available": true
         },
         {
@@ -6531,7 +6531,7 @@
           "label": "Price momentum",
           "max": 6,
           "points": 0,
-          "detail": "5d -4.5% \u2022 30d -13.1% \u2022 90d -30.8%",
+          "detail": "5d -5.5% \u2022 30d -12.0% \u2022 90d -28.3%",
           "available": true
         },
         {
@@ -6572,7 +6572,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 12,
-          "detail": "Earnings in 26 days \u2014 inside the window, at the far edge",
+          "detail": "Earnings in 25 days \u2014 inside the window, at the far edge",
           "available": true
         },
         {
@@ -6604,7 +6604,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 7,029,251 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 6,980,392 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -7856,7 +7856,7 @@
     "shortInt": "0%",
     "shortRatio": 0,
     "earningsDate": "2026-10-26",
-    "daysToEarnings": 5,
+    "daysToEarnings": 4,
     "excluded": true,
     "excludedReasons": [
       "Price $4.35 below the $8 minimum"
@@ -7881,7 +7881,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 5 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 4 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -7928,15 +7928,15 @@
     "name": "Verizon Communications Inc.",
     "sector": "Communication Services",
     "industry": "Telecom Services",
-    "price": 44.15,
-    "pe": 11.5,
+    "price": 44.54,
+    "pe": 11.6,
     "shortInt": "2.1%",
     "shortRatio": 4.2,
     "earningsDate": "2026-10-26",
-    "daysToEarnings": 5,
+    "daysToEarnings": 4,
     "excluded": true,
     "excludedReasons": [
-      "Price $44.15 above the $30 maximum"
+      "Price $44.54 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -7958,7 +7958,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 5 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 4 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -7990,7 +7990,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 23,069,281 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 22,988,090 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -8005,15 +8005,15 @@
     "name": "Robinhood Markets, Inc.",
     "sector": "Financial Services",
     "industry": "Capital Markets",
-    "price": 96.52,
-    "pe": 42.5,
+    "price": 98.21,
+    "pe": 43.3,
     "shortInt": "5.1%",
     "shortRatio": 1.7,
     "earningsDate": "2026-10-27",
-    "daysToEarnings": 6,
+    "daysToEarnings": 5,
     "excluded": true,
     "excludedReasons": [
-      "Price $96.52 above the $30 maximum"
+      "Price $98.21 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8035,7 +8035,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 5 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8067,7 +8067,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 20,542,478 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 20,491,423 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -8082,15 +8082,15 @@
     "name": "Logitech International S.A.",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "price": 107.34,
-    "pe": 19.7,
+    "price": 109.28,
+    "pe": 20.1,
     "shortInt": "8.1%",
     "shortRatio": 16.0,
     "earningsDate": "2026-10-27",
-    "daysToEarnings": 6,
+    "daysToEarnings": 5,
     "excluded": true,
     "excludedReasons": [
-      "Price $107.34 above the $30 maximum"
+      "Price $109.28 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8112,7 +8112,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 5 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8144,7 +8144,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 4,
-          "detail": "Average volume 866,960 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 876,485 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -8159,15 +8159,15 @@
     "name": "The Coca-Cola Company",
     "sector": "Consumer Defensive",
     "industry": "Beverages - Non-Alcoholic",
-    "price": 93.42,
+    "price": 93.49,
     "pe": 28.1,
     "shortInt": "1.2%",
     "shortRatio": 3.4,
     "earningsDate": "2026-10-27",
-    "daysToEarnings": 6,
+    "daysToEarnings": 5,
     "excluded": true,
     "excludedReasons": [
-      "Price $93.42 above the $30 maximum"
+      "Price $93.49 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8189,7 +8189,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 5 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8221,7 +8221,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 15,724,420 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 15,755,348 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -8236,15 +8236,15 @@
     "name": "Royal Caribbean Cruises Ltd.",
     "sector": "Consumer Cyclical",
     "industry": "Travel Services",
-    "price": 281.97,
-    "pe": 17.4,
+    "price": 287.81,
+    "pe": 17.8,
     "shortInt": "6.2%",
     "shortRatio": 3.6,
     "earningsDate": "2026-10-27",
-    "daysToEarnings": 6,
+    "daysToEarnings": 5,
     "excluded": true,
     "excludedReasons": [
-      "Price $281.97 above the $30 maximum"
+      "Price $287.81 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8266,7 +8266,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 5 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8298,7 +8298,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 2,381,409 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 2,369,448 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -8313,15 +8313,15 @@
     "name": "Teladoc Health, Inc.",
     "sector": "Healthcare",
     "industry": "Health Information Services",
-    "price": 5.73,
+    "price": 6.21,
     "pe": -1,
     "shortInt": "16.7%",
     "shortRatio": 8.9,
     "earningsDate": "2026-10-28",
-    "daysToEarnings": 7,
+    "daysToEarnings": 6,
     "excluded": true,
     "excludedReasons": [
-      "Price $5.73 below the $8 minimum"
+      "Price $6.21 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8343,7 +8343,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8375,7 +8375,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 4,283,865 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 4,269,917 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -8390,15 +8390,15 @@
     "name": "Transocean Ltd.",
     "sector": "Energy",
     "industry": "Oil & Gas Drilling",
-    "price": 5.89,
+    "price": 5.82,
     "pe": -1,
     "shortInt": "29.4%",
     "shortRatio": 6.8,
     "earningsDate": "2026-11-02",
-    "daysToEarnings": 12,
+    "daysToEarnings": 11,
     "excluded": true,
     "excludedReasons": [
-      "Price $5.89 below the $8 minimum"
+      "Price $5.82 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8420,7 +8420,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 12 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 11 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8452,7 +8452,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 42,174,787 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 42,639,645 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -8467,15 +8467,15 @@
     "name": "T-Mobile US, Inc.",
     "sector": "Communication Services",
     "industry": "Telecom Services",
-    "price": 156.09,
-    "pe": 16.3,
+    "price": 157.75,
+    "pe": 16.5,
     "shortInt": "3.0%",
     "shortRatio": 2.8,
     "earningsDate": "2026-10-28",
-    "daysToEarnings": 7,
+    "daysToEarnings": 6,
     "excluded": true,
     "excludedReasons": [
-      "Price $156.09 above the $30 maximum"
+      "Price $157.75 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8497,7 +8497,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8529,7 +8529,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 5,133,954 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 5,154,900 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -8544,15 +8544,15 @@
     "name": "Coinbase Global, Inc.",
     "sector": "Financial Services",
     "industry": "Financial Data & Stock Exchanges",
-    "price": 168.45,
+    "price": 170.85,
     "pe": -1,
     "shortInt": "11.1%",
     "shortRatio": 2.5,
     "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "daysToEarnings": 7,
     "excluded": true,
     "excludedReasons": [
-      "Price $168.45 above the $30 maximum"
+      "Price $170.85 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8574,7 +8574,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8606,7 +8606,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 9,203,239 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 9,230,612 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -8626,7 +8626,7 @@
     "shortInt": "3.8%",
     "shortRatio": 2.4,
     "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "daysToEarnings": 7,
     "excluded": true,
     "excludedReasons": [
       "Price $5.25 below the $8 minimum"
@@ -8651,7 +8651,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8698,15 +8698,15 @@
     "name": "Roblox Corporation",
     "sector": "Communication Services",
     "industry": "Electronic Gaming & Multimedia",
-    "price": 50.75,
+    "price": 52.35,
     "pe": -1,
     "shortInt": "4.3%",
     "shortRatio": 2.3,
     "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "daysToEarnings": 7,
     "excluded": true,
     "excludedReasons": [
-      "Price $50.75 above the $30 maximum"
+      "Price $52.35 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8728,7 +8728,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8760,7 +8760,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 12,570,687 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 12,541,642 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -8775,15 +8775,15 @@
     "name": "Lumen Technologies, Inc.",
     "sector": "Communication Services",
     "industry": "Telecom Services",
-    "price": 4.46,
+    "price": 4.48,
     "pe": -1,
     "shortInt": "7.6%",
     "shortRatio": 5.0,
     "earningsDate": "2026-11-04",
-    "daysToEarnings": 14,
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
-      "Price $4.46 below the $8 minimum"
+      "Price $4.48 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8805,7 +8805,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8837,7 +8837,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 13,739,479 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 13,812,582 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -8852,15 +8852,15 @@
     "name": "Fox Corporation",
     "sector": "Communication Services",
     "industry": "Entertainment",
-    "price": 58.33,
-    "pe": 15.2,
+    "price": 59.75,
+    "pe": 15.6,
     "shortInt": "6.9%",
     "shortRatio": 7.3,
     "earningsDate": "2026-11-02",
-    "daysToEarnings": 12,
+    "daysToEarnings": 11,
     "excluded": true,
     "excludedReasons": [
-      "Price $58.33 above the $30 maximum"
+      "Price $59.75 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8882,7 +8882,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 12 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 11 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8914,7 +8914,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 1,093,800 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 1,088,828 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -8929,15 +8929,15 @@
     "name": "Intel Corporation",
     "sector": "Technology",
     "industry": "Semiconductors",
-    "price": 92.03,
+    "price": 91.69,
     "pe": -1,
     "shortInt": "3.2%",
     "shortRatio": 1.6,
     "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "daysToEarnings": 7,
     "excluded": true,
     "excludedReasons": [
-      "Price $92.03 above the $30 maximum"
+      "Price $91.69 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -8959,7 +8959,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -8991,7 +8991,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 106,975,429 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 107,166,782 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -9006,15 +9006,15 @@
     "name": "Palantir Technologies Inc.",
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "price": 194.15,
-    "pe": 167.4,
+    "price": 192.6,
+    "pe": 166.0,
     "shortInt": "2.6%",
     "shortRatio": 2.2,
     "earningsDate": "2026-11-02",
-    "daysToEarnings": 12,
+    "daysToEarnings": 11,
     "excluded": true,
     "excludedReasons": [
-      "Price $194.15 above the $30 maximum"
+      "Price $192.60 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9036,7 +9036,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 12 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 11 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9068,7 +9068,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 32,724,401 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 32,621,951 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -9083,15 +9083,15 @@
     "name": "BigBear.ai Holdings, Inc.",
     "sector": "Technology",
     "industry": "Information Technology Services",
-    "price": 2.12,
+    "price": 2.17,
     "pe": -1,
     "shortInt": "29.5%",
     "shortRatio": 9.7,
     "earningsDate": "2026-10-27",
-    "daysToEarnings": 6,
+    "daysToEarnings": 5,
     "excluded": true,
     "excludedReasons": [
-      "Price $2.12 below the $8 minimum"
+      "Price $2.17 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9113,7 +9113,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 5 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9145,7 +9145,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 18,976,785 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 18,818,276 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -9160,15 +9160,15 @@
     "name": "GoodRx Holdings, Inc.",
     "sector": "Healthcare",
     "industry": "Health Information Services",
-    "price": 3.37,
-    "pe": 67.4,
+    "price": 3.52,
+    "pe": 70.4,
     "shortInt": "4.3%",
     "shortRatio": 4.5,
     "earningsDate": "2026-11-03",
-    "daysToEarnings": 13,
+    "daysToEarnings": 12,
     "excluded": true,
     "excludedReasons": [
-      "Price $3.37 below the $8 minimum"
+      "Price $3.52 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9190,7 +9190,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 12 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9222,7 +9222,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 1,268,382 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 1,257,800 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -9237,15 +9237,15 @@
     "name": "SM Energy Company",
     "sector": "Energy",
     "industry": "Oil & Gas E&P",
-    "price": 38.89,
+    "price": 38.85,
     "pe": 6.9,
     "shortInt": "6.9%",
     "shortRatio": 3.3,
     "earningsDate": "2026-11-03",
-    "daysToEarnings": 13,
+    "daysToEarnings": 12,
     "excluded": true,
     "excludedReasons": [
-      "Price $38.89 above the $30 maximum"
+      "Price $38.85 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9267,7 +9267,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 12 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9299,7 +9299,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 3,627,557 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 3,610,953 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -9314,15 +9314,15 @@
     "name": "Advanced Micro Devices, Inc.",
     "sector": "Technology",
     "industry": "Semiconductors",
-    "price": 538.05,
-    "pe": 137.3,
+    "price": 534.74,
+    "pe": 136.4,
     "shortInt": "2.4%",
     "shortRatio": 1.8,
     "earningsDate": "2026-11-03",
-    "daysToEarnings": 13,
+    "daysToEarnings": 12,
     "excluded": true,
     "excludedReasons": [
-      "Price $538.05 above the $30 maximum"
+      "Price $534.74 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9344,7 +9344,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 12 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9376,7 +9376,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 22,727,982 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 22,678,087 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -9391,15 +9391,15 @@
     "name": "Payoneer Global Inc.",
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "price": 7.12,
+    "price": 7.13,
     "pe": 50.9,
     "shortInt": "5.5%",
     "shortRatio": 4.9,
     "earningsDate": "2026-11-04",
-    "daysToEarnings": 14,
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
-      "Price $7.12 below the $8 minimum"
+      "Price $7.13 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9421,7 +9421,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9453,7 +9453,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 3,357,395 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 3,318,359 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -9468,15 +9468,15 @@
     "name": "Clover Health Investments, Corp.",
     "sector": "Healthcare",
     "industry": "Healthcare Plans",
-    "price": 4.44,
+    "price": 4.8,
     "pe": -1,
     "shortInt": "5.5%",
     "shortRatio": 5.6,
     "earningsDate": "2026-11-04",
-    "daysToEarnings": 14,
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
-      "Price $4.44 below the $8 minimum"
+      "Price $4.80 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9498,7 +9498,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9530,7 +9530,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 4,246,550 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 4,247,331 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -9545,15 +9545,15 @@
     "name": "IonQ, Inc.",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "price": 30.78,
+    "price": 31.26,
     "pe": -1,
     "shortInt": "10.1%",
     "shortRatio": 1.7,
     "earningsDate": "2026-11-04",
-    "daysToEarnings": 14,
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
-      "Price $30.78 above the $30 maximum"
+      "Price $31.26 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9575,7 +9575,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9607,7 +9607,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 22,222,246 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 22,371,604 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -9622,15 +9622,15 @@
     "name": "Etsy, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Internet Retail",
-    "price": 85.26,
-    "pe": 24.9,
+    "price": 87.41,
+    "pe": 25.6,
     "shortInt": "16.7%",
     "shortRatio": 4.0,
     "earningsDate": "2026-10-28",
-    "daysToEarnings": 7,
+    "daysToEarnings": 6,
     "excluded": true,
     "excludedReasons": [
-      "Price $85.26 above the $30 maximum"
+      "Price $87.41 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9652,7 +9652,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9684,7 +9684,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 3,140,951 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 3,154,151 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -9699,15 +9699,15 @@
     "name": "Snap Inc.",
     "sector": "Communication Services",
     "industry": "Internet Content & Information",
-    "price": 6.27,
+    "price": 6.38,
     "pe": -1,
     "shortInt": "9.1%",
     "shortRatio": 3.1,
     "earningsDate": "2026-11-04",
-    "daysToEarnings": 14,
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
-      "Price $6.27 below the $8 minimum"
+      "Price $6.38 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9729,7 +9729,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9761,7 +9761,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 37,181,467 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 37,140,596 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -9776,15 +9776,15 @@
     "name": "Unity Software Inc.",
     "sector": "Technology",
     "industry": "Software - Application",
-    "price": 40.58,
+    "price": 40.16,
     "pe": -1,
     "shortInt": "6.4%",
     "shortRatio": 2.8,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
-      "Price $40.58 above the $30 maximum"
+      "Price $40.16 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9806,7 +9806,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9838,7 +9838,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 10,665,281 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 10,677,039 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -9853,15 +9853,15 @@
     "name": "QUALCOMM Incorporated",
     "sector": "Technology",
     "industry": "Semiconductors",
-    "price": 173.53,
-    "pe": 20.1,
+    "price": 175.71,
+    "pe": 20.3,
     "shortInt": "3.7%",
     "shortRatio": 2.5,
     "earningsDate": "2026-11-04",
-    "daysToEarnings": 14,
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
-      "Price $173.53 above the $30 maximum"
+      "Price $175.71 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9883,7 +9883,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9915,7 +9915,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 12,039,048 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 12,053,503 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -9930,15 +9930,15 @@
     "name": "Affirm Holdings, Inc.",
     "sector": "Financial Services",
     "industry": "Credit Services",
-    "price": 72.8,
-    "pe": 13.2,
+    "price": 73.85,
+    "pe": 13.4,
     "shortInt": "6.1%",
     "shortRatio": 3.8,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
-      "Price $72.80 above the $30 maximum"
+      "Price $73.85 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -9960,7 +9960,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -9992,7 +9992,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 4,332,851 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 4,298,015 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -10007,15 +10007,15 @@
     "name": "Opendoor Technologies Inc.",
     "sector": "Real Estate",
     "industry": "Real Estate Services",
-    "price": 2.05,
+    "price": 2.06,
     "pe": -1,
     "shortInt": "26.6%",
     "shortRatio": 7.5,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
-      "Price $2.05 below the $8 minimum"
+      "Price $2.06 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10037,7 +10037,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10069,7 +10069,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 39,529,237 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 38,569,123 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -10084,15 +10084,15 @@
     "name": "UWM Holdings Corporation",
     "sector": "Financial Services",
     "industry": "Mortgage Finance",
-    "price": 1.06,
+    "price": 1.1,
     "pe": -1,
     "shortInt": "29.0%",
     "shortRatio": 8.6,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
-      "Price $1.06 below the $8 minimum"
+      "Price $1.10 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10114,7 +10114,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10146,7 +10146,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 16,168,110 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 16,025,628 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -10161,15 +10161,15 @@
     "name": "SoundHound AI, Inc.",
     "sector": "Technology",
     "industry": "Software - Application",
-    "price": 4.65,
+    "price": 4.7,
     "pe": -1,
     "shortInt": "39.0%",
     "shortRatio": 7.9,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
-      "Price $4.65 below the $8 minimum"
+      "Price $4.70 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10191,7 +10191,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10223,7 +10223,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 25,836,959 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 25,385,245 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -10238,15 +10238,15 @@
     "name": "Clarus Corporation",
     "sector": "Consumer Cyclical",
     "industry": "Leisure",
-    "price": 3.64,
+    "price": 3.6,
     "pe": -1,
     "shortInt": "2.7%",
     "shortRatio": 5.3,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
-      "Price $3.64 below the $8 minimum"
+      "Price $3.60 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10268,7 +10268,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10300,7 +10300,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 2,
-          "detail": "Average volume 118,456 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
+          "detail": "Average volume 119,300 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
           "available": true
         }
       ],
@@ -10320,7 +10320,7 @@
     "shortInt": "9.9%",
     "shortRatio": 12.8,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
       "Price $0.42 below the $8 minimum"
@@ -10345,7 +10345,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10377,7 +10377,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 1,281,982 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 1,279,460 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -10397,7 +10397,7 @@
     "shortInt": "2.4%",
     "shortRatio": 3.4,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
       "Price $30.95 above the $30 maximum"
@@ -10422,7 +10422,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10469,15 +10469,15 @@
     "name": "Molson Coors Beverage Company",
     "sector": "Consumer Defensive",
     "industry": "Beverages - Brewers",
-    "price": 39.33,
+    "price": 40.2,
     "pe": -1,
     "shortInt": "21.2%",
     "shortRatio": 4.2,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
-      "Price $39.33 above the $30 maximum"
+      "Price $40.20 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10499,7 +10499,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10531,7 +10531,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 3,735,900 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 3,728,059 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -10546,15 +10546,15 @@
     "name": "Lucid Group, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 3.1,
+    "price": 3.27,
     "pe": -1,
     "shortInt": "57.2%",
     "shortRatio": 8.5,
     "earningsDate": "2026-11-09",
-    "daysToEarnings": 19,
+    "daysToEarnings": 18,
     "excluded": true,
     "excludedReasons": [
-      "Price $3.10 below the $8 minimum"
+      "Price $3.27 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10576,7 +10576,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 18 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10608,7 +10608,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 11,565,937 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 11,320,101 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -10623,15 +10623,15 @@
     "name": "Quantum Computing Inc.",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "price": 6.42,
+    "price": 6.5,
     "pe": -1,
     "shortInt": "33.6%",
     "shortRatio": 9.9,
     "earningsDate": "2026-11-09",
-    "daysToEarnings": 19,
+    "daysToEarnings": 18,
     "excluded": true,
     "excludedReasons": [
-      "Price $6.42 below the $8 minimum"
+      "Price $6.50 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10653,7 +10653,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 18 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10685,7 +10685,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 7,678,167 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 7,661,439 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -10700,12 +10700,12 @@
     "name": "Hims & Hers Health, Inc.",
     "sector": "Healthcare",
     "industry": "Drug Manufacturers - Specialty & Generic",
-    "price": 28.15,
+    "price": 29.21,
     "pe": -1,
     "shortInt": "28.2%",
     "shortRatio": 5.8,
     "earningsDate": "2026-11-09",
-    "daysToEarnings": 19,
+    "daysToEarnings": 18,
     "excluded": true,
     "excludedReasons": [
       "Short interest 28.2% of float above the 10% maximum"
@@ -10730,7 +10730,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 18 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10762,7 +10762,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 12,115,692 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 12,102,521 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -10777,15 +10777,15 @@
     "name": "Oscar Health, Inc.",
     "sector": "Healthcare",
     "industry": "Healthcare Plans",
-    "price": 32.54,
-    "pe": 25.2,
+    "price": 33.66,
+    "pe": 26.1,
     "shortInt": "6.5%",
     "shortRatio": 3.0,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
-      "Price $32.54 above the $30 maximum"
+      "Price $33.66 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10807,7 +10807,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10839,7 +10839,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 5,322,507 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 5,326,825 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -10854,15 +10854,15 @@
     "name": "monday.com Ltd.",
     "sector": "Technology",
     "industry": "Software - Application",
-    "price": 93.42,
-    "pe": 39.4,
+    "price": 100.86,
+    "pe": 42.6,
     "shortInt": "14.6%",
     "shortRatio": 4.3,
     "earningsDate": "2026-11-09",
-    "daysToEarnings": 19,
+    "daysToEarnings": 18,
     "excluded": true,
     "excludedReasons": [
-      "Price $93.42 above the $30 maximum"
+      "Price $100.86 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10884,7 +10884,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 18 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10916,7 +10916,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 1,375,439 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 1,361,118 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -10931,15 +10931,15 @@
     "name": "Plug Power Inc.",
     "sector": "Industrials",
     "industry": "Electrical Equipment & Parts",
-    "price": 1.37,
+    "price": 1.4,
     "pe": -1,
     "shortInt": "23.0%",
     "shortRatio": 6.0,
     "earningsDate": "2026-11-09",
-    "daysToEarnings": 19,
+    "daysToEarnings": 18,
     "excluded": true,
     "excludedReasons": [
-      "Price $1.37 below the $8 minimum"
+      "Price $1.40 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -10961,7 +10961,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 18 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -10993,7 +10993,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 54,316,203 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 54,338,954 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -11008,15 +11008,15 @@
     "name": "Microvast Holdings, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Parts",
-    "price": 0.51,
+    "price": 0.5,
     "pe": -1,
     "shortInt": "7.9%",
     "shortRatio": 3.0,
     "earningsDate": "2026-11-09",
-    "daysToEarnings": 19,
+    "daysToEarnings": 18,
     "excluded": true,
     "excludedReasons": [
-      "Price $0.51 below the $8 minimum"
+      "Price $0.50 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -11038,7 +11038,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 18 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -11070,7 +11070,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 5,856,401 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 5,834,837 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -11085,19 +11085,19 @@
     "name": "Workhorse Group, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 2.66,
+    "price": 2.65,
     "pe": -1,
     "shortInt": "22.7%",
     "shortRatio": 9.5,
     "earningsDate": "2026-11-12",
-    "daysToEarnings": 22,
+    "daysToEarnings": 21,
     "excluded": true,
     "excludedReasons": [
-      "Price $2.66 below the $8 minimum"
+      "Price $2.65 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
-      "total": 78,
+      "total": 81,
       "grade": "PRIMED",
       "partial": true,
       "partialNote": "Partial data \u2014 not measured: Short interest trend (vs prior report), Realized earnings movement. Score rescaled over the 80 measurable points.",
@@ -11114,8 +11114,8 @@
           "key": "catalyst",
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
-          "points": 12,
-          "detail": "Earnings in 22 days \u2014 inside the window, at the far edge",
+          "points": 15,
+          "detail": "Earnings in 21 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -11147,7 +11147,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 0,
-          "detail": "Average volume 91,001 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
+          "detail": "Average volume 90,254 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
           "available": true
         }
       ],
@@ -11162,19 +11162,19 @@
     "name": "Paysafe Limited",
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "price": 5.66,
+    "price": 5.49,
     "pe": -1,
     "shortInt": "11.5%",
     "shortRatio": 9.1,
     "earningsDate": "2026-11-12",
-    "daysToEarnings": 22,
+    "daysToEarnings": 21,
     "excluded": true,
     "excludedReasons": [
-      "Price $5.66 below the $8 minimum"
+      "Price $5.49 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
-      "total": 60,
+      "total": 64,
       "grade": "LOADED",
       "partial": true,
       "partialNote": "Partial data \u2014 not measured: Short interest trend (vs prior report), Realized earnings movement. Score rescaled over the 80 measurable points.",
@@ -11191,8 +11191,8 @@
           "key": "catalyst",
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
-          "points": 12,
-          "detail": "Earnings in 22 days \u2014 inside the window, at the far edge",
+          "points": 15,
+          "detail": "Earnings in 21 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -11224,7 +11224,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 2,
-          "detail": "Average volume 351,414 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
+          "detail": "Average volume 352,673 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
           "available": true
         }
       ],
@@ -11239,15 +11239,15 @@
     "name": "NIO Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 3.39,
+    "price": 3.43,
     "pe": -1,
     "shortInt": "6.9%",
     "shortRatio": 3.3,
     "earningsDate": "2026-11-24",
-    "daysToEarnings": 34,
+    "daysToEarnings": 33,
     "excluded": true,
     "excludedReasons": [
-      "Price $3.39 below the $8 minimum"
+      "Price $3.43 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -11269,7 +11269,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~34 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~33 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -11301,7 +11301,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 31,951,103 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 32,037,401 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -11318,15 +11318,15 @@
     "name": "HP Inc.",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "price": 30.24,
-    "pe": 11.5,
+    "price": 31.21,
+    "pe": 11.9,
     "shortInt": "9.5%",
     "shortRatio": 4.5,
     "earningsDate": "2026-11-24",
-    "daysToEarnings": 34,
+    "daysToEarnings": 33,
     "excluded": true,
     "excludedReasons": [
-      "Price $30.24 above the $30 maximum"
+      "Price $31.21 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -11348,7 +11348,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~34 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~33 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -11380,7 +11380,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 14,884,710 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 14,830,328 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -11397,15 +11397,15 @@
     "name": "Dell Technologies Inc.",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "price": 455.44,
-    "pe": 26.5,
+    "price": 461.56,
+    "pe": 26.8,
     "shortInt": "4.2%",
     "shortRatio": 1.1,
     "earningsDate": "2026-11-27",
-    "daysToEarnings": 37,
+    "daysToEarnings": 36,
     "excluded": true,
     "excludedReasons": [
-      "Price $455.44 above the $30 maximum"
+      "Price $461.56 above the $30 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -11427,7 +11427,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~37 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~36 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -11459,7 +11459,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 7,611,960 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 7,642,548 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -11477,15 +11477,15 @@
     "name": "ChargePoint Holdings, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Specialty Retail",
-    "price": 7.15,
+    "price": 7.83,
     "pe": -1,
     "shortInt": "19.2%",
     "shortRatio": 1.2,
     "earningsDate": "2026-12-02",
-    "daysToEarnings": 42,
+    "daysToEarnings": 41,
     "excluded": true,
     "excludedReasons": [
-      "Price $7.15 below the $8 minimum"
+      "Price $7.83 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -11507,7 +11507,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~42 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~41 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -11539,7 +11539,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 1,765,979 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 1,768,968 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -11713,12 +11713,12 @@
     "name": "SoFi Technologies, Inc.",
     "sector": "Financial Services",
     "industry": "Credit Services",
-    "price": 14.3,
-    "pe": 29.2,
+    "price": 14.68,
+    "pe": 30.0,
     "shortInt": "16.9%",
     "shortRatio": 4.8,
     "earningsDate": "2026-10-27",
-    "daysToEarnings": 6,
+    "daysToEarnings": 5,
     "excluded": true,
     "excludedReasons": [
       "Short interest 16.9% of float above the 10% maximum"
@@ -11743,7 +11743,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 6 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 5 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -11775,7 +11775,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 53,339,235 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 52,693,250 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -11790,12 +11790,12 @@
     "name": "Riot Platforms, Inc.",
     "sector": "Financial Services",
     "industry": "Capital Markets",
-    "price": 13.97,
+    "price": 13.77,
     "pe": -1,
     "shortInt": "13.9%",
     "shortRatio": 3.1,
-    "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "earningsDate": "2026-11-04",
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
       "Short interest 13.9% of float above the 10% maximum"
@@ -11820,7 +11820,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -11852,7 +11852,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 18,915,201 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 18,787,493 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -11867,12 +11867,12 @@
     "name": "Rivian Automotive, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Auto Manufacturers",
-    "price": 12.34,
+    "price": 12.43,
     "pe": -1,
     "shortInt": "14.9%",
     "shortRatio": 8.0,
     "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "daysToEarnings": 7,
     "excluded": true,
     "excludedReasons": [
       "Short interest 14.9% of float above the 10% maximum"
@@ -11897,7 +11897,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -11929,7 +11929,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 23,181,542 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 23,244,707 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -11944,12 +11944,12 @@
     "name": "Peabody Energy Corporation",
     "sector": "Energy",
     "industry": "Thermal Coal",
-    "price": 23.77,
+    "price": 22.65,
     "pe": -1,
     "shortInt": "13.3%",
     "shortRatio": 4.6,
-    "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "earningsDate": "2026-11-04",
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
       "Short interest 13.3% of float above the 10% maximum"
@@ -11974,7 +11974,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12006,7 +12006,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 2,355,796 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 2,358,000 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -12021,12 +12021,12 @@
     "name": "Upstart Holdings, Inc.",
     "sector": "Financial Services",
     "industry": "Credit Services",
-    "price": 23.25,
-    "pe": 46.5,
+    "price": 23.65,
+    "pe": 47.3,
     "shortInt": "33.6%",
     "shortRatio": 6.5,
     "earningsDate": "2026-11-03",
-    "daysToEarnings": 13,
+    "daysToEarnings": 12,
     "excluded": true,
     "excludedReasons": [
       "Short interest 33.6% of float above the 10% maximum"
@@ -12051,7 +12051,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 12 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12083,7 +12083,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 4,344,784 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 4,349,468 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -12098,22 +12098,404 @@
     "name": "Energy Transfer LP",
     "sector": "Energy",
     "industry": "Oil & Gas Midstream",
-    "price": 20.11,
-    "pe": 13.8,
+    "price": 19.55,
+    "dayLow": 19.55,
+    "dayHigh": 20.3,
+    "wk52Low": 16.18,
+    "wk52High": 21.84,
+    "pe": 13.4,
+    "fwdPe": 11.2,
+    "eps": 1.46,
+    "fwdEps": 1.74,
+    "mktCap": "67.3B",
+    "avgVol": "8.8M",
+    "div": 1.36,
+    "divYield": "7.0%",
+    "divYieldPct": 7.0,
+    "divYieldSuspect": false,
+    "beta": 0.6,
     "shortInt": "0.9%",
     "shortRatio": 3.2,
-    "earningsDate": "2026-11-03",
-    "daysToEarnings": 13,
-    "excluded": true,
-    "excludedReasons": [
-      "Only 7.9% below the 52-week high (needs \u2265 10%) \u2014 too close to highs, likely priced in"
+    "targets": {
+      "low": 22.0,
+      "avg": 24.74,
+      "high": 28.0
+    },
+    "analystRatings": {
+      "buy": 13,
+      "hold": 6,
+      "sell": 2
+    },
+    "surprises": [
+      {
+        "q": "2025-09",
+        "est": 0.33,
+        "actual": 0.28,
+        "pct": -15.4
+      },
+      {
+        "q": "2025-12",
+        "est": 0.36,
+        "actual": 0.25,
+        "pct": -30.4
+      },
+      {
+        "q": "2026-03",
+        "est": 0.38,
+        "actual": 0.35,
+        "pct": -7.6
+      },
+      {
+        "q": "2026-06",
+        "est": 0.37,
+        "actual": 0.59,
+        "pct": 60.4
+      }
     ],
-    "score": null,
+    "earningsDate": "Nov 03, 2026",
+    "daysToEarnings": 12,
+    "lastYearEarnings": {
+      "q": "2025-09",
+      "eps": 0.28,
+      "revenue": "67.3B",
+      "reaction": "+/- TBD"
+    },
+    "prices52w": [
+      15.56,
+      15.61,
+      15.67,
+      15.94,
+      15.56,
+      16.1,
+      17.07,
+      17.35,
+      18.35,
+      18.12,
+      19.02,
+      18.55,
+      18.45,
+      19.02,
+      19.74,
+      18.76,
+      18.85,
+      19.34,
+      20.03,
+      20.13,
+      21.31,
+      21.55,
+      20.19,
+      20.41
+    ],
+    "risk90d": {
+      "best": 21.84,
+      "worst": 19.53
+    },
+    "peers": [
+      {
+        "ticker": "XOM",
+        "name": "ExxonMobil Holdings Corporation",
+        "price": 177.86,
+        "pe": 22.9,
+        "rating": "Buy",
+        "target": 178.36,
+        "chg": null
+      },
+      {
+        "ticker": "CVX",
+        "name": "Chevron Corporation",
+        "price": 225.71,
+        "pe": 21.7,
+        "rating": "Buy",
+        "target": 229.62,
+        "chg": null
+      },
+      {
+        "ticker": "COP",
+        "name": "ConocoPhillips",
+        "price": 145.95,
+        "pe": 19.3,
+        "rating": "Buy",
+        "target": 150.73,
+        "chg": null
+      },
+      {
+        "ticker": "SLB",
+        "name": "SLB Limited",
+        "price": 49.98,
+        "pe": 24.1,
+        "rating": "Buy",
+        "target": 62.34,
+        "chg": null
+      }
+    ],
+    "description": "Energy Transfer LP, together with its subsidiaries, provides energy-related services in the United States. It operates through Intrastate Transportation and Storage; Interstate Transportation and Storage; Midstream; Natural Gas Liquid (NGL) and Refined Products Transportation and Services; Crude Oil Transportation and Services; Investment in Sunoco LP; Investment in USA Compression Partners, LP (USAC); and All Other segments. The company owns and operates natural gas transportation pipelines and",
+    "sentiment": {
+      "value": "Undervalued",
+      "quality": "Low",
+      "financials": "Adequate"
+    },
+    "peerMismatch": "Review ET vs peers on Finviz and Fidelity research. Compare P/E, margins, and growth rates to identify why this stock may trade at a premium or discount.",
+    "options": {
+      "strikes": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "calls": [
+        3.93,
+        3.06,
+        2.19,
+        1.31,
+        0.89,
+        1.02,
+        1.15,
+        1.28,
+        1.4
+      ],
+      "puts": [
+        1.29,
+        1.16,
+        1.03,
+        0.91,
+        1.23,
+        2.1,
+        2.97,
+        3.84,
+        4.71
+      ],
+      "expiry": "Nov 16, 2026 (est.)"
+    },
+    "news": [],
+    "insiderActivity": {
+      "buys": 2,
+      "sells": 0,
+      "buyValue": "21.5M",
+      "sellValue": "0",
+      "netSignal": "Bullish",
+      "recent": [
+        {
+          "name": "WARREN KELCY L",
+          "type": "Buy",
+          "shares": 1000000,
+          "value": 21263520
+        },
+        {
+          "name": "PERRY JAMES RICHARD",
+          "type": "Buy",
+          "shares": 12359,
+          "value": 250000
+        }
+      ]
+    },
+    "analystActions": {
+      "upgrades": 3,
+      "downgrades": 1,
+      "netSignal": "Bullish",
+      "recent": [
+        {
+          "firm": "Barclays",
+          "action": "main",
+          "toGrade": "Overweight",
+          "fromGrade": "",
+          "date": "Nov 09"
+        },
+        {
+          "firm": "Bank of America",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Oct 15"
+        },
+        {
+          "firm": "Barrington Research",
+          "action": "init",
+          "toGrade": "Outperform",
+          "fromGrade": "",
+          "date": "Oct 05"
+        },
+        {
+          "firm": "Deutsche Bank",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Sep 14"
+        },
+        {
+          "firm": "Barclays",
+          "action": "main",
+          "toGrade": "Overweight",
+          "fromGrade": "",
+          "date": "Aug 10"
+        },
+        {
+          "firm": "Stifel",
+          "action": "main",
+          "toGrade": "Buy",
+          "fromGrade": "",
+          "date": "Aug 10"
+        }
+      ]
+    },
+    "momentum": {
+      "day5": -1.5,
+      "day30": -4.5,
+      "day90": 0.8,
+      "trend": "Bearish"
+    },
+    "growthMetrics": {
+      "revenueGrowth": 78.4,
+      "earningsGrowth": 85.3,
+      "qtrRevenueGrowth": null,
+      "qtrEarningsGrowth": null,
+      "signal": "Strong"
+    },
+    "impliedVolatility": {
+      "iv": 81.4,
+      "expectedMovePct": 14.8,
+      "expectedMoveDollar": 2.89,
+      "signal": "High IV"
+    },
+    "fundamentalsExtra": {
+      "profitMargin": 4.9,
+      "grossMargin": 17.5,
+      "operatingMargin": 10.4,
+      "debtToEquity": 138.3,
+      "currentRatio": 1.16,
+      "floatShares": "2.9B",
+      "sharesOutstanding": "3.4B",
+      "exDivDate": "1786060800",
+      "earningsEstRevision": 19.4
+    },
+    "earningsMove": {
+      "avgAbsMovePct": 1.1,
+      "count": 4,
+      "moves": [
+        1.2,
+        0.3,
+        2.9,
+        0.1
+      ],
+      "impliedMovePct": 14.8,
+      "edgeRatio": 13.45
+    },
+    "guidance": {
+      "flag": "unknown",
+      "note": "Guidance direction is not in the free data feed \u2014 check the earnings press release before entering."
+    },
+    "dividendFlags": {
+      "paysDividend": true,
+      "exDivDate": "2026-08-07",
+      "exDivInWindow": false,
+      "note": ""
+    },
+    "score": {
+      "total": 66,
+      "grade": "OKAY",
+      "partial": false,
+      "partialNote": "",
+      "components": [
+        {
+          "key": "price",
+          "label": "Price band ($15\u201320 sweet spot)",
+          "max": 12,
+          "points": 12,
+          "detail": "$19.55 \u2014 in the $15\u201320 sweet spot",
+          "available": true
+        },
+        {
+          "key": "pe",
+          "label": "P/E valuation",
+          "max": 12,
+          "points": 12,
+          "detail": "P/E 13.4 (threshold < 50, S&P avg ~16)",
+          "available": true
+        },
+        {
+          "key": "position",
+          "label": "52-week position",
+          "max": 10,
+          "points": 4,
+          "detail": "10.5% below the 52-week high ($21.84)",
+          "available": true
+        },
+        {
+          "key": "short",
+          "label": "Short borrow (days to cover)",
+          "max": 12,
+          "points": 5,
+          "detail": "3.2 days to cover, short interest 0.9% of float \u2014 moderate cover time",
+          "available": true
+        },
+        {
+          "key": "timing",
+          "label": "Days to earnings",
+          "max": 8,
+          "points": 6,
+          "detail": "12 days to earnings (target \u2265 7 for entry)",
+          "available": true
+        },
+        {
+          "key": "surprises",
+          "label": "Earnings surprise track record",
+          "max": 10,
+          "points": 2,
+          "detail": "1/4 beats in recent reported quarters",
+          "available": true
+        },
+        {
+          "key": "premium",
+          "label": "Premium edge (implied vs realized move)",
+          "max": 12,
+          "points": 12,
+          "detail": "Implied move \u00b114.8% vs realized avg \u00b11.1% (ratio 13.45\u00d7) \u2014 premium overpays vs history",
+          "available": true
+        },
+        {
+          "key": "quality",
+          "label": "Quality & sentiment",
+          "max": 10,
+          "points": 5.5,
+          "detail": "Value: Undervalued \u2022 Quality: Low \u2022 Financials: Adequate",
+          "available": true
+        },
+        {
+          "key": "momentum",
+          "label": "Price momentum",
+          "max": 6,
+          "points": 0,
+          "detail": "5d -1.5% \u2022 30d -4.5% \u2022 90d +0.8%",
+          "available": true
+        },
+        {
+          "key": "growth",
+          "label": "Revenue growth",
+          "max": 4,
+          "points": 4,
+          "detail": "Revenue growth +78.4%",
+          "available": true
+        },
+        {
+          "key": "flow",
+          "label": "Insider & analyst flow",
+          "max": 4,
+          "points": 4.0,
+          "detail": "Insiders: Bullish \u2022 Analysts: Bullish",
+          "available": true
+        }
+      ],
+      "version": 2
+    },
     "squeezeScore": {
-      "total": 45,
-      "grade": "LOADED",
+      "total": 40,
+      "grade": "THIN",
       "partial": true,
-      "partialNote": "Partial data \u2014 not measured: Short interest trend (vs prior report), Realized earnings movement. Score rescaled over the 80 measurable points.",
+      "partialNote": "Partial data \u2014 not measured: Short interest trend (vs prior report). Score rescaled over the 90 measurable points.",
       "components": [
         {
           "key": "fuel",
@@ -12128,7 +12510,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 12 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12151,16 +12533,16 @@
           "key": "movement",
           "label": "Realized earnings movement",
           "max": 10,
-          "points": null,
-          "detail": "Realized earnings-move history n/a \u2014 unproven that this name jumps on its prints",
-          "available": false
+          "points": 0,
+          "detail": "Averages \u00b11.1% on its earnings prints \u2014 modest historical moves \u2014 even a good setup may pop less here",
+          "available": true
         },
         {
           "key": "liquidity",
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 8,819,990 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 8,777,648 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -12175,15 +12557,15 @@
     "name": "MARA Holdings, Inc.",
     "sector": "Financial Services",
     "industry": "Capital Markets",
-    "price": 7.38,
+    "price": 7.48,
     "pe": -1,
     "shortInt": "29.8%",
     "shortRatio": 2.3,
     "earningsDate": "2026-11-04",
-    "daysToEarnings": 14,
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
-      "Price $7.38 below the $8 minimum"
+      "Price $7.48 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -12205,7 +12587,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12237,7 +12619,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 10,
-          "detail": "Average volume 45,779,390 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 45,281,667 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -12252,15 +12634,16 @@
     "name": "American Well Corporation",
     "sector": "Healthcare",
     "industry": "Health Information Services",
-    "price": 12.33,
+    "price": 13.2,
     "pe": -1,
     "shortInt": "1.2%",
     "shortRatio": 1.6,
     "earningsDate": "2026-11-04",
-    "daysToEarnings": 14,
+    "daysToEarnings": 13,
     "excluded": true,
     "excludedReasons": [
-      "Average volume 108,832 below 500K \u2014 options too illiquid for a clean 100-lot play"
+      "Only 7.0% below the 52-week high (needs \u2265 10%) \u2014 too close to highs, likely priced in",
+      "Average volume 108,029 below 500K \u2014 options too illiquid for a clean 100-lot play"
     ],
     "score": null,
     "squeezeScore": {
@@ -12282,7 +12665,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 13 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12314,7 +12697,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 2,
-          "detail": "Average volume 108,832 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
+          "detail": "Average volume 108,029 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
           "available": true
         }
       ],
@@ -12329,12 +12712,12 @@
     "name": "Norwegian Cruise Line Holdings Ltd.",
     "sector": "Consumer Cyclical",
     "industry": "Travel Services",
-    "price": 15.24,
-    "pe": 9.4,
+    "price": 15.65,
+    "pe": 9.7,
     "shortInt": "23.9%",
     "shortRatio": 5.1,
     "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "daysToEarnings": 7,
     "excluded": true,
     "excludedReasons": [
       "Short interest 23.9% of float above the 10% maximum"
@@ -12359,7 +12742,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12391,7 +12774,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 17,389,950 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 17,405,778 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -12406,12 +12789,12 @@
     "name": "Ginkgo Bioworks Holdings, Inc.",
     "sector": "Healthcare",
     "industry": "Biotechnology",
-    "price": 10.07,
+    "price": 9.86,
     "pe": -1,
     "shortInt": "13.6%",
     "shortRatio": 3.9,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
       "Short interest 13.6% of float above the 10% maximum"
@@ -12436,7 +12819,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12468,7 +12851,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 1,970,879 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 1,995,815 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -12483,12 +12866,12 @@
     "name": "PENN Entertainment, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Resorts & Casinos",
-    "price": 14.71,
+    "price": 14.96,
     "pe": -1,
     "shortInt": "17.2%",
     "shortRatio": 5.4,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
       "Short interest 17.2% of float above the 10% maximum"
@@ -12513,7 +12896,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12545,7 +12928,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 2,865,637 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 2,868,589 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -12560,12 +12943,12 @@
     "name": "Corsair Gaming, Inc.",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "price": 13.08,
-    "pe": 42.2,
+    "price": 13.18,
+    "pe": 42.5,
     "shortInt": "18.9%",
     "shortRatio": 9.1,
     "earningsDate": "2026-11-05",
-    "daysToEarnings": 15,
+    "daysToEarnings": 14,
     "excluded": true,
     "excludedReasons": [
       "Short interest 18.9% of float above the 10% maximum"
@@ -12590,7 +12973,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 15 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 14 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12622,7 +13005,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 1,523,370 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 1,531,768 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -12637,15 +13020,15 @@
     "name": "BARK, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Specialty Retail",
-    "price": 7.46,
+    "price": 7.5,
     "pe": -1,
     "shortInt": "10.5%",
     "shortRatio": 10.3,
     "earningsDate": "2026-11-09",
-    "daysToEarnings": 19,
+    "daysToEarnings": 18,
     "excluded": true,
     "excludedReasons": [
-      "Price $7.46 below the $8 minimum"
+      "Price $7.50 below the $8 minimum"
     ],
     "score": null,
     "squeezeScore": {
@@ -12667,7 +13050,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 18 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12699,7 +13082,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 0,
-          "detail": "Average volume 50,253 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
+          "detail": "Average volume 50,275 shares/day \u2014 thin \u2014 exits get expensive exactly when everyone runs for them",
           "available": true
         }
       ],
@@ -12714,12 +13097,12 @@
     "name": "The RealReal, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Luxury Goods",
-    "price": 10.4,
+    "price": 10.96,
     "pe": -1,
     "shortInt": "16.3%",
     "shortRatio": 7.0,
     "earningsDate": "2026-10-29",
-    "daysToEarnings": 8,
+    "daysToEarnings": 7,
     "excluded": true,
     "excludedReasons": [
       "Short interest 16.3% of float above the 10% maximum"
@@ -12744,7 +13127,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 8 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12776,7 +13159,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 6,
-          "detail": "Average volume 3,006,275 shares/day \u2014 workable liquidity",
+          "detail": "Average volume 3,002,110 shares/day \u2014 workable liquidity",
           "available": true
         }
       ],
@@ -12791,15 +13174,15 @@
     "name": "Pinterest, Inc.",
     "sector": "Communication Services",
     "industry": "Internet Content & Information",
-    "price": 22.34,
-    "pe": 65.7,
+    "price": 22.98,
+    "pe": 67.6,
     "shortInt": "12.1%",
     "shortRatio": 2.9,
-    "earningsDate": "2026-11-09",
-    "daysToEarnings": 19,
+    "earningsDate": "2026-10-29",
+    "daysToEarnings": 7,
     "excluded": true,
     "excludedReasons": [
-      "P/E 65.7 above the 50 maximum",
+      "P/E 67.6 above the 50 maximum",
       "Short interest 12.1% of float above the 10% maximum"
     ],
     "score": null,
@@ -12822,7 +13205,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 7 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12854,7 +13237,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 12,533,645 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 12,519,418 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -12869,12 +13252,12 @@
     "name": "Rigetti Computing, Inc.",
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "price": 11.67,
+    "price": 11.66,
     "pe": -1,
     "shortInt": "19.8%",
     "shortRatio": 4.0,
     "earningsDate": "2026-11-10",
-    "daysToEarnings": 20,
+    "daysToEarnings": 19,
     "excluded": true,
     "excludedReasons": [
       "Short interest 19.8% of float above the 10% maximum"
@@ -12899,7 +13282,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 15,
-          "detail": "Earnings in 20 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
+          "detail": "Earnings in 19 days \u2014 in the entry sweet spot \u2014 close enough to ignite, far enough to position",
           "available": true
         },
         {
@@ -12931,7 +13314,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 17,806,565 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 17,724,615 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -12946,15 +13329,15 @@
     "name": "GameStop Corp.",
     "sector": "Consumer Cyclical",
     "industry": "Specialty Retail",
-    "price": 26.44,
+    "price": 26.47,
     "pe": 17.4,
     "shortInt": "9.2%",
     "shortRatio": 4.3,
     "earningsDate": "2026-12-08",
-    "daysToEarnings": 48,
+    "daysToEarnings": 47,
     "excluded": true,
     "excludedReasons": [
-      "Only 6.6% below the 52-week high (needs \u2265 10%) \u2014 too close to highs, likely priced in"
+      "Only 6.5% below the 52-week high (needs \u2265 10%) \u2014 too close to highs, likely priced in"
     ],
     "score": null,
     "squeezeScore": {
@@ -12976,7 +13359,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~48 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~47 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -13008,7 +13391,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 8,624,664 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 8,669,326 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -13025,12 +13408,12 @@
     "name": "Chewy, Inc.",
     "sector": "Consumer Cyclical",
     "industry": "Internet Retail",
-    "price": 20.53,
-    "pe": 31.6,
+    "price": 21.53,
+    "pe": 33.1,
     "shortInt": "13.7%",
     "shortRatio": 2.9,
     "earningsDate": "2026-12-09",
-    "daysToEarnings": 49,
+    "daysToEarnings": 48,
     "excluded": true,
     "excludedReasons": [
       "Short interest 13.7% of float above the 10% maximum"
@@ -13055,7 +13438,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~49 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~48 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -13087,7 +13470,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 8,408,810 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 8,392,110 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
@@ -13104,15 +13487,15 @@
     "name": "BlackBerry Limited",
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "price": 8.16,
-    "pe": 62.8,
+    "price": 8.87,
+    "pe": 68.2,
     "shortInt": "6.8%",
     "shortRatio": 2.5,
     "earningsDate": "2026-12-17",
-    "daysToEarnings": 57,
+    "daysToEarnings": 56,
     "excluded": true,
     "excludedReasons": [
-      "P/E 62.8 above the 50 maximum"
+      "P/E 68.2 above the 50 maximum"
     ],
     "score": null,
     "squeezeScore": {
@@ -13134,7 +13517,7 @@
           "label": "Catalyst (dated earnings event \u2264 ~30d)",
           "max": 15,
           "points": 0,
-          "detail": "Next earnings ~57 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
+          "detail": "Next earnings ~56 days out \u2014 outside the ~30-day squeeze window. Fuel without a near catalyst is just a crowded stock",
           "available": true
         },
         {
@@ -13166,7 +13549,7 @@
           "label": "Liquidity (average daily volume)",
           "max": 10,
           "points": 8,
-          "detail": "Average volume 14,029,600 shares/day \u2014 deep liquidity; getting out is not the problem",
+          "detail": "Average volume 13,844,520 shares/day \u2014 deep liquidity; getting out is not the problem",
           "available": true
         }
       ],
