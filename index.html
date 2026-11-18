@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>Earnings Play Analyzer</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -47,14 +47,14 @@
   display:flex;align-items:center;gap:8px;cursor:pointer;
   background:var(--surface2);border:1px solid var(--border);
   border-radius:20px;padding:6px 14px;font-size:11px;color:var(--text2);
-  font-family:'IBM Plex Mono',monospace;font-weight:500;
+  font-family:'DM Sans',sans-serif;font-weight:500;
   transition:all .2s;user-select:none;
 }
 .theme-toggle:hover{border-color:var(--amber);color:var(--amber)}
 .theme-toggle .toggle-icon{font-size:14px;transition:transform .3s}
 [data-theme="light"] .theme-toggle .toggle-icon{transform:rotate(180deg)}
 html{scroll-behavior:smooth}
-body{font-family:'IBM Plex Mono',monospace;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 
 /* Scanline effect */
 body::after{
@@ -145,7 +145,7 @@ body::after{
 }
 .ticker-bar input{
   flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;
-  padding:14px 18px;color:var(--text);font-family:'IBM Plex Mono',monospace;
+  padding:14px 18px;color:var(--text);font-family:'DM Sans',sans-serif;
   font-size:15px;font-weight:600;outline:none;text-transform:uppercase;
   letter-spacing:2px;
 }
@@ -494,7 +494,7 @@ body::after{
 .sb-row:last-of-type{border-bottom:none}
 .sb-label{font-weight:700;color:var(--text);min-width:200px}
 .sb-detail{color:var(--text2);flex:1}
-.sb-pts{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--text);white-space:nowrap}
+.sb-pts{font-family:'DM Sans',sans-serif;font-weight:700;color:var(--text);white-space:nowrap}
 .sb-na{opacity:.55}
 .sb-note{margin-top:8px;font-size:10px;color:var(--amber);line-height:1.5}
 
@@ -1978,18 +1978,18 @@ function renderChart(s) {
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: {
-        legend: { display: true, labels: { color: tickColor, font: { family: 'IBM Plex Mono', size: 10 }, usePointStyle: true, padding: 16 }},
+        legend: { display: true, labels: { color: tickColor, font: { family: 'DM Sans', size: 10 }, usePointStyle: true, padding: 16 }},
         tooltip: {
           backgroundColor: tooltipBg, borderColor: tooltipBorder, borderWidth: 1,
           titleFont: { family: 'DM Sans', size: 12, weight: '700' },
-          bodyFont: { family: 'IBM Plex Mono', size: 11 },
+          bodyFont: { family: 'DM Sans', size: 11 },
           titleColor: tooltipTitle, bodyColor: tooltipBody, padding: 12, cornerRadius: 8,
           callbacks: { label: c => ` $${c.parsed.y.toFixed(2)}` }
         }
       },
       scales: {
-        x: { grid: { color: gridColor, drawBorder: false }, ticks: { color: tickColor, font: { family: 'IBM Plex Mono', size: 9 }, maxRotation: 45 }},
-        y: { grid: { color: gridColor, drawBorder: false }, ticks: { color: tickColor, font: { family: 'IBM Plex Mono', size: 9 }, callback: v => '$' + v }}
+        x: { grid: { color: gridColor, drawBorder: false }, ticks: { color: tickColor, font: { family: 'DM Sans', size: 9 }, maxRotation: 45 }},
+        y: { grid: { color: gridColor, drawBorder: false }, ticks: { color: tickColor, font: { family: 'DM Sans', size: 9 }, callback: v => '$' + v }}
       },
       interaction: { intersect: false, mode: 'index' }
     }

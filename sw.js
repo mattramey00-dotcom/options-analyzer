@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ep-v10';
+const CACHE_NAME = 'ep-v11';
 // Relative to this script's own URL (i.e. the service worker's scope),
 // NOT the site root — this is a GitHub Pages *project* site served
 // under /options-analyzer/, so root-absolute paths like '/index.html'
@@ -9,7 +9,7 @@ const ASSETS = [
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
-  'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap',
+  'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js',
 ];
 
