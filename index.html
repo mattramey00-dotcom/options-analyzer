@@ -605,7 +605,6 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
       </div>
     </div>
     <div class="header-status">
-      </div>
       <div class="status-text">
         <div><span class="live">LIVE</span> Market Data Simulation</div>
         <div style="margin-top:4px">Feb 27, 2026 • S&P 500: 5,892</div>
@@ -771,7 +770,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v20</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v21</span>
   </div>
 </div>
 
@@ -860,7 +859,7 @@ async function loadLiveData() {
       // Merge live data into DB (live data takes priority)
       Object.assign(DB, data);
       liveMode = true;
-      document.querySelector('.header-status .status-text').innerHTML = `
+      document.querySelector('.status-text').innerHTML = `
         <div><span class="live">LIVE</span> Data from stock_data.json</div>
         <div style="margin-top:4px">${Object.keys(data).length} tickers loaded</div>
       `;
@@ -870,14 +869,14 @@ async function loadLiveData() {
       buildScanPanel(data);
       console.log('✓ Live data loaded:', Object.keys(data));
     } else {
-      document.querySelector('.header-status .status-text').innerHTML = `
+      document.querySelector('.status-text').innerHTML = `
         <div><span class="live" style="color:#e2b93b">⚠ OFFLINE</span> HTTP ${resp.status} loading stock_data.json</div>
         <div style="margin-top:4px">Showing demo data — pull to refresh</div>
       `;
     }
   } catch (e) {
     console.log('No stock_data.json found — using demo data. Run fetch_stock.py to get live data.');
-    document.querySelector('.header-status .status-text').innerHTML = `
+    document.querySelector('.status-text').innerHTML = `
       <div><span class="live" style="color:#e2b93b">⚠ OFFLINE</span> ${(e && e.name) ? e.name + ': ' : ''}${(e && e.message) ? e.message : 'Could not reach server'}</div>
       <div style="margin-top:4px">Showing demo data — pull to refresh</div>
       <div style="margin-top:6px;font-size:9px;text-align:left;word-break:break-all;white-space:pre-wrap;opacity:0.7;max-height:120px;overflow:auto">URL tried: ${(() => { try { return dataUrl(); } catch (e2) { return '[dataUrl() itself threw: ' + e2.name + ': ' + e2.message + ']'; } })()}\n${(e && e.stack) ? String(e.stack).slice(0, 500) : '(no stack available)'}</div>
