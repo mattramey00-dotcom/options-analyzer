@@ -616,7 +616,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
       <label class="hide-filtered-toggle" id="hideFilteredWrap" title="Hide the scanner's filtered-out names from the Earnings board — they always stay visible in Squeeze mode">
         <input type="checkbox" id="hideFilteredToggle" checked onchange="toggleHideFiltered(this.checked)"> Hide filtered-out
       </label>
-      <label class="hide-filtered-toggle" id="hidePartialWrap" title="Hide tickers whose score was built on partial data (some components not measured, score rescaled)">
+      <label class="hide-filtered-toggle" id="hidePartialWrap" title="Hide the partial-data tickers — the scanner's minimal records (like AFRM) that never got a full data build">
         <input type="checkbox" id="hidePartialToggle" checked onchange="toggleHidePartial(this.checked)"> Hide partial-data
       </label>
     </div>
@@ -757,7 +757,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v14</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v15</span>
   </div>
 </div>
 
@@ -898,15 +898,17 @@ function buildScanPanel(data) {
   // Earnings mode + hide-filtered ON: the board shows qualifiers
   // only. Squeeze mode ignores the toggle — filtered names are its
   // candidates and always render there.
-  const hideFiltered = HIDE_FILTERED && APP_MODE === 'earnings';
-  let visible = hideFiltered ? tickers.filter(t => !data[t].excluded) : tickers;
-  const filteredHidden = tickers.length - visible.length;
+  let visible = tickers;
   let partialHidden = 0;
   if (HIDE_PARTIAL) {
     const before = visible.length;
-    visible = visible.filter(t => { const o = activeScoreObj(data[t]); return !(o && o.partial); });
+    visible = visible.filter(t => !data[t].excluded);
     partialHidden = before - visible.length;
   }
+  const hideFiltered = HIDE_FILTERED && APP_MODE === 'earnings';
+  const afterPartial = visible.length;
+  if (hideFiltered) visible = visible.filter(t => !data[t].excluded);
+  const filteredHidden = afterPartial - visible.length;
   const hiddenCount = filteredHidden + partialHidden;
   const hiddenWhy = [filteredHidden ? `${filteredHidden} filtered` : '', partialHidden ? `${partialHidden} partial-data` : ''].filter(Boolean).join(' + ');
 
