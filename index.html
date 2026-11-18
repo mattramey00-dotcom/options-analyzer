@@ -72,14 +72,14 @@ body::after{
 }
 .brand{display:flex;align-items:center;gap:14px}
 .brand-mark{
-  width:42px;height:42px;border-radius:8px;
-  background:linear-gradient(135deg,var(--amber),#d4940a);
+  width:38px;height:38px;border-radius:8px;
+  background:transparent;border:1.5px solid var(--mode);
   display:grid;place-items:center;
-  font-family:'DM Sans',sans-serif;font-weight:800;font-size:18px;color:var(--bg);
+  font-family:'DM Sans',sans-serif;font-weight:800;font-size:16px;color:var(--mode);
 }
 .brand h1{font-family:'DM Sans',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.5px}
-.brand p{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);margin-top:2px}
-.header-status{text-align:right;font-size:11px;color:var(--text3)}
+.brand p{font-size:11px;letter-spacing:.4px;color:var(--text3);margin-top:2px}
+.header-status{text-align:right;font-size:11px;color:var(--text3);display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .header-status .live{color:var(--green);font-weight:600}
 .header-status .live::before{content:'●';margin-right:5px;animation:blink 1.5s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -91,7 +91,7 @@ body::after{
 }
 .scan-panel.visible{display:block}
 .scan-header{
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;row-gap:8px;
   padding:16px 20px;border-bottom:1px solid var(--border);
   background:linear-gradient(135deg,rgba(240,180,41,0.06),transparent);
 }
@@ -343,10 +343,10 @@ body::after{
   .ticker-bar input{font-size:14px;padding:12px 14px}
   .btn{padding:12px 20px;font-size:12px}
   .btn-secondary{padding:8px 12px;font-size:11px}
-  .masthead{flex-direction:column;gap:12px;text-align:center;padding:14px 0 20px}
+  .masthead{flex-direction:row;align-items:flex-start;gap:10px;padding:14px 0 18px}
   .brand h1{font-size:18px}
   .brand p{font-size:9px}
-  .header-status{text-align:center}
+  .header-status{text-align:right}
   .dash-grid{grid-template-columns:1fr;gap:16px}
   .check-grid{grid-template-columns:1fr}
   .scan-grid{grid-template-columns:1fr}
@@ -499,11 +499,11 @@ body::after{
 .sb-note{margin-top:8px;font-size:10px;color:var(--amber);line-height:1.5}
 
 /* ===== MODE TOGGLE / SQUEEZE MODE ===== */
-.mode-toggle{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.mode-btn{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;padding:9px 18px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;transition:all .15s;letter-spacing:.3px}
+.mode-toggle{display:flex;align-items:stretch;gap:4px;margin-bottom:8px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:4px}
+.mode-btn{flex:1 1 0;text-align:center;font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:700;padding:10px 8px;border-radius:9px;border:1px solid transparent;background:transparent;color:var(--text2);cursor:pointer;transition:all .15s;letter-spacing:.3px}
 .mode-btn:hover{border-color:var(--amber);color:var(--text)}
 .mode-btn.active{background:var(--amber);color:var(--bg);border-color:var(--amber)}
-.mode-hint{font-size:11px;color:var(--text3);margin-left:6px}
+.mode-hint{display:block;text-align:center;font-size:11px;color:var(--text3);margin:0 0 16px}
 .scan-score-sub{display:block;margin-top:6px;font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.4px}
 .scan-card-squeeze-note{margin-top:8px;font-size:10px;line-height:1.5;color:var(--amber);font-weight:600}
 .hide-filtered-toggle{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;user-select:none;white-space:nowrap}
@@ -553,6 +553,11 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
 .sb-fill{height:100%;background:var(--mode);border-radius:3px}
 .sb-detail{display:block}
 
+/* ===== HEADER BALANCE PASS ===== */
+.scan-filters{flex-basis:100%;display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px}
+.filters-label{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3)}
+.scan-panel{border-top:3px solid var(--mode)}
+
 /* ===== BACK TO TOP ===== */
 #backToTop{
   position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));
@@ -584,11 +589,10 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
       <div class="brand-mark">EP</div>
       <div>
         <h1>Earnings Play Analyzer</h1>
-        <p>Options Income Screener</p>
+        <p>Options income screener</p>
       </div>
     </div>
     <div class="header-status">
-      <div style="display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-bottom:6px">
         <button class="theme-toggle" onclick="toggleTheme()" title="Switch light/dark mode">
           <span class="toggle-icon">🌙</span>
           <span class="toggle-label">Dark</span>
@@ -605,20 +609,22 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
   <div class="mode-toggle" id="modeToggle">
     <button class="mode-btn active" id="modeBtnEarnings" onclick="setMode('earnings')">🎯 Earnings Play</button>
     <button class="mode-btn" id="modeBtnSqueeze" onclick="setMode('squeeze')">🧨 Squeeze Play</button>
-    <span class="mode-hint" id="modeHint">Premium-selling earnings plays — the covered-call board</span>
   </div>
+  <div class="mode-hint" id="modeHint">Premium-selling earnings plays — the covered-call board</div>
 
   <!-- SCAN RESULTS PANEL -->
   <div class="scan-panel" id="scanPanel">
     <div class="scan-header">
-      <h3>📡 <span id="scanTitle">Today's Earnings Plays</span> <span class="scan-count" id="scanCount">0</span></h3>
+      <h3><span id="scanTitle">Today's Earnings Plays</span> <span class="scan-count" id="scanCount">0</span></h3>
       <span class="scan-meta" id="scanMeta">Loading...</span>
+      <div class="scan-filters"><span class="filters-label">Filters</span>
       <label class="hide-filtered-toggle" id="hideFilteredWrap" title="Hide the scanner's filtered-out names from the Earnings board — they always stay visible in Squeeze mode">
         <input type="checkbox" id="hideFilteredToggle" checked onchange="toggleHideFiltered(this.checked)"> Hide filtered-out
       </label>
       <label class="hide-filtered-toggle" id="hidePartialWrap" title="Hide the partial-data tickers — the scanner's minimal records (like AFRM) that never got a full data build">
         <input type="checkbox" id="hidePartialToggle" checked onchange="toggleHidePartial(this.checked)"> Hide partial-data
       </label>
+      </div>
     </div>
     <div class="scan-grid" id="scanGrid"></div>
   </div>
@@ -757,7 +763,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v15</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v17</span>
   </div>
 </div>
 
