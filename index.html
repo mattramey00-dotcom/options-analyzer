@@ -553,6 +553,14 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
 .sb-fill{height:100%;background:var(--mode);border-radius:3px}
 .sb-detail{display:block}
 
+/* ===== MASTHEAD FIX (Matt's spec: no tile, centered title, corner button) ===== */
+.app{position:relative}
+.masthead{flex-direction:column;align-items:center;text-align:center}
+.brand{flex-direction:column;align-items:center;gap:4px;text-align:center}
+.header-status{align-items:center;text-align:center}
+.theme-toggle{position:absolute;top:14px;right:18px;z-index:30;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+@media (max-width:768px){ .theme-toggle{top:10px;right:12px} }
+
 /* ===== HEADER BALANCE PASS ===== */
 .mode-toggle{position:sticky;top:8px;z-index:45;box-shadow:0 10px 26px -14px rgba(0,0,0,.5)}
 .scan-filters{flex-basis:100%;display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:10px}
@@ -583,21 +591,20 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
 </head>
 <body data-mode="earnings">
 <div class="app">
+  <button class="theme-toggle" onclick="toggleTheme()" title="Switch light/dark mode">
+    <span class="toggle-icon">🌙</span>
+    <span class="toggle-label">Dark</span>
+  </button>
 
   <!-- HEADER -->
   <header class="masthead">
     <div class="brand">
-      <div class="brand-mark">EP</div>
       <div>
         <h1>Earnings Play Analyzer</h1>
         <p>Options income screener</p>
       </div>
     </div>
     <div class="header-status">
-        <button class="theme-toggle" onclick="toggleTheme()" title="Switch light/dark mode">
-          <span class="toggle-icon">🌙</span>
-          <span class="toggle-label">Dark</span>
-        </button>
       </div>
       <div class="status-text">
         <div><span class="live">LIVE</span> Market Data Simulation</div>
@@ -764,7 +771,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v19</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v20</span>
   </div>
 </div>
 
