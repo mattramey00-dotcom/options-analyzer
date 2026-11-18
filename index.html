@@ -530,6 +530,29 @@ body::after{
   #catalystStats{grid-template-columns:1fr 1fr!important}
 }
 
+/* ===== MODE IDENTITY + SCORE BARS ===== */
+/* Earnings plays run teal, squeeze plays run hot orange — the same split
+   as the Portfolio Dashboard — so the mode is visible at a glance: the
+   toggle buttons, the verdict bar's glow, the scan board's edge and the
+   score-breakdown bars all carry the mode color. */
+body{--mode:#2dd4bf;--mode-glow:rgba(45,212,191,.45)}
+body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
+#modeBtnEarnings.active{background:#2dd4bf;border-color:#2dd4bf;color:#06281f}
+#modeBtnSqueeze.active{background:#fb923c;border-color:#fb923c;color:#331a02}
+.mode-hint{color:var(--mode)}
+#scanTitle{color:var(--mode)}
+.scan-card{border-left:3px solid var(--mode)}
+.verdict-bar{border-color:var(--mode);box-shadow:0 0 0 1px var(--mode),0 10px 34px -12px var(--mode-glow)}
+.score-breakdown{border-color:var(--mode)}
+.sb-title{color:var(--mode)}
+.spinner{border-top-color:var(--mode)}
+.sb-row{display:block;padding:7px 0}
+.sb-top{display:flex;justify-content:space-between;gap:12px;font-size:11px}
+.sb-label{min-width:0}
+.sb-bar{height:6px;background:var(--surface2);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin:5px 0 4px}
+.sb-fill{height:100%;background:var(--mode);border-radius:3px}
+.sb-detail{display:block}
+
 /* ===== CONDENSED RESULTS (cleanup pass) ===== */
 .card.folded .card-fold-body{display:none}
 .fold-toggle{cursor:pointer;user-select:none;-webkit-user-select:none}
@@ -541,7 +564,7 @@ body::after{
 .catalyst-row>div{margin-bottom:14px!important}
 </style>
 </head>
-<body>
+<body data-mode="earnings">
 <div class="app">
 
   <!-- HEADER -->
@@ -995,6 +1018,7 @@ function activeScoreObj(s) { return APP_MODE === 'squeeze' ? getSqueezeObj(s) : 
 // --- MODE TOGGLE ---
 function setMode(mode) {
   APP_MODE = mode === 'squeeze' ? 'squeeze' : 'earnings';
+  document.body.dataset.mode = APP_MODE;
   document.getElementById('modeBtnEarnings').classList.toggle('active', APP_MODE === 'earnings');
   document.getElementById('modeBtnSqueeze').classList.toggle('active', APP_MODE === 'squeeze');
   document.getElementById('modeHint').textContent = APP_MODE === 'squeeze'
@@ -1598,9 +1622,11 @@ function renderVerdict(ticker, s) {
       </div>
     </div>`;
     if (so && so.components) {
-      const rows = so.components.map(c => c.available
-        ? `<div class="sb-row"><span class="sb-label">${c.label}</span><span class="sb-detail">${c.detail}</span><span class="sb-pts">${c.points} / ${c.max}</span></div>`
-        : `<div class="sb-row sb-na"><span class="sb-label">${c.label}</span><span class="sb-detail">${c.detail}</span><span class="sb-pts">n/a</span></div>`).join('');
+      const rows = so.components.map(c => {
+        if (!c.available) return `<div class="sb-row sb-na"><div class="sb-top"><span class="sb-label">${c.label}</span><span class="sb-pts">n/a</span></div><div class="sb-bar"><div class="sb-fill" style="width:0%"></div></div><span class="sb-detail">${c.detail}</span></div>`;
+        const pct = c.max > 0 ? Math.max(0, Math.min(100, Math.round(c.points / c.max * 100))) : 0;
+        return `<div class="sb-row"><div class="sb-top"><span class="sb-label">${c.label}</span><span class="sb-pts">${c.points} / ${c.max}</span></div><div class="sb-bar"><div class="sb-fill" style="width:${pct}%"></div></div><span class="sb-detail">${c.detail}</span></div>`;
+      }).join('');
       breakdownHTML = `<div class="score-breakdown">
         <div class="sb-title">How this ${squeezeMode ? 'squeeze ' : ''}score is built — one formula (scoring.py), component maxima sum to 100</div>
         ${rows}
