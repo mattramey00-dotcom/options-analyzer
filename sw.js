@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ep-v7';
+const CACHE_NAME = 'ep-v8';
 // Relative to this script's own URL (i.e. the service worker's scope),
 // NOT the site root — this is a GitHub Pages *project* site served
 // under /options-analyzer/, so root-absolute paths like '/index.html'
@@ -43,8 +43,9 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Always fetch stock_data.json from network first (fresh data matters)
-  if (pathname.includes('stock_data.json')) {
+  // Always fetch stock_data.json AND the page itself from network first
+  // (fresh data matters, and fixes have to reach installed apps).
+  if (pathname.includes('stock_data.json') || pathname.endsWith('/') || pathname.endsWith('index.html')) {
     e.respondWith(
       fetch(e.request)
         .then(resp => {

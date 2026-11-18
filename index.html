@@ -295,7 +295,7 @@ body::after{
 
 /* ===== RESULTS STATE ===== */
 .results-area{display:none;scroll-margin-top:12px}
-.results-area.visible{display:block;animation:slideUp .4s ease}
+.results-area.visible{display:block}
 @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ===== VERDICT ===== */
@@ -508,6 +508,15 @@ body::after{
 .scan-card-squeeze-note{margin-top:8px;font-size:10px;line-height:1.5;color:var(--amber);font-weight:600}
 .hide-filtered-toggle{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;user-select:none;white-space:nowrap}
 .hide-filtered-toggle input{accent-color:var(--amber);cursor:pointer;margin:0}
+/* ===== CONDENSED RESULTS (cleanup pass) ===== */
+.card.folded .card-fold-body{display:none}
+.fold-toggle{cursor:pointer;user-select:none;-webkit-user-select:none}
+.fold-chev{display:inline-block;margin-left:8px;font-size:11px;color:var(--text3);transition:transform .15s}
+.folded .fold-chev{transform:rotate(-90deg)}
+.research-bar.folded .research-links{display:none}
+.results-area .dash-grid{gap:14px}
+.results-area .card{margin-bottom:14px}
+.catalyst-row>div{margin-bottom:14px!important}
 </style>
 </head>
 <body>
@@ -975,15 +984,9 @@ function setMode(mode) {
   if (Object.keys(DB).length) buildScanPanel(DB);
   if (currentTicker && DB[currentTicker]) {
     const s = DB[currentTicker];
-    if (s.excluded && APP_MODE === 'earnings') {
-      // Earnings mode keeps its hard gate — an excluded record is a
-      // squeeze-only surface. Hide the stale squeeze analysis.
-      document.getElementById('resultsArea').classList.remove('visible');
-    } else {
-      renderResults(currentTicker, s);
-      document.getElementById('resultsArea').classList.add('visible');
-      scrollToResults();
-    }
+    renderResults(currentTicker, s);
+    document.getElementById('resultsArea').classList.add('visible');
+    scrollToResults();
   }
 }
 // Backwards-compatible names — the same single score everywhere.
@@ -1200,6 +1203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buildScanPanel(DB);
     updateQuickButtons(Object.keys(DB));
   }
+  setupResultFolds();
 });
 
 // =============== ANALYSIS ENGINE ===============
@@ -1225,12 +1229,14 @@ async function analyzeStock() {
     return;
   }
 
-  if (stock.excluded && !(APP_MODE === 'squeeze' && stock.squeezeScore)) {
-    alert(`"${ticker}" was filtered out by the scanner:\n\n• ${(stock.excludedReasons || []).join('\n• ')}\n\nIt stays in stock_data.json (excluded: true) so the reason is visible instead of the ticker silently disappearing.\n\nTip: switch to Squeeze Play mode — earnings-mode rejects are prime squeeze candidates there.`);
-    return;
+  if (stock.excluded && APP_MODE === 'earnings' && stock.squeezeScore) {
+    // A scanner-filtered card that carries a squeeze score belongs to the
+    // Squeeze board — take the user there instead of erroring at them.
+    setMode('squeeze');
   }
-  // In Squeeze mode an earnings-excluded record IS analyzable:
-  // renderResults routes it to the squeeze surfaces only.
+  // Any filtered record still opens from a click: renderResults shows the
+  // verdict, checklist and strategy it can compute and explains in place
+  // which panels a minimal scanner record never carried.
 
   currentStock = stock;
   document.getElementById('resultsArea').classList.remove('visible');
@@ -1257,11 +1263,11 @@ async function analyzeStock() {
       if (j === i) return `<div class="step-active">▸ ${s}</div>`;
       return `<div>${s}</div>`;
     }).join('');
-    await sleep(200 + Math.random() * 150);
+    await sleep(70 + Math.random() * 60);
   }
 
   stepsEl.innerHTML = steps.map(s => `<div class="step-done">✓ ${s}</div>`).join('');
-  await sleep(300);
+  await sleep(120);
 
   loader.classList.remove('visible');
   renderResults(ticker, stock);
@@ -1272,10 +1278,58 @@ async function analyzeStock() {
 // After an analysis renders, bring it into view so the user doesn't have
 // to scroll past the scan panel and ticker selections to reach it.
 function scrollToResults() {
-  requestAnimationFrame(() => {
-    document.getElementById('resultsArea')
-      .scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+  const el = document.getElementById('resultsArea');
+  if (!el) return;
+  const bring = () => el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  requestAnimationFrame(bring);
+  // Verification pass: mobile browsers can drop a smooth scroll issued
+  // mid-layout. If the results still aren't at the top shortly after,
+  // scroll once more.
+  setTimeout(() => {
+    if (el.getBoundingClientRect().top > 60) bring();
+  }, 500);
+}
+
+// --- CONDENSED RESULTS: fold the long reference cards shut by default ---
+// Everything still renders and stays one tap away — the verdict, checklist,
+// gauge, chart, chain and risk/reward stay open; the long reads (fundamental
+// report, peers, surprise history, strategy notes, research links) start
+// folded, so an analysis opens as a compact summary instead of a wall.
+function setupResultFolds() {
+  const foldCard = (contentId) => {
+    const inner = document.getElementById(contentId);
+    const card = inner && inner.closest('.card');
+    if (!card || card.dataset.foldReady) return;
+    const header = card.querySelector('.card-header');
+    if (!header) return;
+    card.dataset.foldReady = '1';
+    const body = document.createElement('div');
+    body.className = 'card-fold-body';
+    [...card.children].filter(el => el !== header).forEach(el => body.appendChild(el));
+    card.appendChild(body);
+    header.classList.add('fold-toggle');
+    const chev = document.createElement('span');
+    chev.className = 'fold-chev';
+    chev.textContent = '▾';
+    header.appendChild(chev);
+    card.classList.add('folded');
+    header.addEventListener('click', () => card.classList.toggle('folded'));
+  };
+  ['refinitivReport', 'peersTable', 'surpriseGrid', 'strategyNotes'].forEach(foldCard);
+  const bar = document.getElementById('researchBar');
+  if (bar && !bar.dataset.foldReady) {
+    bar.dataset.foldReady = '1';
+    bar.classList.add('folded');
+    const title = bar.querySelector('.rb-title');
+    if (title) {
+      title.classList.add('fold-toggle');
+      const chev = document.createElement('span');
+      chev.className = 'fold-chev';
+      chev.textContent = '▾';
+      title.appendChild(chev);
+      title.addEventListener('click', () => bar.classList.toggle('folded'));
+    }
+  }
 }
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
