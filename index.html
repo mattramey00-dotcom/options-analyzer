@@ -764,7 +764,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v18</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v19</span>
   </div>
 </div>
 
@@ -2450,9 +2450,14 @@ function renderSqueezeStrategy(ticker, s) {
 
 // =============== PWA SERVICE WORKER ===============
 if ('serviceWorker' in navigator) {
+  const hadController = !!navigator.serviceWorker.controller;
+  let swReloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (hadController && !swReloaded) { swReloaded = true; location.reload(); }
+  });
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js')
-      .then(reg => console.log('✓ Service Worker registered', reg.scope))
+      .then(reg => { console.log('✓ Service Worker registered', reg.scope); if (reg.update) reg.update(); })
       .catch(err => console.log('SW registration failed:', err));
   });
 }
