@@ -294,7 +294,7 @@ body::after{
 .beat{color:var(--green)}.miss{color:var(--red)}.inline{color:var(--amber)}
 
 /* ===== RESULTS STATE ===== */
-.results-area{display:none}
+.results-area{display:none;scroll-margin-top:12px}
 .results-area.visible{display:block;animation:slideUp .4s ease}
 @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
@@ -982,6 +982,7 @@ function setMode(mode) {
     } else {
       renderResults(currentTicker, s);
       document.getElementById('resultsArea').classList.add('visible');
+      scrollToResults();
     }
   }
 }
@@ -1265,6 +1266,16 @@ async function analyzeStock() {
   loader.classList.remove('visible');
   renderResults(ticker, stock);
   document.getElementById('resultsArea').classList.add('visible');
+  scrollToResults();
+}
+
+// After an analysis renders, bring it into view so the user doesn't have
+// to scroll past the scan panel and ticker selections to reach it.
+function scrollToResults() {
+  requestAnimationFrame(() => {
+    document.getElementById('resultsArea')
+      .scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 }
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
