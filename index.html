@@ -508,6 +508,28 @@ body::after{
 .scan-card-squeeze-note{margin-top:8px;font-size:10px;line-height:1.5;color:var(--amber);font-weight:600}
 .hide-filtered-toggle{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;user-select:none;white-space:nowrap}
 .hide-filtered-toggle input{accent-color:var(--amber);cursor:pointer;margin:0}
+/* ===== MOBILE RESULTS PASS ===== */
+@media(max-width:768px){
+  .check-grid{gap:8px}
+  .check-item{padding:9px 11px;gap:8px;font-size:11.5px;align-items:center}
+  .check-icon{width:19px;height:19px;font-size:11px;border-radius:5px}
+  .check-text strong{display:inline;margin:0 6px 0 0}
+  .check-text span{display:inline}
+  .catalyst-row>div:nth-of-type(2){grid-template-columns:1fr!important}
+  #newsPanel,#actionsPanel{padding:10px 14px!important}
+  #strategyNotes{padding:12px 14px!important;line-height:1.65}
+  .report-row{flex-direction:row;align-items:center;gap:8px}
+  .report-row .rr-val{text-align:right}
+  .verdict-bar{margin-bottom:16px}
+  .checklist{margin-bottom:16px}
+  .research-bar{margin-bottom:16px}
+  .stats-mini{gap:8px}
+}
+@media(max-width:400px){
+  .stats-mini{grid-template-columns:repeat(2,1fr)}
+  #catalystStats{grid-template-columns:1fr 1fr!important}
+}
+
 /* ===== CONDENSED RESULTS (cleanup pass) ===== */
 .card.folded .card-fold-body{display:none}
 .fold-toggle{cursor:pointer;user-select:none;-webkit-user-select:none}
