@@ -1381,8 +1381,18 @@ function setupResultFolds() {
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 // =============== RENDER ===============
+// Hide a results card entirely (not just empty it) when the current
+// record carries nothing for it — an empty shell helps no one.
+function setCardVisible(contentId, visible) {
+  const inner = document.getElementById(contentId);
+  const card = inner && inner.closest('.card');
+  if (card) card.style.display = visible ? '' : 'none';
+}
+const CARD_CONTENT_IDS = ['priceChart', 'refinitivReport', 'peersTable', 'surpriseGrid', 'gaugeContainer', 'chainStrikes', 'rrBox', 'strategyNotes'];
+
 function renderResults(ticker, s) {
   currentTicker = ticker;
+  CARD_CONTENT_IDS.forEach(id => setCardVisible(id, true));
   renderVerdict(ticker, s);
   renderChecklist(ticker, s);
   renderStrategy(ticker, s);
@@ -1404,6 +1414,11 @@ function renderResults(ticker, s) {
   renderGauge(s);
   renderOptionsChain(s, 'calls');
   renderRiskReward(ticker, s);
+  // Any panel the data left empty loses its card — no empty boxes.
+  ['refinitivReport', 'peersTable', 'surpriseGrid', 'gaugeContainer', 'chainStrikes', 'rrBox', 'strategyNotes'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.innerHTML.trim()) setCardVisible(id, false);
+  });
 }
 
 function renderExcludedNote(ticker, s) {
@@ -1421,6 +1436,8 @@ function renderExcludedNote(ticker, s) {
   document.getElementById('chainStrikes').innerHTML = '';
   document.getElementById('rrBox').innerHTML = '';
   document.getElementById('rrNarrative').innerHTML = '';
+  ['priceChart', 'refinitivReport', 'peersTable', 'surpriseGrid', 'gaugeContainer', 'chainStrikes', 'rrBox']
+    .forEach(id => setCardVisible(id, false));
 }
 
 // --- RESEARCH LINKS ---
