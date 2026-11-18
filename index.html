@@ -553,6 +553,17 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
 .sb-fill{height:100%;background:var(--mode);border-radius:3px}
 .sb-detail{display:block}
 
+/* ===== BACK TO TOP ===== */
+#backToTop{
+  position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));
+  width:46px;height:46px;border-radius:50%;border:none;z-index:60;
+  background:var(--mode);color:#10201c;font-size:21px;font-weight:800;line-height:1;
+  box-shadow:0 6px 22px -6px var(--mode-glow),0 2px 8px rgba(0,0,0,.35);
+  cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .2s,transform .2s;
+}
+#backToTop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+
 /* ===== CONDENSED RESULTS (cleanup pass) ===== */
 .card.folded .card-fold-body{display:none}
 .fold-toggle{cursor:pointer;user-select:none;-webkit-user-select:none}
@@ -1250,6 +1261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateQuickButtons(Object.keys(DB));
   }
   setupResultFolds();
+  setupBackToTop();
 });
 
 // =============== ANALYSIS ENGINE ===============
@@ -1341,6 +1353,15 @@ function scrollToResults() {
 // gauge, chart, chain and risk/reward stay open; the long reads (fundamental
 // report, peers, surprise history, strategy notes, research links) start
 // folded, so an analysis opens as a compact summary instead of a wall.
+function setupBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+  const onScroll = () => btn.classList.toggle('show', window.scrollY > 600);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
 function setupResultFolds() {
   const foldCard = (contentId) => {
     const inner = document.getElementById(contentId);
@@ -2441,5 +2462,6 @@ window.addEventListener('load', () => {
 });
 
 </script>
+<button id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 </body>
 </html>
