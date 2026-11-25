@@ -628,7 +628,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
       <label class="hide-filtered-toggle" id="hideFilteredWrap" title="Hide the scanner's filtered-out names from the Earnings board — they always stay visible in Squeeze mode">
         <input type="checkbox" id="hideFilteredToggle" checked onchange="toggleHideFiltered(this.checked)"> Hide filtered-out
       </label>
-      <label class="hide-filtered-toggle" id="hidePartialWrap" title="Hide the partial-data tickers — the scanner's minimal records (like AFRM) that never got a full data build">
+      <label class="hide-filtered-toggle" id="hidePartialWrap" title="Hide the partial-data tickers on the Earnings board — the scanner's minimal records (like AFRM) that never got a full data build. Squeeze candidates always stay visible in Squeeze mode">
         <input type="checkbox" id="hidePartialToggle" checked onchange="toggleHidePartial(this.checked)"> Hide partial-data
       </label>
       </div>
@@ -770,7 +770,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v21</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v22</span>
   </div>
 </div>
 
@@ -908,12 +908,15 @@ function buildScanPanel(data) {
     return;
   }
   
-  // Earnings mode + hide-filtered ON: the board shows qualifiers
-  // only. Squeeze mode ignores the toggle — filtered names are its
-  // candidates and always render there.
+  // Earnings mode + hide toggles ON: the board shows qualifiers
+  // only. Squeeze mode ignores BOTH toggles — the scanner's
+  // filtered-out (excluded) records are its candidate pool, so
+  // stripping them there (as the partial filter did through
+  // ep-v21) collapsed the Squeeze board to the same names as the
+  // Earnings board. Both filters are Earnings-board-only.
   let visible = tickers;
   let partialHidden = 0;
-  if (HIDE_PARTIAL) {
+  if (HIDE_PARTIAL && APP_MODE === 'earnings') {
     const before = visible.length;
     visible = visible.filter(t => !data[t].excluded);
     partialHidden = before - visible.length;
