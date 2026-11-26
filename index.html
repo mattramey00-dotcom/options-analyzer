@@ -539,6 +539,7 @@ body{--mode:#2dd4bf;--mode-glow:rgba(45,212,191,.45)}
 body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
 #modeBtnEarnings.active{background:#2dd4bf;border-color:#2dd4bf;color:#06281f}
 #modeBtnSqueeze.active{background:#fb923c;border-color:#fb923c;color:#331a02}
+#modeBtnReceipts.active{background:#e8c476;border-color:#e8c476;color:#2a2002}
 .mode-hint{color:var(--mode)}
 #scanTitle{color:var(--mode)}
 .scan-card{border-left:3px solid var(--mode)}
@@ -616,6 +617,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
   <div class="mode-toggle" id="modeToggle">
     <button class="mode-btn active" id="modeBtnEarnings" onclick="setMode('earnings')">Earnings Play</button>
     <button class="mode-btn" id="modeBtnSqueeze" onclick="setMode('squeeze')">Squeeze Play</button>
+    <button class="mode-btn" id="modeBtnReceipts" onclick="setMode('receipts')">📜 Receipts</button>
   </div>
   <div class="mode-hint" id="modeHint">Premium-selling earnings plays — the covered-call board</div>
 
@@ -630,7 +632,6 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
         <option value="score">Highest score</option>
         <option value="price">Lowest price</option>
       </select>
-      <button type="button" id="receiptsBtn" onclick="toggleReceipts()" title="Score-vs-outcome track record: what the scores said before past prints vs what the stocks actually did" style="background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:12px;cursor:pointer">📜 Receipts</button>
       <span class="filters-label">Filters</span>
       <label class="hide-filtered-toggle" id="hideFilteredWrap" title="Hide the scanner's filtered-out names from the Earnings board — they always stay visible in Squeeze mode">
         <input type="checkbox" id="hideFilteredToggle" checked onchange="toggleHideFiltered(this.checked)"> Hide filtered-out
@@ -792,7 +793,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v27</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v28</span>
   </div>
 </div>
 
@@ -914,6 +915,7 @@ async function loadLiveData() {
 
 function buildScanPanel(data) {
   const panel = document.getElementById('scanPanel');
+  if (APP_MODE === 'receipts') { panel.classList.remove('visible'); return; }
   const grid = document.getElementById('scanGrid');
   const countEl = document.getElementById('scanCount');
   const metaEl = document.getElementById('scanMeta');
@@ -1117,16 +1119,26 @@ function activeScoreObj(s) { return APP_MODE === 'squeeze' ? getSqueezeObj(s) : 
 
 // --- MODE TOGGLE ---
 function setMode(mode) {
-  APP_MODE = mode === 'squeeze' ? 'squeeze' : 'earnings';
-  document.body.dataset.mode = APP_MODE;
+  APP_MODE = mode === 'squeeze' ? 'squeeze' : (mode === 'receipts' ? 'receipts' : 'earnings');
+  const isR = APP_MODE === 'receipts';
+  document.body.dataset.mode = isR ? 'earnings' : APP_MODE;
   document.getElementById('modeBtnEarnings').classList.toggle('active', APP_MODE === 'earnings');
   document.getElementById('modeBtnSqueeze').classList.toggle('active', APP_MODE === 'squeeze');
-  document.getElementById('modeHint').textContent = APP_MODE === 'squeeze'
-    ? 'Crowded shorts + a dated catalyst — the fuel-gauge board (NOT a covered-call board)'
-    : 'Premium-selling earnings plays — the covered-call board';
-  document.getElementById('scanTitle').textContent = APP_MODE === 'squeeze' ? "Today's Squeeze Candidates" : "Today's Earnings Plays";
+  document.getElementById('modeBtnReceipts').classList.toggle('active', isR);
+  document.getElementById('modeHint').textContent = isR
+    ? 'The track record — what the scores said before past prints vs what the stocks actually did'
+    : APP_MODE === 'squeeze'
+      ? 'Crowded shorts + a dated catalyst — the fuel-gauge board (NOT a covered-call board)'
+      : 'Premium-selling earnings plays — the covered-call board';
+  if (!isR) document.getElementById('scanTitle').textContent = APP_MODE === 'squeeze' ? "Today's Squeeze Candidates" : "Today's Earnings Plays";
   // The hide-filtered toggle is an Earnings-board control only.
-  document.getElementById('hideFilteredWrap').style.display = APP_MODE === 'squeeze' ? 'none' : '';
+  document.getElementById('hideFilteredWrap').style.display = APP_MODE === 'earnings' ? '' : 'none';
+  if (isR) {
+    document.getElementById('scanPanel').classList.remove('visible');
+    showReceipts();
+    return;
+  }
+  document.getElementById('receiptsPanel').classList.remove('visible');
   if (Object.keys(DB).length) buildScanPanel(DB);
   if (currentTicker && DB[currentTicker]) {
     const s = DB[currentTicker];
@@ -1686,17 +1698,18 @@ function renderGates(ticker, s) {
 // print, then graded against the actual move after it. This view
 // only displays that file — it never grades anything itself.
 let RECEIPTS = null;
+let RECEIPTS_SHOW_ALL = false;
+const RECEIPTS_PAGE = 15;
 function receiptsUrl() {
   const dir = location.pathname.replace(/[^/]*$/, '');
   return location.origin + dir + 'receipts.json?v=' + Date.now();
 }
-async function toggleReceipts() {
+async function showReceipts() {
   const panel = document.getElementById('receiptsPanel');
   if (!panel) return;
-  // Visibility on .scan-panel is class-driven (.visible) — the
-  // stylesheet sets display:none and inline styles don't override
-  // it the way this first shipped (ep-v25 bug: panel never opened).
-  if (panel.classList.contains('visible')) { panel.classList.remove('visible'); return; }
+  // Receipts is its own mode now (ep-v28): setMode swaps the board
+  // out and this panel in, right under the mode bar — no scrolling
+  // past the board to reach it.
   panel.classList.add('visible');
   if (RECEIPTS === null) {
     try {
@@ -1744,9 +1757,15 @@ function renderReceipts() {
         : (e.squeezeRead === 'flat' ? `<span style="color:var(--text3)">Flat print (${mvTxt})</span>` : ''));
     return `<div style="padding:7px 0;border-top:1px solid var(--border);font-size:12px;line-height:1.6">${base}<br>Actual move <strong>${mvTxt}</strong> ($${e.preClose} → $${e.postClose})${prem ? '<br>' + prem : ''}${sq ? '<br>' + sq : ''}</div>`;
   };
+  const gradedSorted = graded.slice().sort((a, b) => b.earningsDate.localeCompare(a.earningsDate));
+  const shown = RECEIPTS_SHOW_ALL ? gradedSorted : gradedSorted.slice(0, RECEIPTS_PAGE);
+  const moreBtn = gradedSorted.length > RECEIPTS_PAGE
+    ? `<div style="padding:10px 0 4px;text-align:center"><button type="button" onclick="RECEIPTS_SHOW_ALL=${RECEIPTS_SHOW_ALL ? 'false' : 'true'};renderReceipts()" style="background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 14px;font-size:12px;cursor:pointer">${RECEIPTS_SHOW_ALL ? 'Show fewer receipts' : 'Show all ' + gradedSorted.length + ' receipts'}</button></div>`
+    : '';
   body.innerHTML = `<div style="font-size:12px;line-height:1.7;padding:2px 0 4px">Of ${graded.length} graded prints: premium proved cheap ${cheap}×, rich ${rich}×; squeeze fuel fired ${fired}×. The earnings score grades premium/structure — "cheap/rich" is the honest scoreboard for it. Direction and squeeze reads are graded on the signed move.</div>`
-    + graded.slice().sort((a, b) => b.earningsDate.localeCompare(a.earningsDate)).map(rowHTML).join('')
-    + open.slice().sort((a, b) => a.earningsDate.localeCompare(b.earningsDate)).map(rowHTML).join('');
+    + open.slice().sort((a, b) => a.earningsDate.localeCompare(b.earningsDate)).map(rowHTML).join('')
+    + shown.map(rowHTML).join('')
+    + moreBtn;
 }
 
 function renderExcludedNote(ticker, s) {
