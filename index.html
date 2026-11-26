@@ -644,7 +644,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
   </div>
 
   <!-- RECEIPTS PANEL — score vs outcome, graded after each print -->
-  <div class="scan-panel" id="receiptsPanel" style="display:none">
+  <div class="scan-panel" id="receiptsPanel">
     <div class="scan-header">
       <h3>📜 Receipts — what the scores said vs what happened</h3>
       <span class="scan-meta" id="receiptsMeta">Loading...</span>
@@ -792,7 +792,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v25</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v26</span>
   </div>
 </div>
 
@@ -1693,8 +1693,11 @@ function receiptsUrl() {
 async function toggleReceipts() {
   const panel = document.getElementById('receiptsPanel');
   if (!panel) return;
-  if (panel.style.display !== 'none') { panel.style.display = 'none'; return; }
-  panel.style.display = '';
+  // Visibility on .scan-panel is class-driven (.visible) — the
+  // stylesheet sets display:none and inline styles don't override
+  // it the way this first shipped (ep-v25 bug: panel never opened).
+  if (panel.classList.contains('visible')) { panel.classList.remove('visible'); return; }
+  panel.classList.add('visible');
   if (RECEIPTS === null) {
     try {
       const resp = await fetch(receiptsUrl());
