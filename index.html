@@ -792,7 +792,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v26</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v27</span>
   </div>
 </div>
 
@@ -1725,7 +1725,13 @@ function renderReceipts() {
   meta.textContent = `${graded.length} graded · ${open.length} awaiting their print`;
   const fmtScore = (lbl, v) => v === null || v === undefined ? '' : ` · ${lbl} ${v}`;
   const rowHTML = e => {
-    const base = `<strong>${e.ticker}</strong> <span style="color:var(--text3)">${e.earningsDate}</span> — snapped $${e.price}${fmtScore('Earnings', e.earningsScore)}${fmtScore('Squeeze', e.squeezeScore)}${e.direction ? ' · direction ' + e.direction : ''}${e.expectedMovePct ? ' · priced move ±' + e.expectedMovePct + '%' : ''}`;
+    const tag = e.earningsScore == null && e.squeezeScore == null ? ''
+      : e.earningsScore == null
+        ? '<span style="color:#fb923c;border:1px solid #fb923c;border-radius:4px;padding:0 4px;font-size:10px;font-weight:700">SQUEEZE PLAY</span> '
+        : (e.squeezeScore != null && e.squeezeScore >= 45)
+          ? '<span style="color:#c084fc;border:1px solid #c084fc;border-radius:4px;padding:0 4px;font-size:10px;font-weight:700">BOTH PLAYS</span> '
+          : '<span style="color:#2dd4bf;border:1px solid #2dd4bf;border-radius:4px;padding:0 4px;font-size:10px;font-weight:700">EARNINGS PLAY</span> ';
+    const base = `${tag}<strong>${e.ticker}</strong> <span style="color:var(--text3)">${e.earningsDate}</span> — snapped $${e.price}${fmtScore('Earnings', e.earningsScore)}${fmtScore('Squeeze', e.squeezeScore)}${e.direction ? ' · direction ' + e.direction : ''}${e.expectedMovePct ? ' · priced move ±' + e.expectedMovePct + '%' : ''}`;
     if (!e.graded) return `<div style="padding:7px 0;border-top:1px solid var(--border);font-size:12px;line-height:1.6">${base}<br><span style="color:var(--amber)">Awaiting the print — graded after it lands.</span></div>`;
     const mv = e.movePct;
     const mvTxt = `${mv > 0 ? '+' : ''}${mv}%`;
