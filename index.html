@@ -770,7 +770,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v23</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v24</span>
   </div>
 </div>
 
@@ -1738,6 +1738,7 @@ function renderChecklist(ticker, s) {
     ? 'Squeeze Play Checklist — Fuel, Burn, Catalyst'
     : 'Earnings Play Criteria Checklist';
   if (APP_MODE === 'squeeze') { renderSqueezeChecklist(ticker, s); return; }
+  if (s.excluded) { renderExcludedChecklist(ticker, s); return; }
   const pctFromHigh = ((s.wk52High - s.price) / s.wk52High * 100).toFixed(1);
   const pctFromLow = ((s.price - s.wk52Low) / s.wk52Low * 100).toFixed(1);
   const si = parseFloat(s.shortInt);
@@ -1898,6 +1899,72 @@ function renderChecklist(ticker, s) {
     });
   }
 
+  document.getElementById('checkGrid').innerHTML = checks.map(c => `
+    <div class="check-item ${c.status}">
+      <div class="check-icon">${c.icon}</div>
+      <div class="check-text"><strong>${c.title}</strong><span>${c.text}</span></div>
+    </div>
+  `).join('');
+}
+
+// --- EXCLUDED (MINIMAL RECORD) CHECKLIST — EARNINGS MODE ---
+// A scanner-filtered record carries only a handful of fields (price,
+// P/E, short interest, days to cover, earnings date). The full
+// earnings checklist reads fields it never carried (surprises,
+// sentiment, 52-week range, last-year quarter) and threw on them —
+// which is why opening a filtered name in Earnings mode rendered
+// nothing at all once the ep-v23 mode redirect was removed. This
+// renders only the checks those fields can honestly answer, plus
+// one neutral item naming what was never measured.
+function renderExcludedChecklist(ticker, s) {
+  const si = parseFloat(s.shortInt);
+  const priceOk = s.price >= 10 && s.price <= 25;
+  const peOk = s.pe > 0 && s.pe < 50;
+  const daysOk = s.daysToEarnings >= 7;
+  const checks = [
+    {
+      status: 'warn',
+      icon: '🧨',
+      title: 'Filtered OUT of Earnings mode — minimal scanner record',
+      text: `Earnings filter: ${(s.excludedReasons || []).join('; ')}. Only the checks below could be measured from the fields this record carries.`
+    },
+    {
+      status: priceOk ? 'pass' : (s.price >= 5 && s.price <= 40 ? 'warn' : 'fail'),
+      icon: priceOk ? '✓' : (s.price >= 5 ? '⚠' : '✗'),
+      title: `Price: $${s.price.toFixed(2)} — Target: $15-$20`,
+      text: priceOk ? 'Within the workable range for a 100-lot earnings play. Margin requirement manageable.' : `Outside $15-$20 sweet spot. 100 shares = $${(s.price*100).toFixed(0)} capital required.`
+    },
+    {
+      status: peOk ? 'pass' : 'fail',
+      icon: peOk ? '✓' : '✗',
+      title: `P/E Ratio: ${s.pe > 0 ? s.pe.toFixed(1) : 'N/A (Negative EPS)'} — Target: < 50 (S&P avg ~16)`,
+      text: peOk ? 'Reasonable valuation relative to the S&P 500 historical average of 16x.' : (s.pe < 0 ? 'Company is not profitable — negative earnings. High risk for income strategy.' : `P/E of ${s.pe} is elevated. Could mean growth is priced in.`)
+    },
+    {
+      status: isNaN(si) ? 'neutral' : (si < 10 ? 'pass' : 'fail'),
+      icon: isNaN(si) ? '→' : (si < 10 ? '✓' : '✗'),
+      title: `Short Interest: ${isNaN(si) ? 'n/a' : s.shortInt + ' of float'} — Target: < 10% for earnings plays`,
+      text: isNaN(si) ? 'Short interest was not in the data feed for this ticker.' : (si < 10 ? 'Short interest is under the earnings-mode crowding limit.' : 'Crowding above the 10% maximum is an earnings-mode exclusion — that same crowding is the fuel on the Squeeze board.')
+    },
+    {
+      status: !s.shortRatio ? 'neutral' : (s.shortRatio <= 3 ? 'pass' : (s.shortRatio <= 5 ? 'warn' : 'fail')),
+      icon: !s.shortRatio ? '→' : (s.shortRatio <= 3 ? '✓' : (s.shortRatio <= 5 ? '⚠' : '✗')),
+      title: s.shortRatio ? `Short Borrow: ${s.shortRatio} days to cover — Target: ≤ 3 days` : 'Short Borrow: n/a — days to cover unavailable',
+      text: !s.shortRatio ? 'Days-to-cover was not in the data feed for this ticker, so the borrow gate could not be measured.' : (s.shortRatio <= 3 ? 'Shorts can cover quickly — the exit is not crowded.' : 'A crowded exit — covering takes days of average volume.')
+    },
+    {
+      status: daysOk ? 'pass' : 'fail',
+      icon: daysOk ? '✓' : '✗',
+      title: `Days to Earnings: ${s.daysToEarnings} — Target: ≥ 7 days`,
+      text: daysOk ? `Earnings on ${s.earningsDate}. Sufficient time to enter a covered call for income/protection.` : 'Too close to earnings for optimal entry. Consider waiting for next quarter.'
+    },
+    {
+      status: 'neutral',
+      icon: '→',
+      title: 'Not measured for this record: surprise history, sentiment, 52-week position, IV, momentum',
+      text: `The full 12-point checklist needs a full data build. Run fetch_stock.py ${ticker} and refresh to measure the rest.`
+    },
+  ];
   document.getElementById('checkGrid').innerHTML = checks.map(c => `
     <div class="check-item ${c.status}">
       <div class="check-icon">${c.icon}</div>
