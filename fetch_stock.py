@@ -31,7 +31,9 @@ from datetime import datetime, timedelta, date
 # for the composite score (see scoring.py). The dashboard only renders
 # the score computed here; it never recomputes its own.
 from scoring import (compute_score, compute_squeeze_score, compute_div_yield,
-                     compute_earnings_move, detect_guidance, covered_call_flags)
+                     compute_earnings_move, detect_guidance, covered_call_flags,
+                     compute_direction)
+import si_trend
 
 def fetch_stock_data(ticker_symbol):
     """Fetch comprehensive data for a single ticker."""
@@ -631,21 +633,38 @@ def fetch_stock_data(ticker_symbol):
     }
     stock_data['score'] = compute_score(facts)
 
+    # === DIRECTION CHECK (separate lean — scoring.py) ===
+    # The score grades structure/premium only; this reads the
+    # in-feed directional signals so the app can show both.
+    stock_data['direction'] = compute_direction({
+        'guidanceFlag': (stock_data.get('guidance') or {}).get('flag'),
+        'analystSignal': facts['analystSignal'],
+        'insiderSignal': facts['insiderSignal'],
+        'momentum': stock_data['momentum'],
+        'surprises': stock_data['surprises'],
+    })
+
     # === SQUEEZE SCORE (second, independent score — scoring.py) ===
     # Same record, opposite lens: crowded shorts + a dated catalyst.
-    # siTrend is None on purpose: yfinance reports only the CURRENT
-    # short interest, so there is no prior report to compare against
-    # — the trend component stays honestly unmeasured (n/a) rather
-    # than being guessed.
+    # siTrend comes from si_history.json (si_trend.py): the feed
+    # reports only the CURRENT short interest, so the trend is the
+    # change vs our own stored observation from a settlement cycle
+    # ago — measured, never guessed. Today's figure is recorded
+    # AFTER the trend is read, so a run never compares against
+    # itself.
     print("  [*] Computing squeeze score...")
+    _si_hist = si_trend.load_history()
+    _si_tr = si_trend.trend_for(ticker_symbol.upper(), facts['shortPct'], _si_hist)
     stock_data['squeezeScore'] = compute_squeeze_score({
         'shortPct': facts['shortPct'],
         'shortRatio': stock_data['shortRatio'],
         'daysToEarnings': stock_data['daysToEarnings'],
-        'siTrend': None,
+        'siTrend': _si_tr,
         'realizedMovePct': stock_data['earningsMove']['avgAbsMovePct'],
         'avgVol': info.get('averageVolume'),
     })
+    si_trend.record(ticker_symbol.upper(), facts['shortPct'], _si_hist)
+    si_trend.save_history(_si_hist)
 
     print(f"\n  ✓ {ticker_symbol.upper()} — ${stock_data['price']} — Done!")
     return stock_data

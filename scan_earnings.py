@@ -38,7 +38,21 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # computed here / in fetch_stock.py; it never recomputes its own.
 from scoring import (compute_score, compute_squeeze_score, compute_div_yield,
                      compute_earnings_move, detect_guidance, covered_call_flags,
-                     hard_filter_failures)
+                     hard_filter_failures, compute_direction)
+import si_trend
+import receipts as receipts_mod
+
+# Shared SI history for this run: trends are read BEFORE today's
+# figures are recorded (a run never compares against itself), and
+# main() saves the file once at the end.
+_SI_HIST = None
+
+
+def _si_history():
+    global _SI_HIST
+    if _SI_HIST is None:
+        _SI_HIST = si_trend.load_history()
+    return _SI_HIST
 
 # ========== EARNINGS CALENDAR SCRAPER ==========
 
@@ -238,20 +252,37 @@ def _excluded_record(ticker_sym, info, earnings_info, price, pe, short_pct, reas
     # Squeeze score even here: an earnings-mode reject (e.g. short
     # interest above the earnings cap) is a PRIME squeeze candidate,
     # so the excluded record must stay scorable in Squeeze mode.
-    # Computed from what the exclusion path actually knows — fuel,
-    # burn, catalyst, liquidity; trend and realized move stay n/a.
+    # Fuel, burn, catalyst, liquidity come from the info block; the
+    # trend comes from si_history.json and the realized move is now
+    # measured on this path too (one earnings-history fetch — the
+    # stub used to skip it, which left every squeeze score partial).
     squeeze = None
+    realized_pct = None
+    move_block = None
+    try:
+        mv = compute_earnings_move(yf.Ticker(ticker_sym))
+        if mv:
+            realized_pct = mv.get('avgAbsMovePct')
+            move_block = {'avgAbsMovePct': mv.get('avgAbsMovePct'),
+                          'count': mv.get('count'),
+                          'moves': mv.get('moves'),
+                          'impliedMovePct': None,
+                          'edgeRatio': None}
+    except Exception:
+        realized_pct = None
+        move_block = None
     try:
         squeeze = compute_squeeze_score({
             'shortPct': short_pct,
             'shortRatio': info.get('shortRatio') if info else None,
             'daysToEarnings': earnings_info.get('days_until'),
-            'siTrend': None,        # feed carries current SI only
-            'realizedMovePct': None,  # not measured on the exclusion path
+            'siTrend': si_trend.trend_for(ticker_sym, short_pct, _si_history()),
+            'realizedMovePct': realized_pct,
             'avgVol': info.get('averageVolume') if info else None,
         })
     except Exception:
         squeeze = None
+    si_trend.record(ticker_sym, short_pct, _si_history())
     return {
         'name': (info.get('longName') or info.get('shortName', ticker_sym)) if info else ticker_sym,
         'sector': info.get('sector', 'Unknown') if info else 'Unknown',
@@ -264,6 +295,7 @@ def _excluded_record(ticker_sym, info, earnings_info, price, pe, short_pct, reas
         'daysToEarnings': earnings_info.get('days_until', 0),
         'excluded': True,
         'excludedReasons': reasons,
+        'earningsMove': move_block,
         'score': None,
         'squeezeScore': squeeze,
     }
@@ -349,15 +381,26 @@ def evaluate_stock(ticker_sym, earnings_info, criteria):
         full_data['_scan_score'] = score_obj['total']
         full_data['_scan_reasons'] = build_reasons(score_obj)
 
+        # ===== DIRECTION CHECK (in-feed signals available on this
+        # pass; refetch_full.py recomputes with insider/analyst flow)
+        full_data['direction'] = compute_direction({
+            'guidanceFlag': (full_data.get('guidance') or {}).get('flag'),
+            'analystSignal': None,
+            'insiderSignal': None,
+            'momentum': full_data.get('momentum'),
+            'surprises': full_data.get('surprises'),
+        })
+
         # ===== SQUEEZE SCORE (second, independent score) =====
         squeeze_obj = compute_squeeze_score({
             'shortPct': round(short_pct, 1),
             'shortRatio': full_data.get('shortRatio'),
             'daysToEarnings': days_to,
-            'siTrend': None,   # feed carries current SI only — honest n/a
+            'siTrend': si_trend.trend_for(ticker_sym, round(short_pct, 1), _si_history()),
             'realizedMovePct': move_block.get('avgAbsMovePct'),
             'avgVol': avg_vol,
         })
+        si_trend.record(ticker_sym, round(short_pct, 1), _si_history())
         full_data['squeezeScore'] = squeeze_obj
         full_data['_scan_squeeze_score'] = squeeze_obj['total']
         return (score_obj['total'], full_data)
@@ -829,7 +872,26 @@ def main():
 
     with open(output_path, 'w') as f:
         json.dump(sanitize_json(existing), f, indent=2, default=str, allow_nan=False)
-    
+
+    # SI history: persist today's observations for future trends.
+    try:
+        si_trend.save_history(_si_history())
+        print("  ✓ SI history updated (si_history.json)")
+    except Exception as e:
+        print(f"  ⚠ SI history save failed: {e}")
+
+    # Receipts: snapshot names about to print, grade the ones that
+    # have. Runs on the merged data so refetched full records are
+    # included; failures here never block the scan output.
+    try:
+        rec = receipts_mod.load_receipts()
+        added = receipts_mod.snapshot_due(existing, rec)
+        graded, dropped = receipts_mod.grade_due(rec)
+        receipts_mod.save_receipts(rec)
+        print(f"  ✓ Receipts: +{added} snapshot(s), {graded} graded, {dropped} dropped")
+    except Exception as e:
+        print(f"  ⚠ Receipts update failed: {e}")
+
     print(f"{'='*60}")
     print(f"  ✓ Saved {len(qualified)} plays + {len(excluded)} excluded (with reasons) to: {os.path.abspath(output_path)}")
     print(f"  ✓ Total tickers in file: {len(existing)}")

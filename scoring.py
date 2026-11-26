@@ -366,6 +366,103 @@ def compute_score(facts):
     }
 
 
+# ============ DIRECTION CHECK ============
+#
+# The scores above grade STRUCTURE and PREMIUM — they say nothing
+# about which way the stock is likely to move, and the first three
+# screen trades (0-for-3) proved structure alone doesn't predict
+# direction. This is the separate lean, built ONLY from signals the
+# feed already carries: guidance flag, analyst net signal, insider
+# net signal, price momentum, and the surprise trend. Each signal
+# leans up / down / flat; the verdict is the net. It is a lean,
+# not a forecast — and when no signal is measurable the verdict is
+# 'unknown', never guessed. (The researched direction check on the
+# dashboard's Monday screen — estimate revisions, guidance changes
+# read from releases — remains the deeper read; this is the
+# in-feed version that can live on every record.)
+
+DIRECTION_VERSION = 1
+
+
+def compute_direction(facts):
+    """
+    facts: dict with any of —
+      guidanceFlag ('raised'/'held'/'cut'/'unknown'),
+      analystSignal ('Bullish'/'Neutral'/'Bearish'),
+      insiderSignal ('Bullish'/'Neutral'/'Bearish'),
+      momentum {trend, day5, day30, day90},
+      surprises [{pct, est, actual}, ...]
+
+    Returns {verdict, score, signals: [{key, label, lean, detail}],
+    version} — verdict in aligned / adverse / mixed / unknown.
+    """
+    signals = []
+
+    def add(key, label, lean, detail):
+        signals.append({'key': key, 'label': label, 'lean': lean, 'detail': detail})
+
+    gf = str(facts.get('guidanceFlag') or 'unknown').strip().lower()
+    if gf == 'raised':
+        add('guidance', 'Guidance', 'up', 'Management raised guidance on the last print')
+    elif gf == 'cut':
+        add('guidance', 'Guidance', 'down', 'Management cut guidance on the last print')
+    elif gf == 'held':
+        add('guidance', 'Guidance', 'flat', 'Management held guidance on the last print')
+
+    for key, label, sig in (('analyst', 'Analyst flow', facts.get('analystSignal')),
+                            ('insider', 'Insider flow', facts.get('insiderSignal'))):
+        if sig == 'Bullish':
+            add(key, label, 'up', f"{label.split()[0]} net signal is Bullish in the feed")
+        elif sig == 'Bearish':
+            add(key, label, 'down', f"{label.split()[0]} net signal is Bearish in the feed")
+        elif sig == 'Neutral':
+            add(key, label, 'flat', f"{label.split()[0]} net signal is Neutral in the feed")
+
+    m = facts.get('momentum') or {}
+    trend = m.get('trend')
+    if trend == 'Bullish':
+        add('momentum', 'Momentum', 'up', 'Price trend is Bullish')
+    elif trend == 'Bearish':
+        add('momentum', 'Momentum', 'down', 'Price trend is Bearish')
+    elif trend in ('Mixed', 'Neutral'):
+        add('momentum', 'Momentum', 'flat', f"Price trend is {trend}")
+    elif _num(m.get('day5')) and _num(m.get('day30')):
+        d5, d30 = m['day5'], m['day30']
+        if d5 > 0 and d30 > 0:
+            add('momentum', 'Momentum', 'up', f"Up over both windows (5d {d5:+.1f}%, 30d {d30:+.1f}%)")
+        elif d5 < 0 and d30 < 0:
+            add('momentum', 'Momentum', 'down', f"Down over both windows (5d {d5:+.1f}%, 30d {d30:+.1f}%)")
+        else:
+            add('momentum', 'Momentum', 'flat', f"Windows disagree (5d {d5:+.1f}%, 30d {d30:+.1f}%)")
+
+    real = [x for x in (facts.get('surprises') or [])
+            if isinstance(x, dict) and _num(x.get('pct'))
+            and not (x.get('est') in (0, 0.0, None) and x.get('actual') in (0, 0.0, None))]
+    if real:
+        avg = sum(x['pct'] for x in real) / len(real)
+        beats = sum(1 for x in real if x['pct'] > 0)
+        if avg >= 2:
+            add('surprises', 'Surprise trend', 'up',
+                f"Averaging {avg:+.1f}% surprises ({beats}/{len(real)} beats) — prints keep landing hot")
+        elif avg <= -2:
+            add('surprises', 'Surprise trend', 'down',
+                f"Averaging {avg:+.1f}% surprises ({beats}/{len(real)} beats) — prints keep landing cold")
+        else:
+            add('surprises', 'Surprise trend', 'flat',
+                f"Surprises average {avg:+.1f}% ({beats}/{len(real)} beats) — no strong print trend")
+
+    score = sum(1 if s['lean'] == 'up' else (-1 if s['lean'] == 'down' else 0) for s in signals)
+    if not signals:
+        verdict = 'unknown'
+    elif score >= 2:
+        verdict = 'aligned'
+    elif score <= -2:
+        verdict = 'adverse'
+    else:
+        verdict = 'mixed'
+    return {'verdict': verdict, 'score': score, 'signals': signals, 'version': DIRECTION_VERSION}
+
+
 # ============ SQUEEZE SCORE ============
 #
 # The SECOND, independent score (added 2026-10-09 at Matt's
