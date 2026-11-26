@@ -624,7 +624,14 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     <div class="scan-header">
       <h3><span id="scanTitle">Today's Earnings Plays</span> <span class="scan-count" id="scanCount">0</span></h3>
       <span class="scan-meta" id="scanMeta">Loading...</span>
-      <div class="scan-filters"><span class="filters-label">Filters</span>
+      <div class="scan-filters"><span class="filters-label">Sort</span>
+      <select id="sortSelect" onchange="setSort(this.value)" title="How the board is ordered" style="background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 6px;font-size:12px">
+        <option value="soonest">Soonest earnings</option>
+        <option value="score">Highest score</option>
+        <option value="price">Lowest price</option>
+      </select>
+      <button type="button" id="receiptsBtn" onclick="toggleReceipts()" title="Score-vs-outcome track record: what the scores said before past prints vs what the stocks actually did" style="background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:12px;cursor:pointer">📜 Receipts</button>
+      <span class="filters-label">Filters</span>
       <label class="hide-filtered-toggle" id="hideFilteredWrap" title="Hide the scanner's filtered-out names from the Earnings board — they always stay visible in Squeeze mode">
         <input type="checkbox" id="hideFilteredToggle" checked onchange="toggleHideFiltered(this.checked)"> Hide filtered-out
       </label>
@@ -634,6 +641,15 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
       </div>
     </div>
     <div class="scan-grid" id="scanGrid"></div>
+  </div>
+
+  <!-- RECEIPTS PANEL — score vs outcome, graded after each print -->
+  <div class="scan-panel" id="receiptsPanel" style="display:none">
+    <div class="scan-header">
+      <h3>📜 Receipts — what the scores said vs what happened</h3>
+      <span class="scan-meta" id="receiptsMeta">Loading...</span>
+    </div>
+    <div id="receiptsBody" style="padding:4px 2px"></div>
   </div>
 
   <!-- TICKER INPUT -->
@@ -659,6 +675,12 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
       <div class="section-label" id="checklistLabel">Earnings Play Criteria Checklist</div>
       <div class="check-grid" id="checkGrid"></div>
     </div>
+
+    <!-- DIRECTION CHECK (in-feed signals; the scores grade structure only) -->
+    <div id="directionBox"></div>
+
+    <!-- PERSONAL GATES (Matt's employer rule + risk sizing) -->
+    <div id="gatesBox"></div>
 
     <!-- RESEARCH QUICK LINKS -->
     <div class="research-bar" id="researchBar">
@@ -770,7 +792,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v24</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v25</span>
   </div>
 </div>
 
@@ -827,6 +849,12 @@ let currentTicker = null;
 // Default ON — the board shows qualifiers only; the rejects are one
 // toggle away and always render in Squeeze mode regardless of this
 // setting. Persisted under ep-hide-filtered, same pattern as ep-theme.
+let BOARD_SORT = localStorage.getItem('ep-sort') || 'soonest';
+function setSort(v) {
+  BOARD_SORT = (v === 'score' || v === 'price') ? v : 'soonest';
+  localStorage.setItem('ep-sort', BOARD_SORT);
+  if (Object.keys(DB).length) buildScanPanel(DB);
+}
 let HIDE_FILTERED = localStorage.getItem('ep-hide-filtered') !== '0';
 let HIDE_PARTIAL = localStorage.getItem('ep-hide-partial') !== '0';
 function toggleHideFiltered(on) {
@@ -890,13 +918,23 @@ function buildScanPanel(data) {
   const countEl = document.getElementById('scanCount');
   const metaEl = document.getElementById('scanMeta');
   
-  // Sort tickers by daysToEarnings (soonest first), filter to those with earnings data.
-  // In Squeeze mode the board leads with the squeeze score instead.
+  // Board order (Matt's pick, persisted): 'soonest' = days to
+  // earnings (the original behavior; Squeeze mode leads with the
+  // squeeze score there), 'score' = the active mode's score,
+  // highest first, 'price' = lowest price first. Ties always fall
+  // back to soonest earnings.
+  const soonest = (a, b) => (data[a].daysToEarnings || 999) - (data[b].daysToEarnings || 999);
+  const active = t => APP_MODE === 'squeeze' ? getSqueeze(data[t]) : getScore(data[t]);
+  const bySort = (a, b) => {
+    if (BOARD_SORT === 'score') return ((active(b) ?? -1) - (active(a) ?? -1)) || soonest(a, b);
+    if (BOARD_SORT === 'price') return ((data[a].price || 1e9) - (data[b].price || 1e9)) || soonest(a, b);
+    return APP_MODE === 'squeeze'
+      ? ((getSqueeze(data[b]) ?? -1) - (getSqueeze(data[a]) ?? -1)) || soonest(a, b)
+      : soonest(a, b);
+  };
   const tickers = Object.keys(data)
     .filter(t => data[t].excluded || (data[t].daysToEarnings > 0 && data[t].daysToEarnings <= 60))
-    .sort((a, b) => APP_MODE === 'squeeze'
-      ? ((getSqueeze(data[b]) ?? -1) - (getSqueeze(data[a]) ?? -1)) || ((data[a].daysToEarnings || 999) - (data[b].daysToEarnings || 999))
-      : (data[a].daysToEarnings || 999) - (data[b].daysToEarnings || 999));
+    .sort(bySort);
   
   if (tickers.length === 0) {
     // Show all tickers if none have earnings dates
@@ -939,12 +977,14 @@ function buildScanPanel(data) {
     return;
   }
   
-  // Find soonest and latest earnings
-  const soonest = data[visible[0]].daysToEarnings;
-  const latest = data[visible[visible.length - 1]].daysToEarnings;
+  // Earnings span across the visible board (min/max days out —
+  // the board may be sorted by score or price, so compute it).
+  const dayVals = visible.map(t => data[t].daysToEarnings || 999);
+  const soonestDay = Math.min(...dayVals);
+  const latestDay = Math.max(...dayVals);
   metaEl.textContent = hiddenCount > 0
-    ? `${visible.length} plays · ${hiddenWhy} hidden — earnings in ${soonest}-${latest} days — click any to analyze`
-    : `Earnings in ${soonest}-${latest} days — click any to analyze`;
+    ? `${visible.length} plays · ${hiddenWhy} hidden — earnings in ${soonestDay}-${latestDay} days — click any to analyze`
+    : `Earnings in ${soonestDay}-${latestDay} days — click any to analyze`;
   
   grid.innerHTML = visible.map(t => buildScanCard(t, data[t])).join('');
   panel.classList.add('visible');
@@ -968,6 +1008,18 @@ function buildScanCard(ticker, s) {
   const subBadge = (label, obj, total) => (total === null || total === undefined)
     ? `<span class="scan-score-sub">${label}: n/a</span>`
     : `<span class="scan-score-sub">${label}: ${total}${obj && obj.grade ? ' ' + obj.grade : ''}${obj && obj.fastCover ? ' • ⚡ fast cover' : ''}</span>`;
+
+  // Direction verdict (scoring.py compute_direction, from in-feed
+  // signals) — the scores grade structure/premium only; this is the
+  // separate "which way is the wind blowing" read. No chip when the
+  // record carries no verdict (minimal records: unknown).
+  const dirChip = (s) => {
+    const d = s.direction;
+    if (!d || !d.verdict || d.verdict === 'unknown') return '';
+    const m = { aligned: ['▲ aligned', 'var(--green)'], adverse: ['▼ adverse', 'var(--red)'], mixed: ['◆ mixed', 'var(--amber)'] }[d.verdict];
+    if (!m) return '';
+    return `<span class="scan-score-sub" title="Direction check from in-feed signals: guidance, analyst flow, insider flow, momentum, surprise trend">Direction: <strong style="color:${m[1]}">${m[0]}</strong></span>`;
+  };
 
   const eTotal = getScore(s), eObj = getScoreObj(s);
   const qTotal = getSqueeze(s), qObj = getSqueezeObj(s);
@@ -996,6 +1048,7 @@ function buildScanCard(ticker, s) {
         <div class="scan-card-squeeze-note">🧨 Filtered out of Earnings mode — squeeze candidate</div>
         <div class="scan-excluded-reason">✗ Earnings filter: ${reasons}</div>
         ${subBadge('Earnings', null, null)}
+        ${dirChip(s)}
       </div>`;
     }
     return `<div class="scan-card scan-card-excluded">
@@ -1029,6 +1082,7 @@ function buildScanCard(ticker, s) {
       <span>Earnings <strong>${earnDays}d</strong></span>
     </div>
     ${APP_MODE === 'squeeze' ? subBadge('Earnings', eObj, eTotal) : subBadge('Squeeze', qObj, qTotal)}
+    ${dirChip(s)}
   </div>`;
 }
 
@@ -1293,6 +1347,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hfToggle) hfToggle.checked = HIDE_FILTERED;
   const hpToggle = document.getElementById('hidePartialToggle');
   if (hpToggle) hpToggle.checked = HIDE_PARTIAL;
+  const sortSel = document.getElementById('sortSelect');
+  if (sortSel) sortSel.value = BOARD_SORT;
   if (!liveMode) {
     buildScanPanel(DB);
     updateQuickButtons(Object.keys(DB));
@@ -1454,6 +1510,8 @@ function renderResults(ticker, s) {
   renderVerdict(ticker, s);
   renderChecklist(ticker, s);
   renderStrategy(ticker, s);
+  renderDirection(ticker, s);
+  renderGates(ticker, s);
   if (s.excluded) {
     // Minimal scanner record (earnings hard-filter exclusion): only
     // the verdict, checklist and strategy surfaces have the fields
@@ -1477,6 +1535,209 @@ function renderResults(ticker, s) {
     const el = document.getElementById(id);
     if (el && !el.innerHTML.trim()) setCardVisible(id, false);
   });
+}
+
+// --- DIRECTION CHECK ---
+// The scores grade structure and premium; they say nothing about
+// which way the stock is likely to move (the lesson of the first
+// three screen trades). scoring.py's compute_direction reads the
+// in-feed signals — guidance, analyst flow, insider flow, momentum,
+// surprise trend — and stores a verdict on the record. This renders
+// it; it never recomputes or invents one.
+function renderDirection(ticker, s) {
+  const box = document.getElementById('directionBox');
+  if (!box) return;
+  const d = s.direction;
+  const head = `<div class="section-label">Direction Check — which way the wind is blowing</div>`;
+  if (!d || !d.verdict || d.verdict === 'unknown') {
+    box.innerHTML = `${head}<div style="padding:12px 14px;color:var(--text3);font-size:12px;line-height:1.7;border:1px solid var(--border);border-radius:10px">Not measured for this record — the in-feed signals (guidance, analyst and insider flow, momentum, surprise trend) were never built for it, so there is no direction read. The score alone does not predict direction.</div>`;
+    return;
+  }
+  const conf = { aligned: ['▲ ALIGNED', 'var(--green)'], adverse: ['▼ ADVERSE', 'var(--red)'], mixed: ['◆ MIXED', 'var(--amber)'] }[d.verdict];
+  const rows = (d.signals || []).map(sig => {
+    const arrow = sig.lean === 'up' ? '▲' : (sig.lean === 'down' ? '▼' : '◆');
+    const col = sig.lean === 'up' ? 'var(--green)' : (sig.lean === 'down' ? 'var(--red)' : 'var(--amber)');
+    return `<div style="display:flex;gap:10px;padding:5px 0;border-top:1px solid var(--border)"><span style="color:${col};font-weight:700">${arrow}</span><div style="font-size:12px;line-height:1.55"><strong>${sig.label}</strong> — <span style="color:var(--text2)">${sig.detail}</span></div></div>`;
+  }).join('');
+  box.innerHTML = `${head}<div style="padding:12px 14px;border:1px solid var(--border);border-radius:10px">
+    <div style="font-size:15px;font-weight:800;color:${conf[1]}">${conf[0]} <span style="font-size:11px;color:var(--text3);font-weight:600">net ${d.score > 0 ? '+' : ''}${d.score} across ${(d.signals || []).length} in-feed signals</span></div>
+    ${rows}
+    <div style="font-size:11px;color:var(--text3);margin-top:8px">Built from the same feed as the record (guidance flag, analyst actions, insider activity, momentum, surprise history) — a lean, not a forecast. The researched direction check on the Monday dashboard screen remains the deeper read.</div>
+  </div>`;
+}
+
+// --- PERSONAL GATES ---
+// Matt's standing constraints, checked against the structure this
+// app recommends, BEFORE he has to do the math himself:
+//  1. Employer rule (Fidelity, fixed): no bought puts unless the
+//     put hedges 100 owned shares. A bull put spread buys a put
+//     with no share hedge — it does not clear the rule.
+//  2. Cash in the options account (default $1,700, editable).
+//  3. Max loss per defined-risk trade (default $40, editable).
+// Chain figures in these records are placeholder estimates — the
+// panel says so; live quotes in Fidelity are the real check.
+function getGateSettings() {
+  try { return Object.assign({ cash: 1700, maxLoss: 40 }, JSON.parse(localStorage.getItem('ep-gates') || '{}')); }
+  catch (e) { return { cash: 1700, maxLoss: 40 }; }
+}
+function saveGateSettings() {
+  const cash = parseFloat(document.getElementById('gateCash').value);
+  const cap = parseFloat(document.getElementById('gateCap').value);
+  const g = getGateSettings();
+  if (cash > 0) g.cash = cash;
+  if (cap > 0) g.maxLoss = cap;
+  localStorage.setItem('ep-gates', JSON.stringify(g));
+  if (currentTicker && DB[currentTicker]) renderGates(currentTicker, DB[currentTicker]);
+}
+function renderGates(ticker, s) {
+  const box = document.getElementById('gatesBox');
+  if (!box) return;
+  const g = getGateSettings();
+  const head = `<div class="section-label">Your Gates — does the recommended setup fit your rules?</div>`;
+  const settings = `<div style="margin-top:10px;font-size:11px;color:var(--text3);line-height:1.8">
+    Employer rule (fixed): no bought puts unless hedging 100 owned shares.
+    Cash in options account $ <input id="gateCash" type="number" min="0" step="50" value="${g.cash}" style="width:80px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:2px 6px">
+    · Max loss per defined-risk trade $ <input id="gateCap" type="number" min="0" step="5" value="${g.maxLoss}" style="width:64px;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:2px 6px">
+    <button type="button" onclick="saveGateSettings()" style="background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:2px 10px;cursor:pointer">Save</button>
+    <br>Chain figures in this app are placeholder estimates — confirm live quotes in Fidelity before acting.</div>`;
+  const wrap = inner => `${head}<div style="padding:12px 14px;border:1px solid var(--border);border-radius:10px">${inner}${settings}</div>`;
+  const score = APP_MODE === 'squeeze' ? getSqueeze(s) : getScore(s);
+  if (score === null || score === undefined) {
+    box.innerHTML = wrap(`<div style="font-size:12px;color:var(--text3);line-height:1.7">No ${APP_MODE === 'squeeze' ? 'squeeze ' : ''}score for this record — there is no recommended setup to gate-check.</div>`);
+    return;
+  }
+  // Placeholder-chain helpers (same math the strategy panel uses).
+  const hasChain = !!(s.options && s.options.strikes && s.options.strikes.length);
+  let atm = -1;
+  if (hasChain) {
+    atm = s.options.strikes.reduce((best, k, i) => Math.abs(k - s.price) < Math.abs(s.options.strikes[best] - s.price) ? i : best, 0);
+  }
+  const callPrem = hasChain ? (s.options.calls || [])[atm] : null;
+  const putPrem = hasChain ? (s.options.puts || [])[atm] : null;
+  const strike = hasChain ? s.options.strikes[atm] : s.price;
+  const rows = [];
+  const row = (status, label, text) => rows.push({ status, label, text });
+  let structure = '';
+  if (APP_MODE === 'squeeze') {
+    const so = getSqueezeObj(s);
+    if (so && so.eligible === false) {
+      box.innerHTML = wrap(`<div style="font-size:12px;color:var(--text3);line-height:1.7">Not squeeze-eligible (no dated catalyst in the window) — no setup to gate-check.</div>`);
+      return;
+    }
+    if (score < 45) {
+      box.innerHTML = wrap(`<div style="font-size:12px;color:var(--text3);line-height:1.7">Squeeze score is THIN — the app recommends no setup here, so there is nothing to gate-check.</div>`);
+      return;
+    }
+    structure = 'Married put (buy 100 shares + 1 protective put) — or a bull call spread';
+    row('pass', 'Employer put rule', 'The married put buys its put as a hedge on the 100 shares bought with it — exactly the allowed case. A bull call spread buys no put at all.');
+    const capital = 100 * s.price + (putPrem != null ? 100 * putPrem : 0);
+    row(capital <= g.cash ? 'pass' : 'fail', 'Cash', `Needs about $${capital.toFixed(0)} (100 shares${putPrem != null ? ' + the placeholder put premium' : ''}) against $${g.cash} cash in the options account.`);
+    if (putPrem != null) {
+      const worst = ((s.price - strike) + putPrem) * 100;
+      row(worst <= g.maxLoss ? 'pass' : 'fail', 'Max-loss cap', `Married-put worst case ≈ $${worst.toFixed(0)} per 100 shares (entry $${s.price.toFixed(2)} − strike $${strike.toFixed(1)} + premium $${putPrem.toFixed(2)}), against your $${g.maxLoss} cap.`);
+    } else {
+      row('na', 'Max-loss cap', 'No options chain in this record, so the married-put worst case cannot be computed here — check it in Fidelity.');
+    }
+  } else {
+    if (score < 50) {
+      box.innerHTML = wrap(`<div style="font-size:12px;color:var(--text3);line-height:1.7">Score is below the conditional line — the app recommends no setup here, so there is nothing to gate-check.</div>`);
+      return;
+    }
+    if (score >= 75) {
+      structure = 'Covered call (buy 100 shares, sell 1 call)';
+      row('pass', 'Employer put rule', 'A covered call buys no put — clear of the rule.');
+      const capital = 100 * s.price;
+      row(capital <= g.cash ? 'pass' : 'fail', 'Cash', `Needs about $${capital.toFixed(0)} for 100 shares against $${g.cash} cash in the options account.`);
+      if (callPrem != null) {
+        const maxLoss = (s.price - callPrem) * 100;
+        row('fail', 'Max-loss cap', `A covered call has no defined cap — the risk is the share position itself, ≈ $${maxLoss.toFixed(0)} if the stock went to zero (less the $${callPrem.toFixed(2)} placeholder premium). Your $${g.maxLoss} cap was set for defined-risk plays; this structure is not one.`);
+      } else {
+        row('na', 'Max-loss cap', 'No options chain in this record — the premium buffer cannot be computed here. Either way, a covered call\u2019s risk is the share position, not a defined $ cap.');
+      }
+    } else {
+      structure = 'Conditional: cash-secured put (the bull put spread variant fails the put rule — see below)';
+      row('pass', 'Employer put rule — cash-secured put', 'A cash-secured put SELLS a put; it buys none — clear of the rule.');
+      row('fail', 'Employer put rule — bull put spread', 'A bull put spread includes a BOUGHT put leg with no 100-share hedge behind it — it does not clear the rule without a written Fidelity exception. Do not treat the spread as the compliant variant.');
+      const capital = 100 * strike;
+      row(capital <= g.cash ? 'pass' : 'fail', 'Cash', `A cash-secured put ties up about $${capital.toFixed(0)} (the $${strike.toFixed(1)} strike × 100) against $${g.cash} cash in the options account.`);
+      if (putPrem != null) {
+        const maxLoss = (strike - putPrem) * 100;
+        row('fail', 'Max-loss cap', `A cash-secured put\u2019s max loss ≈ $${maxLoss.toFixed(0)} (strike less the placeholder premium) — far beyond your $${g.maxLoss} defined-risk cap.`);
+      } else {
+        row('na', 'Max-loss cap', 'No options chain in this record, so the exact figure cannot be computed here — a cash-secured put\u2019s risk runs to the strike, far beyond the cap.');
+      }
+    }
+  }
+  const icon = st => st === 'pass' ? '✓' : (st === 'fail' ? '✗' : '→');
+  const col = st => st === 'pass' ? 'var(--green)' : (st === 'fail' ? 'var(--red)' : 'var(--amber)');
+  const rowsHTML = rows.map(r => `<div style="display:flex;gap:10px;padding:5px 0;border-top:1px solid var(--border)"><span style="color:${col(r.status)};font-weight:800">${icon(r.status)}</span><div style="font-size:12px;line-height:1.55"><strong>${r.label}</strong> — <span style="color:var(--text2)">${r.text}</span></div></div>`).join('');
+  const fails = rows.filter(r => r.status === 'fail');
+  const nas = rows.filter(r => r.status === 'na');
+  const verdict = fails.length
+    ? `<span style="color:var(--red)">✗ DOESN'T FIT — ${fails.map(r => r.label).join('; ')}</span>`
+    : (nas.length ? `<span style="color:var(--amber)">⚠ CAN'T FULLY CHECK — ${nas.map(r => r.label).join('; ')}</span>`
+      : `<span style="color:var(--green)">✓ FITS YOUR GATES</span>`);
+  box.innerHTML = wrap(`<div style="font-size:13px;font-weight:700;line-height:1.6">Recommended setup: ${structure}<br>${verdict}</div>${rowsHTML}`);
+}
+
+// --- RECEIPTS ---
+// receipts.json is written by the scanner (scan_earnings.py): names
+// reporting within 7 days get their scores snapshotted BEFORE the
+// print, then graded against the actual move after it. This view
+// only displays that file — it never grades anything itself.
+let RECEIPTS = null;
+function receiptsUrl() {
+  const dir = location.pathname.replace(/[^/]*$/, '');
+  return location.origin + dir + 'receipts.json?v=' + Date.now();
+}
+async function toggleReceipts() {
+  const panel = document.getElementById('receiptsPanel');
+  if (!panel) return;
+  if (panel.style.display !== 'none') { panel.style.display = 'none'; return; }
+  panel.style.display = '';
+  if (RECEIPTS === null) {
+    try {
+      const resp = await fetch(receiptsUrl());
+      if (!resp.ok) throw new Error('no receipts file');
+      RECEIPTS = await resp.json();
+    } catch (e) { RECEIPTS = { entries: [] }; }
+  }
+  renderReceipts();
+}
+function renderReceipts() {
+  const meta = document.getElementById('receiptsMeta');
+  const body = document.getElementById('receiptsBody');
+  if (!meta || !body) return;
+  const entries = (RECEIPTS && RECEIPTS.entries) || [];
+  if (!entries.length) {
+    meta.textContent = 'No receipts yet';
+    body.innerHTML = `<div style="font-size:12px;color:var(--text3);line-height:1.7;padding:6px 2px">No receipts yet. The scanner snapshots the scores of names reporting within 7 days, then grades them against the actual move once they print. Seeded names and new snapshots appear here as prints land.</div>`;
+    return;
+  }
+  const graded = entries.filter(e => e.graded);
+  const open = entries.filter(e => !e.graded);
+  const cheap = graded.filter(e => e.premiumRead === 'cheap').length;
+  const rich = graded.filter(e => e.premiumRead === 'rich').length;
+  const fired = graded.filter(e => e.squeezeRead === 'fired').length;
+  meta.textContent = `${graded.length} graded · ${open.length} awaiting their print`;
+  const fmtScore = (lbl, v) => v === null || v === undefined ? '' : ` · ${lbl} ${v}`;
+  const rowHTML = e => {
+    const base = `<strong>${e.ticker}</strong> <span style="color:var(--text3)">${e.earningsDate}</span> — snapped $${e.price}${fmtScore('Earnings', e.earningsScore)}${fmtScore('Squeeze', e.squeezeScore)}${e.direction ? ' · direction ' + e.direction : ''}${e.expectedMovePct ? ' · priced move ±' + e.expectedMovePct + '%' : ''}`;
+    if (!e.graded) return `<div style="padding:7px 0;border-top:1px solid var(--border);font-size:12px;line-height:1.6">${base}<br><span style="color:var(--amber)">Awaiting the print — graded after it lands.</span></div>`;
+    const mv = e.movePct;
+    const mvTxt = `${mv > 0 ? '+' : ''}${mv}%`;
+    const prem = e.premiumRead === 'cheap'
+      ? `<span style="color:var(--green)">Premium was CHEAP — the stock moved ${Math.abs(mv)}% against a ±${e.expectedMovePct}% priced move</span>`
+      : (e.premiumRead === 'rich' ? `<span style="color:var(--amber)">Premium was RICH — the stock moved ${Math.abs(mv)}% against a ±${e.expectedMovePct}% priced move</span>` : '');
+    const sq = e.squeezeRead === 'fired'
+      ? `<span style="color:var(--green)">Squeeze fuel FIRED — up ${mvTxt} through the print</span>`
+      : (e.squeezeRead === 'fell' ? `<span style="color:var(--red)">Fell on the print (${mvTxt}) — no squeeze</span>`
+        : (e.squeezeRead === 'flat' ? `<span style="color:var(--text3)">Flat print (${mvTxt})</span>` : ''));
+    return `<div style="padding:7px 0;border-top:1px solid var(--border);font-size:12px;line-height:1.6">${base}<br>Actual move <strong>${mvTxt}</strong> ($${e.preClose} → $${e.postClose})${prem ? '<br>' + prem : ''}${sq ? '<br>' + sq : ''}</div>`;
+  };
+  body.innerHTML = `<div style="font-size:12px;line-height:1.7;padding:2px 0 4px">Of ${graded.length} graded prints: premium proved cheap ${cheap}×, rich ${rich}×; squeeze fuel fired ${fired}×. The earnings score grades premium/structure — "cheap/rich" is the honest scoreboard for it. Direction and squeeze reads are graded on the signed move.</div>`
+    + graded.slice().sort((a, b) => b.earningsDate.localeCompare(a.earningsDate)).map(rowHTML).join('')
+    + open.slice().sort((a, b) => a.earningsDate.localeCompare(b.earningsDate)).map(rowHTML).join('');
 }
 
 function renderExcludedNote(ticker, s) {
