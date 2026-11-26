@@ -770,7 +770,7 @@ body[data-mode="squeeze"]{--mode:#fb923c;--mode-glow:rgba(251,146,60,.5)}
     ⚠ FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE<br>
     All data is simulated for demonstration. Always verify with your broker's real-time data.<br>
     Options trading involves significant risk of loss. Past earnings surprises do not predict future results.<br>
-    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v22</span>
+    Consult a licensed financial advisor before making investment decisions.<br><span style="opacity:.65">App build ep-v23</span>
   </div>
 </div>
 
@@ -1324,11 +1324,11 @@ async function analyzeStock() {
     return;
   }
 
-  if (stock.excluded && APP_MODE === 'earnings' && stock.squeezeScore) {
-    // A scanner-filtered card that carries a squeeze score belongs to the
-    // Squeeze board — take the user there instead of erroring at them.
-    setMode('squeeze');
-  }
+  // Opening a stock NEVER changes the mode (removed in ep-v23 at
+  // Matt's request): an earlier redirect yanked the whole app into
+  // Squeeze mode whenever a scanner-filtered name was opened, and
+  // 93 of 107 records are filtered — so nearly every click flipped
+  // the mode. The mode changes only via the mode buttons.
   // Any filtered record still opens from a click: renderResults shows the
   // verdict, checklist and strategy it can compute and explains in place
   // which panels a minimal scanner record never carried.
